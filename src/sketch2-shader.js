@@ -118,7 +118,7 @@ const GLITCH_SETTINGS = {
         blockGlitchChance: 0.00,
         noiseAmount: 0.00,
         scanlineEffect: 0.01,
-        chromaOffset: 0.00,
+        chromaOffset: 0.0,
         radialDistortion: 0.02,
         scanlineDensity: 1.0,
         scanlineWarpAmount: 0.002,
@@ -281,9 +281,9 @@ export function startSketch() {
       const w = window.innerWidth;
 
       if (w < 640) {
-        shapeScale = 1.4;
+        shapeScale = 1.1;
         posX = -100;
-        posY = 50;
+        posY = 80;
       } else if (w < 1024) {
         shapeScale = 1.8;
         posX = -50;
