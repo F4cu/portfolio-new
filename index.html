@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+    (function() {
+        try {
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
+        }
+        } catch(e) {}
+    })();
+    </script>
+
+    <title>Facundo Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="/src/main.js"></script>
+</head>
+
+<body class="bg-neutral-200 dark:bg-neutral-900">
+    <div id="smooth-wrapper">
+        <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
+                <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                    <div class="flex items-center justify-between h-full">
+                        <!-- Logo -->
+                        <a href="index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                            aria-label="Facundo Rosales - Portfolio">
+                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <div class="block md:hidden">
+                                <p class="leading-none mb-1 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
+                                <p class="text-base mb-0 text-neutral-500 dark:text-neutral-400 leading-none">UI/UX
+                                    Design</p>
+                            </div>
+                        </a>
+
+                        <!-- Desktop Navigation -->
+                        <div class="flex flex-row">
+                            <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                                <li>
+                                    <a href="index.html#projects"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        Projects
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.html#about"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        About me
+                                    </a>
+                                </li>
+                                <!-- <li>
+                                    <a href="index.html#services"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        Services
+                                    </a>
+                                </li> -->
+                                <li>
+                                    <a href="index.html#contact"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                            <button id="theme-toggle"
+                                class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                                aria-label="Toggle dark mode" title="Toggle dark mode">
+                                <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- light mode) -->
+                                    <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
+                                    <!-- dark mode) -->
+                                    <path class="hidden dark:block"
+                                        d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
+                        aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
+                            <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
+                            <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
+                            <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        </button>
+                    </div>
+                </nav>
+                <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                    <div class="flex flex-col justify-center items-center h-full">
+                        <nav class="w-full">
+                            <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="index.html#projects"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        Projects
+                                    </a>
+                                </li>
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="index.html#about"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        About me
+                                    </a>
+                                </li>
+                                <!-- <li class="mobile-nav-item opacity-0">
+                                    <a href="index.html#services"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        Services
+                                    </a>
+                                </li> -->
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="index.html#contact"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+        </header>
+        <div id="smooth-content">
+            <main id="main-content" class="flex-grow">
+                <!-- Hero Section -->
+                <section
+                id="intro"
+                class="relative pt-10 md:pt-16  h-[600px] md:h-[900px] flex flex-col flex-grow bg-neutral-200 dark:bg-neutral-900 overflow-hidden"
+                >
+                <!-- Text content on top -->
+                <div
+                    id="intro-content"
+                    class="relative z-10 max-w-[1400px] px-4 md:px-16 h-full"
+                >
+                    <div class="hero-content mb-4 w-full sm:max-w-3xl sm:mb-8">
+                    <h1
+                        id="hero-heading"
+                        class="scramble-text text-neutral-800 dark:text-neutral-300"
+                        tabindex="-1"
+                    >
+                        Hi, I'm Facundo,
+                        <span class="scramble-text text-neutral-500">
+                        a senior designer focused in interfaces and scalable design systems
+                        </span>
+                    </h1>
+
+                    <a
+                        href="#projects"
+                        class="mt-8 mb-4 dark:text-neutral-200 block text-lg hover:underline hover:decoration-2 hover:underline-offset-4"
+                    >
+                        View Projects
+                    </a>
+
+                    <div>
+                        <svg width="21" height="44" viewBox="0 0 21 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M11.4645 0.799804L11.4645 41.4316L10.3072 39.9374L20.0698 30.6903L20.0698 34.3554L10.0698 43.7998L0.0698247 34.3554L0.0698248 30.6622L9.83243 39.9374L8.67516 41.4316L8.67517 0.799804L11.4645 0.799804Z"
+                            fill="#5E5E5E"
+                        />
+                        </svg>
+                    </div>
+                    </div>
+                </div>
+                <!-- Canvas background -->
+                <div
+                    id="canvas-container"
+                    class="absolute inset-0 z-0"
+                ></div>
+                </section>
+
+                <!-- Projects-->
+                <section id="projects" class="py-6 md:py-16 bg-neutral-300 dark:bg-neutral-800">
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <h2 class="fade-in mb-8" id="projects-heading">Projects
+                        </h2>
+                        <!-- Project 1 -->
+                        <article class="fade-in flex flex-col md:flex-row items-center lg:gap-16 md:gap-8 gap-4 mb-12 sm:mb-32">
+                            <!-- Left column - Image -->
+                            <div class="w-full md:w-1/2 aspect-auto bg-neutral-300 dark:bg-neutral-900 shrink-0">
+                                    <img 
+                                        data-src-light="/images/data-viz-project-preview-light.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                            </div>
+
+                            <!-- Right column - Content -->
+                            <div class="h-full md:w-1/2">
+                                <h3>Awin Design System</h2>
+                                <p class="max-w-xl mb-4">Lorem ipsum
+                                    dolor sit amet,
+                                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                                    labore et dolore magna
+                                    aliquyam erat</p>
+                                <div class="flex gap-2 mb-8">
+                                    <span
+                                        class="tag">Design</span>
+                                    <span
+                                        class="tag">Design
+                                        Thinking</span>
+                                </div>
+                                <a href="/projects/project-1.html" class="project-link cta">To Case Study</a>
+                            </div>
+                        </article>
+                        <!-- Project 2 -->
+                        <article class="fade-in flex flex-col md:flex-row items-center lg:gap-16 md:gap-8 gap-4 mb-12 sm:mb-32">
+                            <!-- Left column - Image -->
+                            <figure class="w-full md:w-1/2 aspect-auto pl-8 pt-1 bg-neutral-200 dark:bg-neutral-900 shrink-0">
+                                <img 
+                                        data-src-light="/images/data-viz-project-preview-light.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                            </figure>
+
+                            <!-- Right column - Content -->
+                            <div class="h-full md:w-1/2">
+                                <h3>Data Visualization Guide</h3>
+                                <p class="max-w-xl mb-4">
+                                    Creating a unified Data Visualization Guide to ensure clarity, consistency, and accessibility across
+                                    cross-functional teams.
+                                </p>
+                                <div class="flex gap-2 mb-8">
+                                    <span class="tag">
+                                        Accessibility
+                                    </span>
+                                    <span class="tag">
+                                        Design Systems
+                                    </span>
+                                </div>
+                                <a href="/projects/data-visualization-guide.html"
+                                    class="project-link cta">
+                                    To Case Study
+                                </a>
+                            </div>
+                        </article>
+                        <!-- Project 3 -->
+                        <article class="fade-in flex flex-col md:flex-row items-center lg:gap-16 md:gap-8 gap-4 mb-12 sm:mb-16">
+                            <!-- Left column - Image -->
+                            <figure class="w-full md:w-1/2 aspect-auto pl-8 pt-1 bg-neutral-200 dark:bg-neutral-900 shrink-0">
+                                <img 
+                                        data-src-light="/images/upskill-project-preview.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                            </figure>
+
+                            <!-- Right column - Content -->
+                            <div class="">
+                                <h3>UpSkill Design System</h3>
+                                <p class="max-w-xl mb-4">
+                                    Creating a unified a design system...
+                                </p>
+                                <div class="flex gap-2 mb-8">
+                                    <span class="tag">
+                                        Component Library
+                                    </span>
+                                    <span class="tag">
+                                        Design System
+                                    </span>
+                                </div>
+                                <a href="/projects/upskill-design-system.html"
+                                    class="project-link cta">
+                                    To Case Study
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="py-6 md:py-16">
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <!-- Full width heading -->
+                        <h2 class="fade-in">About</h2>
+
+                        <!-- Two main columns -->
+                        <div class="flex flex-col md:flex-row justify-between gap-16 mb-4">
+
+                            <!-- Left column - Description -->
+                            <div class="fade-in w-full md:max-w-xl">
+                                <p class="leading-relaxed mb-6">
+                                    I'm a designer with 15+ years of experience across B2B SaaS, B2C, and mobile
+                                    apps.
+                                </p>
+
+                                <p class="leading-relaxed mb-6">
+                                    Based in Berlin since 2017, I've worked in Argentina, Spain and the UK,
+                                    specialising in intuitive,
+                                    user-centred interfaces and scalable design systems that align branding,
+                                    usability, and technical
+                                    feasibility.
+                                </p>
+
+                                <p class="leading-relaxed">
+                                    My work is driven by a passion for creating meaningful, positive change
+                                    through design.
+                                </p>
+                            </div>
+                        </div>
+                        <h2 class="fade-in">Services</h2>
+                        <div class="fade-in flex sm:justify-end flex-wrap sm:flex-nowrap gap-x-8 sm:gap-16 max-w-4xl">
+                            <div>
+                                <h4 class="mb-1">UX/UI Design</h4>
+                                <ul class="space-y-1 text-base">
+                                    <li>Whole Design Process</li>
+                                    <li>Prototyping (all levels)</li>
+                                    <li>Usability Testing</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="mb-1">Expert Review</h4>
+                                <ul class="space-y-1">
+                                    <li>Heuristic Evaluation</li>
+                                    <li>Accessibility Check</li>
+                                    <li>Expert Insights</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="mb-1">Research</h4>
+                                <ul class="space-y-1">
+                                    <li>Interviews & Surveys</li>
+                                    <li>Competitor Analysis</li>
+                                    <li>Branding</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="">
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="fade-in border-t border-neutral-400 dark:border-neutral-700 pt-8 sm:pt-16">
+                            <h2 class="">Contact</h2>
+                            <ul class="space-y-1">
+                                <li>LinkedIn</li>
+                                <li>Instagram</li>
+                                <li>Email</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer role="contentinfo" class="py-8 md:py-12">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-16">
+                    <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2025</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

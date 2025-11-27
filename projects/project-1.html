@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        (function () {
+            try {
+                const html = document.documentElement;
+
+                const savedTheme = localStorage.getItem('theme');
+
+                // Apply data-theme attribute immediately
+                if (savedTheme === 'dark' || savedTheme === 'light') {
+                    html.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <title>Tailwind Vite Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="/src/main.js"></script>
+</head>
+
+<body>
+    <div id="smooth-wrapper">
+        <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
+            <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                <div class="flex items-center justify-between h-full">
+                    <!-- Logo -->
+                    <a href="index.html"
+                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                        aria-label="Facundo Rosales - Portfolio">
+                        <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                fill="currentColor" />
+                        </svg>
+                        <div class="block md:hidden">
+                            <p class="leading-none mb-2 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-none">UI/UX Design</p>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <div class="flex flex-row">
+                        <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                            <li>
+                                <a href="index.html#projects"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Projects test
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#about"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    About me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#services"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#contact"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+
+                        <button id="theme-toggle"
+                            class="hidden md:block ml-4 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Moon icon (shown in light mode) -->
+                                <path class="dark:hidden"
+                                    d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Z" />
+                                <!-- Sun icon (shown in dark mode) -->
+                                <path class="hidden dark:block"
+                                    d="M12,6a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V5A1,1,0,0,0,12,6ZM5.64,8.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-1.41-1.42A1,1,0,0,0,4.22,6.63ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm.64,5.95a1,1,0,1,0-1.41,1.41l1.41,1.42a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,18a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V19A1,1,0,0,0,12,18ZM18.36,17.95l-1.42,1.41a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l1.42-1.41a1,1,0,0,0-1.41-1.41ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-2.64-6.37a1,1,0,0,0-1.41,1.41l1.41,1.42a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
+                        aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"
+                            stroke-linejoin="round">
+                            <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
+                            <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
+                            <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <div id="mobile-menu"
+                class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <nav class="w-full">
+                        <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#projects"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#about"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    About me
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#services"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Services
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#contact"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="main-content" class="bg-neutral-200 dark:bg-neutral-900">
+            <main id="site-main">
+                <!-- 1. Project Intro -->
+                <section id="project-intro" class="pt-16 md:pt-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+
+                        <!-- Full width heading -->
+                        <h1 class="font-condensed text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-200">
+                            Data
+                            Visualisation Guide</h1>
+
+                        <!-- Two main columns -->
+                        <div class="flex flex-col md:flex-row justify-between gap-16 mb-8">
+
+                            <!-- Left column - Description -->
+                            <div class="w-full md:max-w-xl">
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-6 max-w-2xl">
+                                    Improving how users find and discover content on The Athletic’s mobile apps
+                                    —
+                                    while unlocking new capabilities for our newsroom and content programming
+                                    team.
+                                </p>
+                                <div class="flex gap-2 mb-8">
+                                    <span
+                                        class="border dark:border-neutral-600  px-3 py-1 text-sm rounded text-neutral-500">Design</span>
+                                    <span
+                                        class="border dark:border-neutral-600 px-3 py-1 text-sm rounded text-neutral-500">Design
+                                        Thinking</span>
+                                </div>
+                            </div>
+
+                            <!-- Right column - Index -->
+                            <div class="w-full md:flex-none md:shrink-0 md:min-w-[24rem] md:max-w-[24rem]">
+                                <h3 class="text-xl mb-4 text-neutral-900 dark:text-neutral-200">Project Index
+                                </h3>
+                                <div class="flex flex-col md:flex-row sm:gap-0 md:gap-8 mb-8">
+                                    <ul class="text-neutral-500 dark:text-neutral-400 p-0 flex-1">
+                                        <li
+                                            class="flex justify-between items-center py-2 border-t border-b border-neutral-500">
+                                            <span>Considerations</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Anatomy</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Details</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Properties</span>
+                                            <span>-></span>
+                                        </li>
+                                    </ul>
+                                    <ul class="text-neutral-500 dark:text-neutral-400 p-0 flex-1">
+                                        <li
+                                            class="flex justify-between items-center py-2 md:border-t border-b border-neutral-500">
+                                            <span>Screen Sizes</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Best Practices</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Specs</span>
+                                            <span>-></span>
+                                        </li>
+                                        <li
+                                            class="flex justify-between items-center py-2 border-b border-neutral-500">
+                                            <span>Conclusion</span>
+                                            <span>-></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Intro visual -->
+                        <figure class="w-full h-96 bg-neutral-300 dark:bg-neutral-800"></figure>
+                    </div>
+                </section>
+
+
+                <!-- 2. Stage 1: Approach -->
+                <section id="stage-approach" class="py-12 md:py-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <article class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            <!-- Text -->
+                            <div>
+                                <h2 class="text-2xl md:text-4xl mb-4 text-neutral-900 dark:text-neutral-200">
+                                    Approach</h2>
+                                <h3 class="text-xl mb-2 text-neutral-900 dark:text-neutral-200">1. Requirement
+                                    Gathering</h3>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-6">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                    eirmod tempor invidunt ut
+                                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                    accusam et justo duo dolores
+                                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                                    ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                                </p>
+                                <h3 class="text-xl mb-2 text-neutral-900 dark:text-neutral-200">2. Competitive
+                                    Analysis</h3>
+                                <p class="text-neutral-500 dark:text-neutral-400">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                    eirmod tempor invidunt ut
+                                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                    accusam et justo duo dolores
+                                    et ea rebum.
+                                </p>
+                            </div>
+
+                            <!-- Image placeholder -->
+                            <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+                        </article>
+                    </div>
+                </section>
+
+
+                <!-- 3. Stage 2: Considerations -->
+                <section id="stage-considerations" class="py-12 md:py-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+
+                        <article class="mb-16">
+                            <h2 class="text-xl md:text-4xl mb-2 text-orange-800 dark:text-orange-700 max-w-xl">
+                                “The next big thing is
+                                the one that makes the
+                                last big thing usable.”</h2>
+                        </article>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <!-- Column 1 -->
+                            <div>
+                                <h3 class="text-xl mb-4 text-neutral-900 dark:text-neutral-200">Considerations
+                                </h3>
+                                <p class="text-lg mb-4 dark:text-neutral-400">Lorem ipsum dolor sit amet,
+                                    consetetur
+                                    sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                                    sed diam voluptua. At
+                                    vero eos et accusam et justo duo dolores et ea rebum. </p>
+                                <ul class="list-disc pl-5 space-y-2 text-neutral-500 dark:text-neutral-400 text-lg">
+                                    <li>Annotated screenshots of current flows...</li>
+                                    <li>Hypotheses...</li>
+                                    <li>Action plan...</li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 2 -->
+                            <aside class="bg-neutral-700 dark:bg-neutral-800 p-8">
+                                <h3 class="text-xl mb-4 text-neutral-900 dark:text-neutral-200">The Problem</h3>
+                                <p class="text-neutral-400">
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                    eirmod tempor invidunt ut
+                                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                                    accusam et justo duo dolores
+                                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                                    ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </aside>
+                        </div>
+
+                        <!-- Image placeholders below -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+                            <div>
+                                <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+                                <p class="text-neutral-600 pt-2">Usability and Accessibility best practices.</p>
+                            </div>
+                            <div>
+                                <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+                                <p class="text-neutral-600 pt-2">Usability and Accessibility</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 4. Stage 3: Impact -->
+                <section id="stage-impact" class="py-12 md:py-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+
+                            <article>
+                                <h2 class="text-2xl md:text-3xl mb-4 text-neutral-900 dark:text-neutral-200">
+                                    Impact</h2>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-8">
+                                    As the entry point to the stories on the platform, the feed sits at the core
+                                    of The Athletic’s
+                                    mobile experience — it’s the first thing users see.
+                                </p>
+
+                                <div class="flex gap-12">
+                                    <div>
+                                        <span
+                                            class="block text-sm text-neutral-500 dark:text-neutral-400">Label</span>
+                                        <span class="text-2xl font-semibold">+4.5%</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="block text-sm text-neutral-500 dark:text-neutral-400">Label</span>
+                                        <span class="text-2xl font-semibold">+8.5%</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="block text-sm text-neutral-500 dark:text-neutral-400">Label</span>
+                                        <span class="text-2xl font-semibold">+12%</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 5. Other Projects -->
+                <section id="other-projects" class="py-16 md:py-24 bg-neutral-300 dark:bg-neutral-800">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <h2 class="text-3xl md:text-4xl mb-12 text-neutral-900 dark:text-neutral-200">Other
+                            Projects</h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <a href="#" class="block">
+                                <figure class="aspect-[4/3] bg-neutral-300 dark:bg-neutral-700 mb-3"></figure>
+                                <p class="text-lg text-neutral-500 dark:text-neutral-400">Data Visualisation
+                                    Guide</p>
+                            </a>
+                            <a href="#" class="block">
+                                <figure class="aspect-[4/3] bg-neutral-300 dark:bg-neutral-700 mb-3"></figure>
+                                <p class="text-lg text-neutral-500 dark:text-neutral-400">Another Project</p>
+                            </a>
+                            <a href="#" class="block">
+                                <figure class="aspect-[4/3] bg-neutral-300 dark:bg-neutral-700 mb-3"></figure>
+                                <p class="text-lg text-neutral-500 dark:text-neutral-400">Case Study XYZ</p>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer -->
+            <footer role="contentinfo" class="bg-neutral-800 text-inverted py-6 md:py-12">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                    <hr class="footer-divider mb-6">
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400">2025 Facundo Rosales &#174;</p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</body>
+
+</html>

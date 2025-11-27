@@ -1,0 +1,119 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&family=Roboto+Condensed:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    /* font-family: "Instrument Sans", -apple-system, Roboto, sans-serif; */
+    font-family: "Roboto", -apple-system, sans-serif;
+    font-variation-settings: "wdth" 100;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@layer base {
+
+  body {
+    @apply text-neutral-600 dark:text-neutral-400 antialiased;
+  }
+
+  h1, h2, h3, h4 { 
+    @apply text-neutral-900 dark:text-neutral-200;
+  }
+
+  h1 {
+    @apply font-condensed text-4xl md:text-5xl mb-4;
+  }
+
+  h2 {
+    @apply font-condensed text-3xl md:text-4xl mb-3;
+  }
+
+  h3 {
+    @apply font-condensed text-2xl md:text-3xl mb-2;
+  }
+
+  h4 {
+    @apply text-xl md:text-xl;
+  }
+
+  p, ul li,
+  blockquote {
+    @apply text-lg;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  ul {
+    @apply list-outside mb-4;
+  }
+
+  strong {
+    @apply font-normal text-neutral-900 dark:text-neutral-200;
+  }
+
+  figcaption {
+    @apply  text-neutral-600 dark:text-neutral-500 pt-2;
+  }
+
+  code {
+    @apply 
+          rounded bg-neutral-300 dark:bg-neutral-800
+        text-neutral-900 dark:text-neutral-200
+          px-2 py-1 font-mono text-sm;
+  }
+}
+
+@layer components {
+  .tag {
+    @apply
+        border px-2 py-1 text-sm rounded-md leading-5
+        border-neutral-400 dark:border-neutral-500
+        text-neutral-600 dark:text-neutral-400;
+  }
+  .cta {
+    @apply 
+        bg-neutral-800 dark:bg-neutral-300 hover:bg-neutral-700 dark:hover:bg-neutral-200
+        text-neutral-200 dark:text-neutral-800
+          px-4 py-2 rounded-full;
+  }
+}
+
+#theme-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle svg.rotated {
+  transform: rotate(180deg);
+}
+
+/* svg {
+  shape-rendering: geometricPrecision;
+} */
+
+.hamburger-icon .line {
+  transform-box: fill-box;         /* use SVG coordinate box for transforms */
+  transform-origin: 50% 50%;       /* centre of the element's box */
+  transition: transform .28s ease, opacity .18s ease;
+  vector-effect: non-scaling-stroke; /* keep stroke visually stable when transforming */
+}
+
+/* When menu is open */
+.mobile-menu-btn.open .top {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu-btn.open .middle {
+  opacity: 0;
+  transform: scaleX(0.8);
+}
+
+.mobile-menu-btn.open .bottom {
+  transform: translateY(-6px) rotate(-45deg);
+}

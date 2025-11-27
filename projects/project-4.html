@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        (function () {
+            try {
+                const html = document.documentElement;
+
+                const savedTheme = localStorage.getItem('theme');
+
+                // Apply data-theme attribute immediately
+                if (savedTheme === 'dark' || savedTheme === 'light') {
+                    html.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <title>Facundo Rosales - UX/UI Designer - Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="/src/main.js"></script>
+</head>
+
+<body>
+    <div id="smooth-wrapper">
+        <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
+            <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                <div class="flex items-center justify-between h-full">
+                    <!-- Logo -->
+                    <a href="index.html"
+                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                        aria-label="Facundo Rosales - Portfolio">
+                        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                fill="currentColor" />
+                        </svg>
+                        <div class="block md:hidden">
+                            <p class="leading-none mb-2 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-none">UI/UX Design</p>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <div class="flex flex-row">
+                        <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                            <li>
+                                <a href="index.html#projects"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Projects test
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#about"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    About me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#services"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#contact"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+
+                        <button id="theme-toggle"
+                            class="hidden md:block ml-4 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Moon icon (shown in light mode) -->
+                                <path class="dark:hidden"
+                                    d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Z" />
+                                <!-- Sun icon (shown in dark mode) -->
+                                <path class="hidden dark:block"
+                                    d="M12,6a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V5A1,1,0,0,0,12,6ZM5.64,8.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-1.41-1.42A1,1,0,0,0,4.22,6.63ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm.64,5.95a1,1,0,1,0-1.41,1.41l1.41,1.42a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,18a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V19A1,1,0,0,0,12,18ZM18.36,17.95l-1.42,1.41a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l1.42-1.41a1,1,0,0,0-1.41-1.41ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-2.64-6.37a1,1,0,0,0-1.41,1.41l1.41,1.42a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden"
+                        aria-label="Menü öffnen" aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"
+                            stroke-linejoin="round">
+                            <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
+                            <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
+                            <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <div id="mobile-menu"
+                class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <nav class="w-full">
+                        <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#projects"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#about"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    About me
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#services"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Services
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="index.html#contact"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="main-content" class="bg-neutral-200 dark:bg-neutral-900">
+            <main id="site-main">
+
+                <!-- 1. Project Intro -->
+                <section id="project-intro" class="pt-16 md:pt-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <div class="w-full lg:w-1/2 mb-8">
+
+                            <h1 class="font-condensed text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-200">
+                                Data Visualization Guide
+                            </h1>
+
+                            <p class="text-neutral-500 dark:text-neutral-400 mb-6 max-w-2xl">
+                                Building accessible and consistent data visualization standards across teams.
+                            </p>
+                            <ul class="flex flex-row flex-nowrap list-none p-0 text-lg">
+                                <li class="w-24 flex-none text-neutral-500 dark:text-neutral-400 ">Role:</li>
+                                <li class="grow text-neutral-900 dark:text-neutral-200">
+                                    UX/UI Designer
+                                </li>
+                            </ul>
+                            <ul class="flex flex-row flex-nowrap list-none p-0 text-lg mb-4">
+                                <li class="w-24 flex-none text-neutral-500 dark:text-neutral-400">Timeline:</li>
+                                <li class="grow text-neutral-900 dark:text-neutral-200">
+                                    10 weeks
+                                </li>
+                            </ul>
+                            <ul class="flex flex-row flex-nowrap list-none p-0 text-lg mb-4">
+                                <li class="w-24 flex-none text-neutral-500 dark:text-neutral-400">Team:</li>
+                                <li class="grow text-neutral-900 dark:text-neutral-200">
+                                    Independent project with feedback from designers, developers, and data analysts
+                                </li>
+                            </ul>
+                            <ul class="flex flex-row flex-nowrap list-none p-0 text-lg mb-4">
+                                <li class="w-24 flex-none text-neutral-500 dark:text-neutral-400">Goal:</li>
+                                <li class="grow text-neutral-900 dark:text-neutral-200">
+                                     Create a unified <strong class="text-neutral-900 dark:text-neutral-200">Data Visualization Guide</strong> to ensure clarity, consistency, and accessibility across cross-functional teams.
+                                </li>
+                            </ul>
+
+                            <ul class="grid grid-cols-[100px_auto] grid-auto-rows-auto gap-x-8 gap-y-4 list-none p-0 w-full mb-8 text-lg">
+                                <!-- Timeline -->
+                                <li class="col-start-1 text-neutral-500 dark:text-neutral-400">Timeline</li>
+                                <li class="col-start-2 text-neutral-500 dark:text-neutral-400">10 Weeks</li>
+                                <li class="col-start-1 text-neutral-500 dark:text-neutral-400">Team</li>
+                                <li class="col-start-2 text-neutral-500 dark:text-neutral-400">Independent project with feedback from designers, developers, and data analysts</li>
+                                <li class="col-start-1 text-neutral-500 dark:text-neutral-400">Goal</li>
+                                <li class="col-start-2 text-neutral-500 dark:text-neutral-400">Create a unified <strong class="text-neutral-900 dark:text-neutral-200">Data Visualization Guide</strong> to ensure clarity, consistency, and accessibility across cross-functional teams.</li>
+                            </ul>
+
+      
+                                <li class="col-start-2">
+                                    <span class="text-neutral-500 dark:text-neutral-400 col-start-1">Team:</span>
+                                    <span class="text-neutral-900 dark:text-neutral-200 col-start-2">
+                                        Independent project with feedback from designers, developers, and data analysts
+                                    </span>
+                                </li>
+                                <!-- Goal -->
+                                <li class="">
+                                    <span class="text-neutral-500 dark:text-neutral-400 col-start-1">Goal:</span>
+                                    <span class="text-neutral-900 dark:text-neutral-200 col-start-2">
+                                        Create a unified <strong class="text-neutral-900 dark:text-neutral-200">Data
+                                            Visualization Guide</strong>
+                                        to ensure clarity, consistency, and accessibility across cross-functional teams.
+                                    </span>
+                                </li>
+                            </ul>
+
+                            <!-- Goal -->
+                            <div class="mb-6">
+                                <h3 class="text-neutral-900 dark:text-neutral-200 font-semibold mb-2">Goal</h3>
+                                <p class="text-neutral-500 dark:text-neutral-400 max-w-2xl">
+                                    Create a unified <strong class="text-neutral-900 dark:text-neutral-200">Data
+                                        Visualization Guide</strong>
+                                    to ensure clarity, consistency, and accessibility across cross-functional teams.
+                                </p>
+                            </div>
+
+                            <!-- Quote -->
+                            <blockquote
+                                class="border-l-4 border-neutral-400 dark:border-neutral-600 pl-4 italic text-neutral-500 dark:text-neutral-400 max-w-2xl">
+                                “Teams were creating visualizations independently — with no shared standards. This led
+                                to inconsistent designs,
+                                unclear communication, and accessibility gaps.”
+                            </blockquote>
+
+
+                            <!-- Hero visual placeholder -->
+                            <figure class="w-full h-96 bg-neutral-300 dark:bg-neutral-800"></figure>
+                        </div>
+                </section>
+
+                <!-- 2. Stage: Research & Approach -->
+                <section id="stage-approach" class="py-12 md:py-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <article class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            <!-- Text -->
+                            <div>
+                                <h2 class="text-2xl md:text-4xl mb-4 text-neutral-900 dark:text-neutral-200">1. Survey &
+                                    Insights</h2>
+                                <h3 class="text-xl mb-2 text-neutral-900 dark:text-neutral-200">Target Group
+                                    Selection</h3>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-6">
+                                    Using an Influence–Relevance Matrix, I identified three key roles:
+                                    <strong>Product Designers</strong>, <strong>Frontend Developers</strong>, and
+                                    <strong>Data Analysts</strong>. These groups represent the core of how visual data
+                                    is created, built, and communicated.
+                                </p>
+                                <h3 class="text-xl mb-2 text-neutral-900 dark:text-neutral-200">Survey Insights</h3>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-6">
+                                    A cross-role survey revealed major gaps in accessibility understanding and
+                                    inconsistent use of chart types. Participants requested more actionable, visual
+                                    guidance instead of lengthy WCAG documentation.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-2 text-neutral-500 dark:text-neutral-400">
+                                    <li>Designers need visual examples of accessible color palettes.</li>
+                                    <li>Developers prefer short, annotated ARIA code snippets.</li>
+                                    <li>Analysts need decision trees for chart selection.</li>
+                                </ul>
+                            </div>
+                            <!-- Image -->
+                            <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- 3. Stage: Personas & IA -->
+                <section id="stage-personas" class="py-12 md:py-24 bg-neutral-50 dark:bg-neutral-900/30">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <article class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <div>
+                                <h2 class="text-2xl md:text-4xl mb-4 text-neutral-900 dark:text-neutral-200">User
+                                    Personas</h2>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-4">Three personas emerged from the
+                                    survey, each representing a core discipline:</p>
+
+                                <ul class="space-y-6">
+                                    <li>
+                                        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-200">🎨 Maja
+                                            — Product Designer</h3>
+                                        <p class="text-neutral-500 dark:text-neutral-400">
+                                            “I know accessibility is important — but WCAG feels too technical.”
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-200">💻
+                                            Stephan — Frontend Developer</h3>
+                                        <p class="text-neutral-500 dark:text-neutral-400">
+                                            “WCAG and ARIA are too long; I need simple, actionable rules.”
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-200">📈
+                                            Lukas — Data Analyst</h3>
+                                        <p class="text-neutral-500 dark:text-neutral-400">
+                                            “Explaining results so everyone understands is the hardest part.”
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <aside class="bg-neutral-700 dark:bg-neutral-800 p-8">
+                                <h3 class="text-xl mb-4 text-neutral-100">Information Architecture</h3>
+                                <p class="text-neutral-400 mb-4">A closed card-sorting study helped define the
+                                    structure of the guide, ensuring alignment across roles.</p>
+                                <ul class="list-disc pl-5 space-y-2 text-neutral-300">
+                                    <li>Basics & Glossary</li>
+                                    <li>Color Palettes</li>
+                                    <li>Data Visualizations</li>
+                                    <li>Accessibility</li>
+                                </ul>
+                            </aside>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- 4. Stage: Accessibility & Implementation -->
+                <section id="stage-accessibility" class="py-12 md:py-24">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <article class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            <!-- Image -->
+                            <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+
+                            <!-- Text -->
+                            <div>
+                                <h2 class="text-2xl md:text-4xl mb-4 text-neutral-900 dark:text-neutral-200">
+                                    Accessibility & Implementation</h2>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-6">
+                                    The prototype was built using semantic HTML and Tailwind CSS — prioritizing
+                                    accessibility,
+                                    performance, and scalability. The final guide achieved full WCAG 2.1 AA compliance.
+                                </p>
+
+                                <ul class="list-disc pl-5 space-y-2 text-neutral-500 dark:text-neutral-400 mb-8">
+                                    <li>Added “Skip to Content” navigation.</li>
+                                    <li>Improved ARIA labels and keyboard focus states.</li>
+                                    <li>Enhanced color contrast and clickable areas.</li>
+                                    <li>Refined responsive design for all breakpoints.</li>
+                                </ul>
+
+                                <div class="border-l-4 border-green-600 pl-4 text-neutral-400 italic">
+                                    “Accessibility isn’t a checkbox — it’s a mindset that improves usability for
+                                    everyone.”
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- 5. Stage: Impact -->
+                <section id="stage-impact" class="py-12 md:py-24 bg-neutral-50 dark:bg-neutral-900/30">
+                    <div class="max-w-[1440px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800"></figure>
+
+                            <article>
+                                <h2 class="text-2xl md:text-3xl mb-4 text-neutral-900 dark:text-neutral-200">Impact</h2>
+                                <p class="text-neutral-500 dark:text-neutral-400 mb-8">
+                                    The project established a foundation for consistent, accessible visualization
+                                    practices
+                                    across teams and integrated accessibility directly into the design system workflow.
+                                </p>
+
+                                <div class="flex flex-wrap gap-12">
+                                    <div>
+                                        <span class="block text-sm text-neutral-500 dark:text-neutral-400">Accessibility
+                                            Compliance</span>
+                                        <span class="text-2xl font-semibold">WCAG 2.1 AA ✅</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm text-neutral-500 dark:text-neutral-400">Design System
+                                            Integration</span>
+                                        <span class="text-2xl font-semibold">+30 Components</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm text-neutral-500 dark:text-neutral-400">Cross-Team
+                                            Adoption</span>
+                                        <span class="text-2xl font-semibold">3 Disciplines</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer -->
+            <footer role="contentinfo" class="bg-neutral-800 text-inverted py-6 md:py-12">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                    <hr class="footer-divider mb-6">
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400">2025 Facundo Rosales &#174;</p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</body>
+
+</html>
