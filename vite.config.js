@@ -6,9 +6,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        project1: './projects/project-1.html',
-        project2: './projects/data-visualization-guide.html',
-        project3: './projects/project-3.html',
+        awinProject: './projects/awin-design-system.html',
+        datavizProject: './projects/data-visualization-guide.html',
+        upskillProject: './projects/upskill-design-system.html',
         project4: './projects/project-4.html',
       }
     }
