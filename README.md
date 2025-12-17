@@ -25,5 +25,5 @@ The project runs as pure static files and does not require any build tools or fr
 
 You can choose a license for the code in this repository (for example MIT) and add it as a separate `LICENSE` file.  
 
-The visual design, case studies, and written content are your personal intellectual property and may not be reused without permission.
+The visual design, case studies, and written content are Facundo Rosales' personal intellectual property and may not be reused without permission.
    
