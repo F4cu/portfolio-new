@@ -119,7 +119,7 @@ const GLITCH_SETTINGS = {
         noiseAmount: 0.00,
         scanlineEffect: 0.01,
         chromaOffset: 0.0,
-        radialDistortion: 0.02,
+        radialDistortion: 0.01,
         scanlineDensity: 1.0,
         scanlineWarpAmount: 0.002,
     },
