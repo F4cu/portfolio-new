@@ -114,7 +114,7 @@ const GLITCH_SETTINGS = {
     DEFAULT: {
         glitchStrength: 0.00,
         shakeAmount: 0.00,
-        aberrationAmount: 2.0,
+        aberrationAmount: 1.0,
         blockGlitchChance: 0.00,
         noiseAmount: 0.00,
         scanlineEffect: 0.01,
@@ -129,9 +129,10 @@ const GLITCH_SETTINGS = {
         duration: 700, // ms
         maxAberrationLoops: 3,
         aberrationInterval: 100, // ms
+        chromaOffset: 0.5,
         
         // Target high values for interpolation
-        startStrength: 1.0, 
+        startStrength: 0.1, 
         endStrength: 0.00, // Note: Setting to 0.00 ensures a clean transition to minimalGlitch
         startShake: 0.12,
         endShake: 0.0,
@@ -487,40 +488,65 @@ export function startSketch() {
       const depth = extrusionDepth;
       // Reveal factor based on frame count (0 to 1)
       const revealFactor = Math.min(1, p.frameCount * 0.05);
+      const isFullyRevealed = revealFactor >= 1.0;
 
       // --- Extrusion walls ---
-      graphics.beginShape(p.QUADS);
-      for (let wi = 0; wi < totalEdges; wi++) {
-        const visibility = Math.min(1, revealFactor * totalEdges - wi);
-        if (visibility <= 0) continue; // hide wall until its turn
-        const a = shapePoints[wi];
-        const b = shapePoints[wi + 1];
-        graphics.vertex(a.x, a.y, depth / 2);
-        graphics.vertex(b.x, b.y, depth / 2);
-        graphics.vertex(b.x, b.y, -depth / 2);
-        graphics.vertex(a.x, a.y, -depth / 2);
+      if (!isFullyRevealed) {
+        // Draw disconnected wall edges (wireframe-style)
+        graphics.beginShape(p.LINES);
+        for (let wi = 0; wi < totalEdges; wi++) {
+          const visibility = Math.min(1, revealFactor * totalEdges - wi);
+          if (visibility <= 0) continue;
+
+          const a = shapePoints[wi];
+          const b = shapePoints[wi + 1];
+
+          // Front edge
+          graphics.vertex(a.x, a.y, depth / 2);
+          graphics.vertex(b.x, b.y, depth / 2);
+
+          // Back edge
+          graphics.vertex(a.x, a.y, -depth / 2);
+          graphics.vertex(b.x, b.y, -depth / 2);
+
+          // Connecting edge
+          graphics.vertex(a.x, a.y, depth / 2);
+          graphics.vertex(a.x, a.y, -depth / 2);
+        }
+        graphics.endShape();
+      } else {
+        // Draw closed extrusion walls
+        graphics.beginShape(p.QUADS);
+        for (let wi = 0; wi < totalEdges; wi++) {
+          const a = shapePoints[wi];
+          const b = shapePoints[wi + 1];
+          graphics.vertex(a.x, a.y, depth / 2);
+          graphics.vertex(b.x, b.y, depth / 2);
+          graphics.vertex(b.x, b.y, -depth / 2);
+          graphics.vertex(a.x, a.y, -depth / 2);
+        }
+        graphics.endShape();
       }
-      graphics.endShape();
 
       // --- Front face ---
-      graphics.beginShape();
-      for (let i = 0; i < shapePoints.length; i++) {
-        const visibility = Math.min(1, revealFactor * shapePoints.length - i);
-        if (visibility <= 0) continue;
-        const pt = shapePoints[i];
-        graphics.vertex(pt.x, pt.y, depth / 2);
+      if (isFullyRevealed) {
+        graphics.beginShape();
+        for (let i = 0; i < shapePoints.length; i++) {
+          const pt = shapePoints[i];
+          graphics.vertex(pt.x, pt.y, depth / 2);
+        }
+        graphics.endShape(p.CLOSE);
       }
-      graphics.endShape(p.CLOSE);
 
       // --- Back face ---
-      graphics.beginShape();
-      for (let i = 0; i < shapePoints.length; i++) {
-        const visibility = Math.min(1, revealFactor * shapePoints.length - i);
-        if (visibility <= 0) continue;
-        const pt = shapePoints[i];
-        graphics.vertex(pt.x, pt.y, -depth / 2);
+      if (isFullyRevealed) {
+        graphics.beginShape();
+        for (let i = 0; i < shapePoints.length; i++) {
+          const pt = shapePoints[i];
+          graphics.vertex(pt.x, pt.y, -depth / 2);
+        }
+        graphics.endShape(p.CLOSE);
       }
-      graphics.endShape(p.CLOSE);
       graphics.pop();
 
       // 2. Apply the shader to the main canvas

@@ -41,10 +41,8 @@
                                     d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
                                     fill="currentColor" />
                             </svg>
-                            <div class="block md:hidden">
-                                <p class="leading-none mb-2 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
-                                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-none">UI/UX
-                                    Design</p>
+                            <div class="block md:hidden items-center">
+                                <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
                             </div>
                         </a>
 
@@ -134,19 +132,18 @@
                                 <h1>Awin Design System</h1>
                             </div>
                             <div class="col-span-12 md:col-span-8">
-                                <p class="text-xl">Creating a unified Data Visualization Guide to ensure clarity, consistency, and accessibility across
-                                   cross-functional teams.</p>
+                                <p class="text-xl">Building a scalable, token-based design system for a global B2B SaaS platform, aligning design and engineering while supporting complex, data-heavy interfaces.</p>
                             </div>
                             <div class="col-span-12 md:col-span-4">
                                 <h4>Role</h4>
-                                <p>UX lead / Product Designer</p>
+                                <p>Senior UX/UI Designer</p>
                             </div>
 
                             <!-- Project hero -->
                              <div class="col-span-12 mt-4">
                                 <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
                                     <img 
-                                        data-src-light="/images/data-viz-project-hero-light.png"
+                                        data-src-light="/images/awin-project-hero.png"
                                         class="theme-image w-full h-full object-contain"
                                     >
                                 </figure>
@@ -155,25 +152,24 @@
                     </div>
                 </section>
 
-                <!-- Background -->
-                <section id="background">
+                <!-- Challenge -->
+                <section id="challenge">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>The Challenge</h2>
-                                <p class="mb-2">Teams struggled to create accessible and consistent visualizations. WCAG guidelines—while essential—were often too technical and hard to apply, leading to uneven accessibility practices. Misunderstandings around color usage created tension between brand, clarity, and accessibility.</p>
-                                <p>Teams also lacked a shared approach to chart selection, resulting in inconsistent patterns and duplicated effort.</p>
+                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 25,000 clients worldwide across multiple plans, feature tiers, and seven languages. As the product grew, its UI became increasingly fragmented—components were inconsistently implemented, accessibility standards were not met, and the existing visual language struggled to scale across complex dashboards, reports, and configuration-heavy interfaces.</p>
+                                <p>The challenge was to create and introduce a new design system and design language that could support a wide variety of components, data-dense interfaces, and global use cases—while enabling fast, iterative delivery across distributed teams.</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>Objectives</h2>
-                                <p>Design a Data Visualization Guide that unifies how the organization communicates data while keeping accessibility at the forefront. The guide needed to:</p>
                                 <ul class="list-disc pl-16 mb-4">
-                                    <li>Ensure all visualizations meet WCAG 2.1 accessibility standards</li>
-                                    <li>Establish visual and conceptual consistency across teams</li>
-                                    <li>Make chart selection and color usage clear and approachable</li>
-                                    <li>Strengthen collaboration through reusable principles</li>
+                                    <li>Improve accessibility and readability by addressing color contrast and typography issues across the UI</li>
+                                    <li>Increase component reusability and consistency across dashboards, reports, and navigation patterns</li>
+                                    <li>Introduce a semantic token system to support responsive behavior and device-specific variants</li>
+                                    <li>Establish a scalable design system architecture with clear standards that maintain quality as the product grows</li>
                                 </ul>
                             </div>
                         </div>
@@ -181,30 +177,35 @@
                 </section>
 
                 <!-- Approach -->
-                <section id="stage-approach">
+                <section id="approach">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="md:col-span-8">
-                                <h2>Approach</h2>
-                                <p>To make the process clear and actionable, the work was organized into three steps.</p>
-                            </div>
-                            <div class="md:col-span-8">
-                                <h3>1. User Research</h3>
-                                <p>We started by understanding the people behind the visualizations. <strong>Stakeholder mapping</strong> revealed four groups: Brand/Marketing, Product Design, Front-End Development, and Data Analysis. Using an influence x relevance matrix, we focused on the three most critical: Product Designer, Front-End Developer, and Data Analyst.</p>
-                                <p>A <strong>cross-functional survey</strong> surfaced common frustrations: inconsistent chart standards, unclear accessibility requirements, and duplicated work during handoff. We also learned that each role defined “readability” differently — designers through aesthetics, developers through structure, and analysts through comprehension.</p>
-                                <p>From these insights, we created <strong>three personas</strong>:</p>
+                                <h2 class="mb-6">Approach</h2>
+
+                                <h3>1. Interface Audit & Usability Baseline</h3>
+                                <p>We began with a comprehensive audit of key dashboards and reports, combining <strong>behavioral analytics</strong> (Amplitude and Hotjar), <strong>heuristic evaluation, and </strong> <strong> accessibility and responsiveness audits using Lighthouse.</strong> This allowed us to identify high-impact usability issues, component inconsistencies, accessibility gaps, and patterns of user friction in real-world usage rather than relying solely on visual critique.</p>
+
+                                <h3>2. Design System Scoping & Prioritization</h3>
+                                <p>To define the system's scope, we mapped all existing UI components across the platform using a <strong>component-to-page matrix</strong>. This revealed which components appeared most frequently, where inconsistencies existed, and which elements would deliver the highest impact if standardized.</p>
+                                <p>In parallel, I introduced a <strong>prioritization framework</strong> to select pilot areas based on reuse potential, complexity, traffic, and implementation feasibility. High-traffic dashboards and navigation patterns became the initial proving ground for the new system.</p>
+
+                                <h3>3. Foundation Research & System Definition</h3>
+                                <p>I led foundational research across typography, color, spacing, and layout—combining competitor audits, accessibility standards, and real UI testing.</p>
+                                <p>Key foundation decisions included:</p>
                                 <ul class="list-disc pl-16 mb-4">
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Maja Wallner</span>, a Product Designer balancing brand and accessibility</li>
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Stephan Ackner</span>, a Front-End Developer focused on technical scalability</li>
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Lukas Schneider</span>, a Data Analyst translating complex insights for non-technical audiences.</li>
+                                    <li>Introducing a <strong>neutral, highly readable product typeface</strong> optimized for UI and multilingual support</li>
+                                    <li>Rebuilding the color system using <strong>perceptually uniform color models</strong> to achieve WCAG compliance and support data visualization</li>
+                                    <li>Defining an <strong>8pt-based spacing system with semantic spacing roles</strong> to support multiple density levels</li>
+                                    <li>Establishing a <strong>token taxonomy</strong> (primitive, semantic, component) to enable scalable theming and responsive variants</li>
                                 </ul>
-                                <p>These personas helped shape the guide's tone and ensured all disciplines were equally represented.</p>
+
+                                <p>These foundations were validated through dashboard and reporting prototypes, ensuring the system worked in real, complex interfaces—not just isolated components.</p>
                             </div>
                             <div class="md:col-span-4">
-                                <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 mb-4">
+                                <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 p-4 mb-4">
                                     <img 
-                                        data-src-light="/images/target-group-analysis-light.png"
-                                        data-src-dark="/images/target-group-analysis-dark.png"
+                                        data-src-light="/images/awin-research-screenshots.png"
                                         alt="Target group analysis"
                                         class="theme-image w-full h-full object-contain"
                                     >
@@ -212,115 +213,108 @@
                                 <figure class="w-full aspect-[4/3] mb-4">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
                                         <img 
-                                            data-src-light="/images/data-viz-survey.png"
+                                            data-src-light="/images/awin-pilot-matrix.png"
                                             alt="Target group analysis"
                                             class="theme-image w-full h-full object-contain"
                                         >
                                     </div>
                                     <figcaption>
-                                        Cross-team user survey.
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="md:col-span-8">
-                                <figure class="w-full aspect-auto mb-4">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/data-viz-persona-1.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                    </div>
-                                    <figcaption>
-                                        Example persona
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16">
-                            <div class="md:col-span-8">
-                                <h3>2. Information Architecture</h3>
-                                <p>To structure the content, we ran a closed card-sorting exercise with participants from each role. Using a similarity matrix, we identified strong consensus on how information should be grouped and navigated.</p>
-                                <p>The result was a four-pillar information architecture:</p>
-                                <ul class="list-decimal pl-12 mb-4">
-                                    <li><strong>Basics & Glossary</strong> — Foundational terms, chart types, and shared vocabulary</li>
-                                    <li><strong>Color Palettes</strong> — Balancing brand expression with accessibility and color-blindness support</li>
-                                    <li><strong>Data Visualizations</strong> — Chart anatomy, dashboard design, and responsive behavior</li>
-                                    <li><strong>Accessibility</strong> — WCAG guidelines, ARIA patterns, testing tools, and inclusive practices</li>
-                                </ul>
-                                <p>Each section mapped to specific user needs: designers leaned on Basics and Color; developers on Visualizations and Accessibility; analysts spanned Basics and Visualizations.</p>
-                                <p>To maintain consistency across tools, we documented design tokens, reusable chart components, and example patterns that could be easily implemented in the product ecosystem.</p>
-
-                                <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800"></figure>
-                            </div>
-                            <div class="md:col-span-4">
-                                <figure class="w-full aspect-[4/3] mb-4">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/data-viz-card-sorting-1.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                    </div>
-                                    <figcaption>
-                                        Card sorting analysis results
+                                        Pilot page prioritization matrix
                                     </figcaption>
                                 </figure>
                             </div>
 
                             <div class="md:col-span-8">
+                                
                                 <figure class="w-full aspect-auto mb-4">
                                 <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
                                     <img 
-                                    data-src-light="/images/data-viz-card-sorting-2-light.png"
-                                    data-src-dark="/images/data-viz-card-sorting-2-dark.png"
-                                    alt="Target group analysis"
+                                    data-src-light="/images/awin-token-taxonomy-light.png"
+                                    data-src-dark="/images/awin-token-taxonomy-dark.png"
+                                    alt="Awin token taxonomy"
+                                    class="theme-image w-full h-full object-contain"
+                                    >
+                                </div>
+                                </figure>
+
+                                <figure class="w-full aspect-auto mb-4">
+                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
+                                    <img 
+                                    data-src-light="/images/awin-spacing-system-light.png"
+                                    data-src-dark="/images/awin-spacing-system-dark.png"
+                                    alt="Awin spacing system"
                                     class="theme-image w-full h-full object-contain"
                                     >
                                 </div>
                                 <figcaption>
-                                    Final information architectrure
-                                </figcaption>
+                                        Spacing system
+                                    </figcaption>
                                 </figure>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
-                            <div class="md:col-span-8">
-                                <h3>3. Validation & Refinement</h3>
-                                <p>Before publication, the guide went through multiple review rounds. Accessibility specialists validated color contrast, keyboard navigation, and ARIA labeling. Internal teams tested the guide in their workflows, helping identify areas where instructions or examples needed simplification.</p>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-[4/3] mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                    <img 
+                                        data-src-light="/images/awin-token-tiers-light.png"
+                                        data-src-dark="/images/awin-token-tiers-dark.png"
+                                        alt="Awin token tiers"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                    </div>
+                                    <figcaption>
+                                        3 token tiers
+                                    </figcaption>
+                                </figure>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- Solution -->
-                <section id="stage-solution">
+                <section id="solution">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="md:col-span-6">
-                                <h2>The Solution</h2>
-                                <p>Accessibility was embedded from the start, not added later.</p>
-                                <p>The guide outlined concrete principles for accessible data visualization:</p>
-                                <ul class="list-decimal pl-12 mb-4">
-                                    <li>Fully <strong>WCAG 2.1 AA</strong> compliant site</li>
-                                    <li>Use <strong>Semantic HTML</strong> and ARIA roles to describe user interactions</li>
-                                    <li>Include <strong>skip-navigation</strong>and landmarks for screen-reader navigation</li>
-                                    <li>Light and Dark themes</li>
+                            <div class="md:col-span-8">
+                                <h2 class="mb-6">Solution</h2>
+                                <h3>A Scalable, Accessible Design System</h3>
+                                <p>The result was a new component-based design system built for scale, accessibility, and long-term maintainability. It provides a shared language across design and engineering, reduces duplication, and enables consistent experiences across the Awin platform.</p>
+                                
+                                <h4>Key outcomes:</h4>
+                                <ul class="list-disc pl-16 mb-4">
+                                    <li>Fully accessible color palettes and typography optimized for data-heavy UIs</li>
+                                    <li>A semantic token system supporting responsive and device-specific variants</li>
+                                    <li>Standardized components with clear interaction states, validation, and usage rules</li>
+                                    <li>Improved UI consistency across dashboards, reports, and navigation patterns</li>
+                                    <li>Comprehensive documentation supporting adoption and long-term evolution</li>
                                 </ul>
-                                <p>Each discipline benefited in tangible ways:</p>
-                                <p>Designers gained color recipes and usage guidelines; developers received ready-to-use code snippets; analysts learned clearer labeling and annotation techniques. Together, they established a workflow that naturally produced accessible, consistent visualizations.</p>
                             </div>
-                            <div class="md:col-span-6">
-                                <figure class="w-full aspect-[4/3] mb-4">
+                            <div class="col-span-4">
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <h3>Design Guidelines & Specifications</h3>
+                                <p>The design system guidelines are structured using the <strong>Atomic Design principle</strong>, organizing the system into <strong>Foundation, Atoms, Molecules, and Organisms</strong>. This layered structure establishes clear levels of abstraction, making components easier to scale, maintain, and evolve as product needs grow.</p>
+                                <p>The guidelines go beyond component anatomy and basic usage, covering<strong> interaction behavior, responsive rules, spacing in context, accessibility requirements, and content standards</strong>. Rather than documenting isolated UI elements, the system defines components as part of a cohesive whole—ensuring consistency, usability, and predictability across complex workflows.</p>
+                                <p>See documentation examples: 
+                                    <a class="underline decoration-solid hover:no-underline" 
+                                    target="_blank" href="/images/awin-documentation-typography.pdf">Typography</a> | 
+                                    <a class="underline decoration-solid hover:no-underline" 
+                                    target="_blank" href="/images/awin-documentation-color.pdf">Color</a> | 
+                                    <a class="underline decoration-solid hover:no-underline" 
+                                    target="_blank" href="/images/awin-documentation-input.pdf">Input</a>
+                                </p>
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-auto] mb-4">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/data-viz-a11y-check.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
+                                    <img 
+                                        data-src-light="/images/awin-documentation-example2.png"
+                                        alt="Awin documentation example"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
                                     </div>
                                     <figcaption>
-                                        Accessiblity optimisation, including web reader and keyboard navigation for accordion.
+                                        Design specification example
                                     </figcaption>
                                 </figure>
                             </div>
@@ -329,29 +323,15 @@
                 </section>
 
                 <!-- Impact -->
-                <section id="Impact">
+                 <section id="impact">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="col-span-12 md:col-span-8">
                                 <h2>Impact</h2>
-                                <p>The Data Visualization Guide became a single source of truth for how the organization approaches data visuals. It improved cross-team communication, reduced redundant work, and set clear accessibility expectations from the start of every project.</p>
-                                <p>Early feedback was highly positive. Designers reported faster alignment on color and typography, while developers appreciated having codified accessibility examples instead of scattered references.</p>
+                                <p>The Awin Design System created a unified, accessible foundation for a complex, data-driven B2B platform used by teams and clients globally. By introducing a WCAG-compliant color system, a highly legible product typeface, and a token-based architecture, the system significantly reduced design and implementation friction, accelerating delivery across distributed engineering teams in Europe. As a result, teams shipped features faster and more consistently, while maintaining high standards of accessibility, visual coherence, and scalability as the product continued to grow.</p>
                             </div>
-                            <div class="col-span-4"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Reflection -->
-                <section id="Impact">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="col-span-12 md:col-span-8">
-                                <h2>Reflection</h2>
-                                <p>This project reaffirmed that accessibility and consistency are inseparable. When teams share a common design language, collaboration becomes smoother — and users benefit from clearer, more inclusive visual communication.</p>
-                                <p>By bringing designers, developers, and analysts together under one accessible framework, we built a foundation for data visualizations that are both unified in appearance and equitable in experience.</p>
+                            <div class="col-span-4">
                             </div>
-                            <div class="col-span-4"></div>
                         </div>
                     </div>
                 </section>
@@ -359,87 +339,34 @@
                 <!-- Final Designs -->
                 <section id="final-designs">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 md:gap-y-6 gap-y-6 mb-16">
+                        <h2>Screens</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-8 md:gap-y-6 gap-y-6 mb-16">
+                            
                             <div class="col-span-12 md:col-span-12">
-                                <h2>Implementation Details</h2>
-                            </div>
-                            <div class="col-span-12 md:col-span-6">
-                                <figure class="w-full aspect-[4/3]">
+                                <figure class="w-full aspect-auto mb-8">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
                                     <img 
-                                        data-src-light="/images/data-viz-footer.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
-                                    </div>
-
-                                </figure>
-                            </div>
-                            <div class="col-span-12 md:col-span-6">
-                                <figure class="w-full aspect-[4/3]">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
-                                    <img 
-                                        data-src-light="/images/data-viz-internal-page.png"
-                                        alt="Target group analysis"
+                                        data-src-light="/images/awin-reporting.png"
+                                        alt="Reporting, destkop and mobile view"
                                         class="theme-image w-full h-full object-contain"
                                     >
                                     </div>
                                     <figcaption class="text-center">
-                                    Example internal page.
-                                </figcaption>
+                                        Reporting - desktop and mobile views
+                                    </figcaption>
                                 </figure>
-                            </div>
-                            <div class="col-span-12 md:col-span-12">
+
                                 <figure class="w-full aspect-auto">
-                                    <div class="p-4 flex flex-row justify-center bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                        data-src-light="/images/data-viz-responsive-1.gif"
-                                        alt="Target group analysis"
-                                        class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
-                                    >
-                                    <img 
-                                        data-src-light="/images/data-viz-responsive-2.png"
-                                        alt="Target group analysis"
-                                        class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
-                                    >
-                                    <img 
-                                        data-src-light="/images/data-viz-responsive-3.gif"
-                                        alt="Target group analysis"
-                                        class="theme-image max-h-64 md:max-h-96"
-                                    >
-                                    </div>
-                                    <figcaption class="text-center">
-                                    Responsive components, including adaptive card to carrousel section.
-                                </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-span-12 md:col-span-6">
-                                <figure class="w-full aspect-[4/3]">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
                                     <img 
-                                        data-src-light="/images/data-viz-dark-mode-1.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
-                                    </div>
-                                </figure>
-                            </div>
-                            <div class="col-span-12 md:col-span-6">
-                                <figure class="w-full aspect-[4/3]">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
-                                    <img 
-                                        data-src-light="/images/data-viz-dark-mode-2.png"
-                                        alt="Target group analysis"
+                                        data-src-light="/images/awin-dashboard.png"
+                                        alt="Dashboard, destkop and mobile view"
                                         class="theme-image w-full h-full object-contain"
                                     >
                                     </div>
                                     <figcaption class="text-center">
-                                    Dark theme
-                                </figcaption>
+                                        Dashboard - desktop and mobile views
+                                    </figcaption>
                                 </figure>
                             </div>
                         </div>
@@ -450,10 +377,9 @@
             <!-- Footer -->
             <footer role="contentinfo" class="py-8 md:py-12">
                 <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
-                    <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2025</p>
+                    <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
                 </div>
             </footer>
-
         </div>
     </div>
 </body>
