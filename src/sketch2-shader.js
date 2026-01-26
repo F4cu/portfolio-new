@@ -185,7 +185,20 @@ let customSvgPath =
   'M233.649 107.76H106.207L106.199 125.001H155.768V155.843H233.654L256 200H178.117L155.772 155.845H103.845V200H0L0.00031157 51.947H103.845V0H233.649V107.76Z';
 
 let extrusionDepth = 100;
-let strokeThickness = 1;
+let strokeThickness = 1;              // default stroke for walls/back
+// --- Highlight styling (editable, theme-aware) ---
+let highlightStrokeThickness = 2;        // stroke width of highlighted segments
+let highlightStrokeColorLight = '#C58CA7'; // highlight on light theme
+let highlightStrokeColorDark = '#A2D0B0'; // highlight on dark theme
+
+// which FRONT edge is the reference (index in shapePoints)
+let highlightEdgeIndex = 3;
+
+// relative segment offsets to highlight (art-directable pattern)
+// 0 = center, negative = before, positive = after
+// Example below = before+center, skip 4 after, then 3 more
+const highlightPattern = [-3, -2, -1, 0, 5, 6, 7];
+
 let rotationX = 48;
 let rotationY = -21;
 let rotationZ = -2;
@@ -528,14 +541,47 @@ export function startSketch() {
         graphics.endShape();
       }
 
-      // --- Front face ---
+      // --- Front face (solid fill so extrusion is not translucent) ---
       if (isFullyRevealed) {
+        graphics.push();
+        graphics.noStroke();
+        graphics.fill(unifiedFill);
+
         graphics.beginShape();
         for (let i = 0; i < shapePoints.length; i++) {
           const pt = shapePoints[i];
           graphics.vertex(pt.x, pt.y, depth / 2);
         }
         graphics.endShape(p.CLOSE);
+        graphics.pop();
+
+        // --- Front face (selective highlighted edges on top layer) ---
+        const center = highlightEdgeIndex;
+
+        const highlightStrokeColor =
+          currentTheme === 'dark'
+            ? highlightStrokeColorDark
+            : highlightStrokeColorLight;
+
+        graphics.push();
+        graphics.noFill();
+        graphics.stroke(highlightStrokeColor);
+        graphics.strokeWeight(highlightStrokeThickness);
+
+        graphics.beginShape(p.LINES);
+
+        for (const offset of highlightPattern) {
+          const i = center + offset;
+          if (i < 0 || i >= shapePoints.length - 1) continue;
+
+          const a = shapePoints[i];
+          const b = shapePoints[i + 1];
+          graphics.vertex(a.x, a.y, depth / 2);
+          graphics.vertex(b.x, b.y, depth / 2);
+        }
+
+        graphics.endShape();
+        graphics.pop();
       }
 
       // --- Back face ---
