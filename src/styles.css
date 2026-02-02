@@ -83,6 +83,10 @@ body {
         text-neutral-200 dark:text-neutral-800
           px-4 py-2 rounded-full;
   }
+  .link {
+    @apply
+          underline decoration-solid underline-offset-4 hover:no-underline;
+  }
 }
 
 #theme-toggle svg {
