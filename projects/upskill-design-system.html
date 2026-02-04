@@ -5,30 +5,30 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-86NLVPLR50');
+        gtag('config', 'G-86NLVPLR50');
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-    (function() {
-        try {
-        const html = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || savedTheme === 'light') {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            html.setAttribute('data-theme', 'dark');
-        } else {
-            html.setAttribute('data-theme', 'light');
-        }
-        } catch(e) {}
-    })();
+        (function () {
+            try {
+                const html = document.documentElement;
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark' || savedTheme === 'light') {
+                    html.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            } catch (e) { }
+        })();
     </script>
-    
+
     <title>Facundo Rosales - Upskill Design System</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,96 +39,99 @@
 <body>
     <div id="smooth-wrapper">
         <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
-                <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
-                    <div class="flex items-center justify-between h-full">
-                        <!-- Logo -->
-                        <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
-                            aria-label="Facundo Rosales - Portfolio">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
-                                    fill="currentColor" />
-                            </svg>
-                            <div class="block md:hidden">
-                                <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
-                            </div>
-                        </a>
-
-                        <!-- Desktop Navigation -->
-                        <div class="flex flex-row">
-                            <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
-                                <li>
-                                    <a href="/index.html#projects"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        Projects
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/index.html#about"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        About me
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/index.html#contact"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                            <button id="theme-toggle"
-                                class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                                aria-label="Toggle dark mode" title="Toggle dark mode">
-                                <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <!-- light mode) -->
-                                    <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
-                                    <!-- dark mode) -->
-                                    <path class="hidden dark:block"
-                                        d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
-                                </svg>
-                            </button>
+            <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                <div class="flex items-center justify-between h-full">
+                    <!-- Logo -->
+                    <a href="/index.html"
+                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                        aria-label="Facundo Rosales - Portfolio">
+                        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                fill="currentColor" />
+                        </svg>
+                        <div class="block md:hidden">
+                            <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
                         </div>
+                    </a>
 
-                        <!-- Mobile Menu Button -->
-                        <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
-                        aria-expanded="false">
-                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
+                    <!-- Desktop Navigation -->
+                    <div class="flex flex-row">
+                        <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                            <li>
+                                <a href="/index.html#projects"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Projects
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#about"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    About me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#contact"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                        <button id="theme-toggle"
+                            class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                            aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- light mode) -->
+                                <path class="dark:hidden"
+                                    d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                                <!-- dark mode) -->
+                                <path class="hidden dark:block"
+                                    d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden"
+                        aria-label="Menü öffnen" aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"
+                            stroke-linejoin="round">
                             <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
                             <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
                             <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
-                        </button>
-                    </div>
-                </nav>
-                <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
-                    <div class="flex flex-col justify-center items-center h-full">
-                        <nav class="w-full">
-                            <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#projects"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        Projects
-                                    </a>
-                                </li>
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#about"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        About me
-                                    </a>
-                                </li>
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#contact"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    </button>
                 </div>
+            </nav>
+            <div id="mobile-menu"
+                class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <nav class="w-full">
+                        <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#projects"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#about"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    About me
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#contact"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </header>
         <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
             <main id="site-main">
@@ -141,7 +144,9 @@
                                 <h1>Upskill Design System</h1>
                             </div>
                             <div class="col-span-12 md:col-span-8">
-                                <p class="text-xl">Designing a comprehensive design system for UpSkill that bridges design and development workflows, enabling consistent user experiences across mobile, tablet, and desktop.</p>
+                                <p class="text-xl">Designing a comprehensive design system for UpSkill that bridges
+                                    design and development workflows, enabling consistent user experiences across
+                                    mobile, tablet, and desktop.</p>
                             </div>
                             <div class="col-span-12 md:col-span-4">
                                 <h4>Role</h4>
@@ -149,14 +154,12 @@
                             </div>
 
                             <!-- Project hero -->
-                             <div class="col-span-12 mt-4">
+                            <div class="col-span-12 mt-4">
                                 <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
-                                    <img 
-                                        data-src-light="/images/upskill-project-hero.png"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                    <img data-src-light="/images/upskill-project-hero.png"
+                                        class="theme-image w-full h-full object-contain">
                                 </figure>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -167,15 +170,21 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>The Challenge</h2>
-                                <p class="mb-2">UpSkill's learning platform required a cohesive design system adaptable for different devices. Without foundational standards, the project faced three key challenges: establishing responsive typography and spacing systems, creating a scalable token structure, and balancing flexibility with constraint to support diverse content within a unified visual language.</p>
+                                <p class="mb-2">UpSkill's learning platform required a cohesive design system adaptable
+                                    for different devices. Without foundational standards, the project faced three key
+                                    challenges: establishing responsive typography and spacing systems, creating a
+                                    scalable token structure, and balancing flexibility with constraint to support
+                                    diverse content within a unified visual language.</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>Objectives</h2>
                                 <ul class="list-disc pl-16 mb-4">
-                                    <li>Responsive foundations with adaptive typography and modular spacing across devices</li>
-                                    <li>Semantic token taxonomy supporting light and dark themes without duplication</li>
+                                    <li>Responsive foundations with adaptive typography and modular spacing across
+                                        devices</li>
+                                    <li>Semantic token taxonomy supporting light and dark themes without duplication
+                                    </li>
                                     <li>Production-ready component library with clear implementation guidelines</li>
                                     <li>Scalable system architecture that maintains quality as features grow</li>
                                 </ul>
@@ -187,39 +196,51 @@
                 <!-- Approach -->
                 <section id="approach">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="md:col-span-8">
                                 <h2 class="mb-6">Approach</h2>
                             </div>
                             <div class="md:col-span-8">
 
                                 <h3>1. Discovery</h3>
-                                <p>I began by reviewing <strong>user stories</strong> and <strong>acceptance criteria</strong>for the home page, user dashboard, and course details page. To contextualize these requirements, I conducted a <strong>competitive audit</strong> of learning platforms to understand content structure, user flow, and visual hierarchy. These insights shaped the initial <strong>responsive wireframes</strong> across mobile, tablet, and desktop, helping define the necessary components and interaction patterns.</p>
+                                <p>I began by reviewing <strong>user stories</strong> and <strong>acceptance
+                                        criteria</strong>for the home page, user dashboard, and course details page. To
+                                    contextualize these requirements, I conducted a <strong>competitive audit</strong>
+                                    of learning platforms to understand content structure, user flow, and visual
+                                    hierarchy. These insights shaped the initial <strong>responsive wireframes</strong>
+                                    across mobile, tablet, and desktop, helping define the necessary components and
+                                    interaction patterns.</p>
 
 
                                 <h3>2. Modular design & Theming</h3>
-                                <p>With a solid functional foundation, I developed a <strong>modular component framework</strong> built from reusable elements such as navigation, course cards, and progress trackers, validating their behavior across breakpoints. I then explored theming to define the platform's visual direction—applying the <strong>60/30/10 rule</strong> and testing color, typography, and component styling. This led to the creation of foundational design tokens, including a responsive type scale, a 12-tints color palette, and core UI elements, ensuring consistency, scalability, and a cohesive brand experience.</p>
+                                <p>With a solid functional foundation, I developed a <strong>modular component
+                                        framework</strong> built from reusable elements such as navigation, course
+                                    cards, and progress trackers, validating their behavior across breakpoints. I then
+                                    explored theming to define the platform's visual direction—applying the
+                                    <strong>60/30/10 rule</strong> and testing color, typography, and component styling.
+                                    This led to the creation of foundational design tokens, including a responsive type
+                                    scale, a 12-tints color palette, and core UI elements, ensuring consistency,
+                                    scalability, and a cohesive brand experience.</p>
 
 
                                 <h3>3. Token Taxonomy Strategy</h3>
-                                <p>To establish a scalable and intuitive naming system, I explored multiple token structure models, including more complex taxonomies with role-based layers. After testing different outputs across use cases —such as container layering and CTA differentiation— I adopted a streamlined structure:</p>
+                                <p>To establish a scalable and intuitive naming system, I explored multiple token
+                                    structure models, including more complex taxonomies with role-based layers. After
+                                    testing different outputs across use cases —such as container layering and CTA
+                                    differentiation— I adopted a streamlined structure:</p>
                             </div>
                             <div class="md:col-span-4">
                                 <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 p-4 mb-4">
-                                    <img 
-                                        data-src-light="/images/upskill-wireframes.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                    <img data-src-light="/images/upskill-wireframes.png" alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain">
                                 </figure>
                                 <figure class="w-full aspect-[4/3] mb-4">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/upskill-color-palette-light.png"
+                                        <img data-src-light="/images/upskill-color-palette-light.png"
                                             data-src-dark="/images/upskill-color-palette-dark.png"
                                             alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
+                                            class="theme-image w-full h-full object-contain">
                                     </div>
                                     <figcaption>
                                         APCA perceptual color contrast palette divided in 4 use-case zones.
@@ -228,28 +249,32 @@
                             </div>
 
                             <div class="md:col-span-8">
-                                <p><code class="bg-neutral-300 dark:bg-neutral-800 text-lg font-semibold text-neutral-400"><span class="text-red-500">category</span> | <span class="text-teal-500">property</span> | <span class="text-purple-500">variant</span> | <span class="text-yellow-500">state</span></code></p>
-                                
+                                <p><code
+                                        class="bg-neutral-300 dark:bg-neutral-800 text-lg font-semibold text-neutral-400"><span class="text-red-500">category</span> | <span class="text-teal-500">property</span> | <span class="text-purple-500">variant</span> | <span class="text-yellow-500">state</span></code>
+                                </p>
+
                                 <figure class="w-full aspect-auto mb-4">
-                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                    data-src-light="/images/upskill-token-usage-light.png"
-                                    data-src-dark="/images/upskill-token-usage-dark.png"
-                                    alt="Target group analysis"
-                                    class="theme-image w-full h-full object-contain"
-                                    >
-                                </div>
-                                <figcaption>
-                                    Example token usage
-                                </figcaption>
+                                    <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
+                                        <img data-src-light="/images/upskill-token-usage-light.png"
+                                            data-src-dark="/images/upskill-token-usage-dark.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain">
+                                    </div>
+                                    <figcaption>
+                                        Example token usage
+                                    </figcaption>
                                 </figure>
 
                                 <h4>Key decisions:</h4>
                                 <ul class="list-disc pl-16 mb-4">
                                     <li>Removed "role" layer to eliminate duplication and reduce token name length</li>
-                                    <li>Avoided "primary/secondary" labels that become ambiguous across different contexts</li>
-                                    <li>Surfaced common tokens at the property level (e.g., <code>color-text-default</code>) for quick access, while nesting specific cases deeper (e.g., <code>color-text-feedback-error</code>)</li>
-                                    <li>Introduced inversion tokens (e.g., color-text-inverted) that work on different surfaces</li>
+                                    <li>Avoided "primary/secondary" labels that become ambiguous across different
+                                        contexts</li>
+                                    <li>Surfaced common tokens at the property level (e.g.,
+                                        <code>color-text-default</code>) for quick access, while nesting specific cases
+                                        deeper (e.g., <code>color-text-feedback-error</code>)</li>
+                                    <li>Introduced inversion tokens (e.g., color-text-inverted) that work on different
+                                        surfaces</li>
                                 </ul>
                             </div>
                         </div>
@@ -259,40 +284,55 @@
                 <!-- Solution -->
                 <section id="solution">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="md:col-span-8">
                                 <h2 class="mb-6">Solution</h2>
                                 <h3>Responsive Type Scale</h3>
-                                <p>To simplify typography while keeping it adaptable, I built the system on a single <strong>primitive type scale</strong> — 11 fixed sizes from 12px to 32px in 2-pixel increments, aligned to the 16px/8px grid. This scale acts as the source of truth, and all responsive behavior is handled through token aliasing, not separate scales.</p>
-                                <p>For each breakpoint, I applied <strong>tailored modular ratios</strong> — Minor Third on mobile, Major Third on tablet, and Perfect Fourth on desktop—to adjust typographic contrast. These ratios remap the primitives to create a distinct, responsive hierarchy using only <strong>eight surface-level type roles</strong>: two body sizes, four title sizes, and two display sizes.</p>
-                                <p>This approach provides a streamlined, easy-to-use system for designers and developers while maintaining flexibility across dense dashboards, content-heavy pages, and expressive hero sections.</p>
+                                <p>To simplify typography while keeping it adaptable, I built the system on a single
+                                    <strong>primitive type scale</strong> — 11 fixed sizes from 12px to 32px in 2-pixel
+                                    increments, aligned to the 16px/8px grid. This scale acts as the source of truth,
+                                    and all responsive behavior is handled through token aliasing, not separate scales.
+                                </p>
+                                <p>For each breakpoint, I applied <strong>tailored modular ratios</strong> — Minor Third
+                                    on mobile, Major Third on tablet, and Perfect Fourth on desktop—to adjust
+                                    typographic contrast. These ratios remap the primitives to create a distinct,
+                                    responsive hierarchy using only <strong>eight surface-level type roles</strong>: two
+                                    body sizes, four title sizes, and two display sizes.</p>
+                                <p>This approach provides a streamlined, easy-to-use system for designers and developers
+                                    while maintaining flexibility across dense dashboards, content-heavy pages, and
+                                    expressive hero sections.</p>
 
                                 <figure class="w-full aspect-auto mb-4">
-                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                    data-src-light="/images/upskill-typescale-light.png"
-                                    data-src-dark="/images/upskill-typescale-dark.png"
-                                    alt="Target group analysis"
-                                    class="theme-image w-full h-full object-contain"
-                                    >
-                                </div>
+                                    <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
+                                        <img data-src-light="/images/upskill-typescale-light.png"
+                                            data-src-dark="/images/upskill-typescale-dark.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain">
+                                    </div>
                                 </figure>
                             </div>
 
                             <div class="md:col-span-8">
                                 <h3>Modular Spacing System</h3>
-                                <p>Following the same logic as the typographic scale, I created a set of primitive spacing tokens aligned to the 8px grid and named using fractions of the 16px base (1rem). This keeps the scale both semantically meaningful and future-proof. For example, <code>100 = 1rem = 16px</code> and <code>050 = 0.25rem = 4px.</code></p>
-                                <p>I then expanded these primitives into a <strong>semantic spacing system</strong> with clear, purpose-driven categories: <strong>inline</strong> for horizontal gaps, <strong>stack</strong> for vertical spacing, and <strong>inset</strong> for internal padding, along with contextual tokens such as margin and gutter. This separation between primitives and semantics makes layouts more scalable with greater control and flexibility.</p>
+                                <p>Following the same logic as the typographic scale, I created a set of primitive
+                                    spacing tokens aligned to the 8px grid and named using fractions of the 16px base
+                                    (1rem). This keeps the scale both semantically meaningful and future-proof. For
+                                    example, <code>100 = 1rem = 16px</code> and <code>050 = 0.25rem = 4px.</code></p>
+                                <p>I then expanded these primitives into a <strong>semantic spacing system</strong> with
+                                    clear, purpose-driven categories: <strong>inline</strong> for horizontal gaps,
+                                    <strong>stack</strong> for vertical spacing, and <strong>inset</strong> for internal
+                                    padding, along with contextual tokens such as margin and gutter. This separation
+                                    between primitives and semantics makes layouts more scalable with greater control
+                                    and flexibility.</p>
                             </div>
                             <div class="md:col-span-4">
                                 <figure class="w-full aspect-[4/3] mb-4">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/upskill-space-system-light.png"
+                                        <img data-src-light="/images/upskill-space-system-light.png"
                                             data-src-dark="/images/upskill-space-system-dark.png"
                                             alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
+                                            class="theme-image w-full h-full object-contain">
                                     </div>
                                     <figcaption>
                                         Semantic spacing system
@@ -301,38 +341,39 @@
                             </div>
                             <div class="md:col-span-8">
                                 <h3>Component library and Documentation</h3>
-                                <p>I built a 14-component library in Figma with full light/dark theme support, organized through three variable collections: Primitives, Device, and Theme. This structure enables automatic responsive and thematic behavior without manual token swapping. The library includes foundational elements and layout templates, supported by concise documentation that streamlines designer-developer handoff and empowers both teams to work autonomously while maintaining system integrity.</p>
+                                <p>I built a component library in Figma with full light/dark theme support, organized
+                                    through three variable collections: Primitives, Device, and Theme. This structure
+                                    enables automatic responsive and thematic behavior without manual token swapping.
+                                    The library includes foundational elements and layout templates, supported by
+                                    concise documentation that streamlines designer-developer handoff and empowers both
+                                    teams to work autonomously while maintaining system integrity.</p>
+
+                                <p><a target="_blank" class="link" href="upskill-preview.html">See example</a></p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- Impact -->
-                 <section id="impact">
+                <section id="impact">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="col-span-12 md:col-span-8">
                                 <h2>Impact</h2>
-                                <p>This design system established a scalable foundation for UpSkill's learning platform, enabling consistent user experiences across all devices. By implementing a token-based architecture with responsive typography and semantic spacing, the system reduced design-to-development handoff friction and accelerated future feature development. The modular component library empowered the team to maintain visual consistency while adapting quickly to new requirements, positioning the platform for sustainable growth while maintaining design quality at scale.</p>
+                                <p>This design system established a scalable foundation for UpSkill's learning platform,
+                                    enabling consistent user experiences across all devices. By implementing a
+                                    token-based architecture with responsive typography and semantic spacing, the system
+                                    reduced design-to-development handoff friction and accelerated future feature
+                                    development. The modular component library empowered the team to maintain visual
+                                    consistency while adapting quickly to new requirements, positioning the platform for
+                                    sustainable growth while maintaining design quality at scale.</p>
                             </div>
                             <div class="col-span-4"></div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Reflection 
-                <section id="Reflection">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="col-span-12 md:col-span-8">
-                                <h2>Reflection</h2>
-                                <p>Through this project, I discovered that a well-organized token structure in Figma doesn't guarantee usability—deeply nested tokens become difficult to navigate effectively. Manual token review across screen sizes was time-intensive, and complex nested components created prototyping challenges. Moving forward, I would establish more granular primitives from the start, prototype across breakpoints earlier (particularly testing dark mode first), and leverage variables and conditionals for interactive components. However, several approaches proved highly effective: the 60/30/10 color rule, 8pt grid system, clear spacing categories, and planning components with variables upfront. These insights fundamentally shaped my understanding of scalable, user-centered design system architecture.</p>
-                            </div>
-                            <div class="col-span-4"></div>
-                        </div>
-                    </div>
-                </section>
-                -->
                 <!-- Final Designs -->
                 <section id="final-designs">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
@@ -342,27 +383,23 @@
                                 <figure class="w-full aspect-[4/3]">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
 
-                                    <img 
-                                        data-src-light="/images/upskill-homepage-responsive.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                        <img data-src-light="/images/upskill-homepage-responsive.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain">
                                     </div>
                                     <figcaption class="text-center">
                                         Homepage - desktop, tablet and mobile views
                                     </figcaption>
                                 </figure>
-                                
+
                             </div>
                             <div class="col-span-12 md:col-span-6">
                                 <figure class="w-full aspect-[4/3]">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
 
-                                    <img 
-                                        data-src-dark="/images/upskill-course-details.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                        <img data-src-dark="/images/upskill-course-details.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain">
                                     </div>
                                     <figcaption class="text-center">
                                         Course Details - Dark mode
@@ -373,15 +410,13 @@
                                 <figure class="w-full aspect-[4/3]">
                                     <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
 
-                                    <img 
-                                        data-src-dark="/images/upskill-profile-settings.png"
-                                        alt="Target group analysis"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                        <img data-src-dark="/images/upskill-profile-settings.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain">
                                     </div>
                                     <figcaption class="text-center">
-                                    Profile Settings - Dark mode
-                                </figcaption>
+                                        Profile Settings - Dark mode
+                                    </figcaption>
                                 </figure>
                             </div>
                         </div>
@@ -394,10 +429,10 @@
                 <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
                     <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
                 </div>
-                </div>
-            </footer>
-
         </div>
+        </footer>
+
+    </div>
     </div>
 </body>
 
