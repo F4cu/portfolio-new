@@ -11,6 +11,7 @@ export default defineConfig({
         datavizProject: './projects/data-visualization-guide.html',
         upskillProject: './projects/upskill-design-system.html',
         upskillPreview: './projects/upskill-preview.html',
+        patagoniaProject: './projects/patagonia-ai-agent.html',
       }
     }
   }
