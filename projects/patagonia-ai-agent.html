@@ -1,855 +1,880 @@
-    <!DOCTYPE html>
-            <html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 
-            <head>
-                <!-- Google tag (gtag.js) -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
-                <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-86NLVPLR50');
-                </script>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <script>
-                (function() {
-                    try {
-                    const html = document.documentElement;
-                    const savedTheme = localStorage.getItem('theme');
-                    if (savedTheme === 'dark' || savedTheme === 'light') {
-                        html.setAttribute('data-theme', savedTheme);
-                    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                        html.setAttribute('data-theme', 'dark');
-                    } else {
-                        html.setAttribute('data-theme', 'light');
-                    }
-                    } catch(e) {}
-                })();
-                </script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-86NLVPLR50');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    (function() {
+        try {
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
+        }
+        } catch(e) {}
+    })();
+    </script>
 
-                <title>Facundo Rosales - Pata / Patagonia AI Agent</title>
-                <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <script type="module" src="/src/main.js"></script>
-            </head>
+    <title>Facundo Rosales - Pata / Patagonia AI Agent</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="/src/main.js"></script>
+</head>
 
-            <body>
-                <div id="smooth-wrapper">
-                    <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
-                        <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Main navigation">
-                            <div class="flex items-center justify-between h-full">
-                                <!-- Logo -->
-                                <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
-                                    aria-label="Facundo Rosales - Portfolio">
-                                    <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z" fill="currentColor" />
-                                    </svg>
-                                    <div class="block md:hidden items-center">
-                                        <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
-                                    </div>
+<body>
+    <div id="smooth-wrapper">
+        <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
+            <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Main navigation">
+                <div class="flex items-center justify-between h-full">
+                    <!-- Logo -->
+                    <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                        aria-label="Facundo Rosales - Portfolio">
+                        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z" fill="currentColor" />
+                        </svg>
+                        <div class="block md:hidden items-center">
+                            <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <div class="flex flex-row">
+                        <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                            <li>
+                                <a href="/index.html#projects"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Projects
                                 </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#about"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    About me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#contact"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                        <button id="theme-toggle"
+                            class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                            aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
+                                <path class="hidden dark:block" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                            </svg>
+                        </button>
+                    </div>
 
-                                <!-- Desktop Navigation -->
-                                <div class="flex flex-row">
-                                    <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
-                                        <li>
-                                            <a href="/index.html#projects"
-                                                class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                                Projects
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/index.html#about"
-                                                class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                                About me
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/index.html#contact"
-                                                class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                                Contact
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <button id="theme-toggle"
-                                        class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                                        aria-label="Toggle dark mode" title="Toggle dark mode">
-                                        <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
-                                            <path class="hidden dark:block" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
-                                        </svg>
-                                    </button>
-                                </div>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Open menu" aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
+                            <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
+                            <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
+                            <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <nav class="w-full">
+                        <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#projects"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#about"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    About me
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#contact"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-                                <!-- Mobile Menu Button -->
-                                <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Open menu" aria-expanded="false">
-                                    <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                        stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
-                                        <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
-                                        <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
-                                        <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
-                                    </svg>
-                                </button>
+        <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
+            <main id="site-main">
+
+                <!-- Intro -->
+                <section id="project-intro">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
+                            <div class="col-span-12 md:col-span-8">
+                                <h1>Patagonia's AI Agent</h1>
                             </div>
-                        </nav>
-                        <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
-                            <div class="flex flex-col justify-center items-center h-full">
-                                <nav class="w-full">
-                                    <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
-                                        <li class="mobile-nav-item opacity-0">
-                                            <a href="/index.html#projects"
-                                                class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                                Projects
-                                            </a>
-                                        </li>
-                                        <li class="mobile-nav-item opacity-0">
-                                            <a href="/index.html#about"
-                                                class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                                About me
-                                            </a>
-                                        </li>
-                                        <li class="mobile-nav-item opacity-0">
-                                            <a href="/index.html#contact"
-                                                class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                                Contact
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                            <div class="col-span-12 md:col-span-8">
+                                <p class="text-xl">Designing a branded conversational interface — from brand strategy and competitive research to bot personality, and agentic flow architecture for a sustainability-first outdoor brand.</p>
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <h4>Role</h4>
+                                <p>Product Designer</p>
+                            </div>
+
+                            <!-- Project hero -->
+                            <div class="col-span-12 mt-4">
+                                <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
+                                    <img
+                                        src="/images/patagonia-project-hero.png"
+                                        alt="Pata conversational flow — repair path use case"
+                                        class="w-full h-full object-contain"
+                                    >
+                                </figure>
                             </div>
                         </div>
-                    </header>
-
-                    <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
-                        <main id="site-main">
-
-                            <!-- Intro -->
-                            <section id="project-intro">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
-                                        <div class="col-span-12 md:col-span-8">
-                                            <h1>Patagonia's AI Agent</h1>
-                                        </div>
-                                        <div class="col-span-12 md:col-span-8">
-                                            <p class="text-xl">Designing a branded conversational interface — from brand strategy and competitive research to bot personality, and agentic flow architecture for a sustainability-first outdoor brand.</p>
-                                        </div>
-                                        <div class="col-span-12 md:col-span-4">
-                                            <h4>Role</h4>
-                                            <p>Product Designer</p>
-                                        </div>
-
-                                        <!-- Project hero -->
-                                        <div class="col-span-12 mt-4">
-                                            <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
-                                                <img
-                                                    src="/images/patagonia-project-hero.png"
-                                                    alt="Pata conversational flow — repair path use case"
-                                                    class="w-full h-full object-contain"
-                                                >
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Challenge -->
-                            <section id="challenge">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                                        <div class="md:col-span-8">
-                                            <h2>The Challenge</h2>
-                                            <p class="mb-2">Patagonia is a brand built on radical transparency, sustainability, and repair culture — its mission "We're in business to save our home planet" is unambiguous. Yet a customer journey analysis revealed a consistent gap: users who wanted to act on those values couldn't find the guidance they needed. Repair services were hard to navigate, sustainability terminology was opaque, and the brand's activist voice disappeared behind standard e-commerce patterns.</p>
-                                            <p>The core question: <strong>how do you make a brand's values interactive?</strong> Not just visible — but genuinely useful, in the exact moment a user is deciding whether to repair, replace, or recycle.</p>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                                        <div class="md:col-span-8">
-                                            <h2>Objectives</h2>
-                                            <ul class="list-disc pl-16 mb-4">
-                                                <li>Reduce service costs through automated guidance on repair, materials, and sizing — without losing the brand voice</li>
-                                                <li>Increase adoption of the Worn Wear repair platform by surfacing it at the right moment in the journey</li>
-                                                <li>Help users understand sustainability certifications (NetPlus®, PFC-free, Fair Trade) in plain language, in context</li>
-                                                <li>Translate Patagonia's brand values — responsibility, authenticity, quality — into consistent interaction behaviour across every dialogue turn</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Approach -->
-                            <section id="approach">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                        <div class="md:col-span-8">
-                                            <h2 class="mb-6">Approach</h2>
-
-                                            <h3>1. Brand & Competitive Research</h3>
-                                            <p>Mapped Patagonia against The North Face and Arc'teryx across the <strong>Golden Circle, Limbic Map, Brand Bios, behavioural archetypes</strong>, and a five-dimension benchmark to establish the emotional territory the bot had to operate in. Patagonia emerged as the "Idealistic Reformer" — values-driven and community-oriented — sharply distinct from The North Face's adventure-and-freedom positioning.</p>
-                                            <p>Target audience segments — Intellectuals, Progressive Realists, and Cosmopolitan Avantgarde — were mapped via the Sinus Milieu framework and directly shaped the bot's tone, vocabulary, and explanation depth.</p>
-
-                                            <h3>2. Customer Lifecycle & Journey Mapping</h3>
-                                            <p>Built a full Customer Life Cycle and a detailed persona-driven journey for "Lukas — Mindful Nature Protector". The journey exposed high-friction zones in the Consideration and Purchase phases: users encountered technical jargon they couldn't decode, unclear repair pathways, and no channel to ask questions in context. These pain points directly defined where Pata would intervene and what it needed to resolve.</p>
-
-                                        </div>
-                                        <div class="md:col-span-4">
-                                            <figure class="w-full aspect-auto mb-4">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                    src="/images/patagonia-benchmark-radar.png"
-                                                        alt="Benchmark radar chart — Patagonia vs The North Face vs Arc'teryx"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Benchmark radar chart across Visual Design, Utility, Usability, Brand Consistency, and Reach
-                                                </figcaption>
-                                            </figure>
-                                            <figure class="w-full aspect-auto mb-4">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img src="/images/patagonia-behavioural-archetypes.png"
-                                                        alt="Behavioural archetypes — Patagonia vs The North Face"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Behavioural archetypes — Patagonia as "Idealistic Reformer" vs The North Face's "Freedom-Seeking Adventurer"
-                                                </figcaption>
-                                            </figure>
-
-                                            <figure class="w-full aspect-auto mb-4 hidden">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                        src="/images/patagonia-sinus-milieu.png"
-                                                        alt="Sinus Milieu map with Patagonia's three target segments highlighted"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Sinus Milieu — Patagonia's three primary segments: Intellectuals, Progressive Realists, Cosmopolitan Avantgarde
-                                                </figcaption>
-                                            </figure>
-                                            <figure class="w-full aspect-auto mb-4 hidden">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                    src="/images/patagonia-customer-lifecycle.png"
-                                                    alt="Customer Life Cycle diagram"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Customer Life Cycle — touchpoints across Awareness, Consideration, Purchase, Usage, and Reconsideration
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-
-                                        <div class="md:col-span-8">
-                                            <figure class="w-full aspect-auto mb-4">
-                                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                    src="/images/patagonia-customer-journey.png"
-                                                    alt="Customer Journey map for Lukas — Mindful Nature Protector"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Customer Journey — "Lukas" persona with pain points, emotional states, and touchpoints at each stage
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="md:col-span-4"></div>
-
-                                        <div class="md:col-span-8">
-                                            <h3>3. Strategy & Design Framework</h3>
-                                            <p>Before designing any interaction, a goal matrix aligned business, brand, and user needs.</p>
-                                                <ul class="list-disc pl-16 mb-4">
-                                                    <li><strong>Business:</strong> reduce service costs, increase repair usage, collect intent data.</li>
-                                                    <li><strong>Brand:</strong> make repair feel like culture, explain sustainability without jargon, never sell.</li>
-                                                    <li><strong>User:</strong> quick answers, plain language, location-independent access to repair options.</li>
-                                                </ul>
-                                            <p>Patagonia's values were then translated into three behavioural attributes — Responsible, Authentic, and Quality-Conscious — mapped across tone, information architecture, navigation, and interaction patterns. These function like component rules in a design system: every dialogue turn is tagged with its dominant brand filter, making the bot structurally auditable, not just tonally consistent.</p>
-                                        </div>
-                                        <div class="md:col-span-4">
-                                            <figure class="w-full aspect-auto mb-4">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                    src="/images/patagonia-goal-matrix.png"
-                                                    alt="Goal matrix aligning business, brand, and user objectives"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Goal matrix — three-column alignment of business goals, brand goals, and user goals with KPIs
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-
-                                        <div class="md:col-span-8">
-                                            <h3>4. Bot Personality & Character Design</h3>
-                                            <p>Designed "Pata" — a bear character rooted in Patagonia's Pacific Northwest craft heritage. The character sheet defined personality dimensions across a radar chart (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions, backstory, and voice guidelines. These constraints directly shape how the bot should be prompted: Pata asks before advising, never upsells, celebrates repair over replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
-                                        </div>
-                                        <div class="md:col-span-4">
-                                        </div>
-                                    </div>
-
-                                    <!-- Personality Overview Grid -->
-                                    <div class="w-full max-w-6xl relative z-10 grid grid-cols-1 md:grid-cols-5 gap-5 mb-4" style="align-items: stretch;">
-
-                                        <!-- A: CHARACTER SHEET -->
-                                        <div class="col-span-1 md:col-span-2 flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                        <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">A</span>
-                                            <span class="text-sm font-semibold text-white">Character Sheet</span>
-                                        </div>
-
-                                        <div class="flex flex-col flex-1 p-5 gap-5">
-
-                                            <!-- Name & tagline -->
-                                            <div class="flex items-start gap-4">
-                                            <div class="w-24 h-24 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center flex-shrink-0 text-3xl overflow-hidden">
-                                                <img class="mt-2" src="/images/patagonia-avatar.png" alt="">
-                                            </div>
-                                            <div>
-                                                <h2 class="text-2xl font-bold text-white leading-tight mb-0">Pata</h2>
-                                                <p class="text-sm text-zinc-400 mb-2">The gentle bear</p>
-                                                <p class="text-md text-zinc-400 italic">"A mended thing has more soul."</p>
-                                            </div>
-                                            </div>
-
-                                            <div class="border-t border-zinc-800"></div>
-
-                                            <!-- Core traits grid -->
-                                            <div class="grid grid-cols-2 gap-3">
-
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Vibe</span>
-                                                <ul class="flex flex-col gap-1">
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Strong, friendly bear</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Visible signs of use & wear</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Patagonia vest & patched cap</li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Tone of Voice</span>
-                                                <ul class="flex flex-col gap-1">
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Warm, calm, down-to-earth</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Asks first, then answers</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>No jargon — clear, vivid language</li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Expertise</span>
-                                                <ul class="flex flex-col gap-1">
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>DIY repair & garment care</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Worn Wear & repair services</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Materials & sustainability knowledge</li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Attitude</span>
-                                                <ul class="flex flex-col gap-1">
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Explains without lecturing</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Encourages self-sufficiency</li>
-                                                <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Guides rather than sells</li>
-                                                </ul>
-                                            </div>
-
-                                            </div>
-
-                                            <div class="border-t border-zinc-800"></div>
-
-                                            <!-- Catchphrases -->
-                                            <div class="flex flex-col gap-2">
-                                            <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Voice</span>
-                                            <div class="flex flex-col gap-2">
-                                                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
-                                                <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#34d399;min-width:8px;min-height:8px;display:inline-block;"></span>
-                                                <span>"That zip won't last another winter. But the shell? Totally worth saving."</span>
-                                                </div>
-                                                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
-                                                <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#f97316;min-width:8px;min-height:8px;display:inline-block;"></span>
-                                                <span>"Every repair keeps one more jacket out of landfill. That one counts."</span>
-                                                </div>
-                                                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
-                                                <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#60a5fa;min-width:8px;min-height:8px;display:inline-block;"></span>
-                                                <span>"Not every jacket is worth repairing. Let me help you figure that out."</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                        </div>
-
-                                        <!-- Right column: B (top) + C (bottom) -->
-                                        <div class="col-span-1 md:col-span-3 flex flex-col gap-5">
-
-                                        <!-- B: PERSONALITY RADAR -->
-                                        <div class="flex-1 flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                            <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">B</span>
-                                            <span class="text-sm font-semibold text-white">Personality Radar</span>
-                                            </div>
-
-                                            <div class="flex flex-1 items-center gap-6 p-5">
-                                            <!-- SVG Radar -->
-                                            <div class="flex-shrink-0">
-                                                <svg width="200" height="200" viewBox="0 0 200 200">
-                                                <g stroke="#3f3f46" fill="none">
-                                                    <polygon points="100,20 163,57 163,143 100,180 37,143 37,57" stroke-width="0.5"/>
-                                                    <polygon points="100,40 148,67 148,133 100,160 52,133 52,67" stroke-width="0.5"/>
-                                                    <polygon points="100,60 133,77 133,123 100,140 67,123 67,77" stroke-width="0.5"/>
-                                                    <polygon points="100,80 118,87 118,113 100,120 82,113 82,87" stroke-width="0.5"/>
-                                                </g>
-                                                <g stroke="#52525b" stroke-width="0.5">
-                                                    <line x1="100" y1="100" x2="100" y2="20"/>
-                                                    <line x1="100" y1="100" x2="163" y2="57"/>
-                                                    <line x1="100" y1="100" x2="163" y2="143"/>
-                                                    <line x1="100" y1="100" x2="100" y2="180"/>
-                                                    <line x1="100" y1="100" x2="37" y2="143"/>
-                                                    <line x1="100" y1="100" x2="37" y2="57"/>
-                                                </g>
-                                                <polygon
-                                                    points="100,52 157,61 150,134 100,148 68,122 62,74"
-                                                    fill="#f97316"
-                                                    fill-opacity="0.25"
-                                                    stroke="#f97316"
-                                                    stroke-width="1.5"
-                                                    stroke-linejoin="round"
-                                                />
-                                                <text x="100" y="14" text-anchor="middle" fill="#a1a1aa" font-size="12">Intellect</text>
-                                                <text x="170" y="55" text-anchor="start" fill="#a1a1aa" font-size="12">Empathy</text>
-                                                <text x="170" y="148" text-anchor="start" fill="#a1a1aa" font-size="12">Stability</text>
-                                                <text x="100" y="194" text-anchor="middle" fill="#a1a1aa" font-size="12">Enthusiasm</text>
-                                                <text x="30" y="148" text-anchor="end" fill="#a1a1aa" font-size="12">Precision</text>
-                                                </svg>
-                                            </div>
-
-                                            <!-- Trait descriptions -->
-                                            <div class="flex flex-col gap-3 flex-1">
-                                                <div class="flex items-start gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></div>
-                                                <div>
-                                                    <p class="text-sm font-semibold text-zinc-200 mb-1">Empathy <span class="text-zinc-400 font-normal">— high</span></p>
-                                                    <p class="text-sm text-zinc-400 leading-snug mb-1">Approachable, peer-to-peer — never a marketing voice</p>
-                                                </div>
-                                                </div>
-                                                <div class="flex items-start gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-orange-400/70 mt-1.5 flex-shrink-0"></div>
-                                                <div>
-                                                    <p class="text-sm font-semibold text-zinc-200 mb-1">Stability <span class="text-zinc-400 font-normal">— high</span></p>
-                                                    <p class="text-sm text-zinc-400 leading-snug mb-1">Reliable & patient, especially when users feel frustrated</p>
-                                                </div>
-                                                </div>
-                                                <div class="flex items-start gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-orange-400/50 mt-1.5 flex-shrink-0"></div>
-                                                <div>
-                                                    <p class="text-sm font-semibold text-zinc-200 mb-1">Intellect <span class="text-zinc-400 font-normal mb-1">— moderate</span></p>
-                                                    <p class="text-sm text-zinc-400 leading-snug mb-1">Knowledgeable, but never condescending</p>
-                                                </div>
-                                                </div>
-                                                <div class="flex items-start gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-orange-400/40 mt-1.5 flex-shrink-0"></div>
-                                                <div>
-                                                    <p class="text-sm font-semibold text-zinc-200 mb-1">Enthusiasm <span class="text-zinc-400 font-normal mb-1">— quiet</span></p>
-                                                    <p class="text-sm text-zinc-400 leading-snug mb-1">Motivates without hype — focuses on empowerment</p>
-                                                </div>
-                                                </div>
-                                                <div class="flex items-start gap-3">
-                                                <div class="w-2 h-2 rounded-full bg-orange-400/30 mt-1.5 flex-shrink-0"></div>
-                                                <div>
-                                                    <p class="text-sm font-semibold text-zinc-200 mb-1">Precision <span class="text-zinc-400 font-normal">— intentionally low</span></p>
-                                                    <p class="text-sm text-zinc-400 leading-snug mb-2">Error-friendly — usefulness matters, not perfection</p>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- C: BRAND FILTER -->
-                                        <div class="flex-1 flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                            <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">C</span>
-                                            <span class="text-sm font-semibold text-white">Brand Filter · Behavioural Attributes</span>
-                                            </div>
-
-                                            <div class="flex flex-col md:flex-row flex-1 p-5 gap-4">
-
-                                            <!-- Responsible -->
-                                            <div class="flex-1 flex flex-col gap-3 md:border-r border-b md:border-b-0 border-zinc-800 md:pr-4 pb-4 md:pb-0">
-                                                <div class="flex items-center gap-2">
-                                                <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f97316"></div>
-                                                <span class="text-sm font-semibold text-zinc-200">Responsible</span>
-                                                </div>
-                                                <div class="flex flex-col gap-2">
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Engaged — activist imagery, clear stance</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Orienting — guides toward sustainable choices</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Reflective — invites users to question consumption</span>
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Authentic -->
-                                            <div class="flex-1 flex flex-col gap-3 md:border-r border-b md:border-b-0 border-zinc-800 md:pr-4 pb-4 md:pb-0">
-                                                <div class="flex items-center gap-2">
-                                                <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#60a5fa"></div>
-                                                <span class="text-sm font-semibold text-zinc-200">Authentic</span>
-                                                </div>
-                                                <div class="flex flex-col gap-2">
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Honest — real stories, direct communication</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Reliable — leads to relevant content without distraction</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Dialogic — genuine exchange, part of a movement</span>
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Quality-Conscious -->
-                                            <div class="flex-1 flex flex-col gap-3">
-                                                <div class="flex items-center gap-2">
-                                                <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#34d399"></div>
-                                                <span class="text-sm font-semibold text-zinc-200">Quality-Conscious</span>
-                                                </div>
-                                                <div class="flex flex-col gap-2">
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Timeless — reduced, durable design language</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Comfortable — frictionless paths to products & services</span>
-                                                </div>
-                                                <div class="flex flex-col gap-0.5">
-                                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
-                                                    <span class="text-sm text-zinc-400 mb-2">Seamless — clear CTAs, high-quality micro-interactions</span>
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                            </div>
-                                        </div>
-                                        </div><!-- end right col -->
-
-                                    </div><!-- end personality overview grid -->
-
-                                </div>
-                            </section>
-
-                            <!-- Solution -->
-                            <section id="solution">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 ">
-                                        <div class="md:col-span-8">
-                                            <h2 class="mb-6">Solution</h2>
-                                            <h3>Agentic Flows with Brand-Consistent Dialogue</h3>
-                                            <p>Two use cases show brand values in action. The Repair Path triages damage and routes users to the right option (DIY, send-in, or local partner). The Material Understanding flow surfaces sustainability knowledge mid-consideration, when users encounter unfamiliar terms like NetPlus®. Each dialogue turn is tagged with its dominant brand filter — making the bot structurally, not just tonally, consistent with the brand.</p>
-                                            <ul class="list-disc pl-16 mb-4">
-                                                <li><strong>Agentic flow design</strong> — structured guided paths that gather context, branch based on user input, and route to the right outcome</li>
-                                                <li><strong>Dialogue as design system</strong> — brand filters operating as behavioural rules, making the bot consistent and auditable at scale</li>
-                                                <li><strong>Research-driven bot behaviour</strong> — constraints derived from user research and brand strategy; a replicable method for embedding product principles into LLM behaviour</li>
-                                            </ul>
-                                        </div>
-                                        <div class="md:col-span-4">
-                                            <figure class="w-full aspect-auto mb-4">
-                                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                                    <img
-                                                    src="/images/patagonia-value-proposition.png"
-                                                    alt="Value proposition canvas"
-                                                        class="w-full h-full object-contain"
-                                                    >
-                                                </div>
-                                                <figcaption>
-                                                    Value proposition canvas — gain creators, products &amp; services, and pain relievers mapped against the customer profile
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Impact -->
-                            <section id="impact">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                        <div class="col-span-12 md:col-span-8">
-                                            <h2>Impact</h2>
-                                            <p>Pata demonstrates end-to-end conversational AI design — from strategy and brand foundations to structured multi-turn interactions. The value proposition canvas confirms the fit: users want to buy with a clear conscience, trust quality, and feel part of a movement. Pata addresses their core pains — greenwashing mistrust, complexity, poor quality — through transparent dialogue that earns confidence rather than claiming it.</p>
-                                            
-                                        </div>
-                                        <div class="col-span-4"></div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Final Designs / Screens -->
-                            <section id="final-designs">
-                                <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                                    <h2>Dialog Examples</h2>
-
-                                    <!-- Demo chat bot -->
-                                    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
-
-                                        <!-- ─── COLUMN 1: Repair Path ─── -->
-                                        <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                        <!-- card header -->
-                                        <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 01</span>
-                                            <span class="text-xs font-semibold text-white">Repair Path</span>
-                                        </div>
-                                        <!-- chat body -->
-                                        <div class="flex flex-col gap-3 p-4 flex-1">
-
-                                            <!-- Pata -->
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Hey, I'm Pata — your guide to long-lasting clothing. What would you like to do?
-                                                <div class="flex flex-wrap gap-1.5 mt-3">
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🧵 Repair something</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🏔 Find a new product</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">💬 Material question</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">👀 Just browsing</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <!-- User -->
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                I want to repair something
-                                            </div>
-                                            </div>
-
-                                            <!-- Pata -->
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Great that you're thinking about repair! What's damaged?
-                                            </div>
-                                            </div>
-
-                                            <!-- User -->
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                A tear on the sleeve
-                                            </div>
-                                            </div>
-
-                                            <!-- Pata -->
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Can you upload a photo or briefly describe the damage?
-                                                <div class="flex flex-wrap gap-1.5 mt-3">
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">→ Upload image</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <!-- Pata -->
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Looks fixable! Here are your options:
-                                                <div class="flex flex-wrap gap-1.5 mt-3">
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🔧 Self-Repair Kit + guide</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📦 Send in for repair</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📍 Find a local partner</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                        </div>
-
-                                        <!-- ─── COLUMN 2: Material Understanding ─── -->
-                                        <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                        <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 02</span>
-                                            <span class="text-xs font-semibold text-white">Material Understanding</span>
-                                        </div>
-                                        <div class="flex flex-col gap-3 p-4 flex-1">
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Hey, welcome back! What can I do for you?
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                I'm interested in a jacket, but what does NetPlus® mean?
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Great question! NetPlus® is a material made from recycled fishing nets, collected along the coast of Chile.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                It's lightweight, durable — and helps keep the oceans clean.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span><span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                This is one of our examples of how waste becomes useful materials. Sustainability for us means: repair, reuse, recycle.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                Wow, I didn't know that. Makes sense.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                If you'd like, I can show you jackets that contain NetPlus® — or how to care for them so they last.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                Where can I find those jackets?
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Sure, here's the NetPlus® collection →
-                                                <div class="flex flex-wrap gap-1.5 mt-3">
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">→ View NetPlus® Collection</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                That's how we repurpose waste — for long-lasting clothing instead of short-lived trends.
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                        </div>
-
-                                        <!-- ─── COLUMN 3: Care & Longevity ─── -->
-                                        <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
-                                        <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
-                                            <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 03</span>
-                                            <span class="text-xs font-semibold text-white">Care & Longevity</span>
-                                        </div>
-                                        <div class="flex flex-col gap-3 p-4 flex-1">
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Hey! Great that you bought a new jacket. Need help with anything?
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                Do I need to wash my jacket in any special way?
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Yes — and I'll explain why that matters.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                If you wash it cold and air dry it, it lasts longer — and saves CO₂.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col items-end gap-1">
-                                            <span class="text-sm text-zinc-500">You</span>
-                                            <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                                                Thanks! I'll try that.
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                Great! And if your jacket ever needs a repair — I'm here to help.
-                                                <div class="flex flex-wrap gap-1.5 mt-3">
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🔧 Repair Guide</span>
-                                                <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📦 Worn Wear Service</span>
-                                                </div>
-                                            </div>
-                                            </div>
-
-                                            <div class="flex flex-col gap-1">
-                                            <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
-                                            <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
-                                                A well-cared-for jacket is a jacket for life. That's what we believe in.
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                        </div>
-
-                                    </div><!-- end grid -->
-                                    <!-- legend -->
-                                    <div class="py-3 flex justify-end gap-3">
-                                        <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-orange-500"></span>Responsible</span>
-                                        <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-blue-400"></span>Authentic</span>
-                                        <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-green-400"></span>Quality-Conscious</span>
-                                    </div>
-                                </div>
-                            </section>
-
-                        </main>
-
-                        <!-- Footer -->
-                        <footer role="contentinfo" class="py-8 md:py-12">
-                            <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
-                                <p class="text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
-                            </div>
-                        </footer>
                     </div>
-                </div>
-            </body>
+                </section>
 
-            </html>
+                <!-- Challenge -->
+                <section id="challenge">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
+                            <div class="md:col-span-8">
+                                <h2>The Challenge</h2>
+                                <p class="mb-2">Patagonia is a brand built on radical transparency, sustainability, and repair culture — its mission "We're in business to save our home planet" is unambiguous. Yet a customer journey analysis revealed a consistent gap: users who wanted to act on those values couldn't find the guidance they needed. Repair services were hard to navigate, sustainability terminology was opaque, and the brand's activist voice disappeared behind standard e-commerce patterns.</p>
+                                <p>The core question: <strong>how do you make a brand's values interactive?</strong> Not just visible — but genuinely useful, in the exact moment a user is deciding whether to repair, replace, or recycle.</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
+                            <div class="md:col-span-8">
+                                <h2>Objectives</h2>
+                                <ul class="list-disc pl-16 mb-4">
+                                    <li>Reduce service costs through automated guidance on repair, materials, and sizing — without losing the brand voice</li>
+                                    <li>Increase adoption of the Worn Wear repair platform by surfacing it at the right moment in the journey</li>
+                                    <li>Help users understand sustainability certifications (NetPlus®, PFC-free, Fair Trade) in plain language, in context</li>
+                                    <li>Translate Patagonia's brand values — responsibility, authenticity, quality — into consistent interaction behaviour across every dialogue turn</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Approach -->
+                <section id="approach">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="md:col-span-8">
+                                <h2 class="mb-6">Approach</h2>
+
+                                <h3>1. Brand & Competitive Research</h3>
+                                <p>Mapped Patagonia against The North Face and Arc'teryx across the <strong>Golden Circle, Limbic Map, Brand Bios, behavioural archetypes</strong>, and a five-dimension benchmark to establish the emotional territory the bot had to operate in. Patagonia emerged as the "Idealistic Reformer" — values-driven and community-oriented — sharply distinct from The North Face's adventure-and-freedom positioning.</p>
+                                <p>Target audience segments — Intellectuals, Progressive Realists, and Cosmopolitan Avantgarde — were mapped via the Sinus Milieu framework and directly shaped the bot's tone, vocabulary, and explanation depth.</p>
+
+                                <h3>2. User Journey Mapping</h3>
+                                <p>Built a full Customer Life Cycle and a detailed persona-driven journey for "Lukas — Mindful Nature Protector". The journey exposed high-friction zones in the Consideration and Purchase phases: users encountered technical jargon they couldn't decode, unclear repair pathways, and no channel to ask questions in context. These pain points directly defined where Pata would intervene and what it needed to resolve.</p>
+
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                        src="/images/patagonia-benchmark-radar.png"
+                                            alt="Benchmark radar chart — Patagonia vs The North Face vs Arc'teryx"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Benchmark radar chart across Visual Design, Utility, Usability, Brand Consistency, and Reach
+                                    </figcaption>
+                                </figure>
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img src="/images/patagonia-behavioural-archetypes.png"
+                                            alt="Behavioural archetypes — Patagonia vs The North Face"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Behavioural archetypes — Patagonia as "Idealistic Reformer" vs The North Face's "Freedom-Seeking Adventurer"
+                                    </figcaption>
+                                </figure>
+
+                                <figure class="w-full aspect-auto mb-4 hidden">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                            src="/images/patagonia-sinus-milieu.png"
+                                            alt="Sinus Milieu map with Patagonia's three target segments highlighted"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Sinus Milieu — Patagonia's three primary segments: Intellectuals, Progressive Realists, Cosmopolitan Avantgarde
+                                    </figcaption>
+                                </figure>
+                                <figure class="w-full aspect-auto mb-4 hidden">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                        src="/images/patagonia-customer-lifecycle.png"
+                                        alt="Customer Life Cycle diagram"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Customer Life Cycle — touchpoints across Awareness, Consideration, Purchase, Usage, and Reconsideration
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                        src="/images/patagonia-customer-journey.png"
+                                        alt="Customer Journey map for Lukas — Mindful Nature Protector"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Customer Journey — "Lukas" persona with pain points, emotional states, and touchpoints at each stage
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="md:col-span-4"></div>
+
+                            <div class="md:col-span-8">
+                                <h3>3. Strategy & Design Framework</h3>
+                                <p class="mb-2">Before designing any interaction, a goal matrix aligned business, brand, and user needs.</p>
+                                    <ul class="list-disc pl-16 mb-4">
+                                        <li><strong>Business:</strong> reduce service costs, increase repair usage, collect intent data.</li>
+                                        <li><strong>Brand:</strong> make repair feel like culture, explain sustainability without jargon, never sell.</li>
+                                        <li><strong>User:</strong> quick answers, plain language, location-independent access to repair options.</li>
+                                    </ul>
+                                <p>Patagonia's values were then translated into three behavioural attributes — Responsible, Authentic, and Quality-Conscious — mapped across tone, information architecture, navigation, and interaction patterns. These function like component rules in a design system: every dialogue turn is tagged with its dominant brand filter, making the bot structurally auditable, not just tonally consistent.</p>
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                        src="/images/patagonia-goal-matrix.png"
+                                        alt="Goal matrix aligning business, brand, and user objectives"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Goal matrix — three-column alignment of business goals, brand goals, and user goals with KPIs
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <h3>4. Bot Personality & Character Design</h3>
+                                <p>Designed "Pata" — a bear character rooted in Patagonia's Pacific Northwest craft heritage. The character sheet defined personality dimensions across a radar chart (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions, backstory, and voice guidelines. These constraints directly shape how the bot should be prompted: Pata asks before advising, never upsells, celebrates repair over replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
+                            </div>
+                            <div class="md:col-span-4">
+                            </div>
+                        </div>
+
+                        <!-- Personality Overview Grid -->
+                        <div class="w-full max-w-6xl relative z-10 grid grid-cols-1 md:grid-cols-5 gap-5 mb-4 md:items-start">
+
+                            <!-- A: CHARACTER SHEET -->
+                            <div class="col-span-1 md:col-span-2 flex flex-col h-full rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
+                            <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">A</span>
+                                <span class="text-sm font-semibold text-white">Character Sheet</span>
+                            </div>
+
+                            <div class="flex flex-col flex-1 p-5 gap-5">
+
+                                <!-- Name & tagline -->
+                                <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center flex-shrink-0 text-3xl overflow-hidden">
+                                    <img class="mt-2" src="/images/patagonia-avatar.png" alt="">
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white leading-tight mb-0">Pata</h2>
+                                    <p class="text-sm text-zinc-400 mb-2">The gentle bear</p>
+                                    <p class="text-md text-zinc-400 italic">"A mended thing has more soul."</p>
+                                </div>
+                                </div>
+
+                                <div class="border-t border-zinc-800"></div>
+
+                                <!-- Core traits grid -->
+                                <div class="grid grid-cols-2 gap-3">
+
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Vibe</span>
+                                    <ul class="flex flex-col gap-1">
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Strong, friendly bear</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Visible signs of use & wear</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Patagonia vest & patched cap</li>
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Tone of Voice</span>
+                                    <ul class="flex flex-col gap-1">
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Warm, calm, down-to-earth</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Asks first, then answers</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>No jargon — clear, vivid language</li>
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Expertise</span>
+                                    <ul class="flex flex-col gap-1">
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>DIY repair & garment care</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Worn Wear & repair services</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-400 mt-0.5">—</span>Materials & sustainability knowledge</li>
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Attitude</span>
+                                    <ul class="flex flex-col gap-1">
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Explains without lecturing</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Encourages self-sufficiency</li>
+                                    <li class="text-sm text-zinc-400 flex items-start gap-1.5"><span class="text-zinc-600 mt-0.5">—</span>Guides rather than sells</li>
+                                    </ul>
+                                </div>
+
+                                </div>
+
+                                <div class="border-t border-zinc-800"></div>
+
+                                <!-- Catchphrases -->
+                                <div class="flex flex-col gap-2">
+                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Voice</span>
+                                <div class="flex flex-col gap-2">
+                                    <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
+                                    <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#34d399;min-width:8px;min-height:8px;display:inline-block;"></span>
+                                    <span>"That zip won't last another winter. But the shell? Totally worth saving."</span>
+                                    </div>
+                                    <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
+                                    <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#f97316;min-width:8px;min-height:8px;display:inline-block;"></span>
+                                    <span>"Every repair keeps one more jacket out of landfill. That one counts."</span>
+                                    </div>
+                                    <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-300 italic flex items-start gap-2">
+                                    <span class="w-2 h-2 rounded-full flex-shrink-0 mt-0.5" style="background:#60a5fa;min-width:8px;min-height:8px;display:inline-block;"></span>
+                                    <span>"Not every jacket is worth repairing. Let me help you figure that out."</span>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+
+                            <!-- Right column: B (top) + C (bottom) -->
+                            <div class="col-span-1 md:col-span-3 flex flex-col gap-5">
+
+                            <!-- B: PERSONALITY RADAR -->
+                            <div class="flex-1 flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
+                                <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">B</span>
+                                <span class="text-sm font-semibold text-white">Personality Radar</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-6 p-5 h-auto overflow-visible">
+                                <!-- SVG Radar -->
+                                <div class="flex-shrink-0 w-full sm:w-[45%] flex justify-center">
+                                    <svg width="250" height="250" viewBox="-20 -10 240 230">
+                                    <g stroke="#3f3f46" fill="none">
+                                        <polygon points="100,20 163,57 163,143 100,180 37,143 37,57" stroke-width="0.5"/>
+                                        <polygon points="100,40 148,67 148,133 100,160 52,133 52,67" stroke-width="0.5"/>
+                                        <polygon points="100,60 133,77 133,123 100,140 67,123 67,77" stroke-width="0.5"/>
+                                        <polygon points="100,80 118,87 118,113 100,120 82,113 82,87" stroke-width="0.5"/>
+                                    </g>
+                                    <g stroke="#52525b" stroke-width="0.5">
+                                        <line x1="100" y1="100" x2="100" y2="20"/>
+                                        <line x1="100" y1="100" x2="163" y2="57"/>
+                                        <line x1="100" y1="100" x2="163" y2="143"/>
+                                        <line x1="100" y1="100" x2="100" y2="180"/>
+                                        <line x1="100" y1="100" x2="37" y2="143"/>
+                                        <line x1="100" y1="100" x2="37" y2="57"/>
+                                    </g>
+                                    <polygon
+                                        points="100,52 157,61 150,134 100,148 68,122 62,74"
+                                        fill="#f97316"
+                                        fill-opacity="0.25"
+                                        stroke="#f97316"
+                                        stroke-width="1.5"
+                                        stroke-linejoin="round"
+                                    />
+                                    <text x="100" y="14" text-anchor="middle" fill="#a1a1aa" font-size="12">Intellect</text>
+                                    <text x="170" y="55" text-anchor="start" fill="#a1a1aa" font-size="12">Empathy</text>
+                                    <text x="170" y="148" text-anchor="start" fill="#a1a1aa" font-size="12">Stability</text>
+                                    <text x="100" y="194" text-anchor="middle" fill="#a1a1aa" font-size="12">Enthusiasm</text>
+                                    <text x="30" y="148" text-anchor="end" fill="#a1a1aa" font-size="12">Precision</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Trait descriptions -->
+                                <div class="flex flex-col gap-3 w-full sm:w-[calc(55%-1.5rem)]">
+                                    <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-zinc-200 mb-1">Empathy <span class="text-zinc-400 font-normal">— high</span></p>
+                                        <p class="text-sm text-zinc-400 leading-snug mb-1">Approachable, peer-to-peer — never a marketing voice</p>
+                                    </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400/70 mt-1.5 flex-shrink-0"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-zinc-200 mb-1">Stability <span class="text-zinc-400 font-normal">— high</span></p>
+                                        <p class="text-sm text-zinc-400 leading-snug mb-1">Reliable & patient, especially when users feel frustrated</p>
+                                    </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400/50 mt-1.5 flex-shrink-0"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-zinc-200 mb-1">Intellect <span class="text-zinc-400 font-normal mb-1">— moderate</span></p>
+                                        <p class="text-sm text-zinc-400 leading-snug mb-1">Knowledgeable, but never condescending</p>
+                                    </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400/40 mt-1.5 flex-shrink-0"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-zinc-200 mb-1">Enthusiasm <span class="text-zinc-400 font-normal mb-1">— quiet</span></p>
+                                        <p class="text-sm text-zinc-400 leading-snug mb-1">Motivates without hype — focuses on empowerment</p>
+                                    </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400/30 mt-1.5 flex-shrink-0"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-zinc-200 mb-1">Precision <span class="text-zinc-400 font-normal">— intentionally low</span></p>
+                                        <p class="text-sm text-zinc-400 leading-snug mb-2">Error-friendly — usefulness matters, not perfection</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- C: BRAND FILTER -->
+                            <div class="flex-1 flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
+                                <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-sm font-mono text-zinc-500 uppercase tracking-widest">C</span>
+                                <span class="text-sm font-semibold text-white">Brand Filter · Behavioural Attributes</span>
+                                </div>
+
+                                <div class="flex flex-col md:flex-row flex-1 p-5 gap-4">
+
+                                <!-- Responsible -->
+                                <div class="flex-1 flex flex-col gap-3 md:border-r border-b md:border-b-0 border-zinc-800 md:pr-4 pb-4 md:pb-0">
+                                    <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f97316"></div>
+                                    <span class="text-sm font-semibold text-zinc-200">Responsible</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Engaged — activist imagery, clear stance</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Orienting — guides toward sustainable choices</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Reflective — invites users to question consumption</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Authentic -->
+                                <div class="flex-1 flex flex-col gap-3 md:border-r border-b md:border-b-0 border-zinc-800 md:pr-4 pb-4 md:pb-0">
+                                    <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#60a5fa"></div>
+                                    <span class="text-sm font-semibold text-zinc-200">Authentic</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Honest — real stories, direct communication</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Reliable — leads to relevant content without distraction</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Dialogic — genuine exchange, part of a movement</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quality-Conscious -->
+                                <div class="flex-1 flex flex-col gap-3">
+                                    <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#34d399"></div>
+                                    <span class="text-sm font-semibold text-zinc-200">Quality-Conscious</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Look & Feel</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Timeless — reduced, durable design language</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Navigation</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Comfortable — frictionless paths to products & services</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Interaction</span>
+                                        <span class="text-sm text-zinc-400 mb-2">Seamless — clear CTAs, high-quality micro-interactions</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                            </div><!-- end right col -->
+
+                        </div><!-- end personality overview grid -->
+
+                    </div>
+                </section>
+
+                <!-- Solution -->
+                <section id="solution">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 ">
+                            <div class="md:col-span-8">
+                                <h2 class="mb-6">Solution</h2>
+                                <h3>Agentic Flows with Brand-Consistent Dialogue</h3>
+                                <p>Two flows demonstrate brand values in action: the Repair Path triages damage and routes users to the right repair option; the Material Understanding flow surfaces sustainability knowledge in context, when users encounter unfamiliar terms like NetPlus®.</p>
+                                <ul class="list-disc pl-16 mb-4">
+                                    <li><strong>Multi-turn interaction</strong> — Pata gathers context, adapts dynamically to user input and routes to a solution efficiently without overwhelming the user.
+                                    <li><strong>Dialogue as design system</strong> — each turn is anchored to a dominant brand filter, making the bot's consistency structural and auditable.</li>
+                                    <li><strong>Research-driven bot behaviour</strong> — constraints derived from user research and brand strategy, not creative intuition; a replicable method for turning strategic principles into model behaviour.</li>
+                                </ul>
+                            </div>
+                            <div class="md:col-span-4">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Impact -->
+                <section id="impact">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="col-span-12 md:col-span-8">
+                                <h2>Impact</h2>
+                                <p>Pata demonstrates end-to-end conversational AI design — from strategy and brand foundations to structured multi-turn interactions. The value proposition canvas confirms the fit: users want to buy with a clear conscience, trust quality, and feel part of a movement. Pata addresses their core pains — greenwashing mistrust, complexity, poor quality — through transparent dialogue that earns confidence rather than claiming it.</p>
+                            </div>
+                            <div class="col-span-4">
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img
+                                        src="/images/patagonia-value-proposition.png"
+                                        alt="Value proposition canvas"
+                                            class="w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Value proposition canvas
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Designs / Screens -->
+                <section id="final-designs">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <h2>Dialog Examples</h2>
+
+                        <!-- Demo chat bot -->
+                        <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
+
+                            <!-- ─── COLUMN 1: Repair Path ─── -->
+                            <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl w-full max-w-sm">
+
+                                <!-- card header -->
+                                <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 01</span>
+                                <span class="text-sm font-semibold text-white">Repair Guidance</span>
+                                </div>
+
+                                <!-- chat body -->
+                                <div class="flex flex-col gap-3 p-4 flex-1">
+
+                                <!-- Pata opening -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                    <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Hey, I'm Pata — your guide to long-lasting clothing. What would you like to do?
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                        <span class="bg-emerald-900/60 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🧵 Repair something</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🏔 Find a new product</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">💬 Material question</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">👀 Just browsing</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- User -->
+                                <div class="flex flex-col items-end gap-1 hidden">
+                                    <span class="text-sm text-zinc-500">You</span>
+                                    <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    I want to repair my jacket
+                                    </div>
+                                </div>
+
+                                <!-- Pata asks model -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                    <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Great that you're thinking about repair! Which jacket is it?
+                                    </div>
+                                </div>
+
+                                <!-- User -->
+                                <div class="flex flex-col items-end gap-1">
+                                    <span class="text-sm text-zinc-500">You</span>
+                                    <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    It's the Nano Puff
+                                    </div>
+                                </div>
+
+                                <!-- Pata knows material -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                    <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Perfect — the Nano Puff has a lightweight ripstop nylon shell with PrimaLoft® insulation. What's happened to it?
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🪡 Torn seam</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🤐 Broken zip</span>
+                                        <span class="bg-emerald-900/60 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🕳 Hole or tear</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">💧 Lost waterproofing</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- User -->
+                                <div class="flex flex-col items-end gap-1 hidden">
+                                    <span class="text-sm text-zinc-500">You</span>
+                                    <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    A tear on the sleeve
+                                    </div>
+                                </div>
+
+                                <!-- Pata asks for photo -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
+                                    <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Got it — with the Nano Puff, avoid iron-on patches since the insulation is heat-sensitive. A self-adhesive ripstop patch is the right fix. Can you upload a photo so I can take a look?
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">→ Upload image</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pata final options -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
+                                    <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Looks fixable! Here are your options:
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🔧 Self-Repair Kit + guide</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📦 Send in for repair</span>
+                                        <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📍 Find a local partner</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- ─── COLUMN 2: Material Understanding ─── -->
+                            <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
+                            <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 02</span>
+                                <span class="text-sm font-semibold text-white">Materials Expertise</span>
+                            </div>
+                            <div class="flex flex-col gap-3 p-4 flex-1">
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Hey, welcome back! What can I do for you?
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1">
+                                <span class="text-sm text-zinc-500">You</span>
+                                <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    I'm interested in a jacket, but what does NetPlus® mean?
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Great question! NetPlus® is a material made from recycled fishing nets, collected along the coast of Chile.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    It's lightweight, durable — and helps keep the oceans clean.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span><span class="filter-dot bg-green-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    This is one of our examples of how waste becomes useful materials. Sustainability for us means: repair, reuse, recycle.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1">
+                                <span class="text-sm text-zinc-500">You</span>
+                                <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    Wow, I didn't know that. Makes sense.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    If you'd like, I can show you jackets that contain NetPlus® — or how to care for them so they last.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1">
+                                <span class="text-sm text-zinc-500">You</span>
+                                <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    Where can I find those jackets?
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Sure, here's the NetPlus® collection →
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                    <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">→ View NetPlus® Collection</span>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    That's how we repurpose waste — for long-lasting clothing instead of short-lived trends.
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+
+                            <!-- ─── COLUMN 3: Care & Longevity ─── -->
+                            <div class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden shadow-2xl">
+                            <div class="px-5 py-3 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between">
+                                <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Use Case 03</span>
+                                <span class="text-sm font-semibold text-white">Conscious Care</span>
+                            </div>
+                            <div class="flex flex-col gap-3 p-4 flex-1">
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Hey! Great that you bought a new jacket. Need help with anything?
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1">
+                                <span class="text-sm text-zinc-500">You</span>
+                                <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    Do I need to wash my jacket in any special way?
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Yes — and I'll explain why that matters.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-orange-500"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    If you wash it cold and air dry it, it lasts longer — and saves CO₂.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1">
+                                <span class="text-sm text-zinc-500">You</span>
+                                <div class="bg-emerald-900/60 border border-emerald-800/40 text-emerald-100 text-sm rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
+                                    Thanks! I'll try that.
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-blue-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    Great! And if your jacket ever needs a repair — I'm here to help.
+                                    <div class="flex flex-wrap gap-1.5 mt-3">
+                                    <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">🔧 Repair Guide</span>
+                                    <span class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors">📦 Worn Wear Service</span>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                <span class="text-sm text-zinc-500 flex items-center gap-1">Pata <span class="filter-dot bg-green-400"></span></span>
+                                <div class="bg-zinc-800 text-zinc-100 text-sm rounded-2xl rounded-tl-sm px-4 py-3">
+                                    A well-cared-for jacket is a jacket for life. That's what we believe in.
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+
+                        </div><!-- end grid -->
+                        <!-- legend -->
+                        <div class="py-3 flex justify-end gap-3">
+                            <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-orange-500"></span>Responsible</span>
+                            <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-blue-400"></span>Authentic</span>
+                            <span class="flex items-center gap-1.5 text-sm text-zinc-400"><span class="filter-dot bg-green-400"></span>Quality-Conscious</span>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer -->
+            <footer role="contentinfo" class="py-8 md:py-12">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
+                    <p class="text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
