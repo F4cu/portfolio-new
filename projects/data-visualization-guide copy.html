@@ -146,7 +146,7 @@
                             </div>
                             <div class="col-span-12 md:col-span-4">
                                 <h4>Role</h4>
-                                <p>Product Designer</p>
+                                <p>UX lead / Product Designer</p>
                             </div>
 
                             <!-- Project hero -->
@@ -247,7 +247,16 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16">
                             <div class="md:col-span-8">
                                 <h3>2. Information Architecture</h3>
-                                <p>A closed card-sorting exercise across roles clarified how content should be grouped and navigated. Insights from the similarity matrix led to a four-pillar structure — Basics & Glossary, Color Palettes, Data Visualizations, and Accessibility — aligning content with distinct user priorities. Designers gravitated toward foundations and color systems, developers toward implementation patterns, while analysts moved between core concepts and applied visualizations. To ensure cross-team consistency, the system was supported by documented design tokens, reusable chart components, and scalable implementation patterns.</p>
+                                <p>To structure the content, we ran a closed card-sorting exercise with participants from each role. Using a similarity matrix, we identified strong consensus on how information should be grouped and navigated.</p>
+                                <p>The result was a four-pillar information architecture:</p>
+                                <ul class="list-decimal pl-12 mb-4">
+                                    <li><strong>Basics & Glossary</strong> — Foundational terms, chart types, and shared vocabulary</li>
+                                    <li><strong>Color Palettes</strong> — Balancing brand expression with accessibility and color-blindness support</li>
+                                    <li><strong>Data Visualizations</strong> — Chart anatomy, dashboard design, and responsive behavior</li>
+                                    <li><strong>Accessibility</strong> — WCAG guidelines, ARIA patterns, testing tools, and inclusive practices</li>
+                                </ul>
+                                <p>Each section mapped to specific user needs: designers leaned on Basics and Color; developers on Visualizations and Accessibility; analysts spanned Basics and Visualizations.</p>
+                                <p>To maintain consistency across tools, we documented design tokens, reusable chart components, and example patterns that could be easily implemented in the product ecosystem.</p>
 
                                 <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800"></figure>
                             </div>
@@ -284,46 +293,8 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
                             <div class="md:col-span-8">
-                                <h3>3. Accessibility — Beyond Colour Contrast</h3>
-                                <p>
-                                <strong>Screen reader testing</strong> using Silktide Simulator revealed keyboard navigation breakdowns. A skip link, placed as the first focusable element, allows users to bypass the main navigation. The accordion component was refactored so each trigger announces its label and state via <code>aria-expanded</code>, while an <code>Escape</code> handler prevents keyboard traps within nested panels.
-                                </p>
-                                <figure class="w-full aspect-auto mb-4">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                         data-src-light="/images/data-viz-accordion-nav-light.png"
-                                         data-src-dark="/images/data-viz-accordion-nav-dark.png" 
-                                         alt="Accordion keyboard navigation"
-                                         class="theme-image w-full h-full object-contain">
-                                    </div>
-                                </figure>
-                                <p>
-                                <strong>Semantic structure</strong> using landmark roles and properly nested headings reinforce contextual navigation. Interactive elements were adjusted so state changes are consistently announced, reducing ambiguity and cognitive load.
-                                </p>
-                                <p>
-                                <strong>Color contrast and text readability</strong> was validated through a systematic audit to ensure WCAG AA compliance across text and UI elements. An optional high-contrast toggle elevates key components to AAA standards and enhances legibility by increasing spacing to recommended values — <code>letter-spacing: 0.12em</code>, <code>word-spacing: 0.16em</code> and <code>line-height: 1.7</code> — improving readability without altering the core visual system.
-                                </p>
-                            </div>
-                            <div class="md:col-span-4">
-                                <figure class="w-full aspect-[4/3] mb-4">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/data-viz-screen-reader-simulation.png"
-                                            alt="Screen reader testing"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                    </div>
-                                    <figcaption>
-                                        Skip main nav screen reader test.
-                                    </figcaption>
-                                </figure>
-                            </div>
-
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
-                            <div class="md:col-span-8">
-                                <h3>4. Validation & Refinement</h3>
-                                <p>Before publication, the guide went through multiple internal review rounds. Cross-functional teams tested the content in their actual workflows, helping identify areas where instructions or examples needed simplification — ensuring the guide was as usable for a data analyst as it was for a front-end developer.</p>
+                                <h3>3. Validation & Refinement</h3>
+                                <p>Before publication, the guide went through multiple review rounds. Accessibility specialists validated color contrast, keyboard navigation, and ARIA labeling. Internal teams tested the guide in their workflows, helping identify areas where instructions or examples needed simplification.</p>
                             </div>
                         </div>
                     </div>
@@ -333,9 +304,9 @@
                 <section id="solution">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="md:col-span-8">
+                            <div class="md:col-span-6">
                                 <h2>The Solution</h2>
-                                <p>Accessibility was embedded from the start.</p>
+                                <p>Accessibility was embedded from the start, not added later.</p>
                                 <p>The guide outlined concrete principles for accessible data visualization:</p>
                                 <ul class="list-decimal pl-12 mb-4">
                                     <li>Fully <strong>WCAG 2.1 AA</strong> compliant site</li>
@@ -347,6 +318,20 @@
                                 <p>Designers gained color recipes and usage guidelines; developers received ready-to-use code snippets; analysts learned clearer labeling and annotation techniques. Together, they established a workflow that naturally produced accessible, consistent visualizations.</p>
 
                                 <p>See <a target="_blank" class="link" href="//f4cu.github.io/dv-guide/">homepage prototype</a> in action.</p>
+                            </div>
+                            <div class="md:col-span-6">
+                                <figure class="w-full aspect-[4/3] mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img 
+                                            data-src-light="/images/data-viz-a11y-check.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Accessiblity optimisation, including web reader and keyboard navigation for accordion.
+                                    </figcaption>
+                                </figure>
                             </div>
                         </div>
                     </div>
@@ -385,7 +370,7 @@
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 md:gap-y-6 gap-y-6 mb-16">
                             <div class="col-span-12 md:col-span-12">
-                                <h2>Screens</h2>
+                                <h2>Implementation Details</h2>
                             </div>
                             <div class="col-span-12 md:col-span-6">
                                 <figure class="w-full aspect-[4/3]">
@@ -435,7 +420,7 @@
                                     >
                                     </div>
                                     <figcaption class="text-center">
-                                    Responsive components, including adaptive card to carrousel section and accessible accordion.
+                                    Responsive components, including adaptive card to carrousel section.
                                 </figcaption>
                                 </figure>
                             </div>
