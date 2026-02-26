@@ -1,538 +1,541 @@
-    <!DOCTYPE html>
-    <html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        gtag('config', 'G-86NLVPLR50');
-        </script>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script>
-        (function() {
-            try {
-            const html = document.documentElement;
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || savedTheme === 'light') {
-                html.setAttribute('data-theme', savedTheme);
-            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                html.setAttribute('data-theme', 'dark');
-            } else {
-                html.setAttribute('data-theme', 'light');
-            }
-            } catch(e) {}
-        })();
-        </script>
-        
-        <title>Facundo Rosales - Data Visualisation Guide</title>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <script type="module" src="/src/main.js"></script>
-    </head>
+    gtag('config', 'G-86NLVPLR50');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    (function() {
+        try {
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
+        }
+        } catch(e) {}
+    })();
+    </script>
+    
+    <title>Facundo Rosales - Data Visualisation Guide</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="/src/main.js"></script>
+</head>
 
-    <body>
-        <div id="smooth-wrapper">
-            <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
-                    <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
-                        <div class="flex items-center justify-between h-full">
-                            <!-- Logo -->
-                            <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-200"
-                                aria-label="Facundo Rosales - Portfolio">
-                                <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
-                                        fill="currentColor" />
-                                </svg>
-                                <div class="block md:hidden">
-                                    <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
-                                </div>
-                            </a>
-
-                            <!-- Desktop Navigation -->
-                            <div class="flex flex-row">
-                                <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
-                                    <li>
-                                        <a href="/index.html#projects"
-                                            class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                            Projects
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/index.html#about"
-                                            class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                            About me
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/index.html#contact"
-                                            class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                            Contact
-                                        </a>
-                                    </li>
-                                </ul>
-                                <button id="theme-toggle"
-                                    class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                                    aria-label="Toggle dark mode" title="Toggle dark mode">
-                                    <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <!-- light mode) -->
-                                        <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
-                                        <!-- dark mode) -->
-                                        <path class="hidden dark:block"
-                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <!-- Mobile Menu Button -->
-                            <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
-                            aria-expanded="false">
-                            <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
-                                <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
-                                <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
-                                <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+<body>
+    <div id="smooth-wrapper">
+        <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
+                <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                    <div class="flex items-center justify-between h-full">
+                        <!-- Logo -->
+                        <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-200"
+                            aria-label="Facundo Rosales - Portfolio">
+                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                    fill="currentColor" />
                             </svg>
+                            <div class="block md:hidden">
+                                <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
+                            </div>
+                        </a>
+
+                        <!-- Desktop Navigation -->
+                        <div class="flex flex-row">
+                            <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                                <li>
+                                    <a href="/index.html#projects"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        Projects
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/index.html#about"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        About me
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/index.html#contact"
+                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                            <button id="theme-toggle"
+                                class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                                aria-label="Toggle dark mode" title="Toggle dark mode">
+                                <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- light mode) -->
+                                    <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
+                                    <!-- dark mode) -->
+                                    <path class="hidden dark:block"
+                                        d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                                </svg>
                             </button>
                         </div>
-                    </nav>
-                    <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
-                        <div class="flex flex-col justify-center items-center h-full">
-                            <nav class="w-full">
-                                <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
-                                    <li class="mobile-nav-item opacity-0">
-                                        <a href="/index.html#projects"
-                                            class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                            Projects
-                                        </a>
-                                    </li>
-                                    <li class="mobile-nav-item opacity-0">
-                                        <a href="/index.html#about"
-                                            class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                            About me
-                                        </a>
-                                    </li>
-                                    <li class="mobile-nav-item opacity-0">
-                                        <a href="/index.html#contact"
-                                            class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                            Contact
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+
+                        <!-- Mobile Menu Button -->
+                        <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
+                        aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
+                            <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
+                            <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
+                            <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        </button>
+                    </div>
+                </nav>
+                <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                    <div class="flex flex-col justify-center items-center h-full">
+                        <nav class="w-full">
+                            <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="/index.html#projects"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        Projects
+                                    </a>
+                                </li>
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="/index.html#about"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        About me
+                                    </a>
+                                </li>
+                                <li class="mobile-nav-item opacity-0">
+                                    <a href="/index.html#contact"
+                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+        </header>
+        <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
+            <main id="site-main">
+
+                <!-- Intro -->
+                <section id="project-intro">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
+                            <div class="fade-in col-span-12 md:col-span-8">
+                                <h1>Data Visualization Guide</h1>
+                            </div>
+                            <div class="col-span-12 md:col-span-8">
+                                <p class="fade-in text-xl">Creating a unified Data Visualization Guide to ensure clarity, consistency, and accessibility across
+                                cross-functional teams.</p>
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <h4>Role</h4>
+                                <p>Product Designer</p>
+                            </div>
+
+                            <!-- Project hero -->
+                            <div class="col-span-12 mt-4">
+                                <figure class="fade-in w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
+                                    <img 
+                                        data-src-light="/images/data-viz-project-hero-light.png"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                </figure>
+                            </div>
                         </div>
                     </div>
-            </header>
-            <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
-                <main id="site-main">
+                </section>
 
-                    <!-- Intro -->
-                    <section id="project-intro">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
-                                <div class="fade-in col-span-12 md:col-span-8">
-                                    <h1>Data Visualization Guide</h1>
-                                </div>
-                                <div class="col-span-12 md:col-span-8">
-                                    <p class="fade-in text-xl">Creating a unified Data Visualization Guide to ensure clarity, consistency, and accessibility across
-                                    cross-functional teams.</p>
-                                </div>
-                                <div class="col-span-12 md:col-span-4">
-                                    <h4>Role</h4>
-                                    <p>Product Designer</p>
-                                </div>
-
-                                <!-- Project hero -->
-                                <div class="col-span-12 mt-4">
-                                    <figure class="fade-in w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
-                                        <img 
-                                            data-src-light="/images/data-viz-project-hero-light.png"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                    </figure>
-                                </div>
+                <!-- Challenge -->
+                <section id="challenge">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
+                            <div class="md:col-span-8">
+                                <h2>The Challenge</h2>
+                                <p class="mb-2">Teams struggled to create accessible and consistent visualizations. WCAG guidelines—while essential—were often too technical and hard to apply, leading to uneven accessibility practices. Misunderstandings around color usage created tension between brand, clarity, and accessibility.</p>
+                                <p>Teams also lacked a shared approach to chart selection, resulting in inconsistent patterns and duplicated effort.</p>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- Challenge -->
-                    <section id="challenge">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                                <div class="md:col-span-8">
-                                    <h2>The Challenge</h2>
-                                    <p class="mb-2">Teams struggled to create accessible and consistent visualizations. WCAG guidelines—while essential—were often too technical and hard to apply, leading to uneven accessibility practices. Misunderstandings around color usage created tension between brand, clarity, and accessibility.</p>
-                                    <p>Teams also lacked a shared approach to chart selection, resulting in inconsistent patterns and duplicated effort.</p>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                                <div class="md:col-span-8">
-                                    <h2>Objectives</h2>
-                                    <p>Design a Data Visualization Guide that unifies how the organization communicates data while keeping accessibility at the forefront. The guide needed to:</p>
-                                    <ul class="list-disc pl-16 mb-4">
-                                        <li>Ensure all visualizations meet WCAG 2.1 accessibility standards</li>
-                                        <li>Establish visual and conceptual consistency across teams</li>
-                                        <li>Make chart selection and color usage clear and approachable</li>
-                                        <li>Strengthen collaboration through reusable principles</li>
-                                    </ul>
-                                </div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
+                            <div class="md:col-span-8">
+                                <h2>Objectives</h2>
+                                <p>Design a Data Visualization Guide that unifies how the organization communicates data while keeping accessibility at the forefront. The guide needed to:</p>
+                                <ul class="list-disc pl-16 mb-4">
+                                    <li>Ensure all visualizations meet WCAG 2.1 accessibility standards</li>
+                                    <li>Establish visual and conceptual consistency across teams</li>
+                                    <li>Make chart selection and color usage clear and approachable</li>
+                                    <li>Strengthen collaboration through reusable principles</li>
+                                </ul>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    <!-- Approach -->
-                    <section id="approach">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                <div class="md:col-span-8">
-                                    <h2 class="mb-6">Approach</h2>
-                                    <p>To make the process clear and actionable, the work was organized into three steps.</p>
-                                </div>
-                                <div class="md:col-span-8">
-                                    <h3>1. User Research</h3>
-                                    <p>We started by understanding the people behind the visualizations. <strong>Stakeholder mapping</strong> revealed four groups: Brand/Marketing, Product Design, Front-End Development, and Data Analysis. Using an influence x relevance matrix, we focused on the three most critical: Product Designer, Front-End Developer, and Data Analyst.</p>
-                                    <p>A <strong>cross-functional survey</strong> surfaced common frustrations: inconsistent chart standards, unclear accessibility requirements, and duplicated work during handoff. We also learned that each role defined “readability” differently — designers through aesthetics, developers through structure, and analysts through comprehension.</p>
-                                    <p>From these insights, we created <strong>three personas</strong>:</p>
-                                    <ul class="list-disc pl-16 mb-4">
-                                        <li><span class="text-neutral-900 dark:text-neutral-200">Maja Wallner</span>, a Product Designer balancing brand and accessibility</li>
-                                        <li><span class="text-neutral-900 dark:text-neutral-200">Stephan Ackner</span>, a Front-End Developer focused on technical scalability</li>
-                                        <li><span class="text-neutral-900 dark:text-neutral-200">Lukas Schneider</span>, a Data Analyst translating complex insights for non-technical audiences.</li>
-                                    </ul>
-                                    <p>These personas helped shape the guide's tone and ensured all disciplines were equally represented.</p>
-                                </div>
-                                <div class="md:col-span-4">
-                                    <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 mb-4">
-                                        <img 
-                                            data-src-light="/images/target-group-analysis-light.png"
-                                            data-src-dark="/images/target-group-analysis-dark.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                    </figure>
-                                    <figure class="w-full aspect-[4/3] mb-4">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                            <img 
-                                                data-src-light="/images/data-viz-survey.png"
-                                                alt="Target group analysis"
-                                                class="theme-image w-full h-full object-contain"
-                                            >
-                                        </div>
-                                        <figcaption>
-                                            Cross-team user survey.
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="md:col-span-8">
-                                    <figure class="w-full aspect-auto mb-4">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                            <img 
-                                                data-src-light="/images/data-viz-persona-1.png"
-                                                alt="Target group analysis"
-                                                class="theme-image w-full h-full object-contain"
-                                            >
-                                        </div>
-                                        <figcaption>
-                                            Example persona
-                                        </figcaption>
-                                    </figure>
-                                </div>
+                <!-- Approach -->
+                <section id="approach">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="md:col-span-8">
+                                <h2 class="mb-6">Approach</h2>
+                                <p>To make the process clear and actionable, the work was organized into three steps.</p>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16">
-                                <div class="md:col-span-8">
-                                    <h3>2. Information Architecture</h3>
-                                    <p>A closed card-sorting exercise across roles clarified how content should be grouped and navigated. Insights from the similarity matrix led to a four-pillar structure — Basics & Glossary, Color Palettes, Data Visualizations, and Accessibility — aligning content with distinct user priorities. Designers gravitated toward foundations and color systems, developers toward implementation patterns, while analysts moved between core concepts and applied visualizations. To ensure cross-team consistency, the system was supported by documented design tokens, reusable chart components, and scalable implementation patterns.</p>
-
-                                    <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800"></figure>
-                                </div>
-                                <div class="md:col-span-4">
-                                    <figure class="w-full aspect-[4/3] mb-4">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                            <img 
-                                                data-src-light="/images/data-viz-card-sorting-1.png"
-                                                alt="Target group analysis"
-                                                class="theme-image w-full h-full object-contain"
-                                            >
-                                        </div>
-                                        <figcaption>
-                                            Card sorting analysis results
-                                        </figcaption>
-                                    </figure>
-                                </div>
-
-                                <div class="md:col-span-8">
-                                    <figure class="w-full aspect-auto mb-4">
-                                    <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                        data-src-light="/images/data-viz-card-sorting-2-light.png"
-                                        data-src-dark="/images/data-viz-card-sorting-2-dark.png"
+                            <div class="md:col-span-8">
+                                <h3>1. User Research</h3>
+                                <p>We started by understanding the people behind the visualizations. <strong>Stakeholder mapping</strong> revealed four groups: Brand/Marketing, Product Design, Front-End Development, and Data Analysis. Using an influence x relevance matrix, we focused on the three most critical: Product Designer, Front-End Developer, and Data Analyst.</p>
+                                <p>A <strong>cross-functional survey</strong> surfaced common frustrations: inconsistent chart standards, unclear accessibility requirements, and duplicated work during handoff. We also learned that each role defined “readability” differently — designers through aesthetics, developers through structure, and analysts through comprehension.</p>
+                                <p>From these insights, we created <strong>three personas</strong>:</p>
+                                <ul class="list-disc pl-16 mb-4">
+                                    <li><span class="text-neutral-900 dark:text-neutral-200">Maja Wallner</span>, a Product Designer balancing brand and accessibility</li>
+                                    <li><span class="text-neutral-900 dark:text-neutral-200">Stephan Ackner</span>, a Front-End Developer focused on technical scalability</li>
+                                    <li><span class="text-neutral-900 dark:text-neutral-200">Lukas Schneider</span>, a Data Analyst translating complex insights for non-technical audiences.</li>
+                                </ul>
+                                <p>These personas helped shape the guide's tone and ensured all disciplines were equally represented.</p>
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 mb-4">
+                                    <img 
+                                        data-src-light="/images/target-group-analysis-light.png"
+                                        data-src-dark="/images/target-group-analysis-dark.png"
                                         alt="Target group analysis"
                                         class="theme-image w-full h-full object-contain"
+                                    >
+                                </figure>
+                                <figure class="w-full aspect-[4/3] mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img 
+                                            data-src-light="/images/data-viz-survey.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain"
                                         >
                                     </div>
                                     <figcaption>
-                                        Final information architectrure
+                                        Cross-team user survey.
                                     </figcaption>
-                                    </figure>
-                                </div>
+                                </figure>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
-                                <div class="md:col-span-8">
-                                    <h3>3. Accessibility — Beyond Colour Contrast</h3>
-                                    <p>
-                                    <strong>Screen reader testing</strong> using Silktide Simulator revealed keyboard navigation breakdowns. A skip link, placed as the first focusable element, allows users to bypass the main navigation. The accordion component was refactored so each trigger announces its label and state via <code>aria-expanded</code>, while an <code>Escape</code> handler prevents keyboard traps within nested panels.
-                                    </p>
-                                    <figure class="w-full aspect-auto mb-4">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                            <img 
-                                            data-src-light="/images/data-viz-accordion-nav-light.png"
-                                            data-src-dark="/images/data-viz-accordion-nav-dark.png" 
-                                            alt="Accordion keyboard navigation"
-                                            class="theme-image w-full h-full object-contain">
-                                        </div>
-                                    </figure>
-                                    <p>
-                                    <strong>Semantic structure</strong> using landmark roles and properly nested headings reinforce contextual navigation. Interactive elements were adjusted so state changes are consistently announced, reducing ambiguity and cognitive load.
-                                    </p>
-                                    <p>
-                                    <strong>Color contrast and text readability</strong> was validated through a systematic audit to ensure WCAG AA compliance across text and UI elements. An optional high-contrast toggle elevates key components to AAA standards and enhances legibility by increasing spacing to recommended values — <code>letter-spacing: 0.12em</code>, <code>word-spacing: 0.16em</code> and <code>line-height: 1.7</code> — improving readability without altering the core visual system.
-                                    </p>
-                                </div>
-                                <div class="md:col-span-4">
-                                    <figure class="w-full aspect-[4/3] mb-4">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                            <img 
-                                                data-src-light="/images/data-viz-screen-reader-simulation.png"
-                                                alt="Screen reader testing"
-                                                class="theme-image w-full h-full object-contain"
-                                            >
-                                        </div>
-                                        <figcaption>
-                                            Skip main nav screen reader test.
-                                        </figcaption>
-                                    </figure>
-                                </div>
-
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
-                                <div class="md:col-span-8">
-                                    <h3>4. Validation & Refinement</h3>
-                                    <p>Before publication, the guide went through multiple internal review rounds. Cross-functional teams tested the content in their actual workflows, helping identify areas where instructions or examples needed simplification — ensuring the guide was as usable for a data analyst as it was for a front-end developer.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Solution -->
-                    <section id="solution">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                <div class="md:col-span-8">
-                                    <h2>The Solution</h2>
-                                    <p>Accessibility was embedded from the start.</p>
-                                    <p>The guide outlined concrete principles for accessible data visualization:</p>
-                                    <ul class="list-decimal pl-12 mb-4">
-                                        <li>Fully <strong>WCAG 2.1 AA</strong> compliant site</li>
-                                        <li>Use <strong>Semantic HTML</strong> and ARIA roles to describe user interactions</li>
-                                        <li>Include <strong>skip-navigation</strong> and landmarks for screen-reader navigation</li>
-                                        <li>Light and Dark themes</li>
-                                    </ul>
-                                    <p>Each discipline benefited in tangible ways:</p>
-                                    <p>Designers gained color recipes and usage guidelines; developers received ready-to-use code snippets; analysts learned clearer labeling and annotation techniques. Together, they established a workflow that naturally produced accessible, consistent visualizations.</p>
-
-                                    <p>See <a target="_blank" class="link" href="//f4cu.github.io/dv-guide/">homepage prototype</a> in action.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Impact -->
-                    <section id="impact">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                <div class="col-span-12 md:col-span-8">
-                                    <h2>Impact</h2>
-                                    <p>The Data Visualization Guide became a single source of truth for how the organization approaches data visuals. It improved cross-team communication, reduced redundant work, and set clear accessibility expectations from the start of every project.</p>
-                                    <p>Early feedback was highly positive. Designers reported faster alignment on color and typography, while developers appreciated having codified accessibility examples instead of scattered references.</p>
-                                </div>
-                                <div class="col-span-4"></div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Reflection -->
-                    <section id="impact">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                                <div class="col-span-12 md:col-span-8">
-                                    <h2>Reflection</h2>
-                                    <p>This project reaffirmed that accessibility and consistency are inseparable. When teams share a common design language, collaboration becomes smoother — and users benefit from clearer, more inclusive visual communication.</p>
-                                    <p>By bringing designers, developers, and analysts together under one accessible framework, we built a foundation for data visualizations that are both unified in appearance and equitable in experience.</p>
-                                </div>
-                                <div class="col-span-4"></div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Final Designs -->
-                    <section id="final-designs">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 md:gap-y-6 gap-y-6 mb-16">
-                                <div class="col-span-12 md:col-span-12">
-                                    <h2>Screens</h2>
-                                </div>
-                                <div class="col-span-12 md:col-span-6">
-                                    <figure class="w-full aspect-[4/3]">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
+                            <div class="md:col-span-8">
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
                                         <img 
-                                            data-src-light="/images/data-viz-footer.png"
+                                            data-src-light="/images/data-viz-persona-1.png"
                                             alt="Target group analysis"
                                             class="theme-image w-full h-full object-contain"
                                         >
-                                        </div>
-
-                                    </figure>
-                                </div>
-                                <div class="col-span-12 md:col-span-6">
-                                    <figure class="w-full aspect-[4/3]">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
-                                        <img 
-                                            data-src-light="/images/data-viz-internal-page.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                        </div>
-                                        <figcaption class="text-center">
-                                        Example internal page.
+                                    </div>
+                                    <figcaption>
+                                        Example persona
                                     </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-span-12 md:col-span-12">
-                                    <figure class="w-full aspect-auto">
-                                        <div class="p-4 flex flex-row justify-center bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/data-viz-responsive-1.gif"
-                                            alt="Target group analysis"
-                                            class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
-                                        >
-                                        <img 
-                                            data-src-light="/images/data-viz-responsive-2.png"
-                                            alt="Target group analysis"
-                                            class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
-                                        >
-                                        <img 
-                                            data-src-light="/images/data-viz-responsive-3.gif"
-                                            alt="Target group analysis"
-                                            class="theme-image max-h-64 md:max-h-96"
-                                        >
-                                        </div>
-                                        <figcaption class="text-center">
-                                        Responsive components, including adaptive card to carrousel section and accessible accordion.
-                                    </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-span-12 md:col-span-6">
-                                    <figure class="w-full aspect-[4/3]">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
-                                        <img 
-                                            data-src-light="/images/data-viz-dark-mode-1.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-span-12 md:col-span-6">
-                                    <figure class="w-full aspect-[4/3]">
-                                        <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-
-                                        <img 
-                                            data-src-light="/images/data-viz-dark-mode-2.png"
-                                            alt="Target group analysis"
-                                            class="theme-image w-full h-full object-contain"
-                                        >
-                                        </div>
-                                        <figcaption class="text-center">
-                                        Dark theme
-                                    </figcaption>
-                                    </figure>
-                                </div>
+                                </figure>
                             </div>
                         </div>
-                    </section>
-                    <section id="more-projects">
-                        <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                            <div class="fade-in border-t border-neutral-400 dark:border-neutral-700 pt-8 sm:pt-16">
-                            <h2 class="mb-6">More Projects</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <!-- Card 1 -->
-                                <article class="project-card overflow-hidden flex flex-col w-full">
-                                    <a href="/projects/awin-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
-                                        <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                        <img src="/images/awin-card-thumbnail.png" alt="" class="w-32">
-                                        </figure>
-                                        <div class="flex flex-col flex-1">
-                                        <h3 class=" text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Awin Design System</h3>
-                                        <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">    
-                                        Scalable, accessible design language for a global B2B SaaS platform.
-                                        </p>
-                                        </div>
-                                    </a>
-                                </article>
-                                <!-- Card 2 -->
-                                <article class="project-card overflow-hidden flex flex-col w-full">
-                                    <a href="/projects/upskill-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
-                                        <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                        <img src="/images/upskill-card-thumbnail.png" alt="" class="w-32">
-                                        </figure>
-                                        <div class="flex flex-col flex-1">
-                                        <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Upskill Design System</h3>
-                                        <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
-                                            Multi-themed, tokenised component library built for consistency at scale.
-                                        </p>
-                                        </div>
-                                    </a>
-                                </article>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16">
+                            <div class="md:col-span-8">
+                                <h3>2. Information Architecture</h3>
+                                <p>A closed card-sorting exercise across roles clarified how content should be grouped and navigated. Insights from the similarity matrix led to a four-pillar structure — Basics & Glossary, Color Palettes, Data Visualizations, and Accessibility — aligning content with distinct user priorities. Designers gravitated toward foundations and color systems, developers toward implementation patterns, while analysts moved between core concepts and applied visualizations. To ensure cross-team consistency, the system was supported by documented design tokens, reusable chart components, and scalable implementation patterns.</p>
 
-                                <!-- Card 3 -->
-                                <article class="project-card overflow-hidden flex flex-col w-full">
-                                    <a href="/projects/patagonia-ai-agent.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
-                                        <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                        <img src="/images/patagonia-card-thumbnail.png" alt="" class="w-32">
-                                        </figure>
-                                        <div class="flex flex-col flex-1">
-                                        <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Patagonia's AI Agent</h3>
-                                        <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
-                                            Conversational B2C interface shaped by the brand's personality and values.
-                                        </p>
-                                        </div>
-                                    </a>
-                                </article>
-
+                                <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800"></figure>
                             </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-[4/3] mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img 
+                                            data-src-light="/images/data-viz-card-sorting-1.png"
+                                            alt="Target group analysis"
+                                            class="theme-image w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Card sorting analysis results
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="md:col-span-8">
+                                <figure class="w-full aspect-auto mb-4">
+                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
+                                    <img 
+                                    data-src-light="/images/data-viz-card-sorting-2-light.png"
+                                    data-src-dark="/images/data-viz-card-sorting-2-dark.png"
+                                    alt="Target group analysis"
+                                    class="theme-image w-full h-full object-contain"
+                                    >
+                                </div>
+                                <figcaption>
+                                    Final information architectrure
+                                </figcaption>
+                                </figure>
                             </div>
                         </div>
-                    </section>
-                </main>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
+                            <div class="md:col-span-8">
+                                <h3>3. Accessibility — Beyond Colour Contrast</h3>
+                                <p>
+                                <strong>Screen reader testing</strong> using Silktide Simulator revealed keyboard navigation breakdowns. A skip link, placed as the first focusable element, allows users to bypass the main navigation. The accordion component was refactored so each trigger announces its label and state via <code>aria-expanded</code>, while an <code>Escape</code> handler prevents keyboard traps within nested panels.
+                                </p>
+                                <figure class="w-full aspect-auto mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img 
+                                        data-src-light="/images/data-viz-accordion-nav-light.png"
+                                        data-src-dark="/images/data-viz-accordion-nav-dark.png" 
+                                        alt="Accordion keyboard navigation"
+                                        class="theme-image w-full h-full object-contain">
+                                    </div>
+                                    <figcaption>
+                                        Accordion item loop - keyboard navigation with trap prevention
+                                    </figcaption>
+                                </figure>
+                                <p>
+                                <strong>Semantic structure</strong> using landmark roles and properly nested headings reinforce contextual navigation. Interactive elements were adjusted so state changes are consistently announced, reducing ambiguity and cognitive load.
+                                </p>
+                                <p>
+                                <strong>Color contrast and text readability</strong> was validated through a systematic audit to ensure WCAG AA compliance across text and UI elements. An optional high-contrast toggle elevates key components to AAA standards and enhances legibility by increasing spacing to recommended values — <code>letter-spacing: 0.12em</code>, <code>word-spacing: 0.16em</code> and <code>line-height: 1.7</code> — improving readability without altering the core visual system.
+                                </p>
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-[4/3] mb-4">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img 
+                                            data-src-light="/images/data-viz-screen-reader-simulation.png"
+                                            alt="Screen reader testing"
+                                            class="theme-image w-full h-full object-contain"
+                                        >
+                                    </div>
+                                    <figcaption>
+                                        Skip main nav screen reader test.
+                                    </figcaption>
+                                </figure>
+                            </div>
 
-                <!-- Footer -->
-                <footer role="contentinfo" class="py-8 md:py-12">
-                    <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
-                        <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6">
+                            <div class="md:col-span-8">
+                                <h3>4. Validation & Refinement</h3>
+                                <p>Before publication, the guide went through multiple internal review rounds. Cross-functional teams tested the content in their actual workflows, helping identify areas where instructions or examples needed simplification — ensuring the guide was as usable for a data analyst as it was for a front-end developer.</p>
+                            </div>
+                        </div>
                     </div>
-                </footer>
+                </section>
 
-            </div>
+                <!-- Solution -->
+                <section id="solution">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="md:col-span-8">
+                                <h2>The Solution</h2>
+                                <p>Accessibility was embedded from the start.</p>
+                                <p>The guide outlined concrete principles for accessible data visualization:</p>
+                                <ul class="list-decimal pl-12 mb-4">
+                                    <li>Fully <strong>WCAG 2.1 AA</strong> compliant site</li>
+                                    <li>Use <strong>Semantic HTML</strong> and ARIA roles to describe user interactions</li>
+                                    <li>Include <strong>skip-navigation</strong> and landmarks for screen-reader navigation</li>
+                                    <li>Light and Dark themes</li>
+                                </ul>
+                                <p>Each discipline benefited in tangible ways:</p>
+                                <p>Designers gained color recipes and usage guidelines; developers received ready-to-use code snippets; analysts learned clearer labeling and annotation techniques. Together, they established a workflow that naturally produced accessible, consistent visualizations.</p>
+
+                                <p>See <a target="_blank" class="link" href="//f4cu.github.io/dv-guide/">homepage prototype</a> in action.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Impact -->
+                <section id="impact">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="col-span-12 md:col-span-8">
+                                <h2>Impact</h2>
+                                <p>The Data Visualization Guide became a single source of truth for how the organization approaches data visuals. It improved cross-team communication, reduced redundant work, and set clear accessibility expectations from the start of every project.</p>
+                                <p>Early feedback was highly positive. Designers reported faster alignment on color and typography, while developers appreciated having codified accessibility examples instead of scattered references.</p>
+                            </div>
+                            <div class="col-span-4"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reflection -->
+                <section id="impact">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
+                            <div class="col-span-12 md:col-span-8">
+                                <h2>Reflection</h2>
+                                <p>This project reaffirmed that accessibility and consistency are inseparable. When teams share a common design language, collaboration becomes smoother — and users benefit from clearer, more inclusive visual communication.</p>
+                                <p>By bringing designers, developers, and analysts together under one accessible framework, we built a foundation for data visualizations that are both unified in appearance and equitable in experience.</p>
+                            </div>
+                            <div class="col-span-4"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Designs -->
+                <section id="final-designs">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 md:gap-y-6 gap-y-6 mb-16">
+                            <div class="col-span-12 md:col-span-12">
+                                <h2>Screens</h2>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <figure class="w-full aspect-[4/3]">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+
+                                    <img 
+                                        data-src-light="/images/data-viz-footer.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                    </div>
+
+                                </figure>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <figure class="w-full aspect-[4/3]">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+
+                                    <img 
+                                        data-src-light="/images/data-viz-internal-page.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                    </div>
+                                    <figcaption class="text-center">
+                                    Example internal page.
+                                </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-span-12 md:col-span-12">
+                                <figure class="w-full aspect-auto">
+                                    <div class="p-4 flex flex-row justify-center bg-neutral-300 dark:bg-neutral-800">
+                                    <img 
+                                        data-src-light="/images/data-viz-responsive-1.gif"
+                                        alt="Target group analysis"
+                                        class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
+                                    >
+                                    <img 
+                                        data-src-light="/images/data-viz-responsive-2.png"
+                                        alt="Target group analysis"
+                                        class="theme-image mr-4 md:mr-8 max-h-64 md:max-h-96"
+                                    >
+                                    <img 
+                                        data-src-light="/images/data-viz-responsive-3.gif"
+                                        alt="Target group analysis"
+                                        class="theme-image max-h-64 md:max-h-96"
+                                    >
+                                    </div>
+                                    <figcaption class="text-center">
+                                    Responsive components, including adaptive card to carrousel section and accessible accordion.
+                                </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <figure class="w-full aspect-[4/3]">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+
+                                    <img 
+                                        data-src-light="/images/data-viz-dark-mode-1.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                    </div>
+                                </figure>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <figure class="w-full aspect-[4/3]">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+
+                                    <img 
+                                        data-src-light="/images/data-viz-dark-mode-2.png"
+                                        alt="Target group analysis"
+                                        class="theme-image w-full h-full object-contain"
+                                    >
+                                    </div>
+                                    <figcaption class="text-center">
+                                    Dark theme
+                                </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="more-projects">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="fade-in border-t border-neutral-400 dark:border-neutral-700 pt-8 sm:pt-16">
+                        <h2 class="mb-6">More Projects</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Card 1 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/awin-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/awin-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class=" text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Awin Design System</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">    
+                                    Scalable, accessible design language for a global B2B SaaS platform.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
+                            <!-- Card 2 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/upskill-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/upskill-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Upskill Design System</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                        Multi-themed, tokenised component library built for consistency at scale.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
+
+                            <!-- Card 3 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/patagonia-ai-agent.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/patagonia-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Patagonia's AI Agent</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                        Conversational B2C interface shaped by the brand's personality and values.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
+
+                        </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer role="contentinfo" class="py-8 md:py-12">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
+                    <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
+                </div>
+            </footer>
+
         </div>
-    </body>
+    </div>
+</body>
 
-    </html>
+</html>
