@@ -41,7 +41,7 @@
             <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Main navigation">
                 <div class="flex items-center justify-between h-full">
                     <!-- Logo -->
-                    <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 dark:text-neutral-100"
+                    <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-200"
                         aria-label="Facundo Rosales - Portfolio">
                         <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z" fill="currentColor" />
@@ -129,10 +129,10 @@
                 <section id="project-intro">
                     <div class="max-w-[1200px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
-                            <div class="col-span-12 md:col-span-8">
+                            <div class="fade-in col-span-12 md:col-span-8">
                                 <h1>Patagonia's AI Agent</h1>
                             </div>
-                            <div class="col-span-12 md:col-span-8">
+                            <div class="fade-in col-span-12 md:col-span-8">
                                 <p class="text-xl">Designing a branded conversational interface — from brand strategy and competitive research to bot personality, and agentic flow architecture for a sustainability-first outdoor brand.</p>
                             </div>
                             <div class="col-span-12 md:col-span-4">
@@ -142,7 +142,7 @@
 
                             <!-- Project hero -->
                             <div class="col-span-12 mt-4">
-                                <figure class="w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
+                                <figure class="fade-in w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
                                     <img
                                         src="/images/patagonia-project-hero.png"
                                         alt="Pata conversational flow — repair path use case"
@@ -864,7 +864,59 @@
                         </div>
                     </div>
                 </section>
+                <section id="more-projects">
+                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                        <div class="fade-in border-t border-neutral-400 dark:border-neutral-700 pt-8 sm:pt-16">
+                        <h2 class="mb-6">More Projects</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Card 1 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/awin-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/awin-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class=" text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Awin Design System</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">    
+                                    Scalable, accessible design language for a global B2B SaaS platform.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
+                            <!-- Card 2 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/upskill-design-system.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/upskill-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Upskill Design System</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                        Multi-themed, tokenised component library built for consistency at scale.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
 
+                            <!-- Card 3 -->
+                            <article class="project-card overflow-hidden flex flex-col w-full">
+                                <a href="/projects/data-visualization-guide.html" class="flex flex-col flex-1 group" aria-label="Brand Identity Refresh — view case study">
+                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                    <img src="/images/data-viz-card-thumbnail.png" alt="" class="w-32">
+                                    </figure>
+                                    <div class="flex flex-col flex-1">
+                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Data Visualization Guide</h3>
+                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                        A unified guide for clarity, consistency, and accessibility across teams.
+                                    </p>
+                                    </div>
+                                </a>
+                            </article>
+
+                        </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <!-- Footer -->
