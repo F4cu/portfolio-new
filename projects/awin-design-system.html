@@ -167,8 +167,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>The Challenge</h2>
-                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 25,000 clients worldwide across multiple plans, feature tiers, and seven languages. As the product grew, its UI became increasingly fragmented—components were inconsistently implemented, accessibility standards were not met, and the existing visual language struggled to scale across complex dashboards, reports, and configuration-heavy interfaces.</p>
-                                <p>The challenge was to create and introduce a new design system and design language that could support a wide variety of components, data-dense interfaces, and global use cases—while enabling fast, iterative delivery across distributed teams.</p>
+                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 30,000 enterprise clients worldwide. As the product grew, its UI became increasingly fragmented — components were inconsistently implemented, accessibility standards were not met, and the existing visual language struggled to scale across complex dashboards, reports, and data-heavy interfaces.</p>
+                                <p>In practice, the team had a Figma library and CSS standards, but components still drifted from the source with every implementation. Maintaining the platform, let alone rebranding it, meant updating hundreds of components individually instead of changing a single token.</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
@@ -176,9 +176,9 @@
                                 <h2>Objectives</h2>
                                 <ul class="list-disc pl-16 mb-4">
                                     <li>Improve accessibility and readability by addressing color contrast and typography issues across the UI</li>
-                                    <li>Increase component reusability and consistency across dashboards, reports, and navigation patterns</li>
-                                    <li>Introduce a semantic token system to support responsive behavior and device-specific variants</li>
-                                    <li>Establish a scalable design system architecture with clear standards that maintain quality as the product grows</li>
+                                    <li>Give engineers a reliable source of truth, so components weren't being rebuilt from scratch or diverging across features</li>
+                                    <li>Introduce a semantic token system so that platform-wide changes could be made in one place and propagate consistently across the entire product</li>
+                                    <li>Set a shared quality bar across design, engineering, and branding — one that could hold as the team and product scaled</li>
                                 </ul>
                             </div>
                         </div>
@@ -204,9 +204,9 @@
                                 <p>Key foundation decisions included:</p>
                                 <ul class="list-disc pl-16 mb-4">
                                     <li>Introducing a <strong>open-source product typeface</strong> optimised for UI and multilingual support — eliminating licensing costs, reducing load times, and improving legibility</li>
-                                    <li>Rebuilding the color system using <strong>perceptually uniform color models</strong> to achieve WCAG compliance and support data visualization</li>
+                                    <li>Rebuilding the color system using <strong>perceptually uniform color models</strong> to achieve WCAG AA compliance and support data visualization</li>
                                     <li>Defining an <strong>8pt-based spacing system with semantic spacing roles</strong> to support multiple density levels</li>
-                                    <li>Establishing a <strong>token taxonomy</strong> (primitive, semantic, component) to enable scalable theming and responsive variants</li>
+                                    <li>Establishing a <strong>3 tier token taxonomy</strong> to enable scalable theming and responsive variants</li>
                                 </ul>
 
                                 <p>These foundations were validated through dashboard and reporting prototypes, ensuring the system worked in real, complex interfaces—not just isolated components.</p>
@@ -338,7 +338,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="col-span-12 md:col-span-8">
                                 <h2>Impact</h2>
-                                <p>The Awin Design System established a shared language between design and engineering, reducing licensing overhead and enabling faster, more consistent collaboration across distributed teams. Built on scalable UI patterns, a token-based architecture, and open-source typography, accessibility was embedded at the core of the system — improving cross-device legibility across a complex, data-driven B2B platform. The result is a future-proof foundation built not just for components, but for long-term coherence as the product continues to grow.</p>
+                                <p>The Awin Design System raised the accessibility baseline across a platform serving 30,000 clients in seven languages, and established the single source of truth that had been missing — so future changes to the product or brand could be made at the token level rather than component by component. By moving to open-source typography, it also reduced licensing overhead and improved cross-device legibility across complex, data-heavy interfaces. The result is a shared language between design and engineering, built not just for components, but for long-term coherence as the product continues to grow.</p>
                             </div>
                             <div class="col-span-4">
                             </div>
