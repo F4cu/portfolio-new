@@ -26,7 +26,7 @@ body {
   }
 
   h1 {
-    @apply font-condensed text-4xl md:text-5xl mb-4;
+    @apply font-condensed tracking-tighter text-4xl md:text-6xl mb-4;
   }
 
   h2 {
