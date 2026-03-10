@@ -43,7 +43,7 @@
                 <div class="flex items-center justify-between h-full">
                     <!-- Logo -->
                     <a href="/index.html"
-                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-200"
+                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-400"
                         aria-label="Facundo Rosales - Portfolio">
                         <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -229,6 +229,10 @@
                                     structure models, including more complex taxonomies with role-based layers. After
                                     testing different outputs across use cases —such as container layering and CTA
                                     differentiation— I adopted a streamlined structure:</p>
+
+                                <p><code
+                                    class="bg-neutral-300 dark:bg-neutral-800 text-lg font-semibold text-neutral-400"><span class="text-red-500">category</span> | <span class="text-teal-500">property</span> | <span class="text-purple-500">variant</span> | <span class="text-yellow-500">state</span></code>
+                                </p>
                             </div>
                             <div class="md:col-span-4">
                                 <figure class="w-full aspect-[4/3] bg-neutral-300 dark:bg-neutral-800 p-4 mb-4">
@@ -249,10 +253,6 @@
                             </div>
 
                             <div class="md:col-span-8">
-                                <p><code
-                                        class="bg-neutral-300 dark:bg-neutral-800 text-lg font-semibold text-neutral-400"><span class="text-red-500">category</span> | <span class="text-teal-500">property</span> | <span class="text-purple-500">variant</span> | <span class="text-yellow-500">state</span></code>
-                                </p>
-
                                 <figure class="w-full aspect-auto mb-4">
                                     <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
                                         <img data-src-light="/images/upskill-token-usage-light.png"
@@ -264,7 +264,21 @@
                                         Example token usage
                                     </figcaption>
                                 </figure>
-
+                            </div>
+                            <div class="md:col-span-4">
+                                <figure class="w-full aspect-[4/3] mb-4 group">
+                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
+                                        <img data-src-light="/images/upskill-theme-variables.png"
+                                            data-src-dark="/images/upskill-theme-variables.png"
+                                            alt="Token implementation in Figma"
+                                            class="theme-image lightbox-trigger w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
+                                    </div>
+                                    <figcaption>
+                                        Token implementation in Figma
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="md:col-span-8">
                                 <h4>Key decisions:</h4>
                                 <ul class="list-disc pl-16 mb-4">
                                     <li>Removed "role" layer to eliminate duplication and reduce token name length</li>

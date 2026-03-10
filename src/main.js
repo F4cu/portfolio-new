@@ -113,6 +113,48 @@ function updateThemeImages() {
   });
 }
 
+// --- Lightbox ---
+const lightboxHTML = `
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-neutral-800/80 backdrop-blur-sm p-4" >
+    <div class="relative max-w-5xl w-full" id="lightbox-inner">
+      <button id="lightbox-close" class="absolute -top-10 right-0 text-white text-base hover:text-neutral-300 transition-colors">✕ Close</button>
+      <img id="lightbox-img" src="" alt="" class="w-full h-auto max-h-[85vh] object-contain rounded" />
+      <p id="lightbox-caption" class="text-white/60 text-base text-center mt-3"></p>
+    </div>
+  </div>`;
+document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
+  lightboxCaption.textContent = alt;
+  lightbox.classList.remove('hidden');
+  lightbox.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.add('hidden');
+  lightbox.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+// Make selected images clickable
+document.querySelectorAll('.lightbox-trigger').forEach(img => {
+  img.addEventListener('click', () => {
+    if (window.innerWidth < 768) return;
+    openLightbox(img.src, img.alt);
+  });
+});
+
 // Run on load
 document.addEventListener('DOMContentLoaded', updateThemeImages);
 
