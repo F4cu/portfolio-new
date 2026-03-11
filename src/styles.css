@@ -73,7 +73,7 @@ body {
 @layer components {
   .tag {
     @apply
-        border px-2 py-1 text-sm rounded-md leading-5
+        border px-2 text-sm tracking-wide text-nowrap rounded-lg leading-7
         border-neutral-400 dark:border-neutral-500
         text-neutral-600 dark:text-neutral-400;
   }
