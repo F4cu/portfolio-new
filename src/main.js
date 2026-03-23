@@ -155,6 +155,14 @@ document.querySelectorAll('.lightbox-trigger').forEach(img => {
   });
 });
 
+// JTBD table expand link
+document.getElementById('jtbd-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    const table = document.getElementById('jtbd-table');
+    const isHidden = table.classList.toggle('hidden');
+    this.textContent = isHidden ? 'View job statement' : 'Hide job statement';
+});
+
 // Run on load
 document.addEventListener('DOMContentLoaded', updateThemeImages);
 
