@@ -156,7 +156,7 @@ document.querySelectorAll('.lightbox-trigger').forEach(img => {
 });
 
 // JTBD table expand link
-document.getElementById('jtbd-link').addEventListener('click', function (e) {
+document.getElementById('jtbd-link')?.addEventListener('click', function (e) {
     e.preventDefault();
     const table = document.getElementById('jtbd-table');
     const isHidden = table.classList.toggle('hidden');
