@@ -167,18 +167,18 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>The Challenge</h2>
-                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 30,000 enterprise clients worldwide. As the product grew, its UI became increasingly fragmented — components were inconsistently implemented, accessibility standards were not met, and the existing visual language struggled to scale across complex dashboards, reports, and data-heavy interfaces.</p>
+                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 30,000 enterprise clients worldwide. As the product grew, its UI began to break at scale — components were inconsistently implemented, accessibility standards were not met, and the existing visual language failed to scale across complex dashboards, reports, and data-heavy interfaces.</p>
                                 <p>In practice, the team had a Figma library and CSS standards, but components still drifted from the source with every implementation. Maintaining the platform, let alone rebranding it, meant updating hundreds of components individually instead of changing a single token.</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
                             <div class="md:col-span-8">
                                 <h2>Objectives</h2>
-                                <ul class="list-disc pl-16 mb-4">
-                                    <li>Improve accessibility and readability by addressing color contrast and typography issues across the UI</li>
-                                    <li>Give engineers a reliable source of truth, so components weren't being rebuilt from scratch or diverging across features</li>
-                                    <li>Introduce a semantic token system so that platform-wide changes could be made in one place and propagate consistently across the entire product</li>
-                                    <li>Set a shared quality bar across design, engineering, and branding — one that could hold as the team and product scaled</li>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li>Improve accessibility and readability</li>
+                                    <li>Provide a reliable source of truth for engineers</li>
+                                    <li>Enable platform-wide changes through a semantic token system</li>
+                                    <li>Establish a shared quality bar across design, engineering, and branding</li>
                                 </ul>
                             </div>
                         </div>
@@ -197,16 +197,17 @@
 
                                 <h3>2. Design System Scoping & Prioritization</h3>
                                 <p>To define the system's scope, we mapped all existing UI components across the platform using a <strong>component-to-page matrix</strong>. This revealed which components appeared most frequently, where inconsistencies existed, and which elements would deliver the highest impact if standardized.</p>
-                                <p>In parallel, I introduced a <strong>prioritization framework</strong> to select pilot areas based on reuse potential, complexity, traffic, and implementation feasibility. High-traffic dashboards and navigation patterns became the initial proving ground for the new system.</p>
+                                <p>In parallel, I introduced a <strong>prioritization framework</strong> to select pilot pages based on component coverage, technical independence and complexity. Highly complex dashboards and reports were intentionally excluded from the pilot due to scope risk, and instead explored through high-fidelity mockups to align stakeholders on the system vision. The pilot focused on a simpler page with high component coverage, allowing the system to be validated under real conditions while remaining feasible to implement.</p>
 
                                 <h3>3. Foundation Research & System Definition</h3>
                                 <p>I led foundational research across typography, color, spacing, and layout—combining competitor audits, accessibility standards, and real UI testing.</p>
                                 <p>Key foundation decisions included:</p>
-                                <ul class="list-disc pl-16 mb-4">
-                                    <li>Introducing a <strong>open-source product typeface</strong> optimised for UI and multilingual support — eliminating licensing costs, reducing load times, and improving legibility</li>
-                                    <li>Rebuilding the color system using <strong>perceptually uniform color models</strong> to achieve WCAG AA compliance and support data visualization</li>
-                                    <li>Defining an <strong>8pt-based spacing system with semantic spacing roles</strong> to support multiple density levels</li>
-                                    <li>Establishing a <strong>3 tier token taxonomy</strong> to enable scalable theming and responsive variants</li>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li>Introduce a scalable UI pattern structure (Atomic Design principles)</li>
+                                    <li>Establish a 3-tier token taxonomy</li>
+                                    <li>Rebuild the color system (WCAG AA compliance, data visualisation support)</li>
+                                    <li>Define an 8pt spacing system (semantic roles, multiple density levels)</li>
+                                    <li>Introduce an open-source product typeface (reduce cost, improve performance and legibility)</li>
                                 </ul>
 
                                 <p>These foundations were validated through dashboard and reporting prototypes, ensuring the system worked in real, complex interfaces—not just isolated components.</p>
@@ -293,7 +294,7 @@
                                 <p>The result was a new component-based design system built for scale, accessibility, and long-term maintainability. It provides a shared language across design and engineering, reduces duplication, and enables consistent experiences across the Awin platform.</p>
                                 
                                 <h4>Key outcomes:</h4>
-                                <ul class="list-disc pl-16 mb-4">
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
                                     <li>Fully accessible color palettes and typography optimized for data-heavy UIs</li>
                                     <li>A semantic token system supporting responsive and device-specific variants</li>
                                     <li>Standardized components with clear interaction states, validation, and usage rules</li>
@@ -303,8 +304,8 @@
                             </div>
                             <div class="md:col-span-8">
                                 <h3>Design Guidelines & Specifications</h3>
-                                <p>The design system guidelines are structured using the <strong>Atomic Design principle</strong>, organizing the system into <strong>Foundation, Atoms, Molecules, and Organisms</strong>. This layered structure establishes clear levels of abstraction, making components easier to scale, maintain, and evolve as product needs grow.</p>
-                                <p>The guidelines go beyond component anatomy and basic usage, covering<strong> interaction behavior, responsive rules, spacing in context, accessibility requirements, and content standards</strong>. Rather than documenting isolated UI elements, the system defines components as part of a cohesive whole—ensuring consistency, usability, and predictability across complex workflows.</p>
+                                <p>The design system guidelines are structured using the <strong>Atomic Design principle</strong>, organizing the system into <strong>Foundation, Atoms, Molecules, and Organisms</strong>. This layered structure establishes clear levels of abstraction, creating a scalable model that supports maintenance and evolution as product complexity grows.</p>
+                                <p>The guidelines go beyond component anatomy and basic usage, covering<strong> interaction behavior, responsive rules, spacing in context, accessibility requirements, and content standards</strong>. Rather than documenting isolated UI elements, the system defines components as part of a cohesive whole—ensuring consistency, usability, and predictable behaviour across complex workflows.</p>
                                 <p>See documentation examples: 
                                     <a class="link" 
                                     target="_blank" href="/images/awin-documentation-typography.pdf">Typography</a> | 
@@ -338,7 +339,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
                             <div class="col-span-12 md:col-span-8">
                                 <h2>Impact</h2>
-                                <p>The Awin Design System raised the accessibility baseline across a platform serving 30,000 clients in seven languages, and established the single source of truth that had been missing — so future changes to the product or brand could be made at the token level rather than component by component. By moving to open-source typography, it also reduced licensing overhead and improved cross-device legibility across complex, data-heavy interfaces. The result is a shared language between design and engineering, built not just for components, but for long-term coherence as the product continues to grow.</p>
+                                <p>The Awin Design System raised the accessibility baseline, and established the single source of truth that had been missing — so future changes to the product or brand could be made at the token level rather than component by component. By moving to open-source typography, it also reduced licensing overhead and improved cross-device legibility across complex, data-heavy interfaces. The result is a shared language between design and engineering, aligned to a single source of truth, reducing handover friction and narrowing the gap between design intent and implementation as the product continues to scale.</p>
                             </div>
                         </div>
                     </div>
