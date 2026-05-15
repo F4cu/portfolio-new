@@ -176,7 +176,7 @@
                                 <span class="eyebrow">Challenge</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>No shared language for data</h2>
+                                <h2>Accessibility lost in translation</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p class="mb-2">Teams struggled to create accessible and consistent visualizations. WCAG guidelines—while essential—were often too technical and hard to apply, leading to uneven accessibility practices. Misunderstandings around color usage created tension between brand, clarity, and accessibility.</p>
@@ -194,22 +194,15 @@
                                 <span class="eyebrow">Approach</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>From research to a unified framework</h2>
+                                <h2>From user research to an accessible shared language</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <h3>1. User Research</h3>
-                                <p>We started by understanding the people behind the visualizations. <strong>Stakeholder mapping</strong> revealed four groups: Brand/Marketing, Product Design, Front-End Development, and Data Analysis. Using an influence x relevance matrix, we focused on the three most critical: Product Designer, Front-End Developer, and Data Analyst.</p>
-                                <p>A <strong>cross-functional survey</strong> surfaced common frustrations: inconsistent chart standards, unclear accessibility requirements, and duplicated work during handoff. We also learned that each role defined “readability” differently — designers through aesthetics, developers through structure, and analysts through comprehension.</p>
-                                <p>From these insights, we created <strong>three personas</strong>:</p>
-                                <ul class="list-disc pl-16 mb-4">
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Maja Wallner</span>, a Product Designer balancing brand and accessibility</li>
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Stephan Ackner</span>, a Front-End Developer focused on technical scalability</li>
-                                    <li><span class="text-neutral-900 dark:text-neutral-200">Lukas Schneider</span>, a Data Analyst translating complex insights for non-technical audiences.</li>
-                                </ul>
-                                <p>These personas helped shape the guide's tone and ensured all disciplines were equally represented.</p>
+                                <p>Stakeholder mapping (influence × relevance) narrowed four groups to three: Product Designer, Front-End Developer, Data Analyst. A cross-functional survey uncovered how each role uses data visualizations and what matters most to them — from color and hierarchy to implementation and labeling clarity.</p>
+                                <p>This reframed the guide from "what we know" to "what each role needs to build accessible data viz." Personas became design constraints, shaping a dedicated section per role: color recipes for designers, scalable code patterns and ARIA roles for engineers, and clearer labeling for analysts.</p>
 
                                 <h3>2. Information Architecture</h3>
-                                <p>A closed card-sorting exercise across roles clarified how content should be grouped and navigated. Insights from the similarity matrix led to a four-pillar structure — Basics & Glossary, Color Palettes, Data Visualizations, and Accessibility — aligning content with distinct user priorities. Designers gravitated toward foundations and color systems, developers toward implementation patterns, while analysts moved between core concepts and applied visualizations. To ensure cross-team consistency, the system was supported by documented design tokens, reusable chart components, and scalable implementation patterns.</p>
+                                <p>A closed card sort across roles revealed that content naturally clustered into four groups — and that roles converged on foundations but diverged on application. Designers gravitated to color systems, developers to implementation patterns, analysts moved between concepts and applied charts. This drove a four-pillar structure — Basics & Glossary, Color Palettes, Data Visualizations, and Accessibility — where shared foundations sit upfront and role-specific depth lives downstream.</p>
 
                                 <h3>3. Accessibility first design</h3>
                                 <p><strong>Screen reader testing</strong> using Silktide Simulator revealed keyboard navigation breakdowns. A skip link, placed as the first focusable element, allows users to bypass the main navigation. The accordion component was refactored so each trigger announces its label and state via <code>aria-expanded</code>, while an <code>Escape</code> handler prevents keyboard traps within nested panels.</p>
@@ -292,7 +285,7 @@
                                 <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Accessibility beyond color contrast</h2>
+                                <h2>Beyond color contrast</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p>The guide outlined concrete principles for accessible data visualization:</p>
@@ -318,7 +311,7 @@
                                 <span class="eyebrow">Impact</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>A single source of truth for data visuals</h2>
+                                <h2>Adopted across disciplines</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p>The Data Visualization Guide became a single source of truth for how the organization approaches data visuals. It improved cross-team communication, reduced redundant work, and set clear accessibility expectations from the start of every project.</p>
