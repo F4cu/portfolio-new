@@ -59,7 +59,7 @@ body {
   }
 
   figcaption {
-    @apply  text-neutral-600 dark:text-neutral-500 pt-2;
+    @apply  text-neutral-600 dark:text-neutral-500 pt-3;
   }
 
   code {
@@ -88,6 +88,14 @@ body {
     @apply
           underline decoration-solid underline-offset-4 hover:no-underline;
   }
+  .eyebrow {
+    @apply
+          uppercase tracking-wide text-sm text-neutral-500 dark:text-neutral-400 mt-4 mb-2 font-bold;
+  }
+  .speech-bubble {
+    @apply
+          bg-zinc-800 text-zinc-200 text-base rounded-2xl rounded-tl-sm px-4 py-3 inline-block mb-4;
+  }
 }
 
 #theme-toggle svg {
@@ -96,6 +104,27 @@ body {
 
 #theme-toggle svg.rotated {
   transform: rotate(180deg);
+}
+
+[data-toggle] .toggle-caret {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+  margin-left: 0.2em;
+}
+
+[data-toggle].open .toggle-caret {
+  transform: rotate(180deg);
+}
+
+.collapsible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.collapsible.open {
+  max-height: 2000px;
 }
 
 /* svg {

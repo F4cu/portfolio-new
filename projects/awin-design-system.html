@@ -5,30 +5,30 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-86NLVPLR50"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-86NLVPLR50');
+        gtag('config', 'G-86NLVPLR50');
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-    (function() {
-        try {
-        const html = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || savedTheme === 'light') {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            html.setAttribute('data-theme', 'dark');
-        } else {
-            html.setAttribute('data-theme', 'light');
-        }
-        } catch(e) {}
-    })();
+        (function () {
+            try {
+                const html = document.documentElement;
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark' || savedTheme === 'light') {
+                    html.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            } catch (e) { }
+        })();
     </script>
-    
+
     <title>Facundo Rosales - Awin Design System</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,122 +39,131 @@
 <body>
     <div id="smooth-wrapper">
         <header role="banner" class="sticky top-0 z-50 h-16 md:h-32 bg-neutral-200 dark:bg-neutral-900">
-                <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
-                    <div class="flex items-center justify-between h-full">
-                        <!-- Logo -->
-                        <a href="/index.html" class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-400"
-                            aria-label="Facundo Rosales - Portfolio">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
-                                    fill="currentColor" />
-                            </svg>
-                            <div class="block md:hidden items-center">
-                                <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
-                            </div>
-                        </a>
-
-                        <!-- Desktop Navigation -->
-                        <div class="flex flex-row">
-                            <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
-                                <li>
-                                    <a href="/index.html#projects"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        Projects
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/index.html#about"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        About me
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/index.html#contact"
-                                        class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                            <button id="theme-toggle"
-                                class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                                aria-label="Toggle dark mode" title="Toggle dark mode">
-                                <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <!-- light mode) -->
-                                    <path class="dark:hidden" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z"/>
-                                    <!-- dark mode) -->
-                                    <path class="hidden dark:block"
-                                        d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
-                                </svg>
-                            </button>
+            <nav class="mx-auto h-full px-4 md:px-16" role="navigation" aria-label="Hauptnavigation">
+                <div class="flex items-center justify-between h-full">
+                    <!-- Logo -->
+                    <a href="/index.html"
+                        class="logo flex items-center gap-4 py-2 pr-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-400"
+                        aria-label="Facundo Rosales - Portfolio">
+                        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M36.7998 16H16V19.2002H24V24H16V32H0V8H16V0H36.7998V16ZM40 32H27.2002L24 24H36.7998L40 32Z"
+                                fill="currentColor" />
+                        </svg>
+                        <div class="block md:hidden items-center">
+                            <p class="m-0 text-neutral-900 dark:text-neutral-200">Facundo Rosales</p>
                         </div>
+                    </a>
 
-                        <!-- Mobile Menu Button -->
-                        <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden" aria-label="Menü öffnen"
-                        aria-expanded="false">
-                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="round">
+                    <!-- Desktop Navigation -->
+                    <div class="flex flex-row">
+                        <ul class="nav-items hidden md:flex gap-2 list-none m-0 p-0">
+                            <li>
+                                <a href="/index.html#projects"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Projects
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#about"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    About me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index.html#contact"
+                                    class="inline-flex items-center px-3 py-2 no-underline text-neutral-800 dark:text-neutral-300 hover:underline hover:decoration-2 hover:underline-offset-4">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                        <button id="theme-toggle"
+                            class="hidden md:block ml-4 p-2 bg-transparent hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                            aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <svg class="w-6 h-6 transition-transform" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- light mode) -->
+                                <path class="dark:hidden"
+                                    d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                                <!-- dark mode) -->
+                                <path class="hidden dark:block"
+                                    d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3V21Z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn text-neutral-900 dark:text-neutral-100 block md:hidden"
+                        aria-label="Menü öffnen" aria-expanded="false">
+                        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"
+                            stroke-linejoin="round">
                             <line class="line top" x1="3" y1="6" x2="21" y2="6"></line>
                             <line class="line middle" x1="3" y1="12" x2="21" y2="12"></line>
                             <line class="line bottom" x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
-                        </button>
-                    </div>
-                </nav>
-                <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
-                    <div class="flex flex-col justify-center items-center h-full">
-                        <nav class="w-full">
-                            <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#projects"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        Projects
-                                    </a>
-                                </li>
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#about"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        About me
-                                    </a>
-                                </li>
-                                <li class="mobile-nav-item opacity-0">
-                                    <a href="/index.html#contact"
-                                        class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    </button>
                 </div>
+            </nav>
+            <div id="mobile-menu"
+                class="absolute top-full left-0 right-0 bg-neutral-200 dark:bg-neutral-900 z-[40] hidden">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <nav class="w-full">
+                        <ul class="mobile-nav-items flex flex-col list-none m-0 p-0">
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#projects"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#about"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    About me
+                                </a>
+                            </li>
+                            <li class="mobile-nav-item opacity-0">
+                                <a href="/index.html#contact"
+                                    class="block p-4 border-neutral-600 border-b text-4xl font-condensed text-neutral-800 dark:text-neutral-300 hover:text-neutral-600 dark:hover:text-neutral-100 transition-colors no-underline">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </header>
         <div id="smooth-content" class="bg-neutral-200 dark:bg-neutral-900">
             <main id="site-main">
 
                 <!-- Intro -->
                 <section id="project-intro">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 md:gap-y-0 md:gap-x-16 mb-8">
-                            <div class="fade-in col-span-12 md:col-span-8">
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-0 md:gap-x-16 mb-8">
+                            <div class="fade-in col-span-12">
                                 <h1>Awin Design System</h1>
                             </div>
-                            <div class="col-span-12 md:col-span-8">
-                                <p class="fade-in text-xl">Building a scalable, token-based design system for a global B2B SaaS platform, aligning design and engineering while supporting complex, data-heavy interfaces.</p>
+                            <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
+                                <p class="fade-in text-xl">Building a scalable, token-based design system for a global
+                                    B2B SaaS platform, aligning design and engineering while supporting complex,
+                                    data-heavy interfaces.</p>
                             </div>
-                            <div class="col-span-12 md:col-span-4">
-                                <h4>Role</h4>
-                                <p>Senior UX/UI Designer</p>
+                            <div class="fade-in col-span-12 md:col-span-4 lg:col-span-6 flex flex-row gap-8">
+                                <div>
+                                    <span class="eyebrow">Role</span>
+                                    <p><strong>Senior UX/UI Designer (IC)</strong></p>
+                                </div>
+                                <div>
+                                    <span class="eyebrow">Main Goal</span>
+                                    <p><strong>New scalable foundation</strong></p>
+                                </div>
                             </div>
-
+                        
                             <!-- Project hero -->
                             <div class="col-span-12 mt-4">
                                 <figure class="fade-in w-full aspect-auto bg-neutral-300 dark:bg-neutral-800 mb-4">
-                                    <img 
-                                        data-src-light="/images/awin-project-hero.png"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
+                                    <img data-src-light="/images/awin-project-hero.png"
+                                        class="theme-image w-full h-full object-contain">
                                 </figure>
                             </div>
                         </div>
@@ -163,23 +172,20 @@
 
                 <!-- Challenge -->
                 <section id="challenge">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                            <div class="md:col-span-8">
-                                <h2>The Challenge</h2>
-                                <p class="mb-2">Awin is a global B2B SaaS platform for affiliate marketing, serving over 30,000 enterprise clients worldwide. As the product grew, its UI began to break at scale — components were inconsistently implemented, accessibility standards were not met, and the existing visual language failed to scale across complex dashboards, reports, and data-heavy interfaces.</p>
-                                <p>In practice, the team had a Figma library and CSS standards, but components still drifted from the source with every implementation. Maintaining the platform, let alone rebranding it, meant updating hundreds of components individually instead of changing a single token.</p>
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 gap-y-0 py-6">
+                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
+                                <span
+                                    class="eyebrow">
+                                    Challenge</span>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-2 md:pb-4">
-                            <div class="md:col-span-8">
-                                <h2>Objectives</h2>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Improve accessibility and readability</li>
-                                    <li>Provide a reliable source of truth for engineers</li>
-                                    <li>Enable platform-wide changes through a semantic token system</li>
-                                    <li>Establish a shared quality bar across design, engineering, and branding</li>
-                                </ul>
+                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
+                                <h2>An increasingly fragmented platform</h2>
+
+                            </div>
+                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                                <p class="mb-2">Awin's growth from 2 to 10+ dev teams triggered a UI breaking point. Without a unified system, squads operated in silos, leading to exponential technical debt. Design shifted from "reusable" to "repeated," with teams constantly recreating components from scratch.</p>
+                                <p>The platform hosted five different date-pickers, each with unique behaviors and accessibility gaps. Maintenance became a "consistency tax", rebranding required manual fixes across hundreds of instances instead of a simple token swap.</p>
                             </div>
                         </div>
                     </div>
@@ -187,98 +193,97 @@
 
                 <!-- Approach -->
                 <section id="approach">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="md:col-span-8">
-                                <h2 class="mb-6">Approach</h2>
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6 ">
+                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
+                                <span
+                                    class="eyebrow">
+                                    Aproach</span>
+                            </div>
+                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
+                                <h2>From UI audit to scalable design foundations</h2>
+                            </div>
 
-                                <h3>1. Interface Audit & Usability Baseline</h3>
-                                <p>I began with a comprehensive audit of key dashboards and reports, combining <strong>behavioral analytics</strong> (Amplitude and Hotjar), <strong>heuristic evaluation, and </strong> <strong> accessibility and responsiveness audits using Lighthouse.</strong> This allowed us to identify high-impact usability issues, component inconsistencies, accessibility gaps, and patterns of user friction in real-world usage rather than relying solely on visual critique.</p>
+                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                                <h3>1. Comprenhensive Interface Audit</h3>
+                                <p>I began with a comprehensive audit of key dashboards and reports, cross-referencing behavioral analytics (Amplitude and Hotjar) with heuristic evaluations and Lighthouse audits. This data-driven approach moved the conversation beyond visual critique, allowing us to pinpoint high-impact usability gaps and user friction where it mattered most in real-world usage.</p>
 
-                                <h3>2. Design System Scoping & Prioritization</h3>
-                                <p>To define the system's scope, I mapped all existing UI components across the platform using a <strong>component-to-page matrix</strong>. This revealed which components appeared most frequently, where inconsistencies existed, and which elements would deliver the highest impact if standardized.</p>
-                                <p>In parallel, I introduced a <strong>prioritization framework</strong> to select pilot pages based on component coverage, technical independence and complexity. Highly complex dashboards and reports were intentionally excluded from the pilot due to scope risk, and instead explored through high-fidelity mockups to align stakeholders on the system vision. The pilot focused on a simpler page with high component coverage, allowing the system to be validated under real conditions while remaining feasible to implement.</p>
+                                <h3>2. Strategic Scoping and Phased Rollout</h3>
+                                <p>To define the scope, I mapped the platform via a component-to-page matrix to identify high-frequency elements and critical inconsistencies. This data informed a phased release strategy, where I used a prioritization framework to select an initial pilot with high component coverage but low technical risk. By excluding complex dashboards from the first build and instead using high-fidelity mockups to align stakeholders on the vision, I was able to validate the system in a controlled environment while maintaining a predictable, scalable rollout.</p>
 
-                                <h3>3. Foundation Research & System Definition</h3>
-                                <p>I led foundational research across typography, color, spacing, and layout—combining competitor audits, accessibility standards, and real UI testing.</p>
-                                <p>Key foundation decisions included:</p>
+                                <h3>3. Foundation Research</h3>
+                                <p>I conducted a deep-dive into competitor benchmarks and industry best practices to reengineer the component architecture for long-term scalability. I developed a system optimized for the unique constraints of data-heavy interfaces. This process involved stress-testing color palettes and layouts against real-world density requirements, ensuring that the new foundations provided the performance and visual clarity necessary for complex user workflows.</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Introduce a scalable UI pattern structure (Atomic Design principles)</li>
-                                    <li>Establish a 3-tier token taxonomy</li>
-                                    <li>Rebuild the color system (WCAG AA compliance, data visualisation support)</li>
-                                    <li>Define an 8pt spacing system (semantic roles, multiple density levels)</li>
-                                    <li>Introduce an open-source product typeface (reduce cost, improve performance and legibility)</li>
+                                    <li>Atomic Framework: A scalable UI pattern structure based on Atomic Design principles.</li>
+                                    <li>Rebuilt Color System: Full WCAG AA compliance with dedicated support for data visualization.</li>
+                                    <li>8pt Spacing System: Semantic roles featuring multiple density levels for complex layouts.</li>
+                                    <li>Open-Source Typography: Optimized for legibility and performance while eliminating licensing overhead.</li>
                                 </ul>
-
-                                <p>These foundations were validated through dashboard and reporting prototypes, ensuring the system worked in real, complex interfaces—not just isolated components.</p>
                             </div>
-                            <div class="md:col-span-4">
-                                <figure class="w-full aspect-auto mb-4 group">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/awin-research-screenshots.png"
+                        </div>
+                        <!-- Aproach bentobox -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <!-- Left column -->
+                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
+                                <figure
+                                    class="p-4 min-h-[220px] flex flex-col h-full justify-center items-center bg-neutral-300 dark:bg-neutral-800">
+                                    <img data-src-light="/images/awin-spacing-system-light.png"
+                                        data-src-dark="/images/awin-spacing-system-dark.png" alt="Awin spacing system"
+                                        class="theme-image w-full object-contain">
+
+                                    <figcaption class="text-center">
+                                        Semantic spacing system
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <!-- Right column -->
+                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
+
+                                <!-- Col split -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    <figure
+                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                        <img data-src-light="/images/awin-research-screenshots.png"
                                             alt="Behavioural analytics"
-                                            class="theme-image lightbox-trigger w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]"
-                                        >
-                                    </div>
-                                    <figcaption>
-                                        Behavioural analytics
-                                    </figcaption>
-                                </figure>
-                                <figure class="w-full aspect-auto mb-4 group">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                        <img 
-                                            data-src-light="/images/awin-pilot-matrix.png"
-                                            alt="Pilot page prioritization matrix"
-                                            class="theme-image lightbox-trigger w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]"
-                                        >
-                                    </div>
-                                    <figcaption>
-                                        Pilot page prioritization matrix
-                                    </figcaption>
-                                </figure>
-                            </div>
+                                            class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain flex-1">
 
-                            <div class="md:col-span-8">
-                                <figure class="w-full aspect-auto mb-4">
-                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                    data-src-light="/images/awin-token-taxonomy-light.png"
-                                    data-src-dark="/images/awin-token-taxonomy-dark.png"
-                                    alt="Awin token taxonomy"
-                                    class="theme-image w-full h-full object-contain"
-                                    >
-                                </div>
-                                </figure>
+                                        <figcaption class="text-center">
+                                            Behavioural analytics
+                                        </figcaption>
+                                    </figure>
 
-                                <figure class="w-full aspect-auto mb-4">
-                                <div class="p-6 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                    data-src-light="/images/awin-spacing-system-light.png"
-                                    data-src-dark="/images/awin-spacing-system-dark.png"
-                                    alt="Awin spacing system"
-                                    class="theme-image w-full h-full object-contain"
-                                    >
+                                    <figure
+                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                        <img data-src-light="/images/awin-documentation-example2.png"
+                                            alt="Awin documentation example"
+                                            class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain">
+
+                                        <figcaption class="text-center">
+                                            Example internal documentation
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <figcaption>
-                                        Spacing system
-                                </figcaption>
-                                </figure>
-                            </div>
-                            <div class="md:col-span-4">
-                                <figure class="w-full aspect-[4/3] mb-4">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                        data-src-light="/images/awin-token-tiers-light.png"
-                                        data-src-dark="/images/awin-token-tiers-dark.png"
-                                        alt="Awin token tiers"
-                                        class="theme-image w-full h-full object-contain"
-                                    >
-                                    </div>
-                                    <figcaption>
-                                        3 token tiers
+                                <figure
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+
+                                    <img data-src-light="/images/awin-pilot-matrix.png"
+                                        alt="Pilot page prioritization matrix"
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
+                                    <figcaption class="text-center">
+                                        Prioritization Matrix
                                     </figcaption>
                                 </figure>
+                                <figure
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                    <img data-src-light="/images/awin-token-taxonomy-light.png"
+                                        data-src-dark="/images/awin-token-taxonomy-dark.png" alt="Awin token taxonomy"
+                                        class="theme-image w-full object-contain">
+                                    <figcaption class="text-center">
+                                        Token taxonomy
+                                    </figcaption>
+                                </figure>
+
                             </div>
                         </div>
                     </div>
@@ -286,48 +291,32 @@
 
                 <!-- Solution -->
                 <section id="solution">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-4 md:py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="md:col-span-8">
-                                <h2 class="mb-6">Solution</h2>
-                                <h3>A Scalable, Accessible Design System</h3>
-                                <p>The result was a new component-based design system built for scale, accessibility, and long-term maintainability. It provides a shared language across design and engineering, reduces duplication, and enables consistent experiences across the Awin platform.</p>
-                                
-                                <h4>Key outcomes:</h4>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Fully accessible color palettes and typography optimized for data-heavy UIs</li>
-                                    <li>A semantic token system supporting responsive and device-specific variants</li>
-                                    <li>Standardized components with clear interaction states, validation, and usage rules</li>
-                                    <li>Improved UI consistency across dashboards, reports, and navigation patterns</li>
-                                    <li>Comprehensive documentation supporting adoption and long-term evolution</li>
-                                </ul>
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 gap-y-0 py-6">
+                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
+                                <span
+                                    class="eyebrow">
+                                    Solution</span>
                             </div>
-                            <div class="md:col-span-8">
-                                <h3>Design Guidelines & Specifications</h3>
-                                <p>The design system guidelines are structured using the <strong>Atomic Design principle</strong>, organizing the system into <strong>Foundation, Atoms, Molecules, and Organisms</strong>. This layered structure establishes clear levels of abstraction, creating a scalable model that supports maintenance and evolution as product complexity grows.</p>
-                                <p>The guidelines go beyond component anatomy and basic usage, covering<strong> interaction behavior, responsive rules, spacing in context, accessibility requirements, and content standards</strong>. Rather than documenting isolated UI elements, the system defines components as part of a cohesive whole—ensuring consistency, usability, and predictable behaviour across complex workflows.</p>
-                                <p>See documentation examples: 
-                                    <a class="link" 
-                                    target="_blank" href="/images/awin-documentation-typography.pdf">Typography</a> | 
-                                    <a class="link" 
-                                    target="_blank" href="/images/awin-documentation-color.pdf">Color</a> | 
-                                    <a class="link" 
-                                    target="_blank" href="/images/awin-documentation-input.pdf">Input</a>
+                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
+                                <h2>What changed</h2>
+                            </div>
+                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                                <h3>Accessible, Token-Based Architecture</h3>
+                                <p>The result was a scalable, token-based design system that elevated the platform to <strong>WCAG AA compliance</strong> by embedding accessibility into its core. By standardizing components and interaction patterns, the system established a common language between design and engineering, significantly reducing duplication across complex, data-heavy interfaces.</p>
+
+                                <h3>Documentation Driving Team Efficiency</h3>
+                                <p>The design system guidelines were structured using Atomic Design principles, organizing components into Foundations, Atoms, Molecules, and Organisms to create reusable, scalable building blocks. Beyond component anatomy, the guidelines also defined interaction behavior, responsive rules, accessibility, spacing, and content standards to simplify hand-off between design and engineering.</p>
+                                <p>See documentation examples:
+                                    <a class="link" target="_blank"
+                                        href="/images/awin-documentation-typography.pdf">Typography</a> |
+                                    <a class="link" target="_blank"
+                                        href="/images/awin-documentation-color.pdf">Color</a> |
+                                    <a class="link" target="_blank"
+                                        href="/images/awin-documentation-input.pdf">Input</a>
                                 </p>
-                            </div>
-                            <div class="md:col-span-4">
-                                <figure class="w-full aspect-auto] mb-4 group">
-                                    <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                        data-src-light="/images/awin-documentation-example2.png"
-                                        alt="Awin documentation example"
-                                        class="theme-image lightbox-trigger w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]"
-                                    >
-                                    </div>
-                                    <figcaption>
-                                        Design specification example
-                                    </figcaption>
-                                </figure>
+                                <h3>Quality through Agile Governance</h3>
+                                <p>I introduced a hybrid governance model where a small central group maintained core foundations, while feature teams contributed localized patterns and extensions. To prevent bloat, new shared components followed a “3 uses” heuristic, requiring adoption across multiple features or teams before entering the core library. This balanced consistency, scalability, and team autonomy.</p>
                             </div>
                         </div>
                     </div>
@@ -335,11 +324,18 @@
 
                 <!-- Impact -->
                 <section id="impact">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 py-6 border-t border-neutral-400 dark:border-neutral-700">
-                            <div class="col-span-12 md:col-span-8">
-                                <h2>Impact</h2>
-                                <p>The Awin Design System raised the accessibility baseline, and established the single source of truth that had been missing — so future changes to the product or brand could be made at the token level rather than component by component. By moving to open-source typography, it also reduced licensing overhead and improved cross-device legibility across complex, data-heavy interfaces. The result is a shared language between design and engineering, aligned to a single source of truth, reducing handover friction and narrowing the gap between design intent and implementation as the product continues to scale.</p>
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 gap-y-0 py-6">
+                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
+                                <span
+                                    class="eyebrow">
+                                    Impact</span>
+                            </div>
+                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
+                                <h2>Beyond the Baseline</h2>
+                            </div>
+                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                                <p>The system transformed the platform into a centralized design API. By abstracting brand logic into tokens, we enabled global-scale updates that can be deployed instantly, rather than component-by-component. Beyond lowering licensing overhead with open-source typography, we prioritized functional legibility to reduce user error in dense data environments. This common language has effectively eliminated the "design-to-code" gap, allowing engineering to focus on core product logic while the system handles the complexities of accessibility, responsiveness, and visual consistency.</p>
                             </div>
                         </div>
                     </div>
@@ -347,111 +343,129 @@
 
                 <!-- Final Designs -->
                 <section id="final-designs">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
-                        <h2>Screens</h2>
-                        <div class="col-span-12 md:col-span-12">
-                            <figure class="w-full aspect-auto mb-8">
-                                <div class="flex flex-col md:flex-row items-center justify-center gap-6 p-4 bg-neutral-300 dark:bg-neutral-800">
-                                    <img 
-                                        data-src-light="/images/awin-before-card.png"
-                                        alt="Card before"
-                                        class="theme-image w-auto object-contain"
-                                    >
-                                    <img 
-                                        data-src-light="/images/arrow-right.png"
-                                        alt=""
-                                        class="theme-image w-6 h-6 object-contain self-center shrink-0 rotate-90 md:rotate-0"
-                                    >
-                                    <img 
-                                        data-src-light="/images/awin-after-card.png"
-                                        alt="Card after"
-                                        class=" theme-image w-auto object-contain"
-                                    >
-                                </div>
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-6">
+                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
+                                <span
+                                    class="eyebrow">
+                                Result</span>
+                                <h2>Screens</h2>
+                            </div>
+                        
+                            <div class="col-span-12 md:col-span-12">
+                                <figure class="w-full p-4 aspect-auto mb-8 bg-neutral-300 dark:bg-neutral-800">
+                                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                                        <img 
+                                            data-src-light="/images/awin-before-card.png"
+                                            alt="Card before"
+                                            class="theme-image w-auto object-contain"
+                                        >
+                                        <img 
+                                            data-src-light="/images/arrow-right.png"
+                                            alt=""
+                                            class="theme-image w-6 h-6 object-contain shrink-0 mx-auto md:mx-0 rotate-90 md:rotate-0"
+                                        >
+                                        <img 
+                                            data-src-light="/images/awin-after-card.png"
+                                            alt="Card after"
+                                            class=" theme-image w-auto object-contain"
+                                        >
+                                    </div>
 
-                                <figcaption class="text-center">
-                                    Before and after comparison
-                                </figcaption>
-                            </figure>
+                                    <figcaption class="text-center">
+                                        Before and after comparison
+                                    </figcaption>
+                                </figure>
 
-                            <figure class="w-full aspect-auto mb-8">
-                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                <img 
-                                    data-src-light="/images/awin-reporting.png"
-                                    alt="Reporting, destkop and mobile view"
-                                    class="theme-image w-full h-full object-contain"
-                                >
-                                </div>
-                                <figcaption class="text-center">
-                                    Reporting - desktop and mobile views
-                                </figcaption>
-                            </figure>
+                                <figure class="w-full p-4 aspect-auto mb-8 bg-neutral-300 dark:bg-neutral-800">
+                                    <img data-src-light="/images/awin-reporting.png"
+                                        alt="Reporting, destkop and mobile view"
+                                        class="theme-image w-full h-full object-contain">
+                                    <figcaption class="text-center">
+                                        Reporting - desktop and mobile views
+                                    </figcaption>
+                                </figure>
 
-                            <figure class="w-full aspect-auto mb-8">
-                                <div class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                                <img 
-                                    data-src-light="/images/awin-dashboard.png"
-                                    alt="Dashboard, destkop and mobile view"
-                                    class="theme-image w-full h-full object-contain"
-                                >
-                                </div>
-                                <figcaption class="text-center">
-                                    Dashboard - desktop and mobile views
-                                </figcaption>
-                            </figure>
+                                <figure class="w-full p-4 aspect-auto mb-8 bg-neutral-300 dark:bg-neutral-800">
+                                    
+                                    <img data-src-light="/images/awin-dashboard.png"
+                                        alt="Dashboard, destkop and mobile view"
+                                        class="theme-image w-full h-full object-contain">
+
+                                    <figcaption class="text-center">
+                                        Dashboard - desktop and mobile views
+                                    </figcaption>
+                                </figure>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <section id="more-projects">
-                    <div class="max-w-[1200px] mx-auto px-4 md:px-16">
+                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
                         <div class="fade-in border-t border-neutral-400 dark:border-neutral-700 pt-8 sm:pt-16">
-                        <h2 class="mb-6">More Projects</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <!-- Card 1 -->
-                            <article class="project-card overflow-hidden flex flex-col w-full">
-                                <a href="/projects/patagonia-ai-agent.html" class="flex flex-col flex-1 group">
-                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                    <img src="/images/patagonia-card-thumbnail.png" alt="" class="w-32">
-                                    </figure>
-                                    <div class="flex flex-col flex-1">
-                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Patagonia's AI Agent</h3>
-                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
-                                        Conversational B2C interface shaped by the brand's personality and values.
-                                    </p>
-                                    </div>
-                                </a>
-                            </article>
-                            <!-- Card 2 -->
-                            <article class="project-card overflow-hidden flex flex-col w-full">
-                                <a href="/projects/upskill-design-system.html" class="flex flex-col flex-1 group">
-                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                    <img src="/images/upskill-card-thumbnail.png" alt="" class="w-32">
-                                    </figure>
-                                    <div class="flex flex-col flex-1">
-                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Upskill Design System</h3>
-                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
-                                        Multi-themed, tokenised component library built for consistency at scale.
-                                    </p>
-                                    </div>
-                                </a>
-                            </article>
+                            <h2 class="mb-6">More Projects</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <!-- Card 1 -->
+                                <article class="project-card overflow-hidden flex flex-col w-full">
+                                    <a href="/projects/patagonia-ai-agent.html" class="flex flex-col flex-1 group">
+                                        <figure
+                                            class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                            <img src="/images/patagonia-card-thumbnail.png" alt="" class="w-32">
+                                        </figure>
+                                        <div class="flex flex-col flex-1">
+                                            <h3
+                                                class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">
+                                                Patagonia's AI Agent</h3>
+                                            <p
+                                                class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                                Conversational B2C interface shaped by the brand's personality and
+                                                values.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
+                                <!-- Card 2 -->
+                                <article class="project-card overflow-hidden flex flex-col w-full">
+                                    <a href="/projects/upskill-design-system.html" class="flex flex-col flex-1 group">
+                                        <figure
+                                            class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                            <img src="/images/upskill-card-thumbnail.png" alt="" class="w-32">
+                                        </figure>
+                                        <div class="flex flex-col flex-1">
+                                            <h3
+                                                class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">
+                                                Upskill Design System</h3>
+                                            <p
+                                                class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                                Multi-themed, tokenised component library built for consistency at
+                                                scale.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
 
-                            <!-- Card 3 -->
-                            <article class="project-card overflow-hidden flex flex-col w-full">
-                                <a href="/projects/data-visualization-guide.html" class="flex flex-col flex-1 group">
-                                    <figure class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
-                                    <img src="/images/data-viz-card-thumbnail.png" alt="" class="w-32">
-                                    </figure>
-                                    <div class="flex flex-col flex-1">
-                                    <h3 class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">Data Visualization Guide</h3>
-                                    <p class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
-                                        A unified guide for clarity, consistency, and accessibility across teams.
-                                    </p>
-                                    </div>
-                                </a>
-                            </article>
+                                <!-- Card 3 -->
+                                <article class="project-card overflow-hidden flex flex-col w-full">
+                                    <a href="/projects/data-visualization-guide.html"
+                                        class="flex flex-col flex-1 group">
+                                        <figure
+                                            class="p-4 bg-neutral-300 group-hover:bg-neutral-100 dark:bg-neutral-800 dark:group-hover:bg-neutral-700 shrink-0 mb-2 flex justify-center items-center">
+                                            <img src="/images/data-viz-card-thumbnail.png" alt="" class="w-32">
+                                        </figure>
+                                        <div class="flex flex-col flex-1">
+                                            <h3
+                                                class="text-neutral-600 dark:text-neutral-200 group-hover:text-neutral-700 mb-2 leading-snug dark:group-hover:text-white">
+                                                Data Visualization Guide</h3>
+                                            <p
+                                                class="text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 leading-snug flex-1">
+                                                A unified guide for clarity, consistency, and accessibility across
+                                                teams.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
 
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -459,7 +473,7 @@
 
             <!-- Footer -->
             <footer role="contentinfo" class="py-8 md:py-12">
-                <div class="max-w-[1200px] mx-auto px-4 md:px-16 mb-9">
+                <div class="max-w-[1400px] mx-auto px-4 md:px-16 mb-9">
                     <p class=" text-neutral-500 dark:text-neutral-400">Facundo Rosales &#174; | Berlin. 2026</p>
                 </div>
             </footer>

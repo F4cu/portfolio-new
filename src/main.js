@@ -28,6 +28,18 @@ gsap.to(header, {
   }
 });
 
+// Shrinks nav header when scrolling down
+const isHomepage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+
+if (!isHomepage) {
+  ScrollTrigger.create({
+    trigger: '#main-content',
+    start: 'top top',
+    onEnter: () => header.classList.add('border-b', 'border-neutral-300', 'dark:border-neutral-700'),
+    onLeaveBack: () => header.classList.remove('border-b', 'border-neutral-400', 'dark:border-neutral-800'),
+  });
+}
+
 function fadeInPage(fromProjectPage = false) {
   if (!mainContent) return;
 
@@ -155,12 +167,17 @@ document.querySelectorAll('.lightbox-trigger').forEach(img => {
   });
 });
 
-// JTBD table expand link
-document.getElementById('jtbd-link')?.addEventListener('click', function (e) {
+// Generic expand/collapse toggle
+document.addEventListener('click', function (e) {
+    const trigger = e.target.closest('[data-toggle]');
+    if (!trigger) return;
     e.preventDefault();
-    const table = document.getElementById('jtbd-table');
-    const isHidden = table.classList.toggle('hidden');
-    this.textContent = isHidden ? 'View job statement' : 'Hide job statement';
+    const target = document.getElementById(trigger.dataset.toggle);
+    if (!target) return;
+    const isOpen = target.classList.toggle('open');
+    const label = trigger.childNodes[0];
+    label.textContent = isOpen ? trigger.dataset.hideText : trigger.dataset.showText;
+    trigger.classList.toggle('open', isOpen);
 });
 
 // Run on load
