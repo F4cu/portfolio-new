@@ -180,7 +180,8 @@
                                 <h2>An activist brand with a friction problem</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-2">Patagonia's mission is unambiguous: "We're in business to save our home planet." Yet users who wanted to act on those values couldn't find the guidance they needed — repair services were hard to navigate, sustainability language was opaque, and when the experience failed to reflect the values they'd invested in, it felt like a small betrayal. The real job wasn't completing a purchase. It was making a decision that felt consistent with who they are, supported by a brand that takes that seriously.</p>
+                                <p class="mb-2">Patagonia's mission is unambiguous: "We're in business to save our home planet." Yet users who wanted to act on those values couldn't find the guidance they needed — repair services were hard to navigate, sustainability language was opaque, and the brand's activist voice disappeared behind standard e-commerce patterns. For this audience, that friction isn't just inconvenience. The brand is an identity marker, and when the experience fails to reflect the values they've invested in, it feels like a small betrayal.</p>
+                                <p>The real job wasn't completing a purchase. It was making a decision they could feel good about — one that felt consistent with who they are, supported by a brand that takes that seriously.</p>
                             </div>
                         </div>
                     </div>
@@ -197,10 +198,11 @@
                                 <h2>From brand research to conversation design</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>1. Brand and User Research</h3>
-                                <p>Mapped Patagonia against competitors across the Golden Circle, Sinus Milieu, and Behavioural Archetypes — anchoring segmentation on lifestyle and mindset rather than age brackets or purchase history.</p>
+                                <h3>1. Brand Research</h3>
+                                <p>Mapped Patagonia against competitors across the Golden Circle, Sinus Milieu, and Behavioural Archetypes — anchoring segmentation on lifestyle and mindset rather than age brackets or purchase history — to establish emotional territory and brand positioning. That defined the non-negotiables for the bot: peer tone, repair-first framing, and transparency over performance.</p>
 
-                                <p>A persona-driven journey for "Lukas — Mindful Nature Protector" exposed high-friction zones in the Consideration and Purchase phases: technical jargon users couldn't decode, unclear repair pathways, no way to ask questions in context. These weren't just pain points — they were the moments where progress broke down, and they directly defined where Pata needed to intervene.
+                                <h3>2. User Journey Mapping</h3>
+                                <p>Built a full Customer Life Cycle and a persona-driven journey for "Lukas — Mindful Nature Protector". The journey exposed high-friction zones in the Consideration and Purchase phases — technical jargon users couldn't decode, unclear repair pathways, no way to ask questions in context. These weren't just pain points. They were the moments where progress broke down — and they directly defined where Pata needed to intervene, an intentional constraint to focus bot behaviour on the areas of highest impact rather than broadest coverage.
                                 <a class="link" href="#"
                                     data-toggle="jtbd-table"
                                     data-show-text="See JTBD statement"
@@ -227,117 +229,90 @@
                                     </table>
                                 </div>
 
-                                <h3>2. Brand as System Prompt</h3>
-                                <p>A goal matrix aligned business, brand, and user objectives, with users framed as jobs, not features. Patagonia's values then became three behavioural attributes (Responsible, Authentic, Quality-Conscious) that function like component rules in a design system: every dialogue turn is tagged with its dominant brand filter, making the bot structurally auditable, not just tonally consistent.
-                                <a class="link" href="#"
-                                        data-toggle="pata-character"
-                                        data-show-text="Show Pata character"
-                                        data-hide-text="Hide Pata character">Show Pata character<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                                </p>
-                                <div id="pata-character" class="collapsible">
-                                    <p>"Pata" — a bear character rooted in Patagonia's Pacific Northwest craft heritage — gives those rules a voice. The character sheet defines personality dimensions across a radar chart (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions, and voice guidelines. These constraints directly shape how the bot should be prompted: Pata asks before advising, never upsells, celebrates repair over replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
+                                <h3>3. From Brand Values to Interaction Rules</h3>
+                                <p class="mb-2">Before designing any interaction, a goal matrix aligned business, brand,
+                                    and user needs. The user column was framed as jobs, not features — what progress
+                                    does someone need to make, and what's blocking them from making it.</p>
+                                <div class="flex flex-col md:flex-row gap-0 md:gap-6">
+                                    <div class="flex-1">
+                                        <h4>Business</h4>
+                                        <p class="md:text-base">Reduce service costs, increase repair usage, collect
+                                            intent data.</p>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4>Brand</h4>
+                                        <p class="md:text-base">Make repair feel like culture, explain sustainability
+                                            in plain language.</p>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4>User</h4>
+                                        <p class="md:text-base">Act on their values without decoding jargon or navigating away.</p>
+                                    </div>
                                 </div>
+                                <p>Patagonia's values were then translated into three behavioural attributes —
+                                    Responsible, Authentic, and Quality-Conscious — mapped across tone, information
+                                    architecture, navigation, and interaction patterns. These function like component
+                                    rules in a design system: every dialogue turn is tagged with its dominant brand
+                                    filter, making the bot structurally auditable, not just tonally consistent.</p>
 
-                                <p>Together, the brand filters form the foundation of Pata's <strong>context engineering</strong>: a stack of rules that shapes every prompt, retrieval, and dialogue turn the model is allowed to produce. The next three sections describe the layers built on top.</p>
-
-                                <h3>3. Dialogue Design Patterns</h3>
-                                <p>On top of that foundation, Pata uses conversational patterns that keep dialogue natural, responsive, and emotionally supportive, while tightening the boundary the model operates in.
+                                <h3>4. Bot Personality and Behaviour</h3>
+                                <p>Designed "Pata" — a bear character rooted in Patagonia's Pacific Northwest craft
+                                    heritage. The character sheet defined personality dimensions across a radar chart
+                                    (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions,
+                                    backstory, and voice guidelines. These constraints directly shape how the bot should
+                                    be prompted: Pata asks before advising, never upsells, celebrates repair over
+                                    replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
+                                <h3>5. Dialogue Design Patterns</h3>
+                                <p>To sustain engagement across longer interactions, Pata uses conversational patterns that keep the dialogue natural, responsive, and emotionally supportive. Techniques like proactive guidance, implicit confirmation, anxiety pre-emption, and progress signals reduce friction, maintain momentum, and reinforce Patagonia’s repair-first philosophy.</p>
+                                <p>
                                     <a class="link" href="#"
                                         data-toggle="dialog-design-examples"
                                         data-show-text="See dialog examples"
-                                        data-hide-text="Hide dialog examples">See dialog examples<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                        data-hide-text="Hide dialog examples">See dialog examples<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </a>
                                 </p>
-                                <ul id="dialog-design-examples" class="collapsible mb-4">
-                                    <li class="">
-                                        <p class="mb-2"><strong>Guided autonomy</strong> — structured quick replies over open text fields narrow the input space so model output stays anchored to deterministic data paths (preventative guardrails).</p>
-                                        <div class="mb-4 flex flex-wrap gap-2">
-                                            <span class="speech-bubble-action text-base">🪡 Torn seam</span>
-                                            <span class="speech-bubble-action text-base">🤐 Broken zip</span>
-                                            <span class="speech-bubble-action text-base">🕳 Hole or tear</span>
-                                        </div>
-                                    </li>
-                                    <li><p class="mb-2"><strong>Proactive turns</strong> — Pata surfaces relevant information users
+                                    </p>
+                                <ul id="dialog-design-examples" class="collapsible list-decimal pl-16 mb-4">
+                                    <li><div><strong>Proactive turns</strong> — Pata surfaces relevant information users
                                         didn't know to ask for, anticipating the logical next need rather than waiting
-                                        to be prompted.</p>
+                                        to be prompted.</div>
                                         <div class="speech-bubble">
                                             If you wash it cold and air dry it, it lasts longer — and saves CO₂.
                                         </div>
                                     </li>
-                                    <li><p class="mb-2"><strong>Implicit confirmation</strong> — Pata weaves acknowledgement into the
-                                        next turn naturally rather than asking users to verify what they just said.</p>
+                                    <li><div><strong> Implicit confirmation</strong> — Pata weaves acknowledgement into the
+                                        next turn naturally rather than asking users to verify what they just said.</div>
                                         <div class="speech-bubble">
                                             A tear on the sleeve — that's fixable.
                                         </div>
                                     </li>
-                                    <li><p class="mb-2"><strong>Anxiety pre-emption</strong> — friction points are dissolved before the
-                                        user voices them.</p>
+                                    <li><div><strong>Anxiety pre-emption</strong> — friction points are dissolved before the
+                                        user voices them.</div>
                                         <div class="speech-bubble">
                                             It takes 10 seconds — helps me give you the right fix.
                                         </div>
                                     </li>
-                                    <li><p class="mb-2"><strong>Progress signal</strong> — small moments of positive reinforcement
+                                    <li><div><strong>Progress signal </strong> — small moments of positive reinforcement
                                         celebrate progress and effort, giving users a sense of forward momentum without
-                                        feeling patronising.</p>
+                                        feeling patronising.</div>
                                         <div class="speech-bubble">
                                             That's one less jacket in landfill. Well done.
                                         </div>
                                     </li>
                                 </ul>
-
-                                <h3>4. Designing for AI Limitations</h3>
-                                <p><strong>Separated conversational and data layers</strong> keep a confident-sounding LLM from giving wrong repair advice and ruining a £300 jacket. The LLM handles natural language understanding and intent recognition only. Once intent is captured ("user has a tear on a Nano Puff sleeve"), the system hands off to a deterministic knowledge base via API for Patagonia's vetted repair guidelines.</p>
-
-                                <p><strong>Designed escalation paths</strong> route out-of-bounds conversations before the model can degrade. If the conversation loops twice or negative sentiment is detected, Pata performs a graceful degradation to a human care team or the Worn Wear hub, rather than collapsing into an "I didn't understand that" loop.
-                                    <a class="link" href="#"
-                                        data-toggle="escalation-example"
-                                        data-show-text="See escalation example"
-                                        data-hide-text="Hide escalation example">See escalation example<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                                </p>
-                                <div id="escalation-example" class="collapsible mb-4">
-                                    <div>
-                                        <span class="text-base text-zinc-400 flex items-center mb-1">Lukas </span>
-                                        <div class="speech-bubble">No, the zipper is completely melted.</div>
-                                    </div>
-                                    <div>
-                                        <span class="text-base text-zinc-400 flex items-center mb-1">Pata </span>
-                                        <div class="speech-bubble flex flex-col gap-1">
-                                            Ah, that's a bigger fix than a patch kit can handle. I don't want to give you the wrong advice — let's get a human involved.
-                                            
-                                            <div class="flex flex-wrap gap-2 mt-2">
-                                                <span class="speech-bubble-action">Chat with a Repair Expert</span>
-                                                <span class="speech-bubble-action">Find a Patagonia Store near you</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h3>5. Calibrated Uncertainty</h3>
-                                <p><strong>Soft calibration</strong> delivers just-in-time transparency: confidence is voiced inline at the moment it matters ("Based on the photo, it looks like a Nano Puff sleeve, about 90% sure"), turning the user from a passive recipient into an active validator of the physical garment and replacing the banner-blind "AI can make mistakes" footer with a turn-by-turn signal the user can act on.</p>
-
-                                <p><strong>Inline attribution</strong> links claims to sources using RAG tied to Patagonia's public transparency records. When Pata explains a material like NetPlus®, the LLM retrieves the information rather than fabricating it. For example the interface surfaces verification chips linking to Footprint Chronicles and supply-chain reports. This keeps every claim verifiable, reinforcing trust with users.</p>
                             </div>
                         </div>
 
                         <!-- Approach bento box -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 md:items-stretch">
-                            <!-- Left column: Customer Journey + Intent Architecture -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+                            <!-- Left column: Customer Journey (large) -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
-                                <figure class="p-4 flex flex-col justify-center items-center bg-neutral-300 dark:bg-neutral-800">
+                                <figure class="p-4 min-h-[220px] flex flex-col h-full justify-center items-center bg-neutral-300 dark:bg-neutral-800">
                                     <img src="/images/patagonia-customer-journey.png"
                                         alt="Customer Journey map for Lukas — Mindful Nature Protector"
-                                        class="lightbox-trigger cursor-zoom-in w-full max-h-full object-contain flex-1 min-h-0">
-                                    <figcaption class="text-center flex-none">
+                                        class="lightbox-trigger cursor-zoom-in w-full object-contain">
+                                    <figcaption class="text-center">
                                         Customer Journey — "Lukas" persona with pain points, emotional states, and touchpoints at each stage
-                                    </figcaption>
-                                </figure>
-                                <figure class="p-2 flex flex-col justify-center items-center bg-neutral-300 dark:bg-neutral-800">
-                                    <img
-                                        data-src-dark="/images/patagonia-intent-architecture-dark.png"
-                                        data-src-light="/images/patagonia-intent-architecture-light.png"
-                                        alt="Intent architecture and fallback paths"
-                                        class="theme-image lightbox-trigger cursor-zoom-in w-full max-h-full object-contain min-h-0">
-                                    <figcaption class="text-center flex-none mb-2">
-                                        Intent architecture and fallback paths
                                     </figcaption>
                                 </figure>
                             </div>
@@ -345,30 +320,30 @@
                             <!-- Right column -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <!-- Top row: Sinus Milieu + Behavioural Archetypes -->
-                                <div class="grid grid-cols-2 gap-4 flex-none">
-                                    <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                         <img src="/images/patagonia-sinus-milieu.png"
                                             alt="Sinus Milieu map with Patagonia's three target segments highlighted"
-                                            class="lightbox-trigger cursor-zoom-in w-full object-contain flex-1 min-h-0">
-                                        <figcaption class="text-center flex-none">
+                                            class="lightbox-trigger cursor-zoom-in w-full h-full object-contain flex-1">
+                                        <figcaption class="text-center">
                                             Sinus Milieu segmentation
                                         </figcaption>
                                     </figure>
-                                    <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                    <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                         <img src="/images/patagonia-behavioural-archetypes.png"
                                             alt="Behavioural archetypes — Patagonia vs The North Face"
                                             class="lightbox-trigger cursor-zoom-in w-full object-contain">
-                                        <figcaption class="text-center flex-none">
+                                        <figcaption class="text-center">
                                             Behavioural archetypes
                                         </figcaption>
                                     </figure>
                                 </div>
                                 <!-- Goal Matrix -->
-                                <figure class="flex-1 min-h-0 p-4 bg-neutral-300 dark:bg-neutral-800 flex flex-col justify-center items-center">
+                                <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
                                     <img src="/images/patagonia-goal-matrix.png"
                                         alt="Goal matrix aligning business, brand, and user objectives"
-                                        class="lightbox-trigger cursor-zoom-in w-full max-h-full object-contain flex-1 min-h-0">
-                                    <figcaption class="text-center flex-none">
+                                        class="lightbox-trigger cursor-zoom-in w-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
+                                    <figcaption class="text-center">
                                         Goal matrix — business, brand, and user goals with KPIs
                                     </figcaption>
                                 </figure>
@@ -724,6 +699,7 @@
                             </div><!-- end right col -->
 
                         </div><!-- end personality overview grid -->
+
                     </div>
                 </section>
 
@@ -738,12 +714,12 @@
                                 <h2>Conversation as brand behaviour</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>Each dialog is anchored to a job-to-be-done from the research: repair guidance (decision under uncertainty), material understanding (decoding sustainability in context), and conscious care (extending product life).</p>
+                                <p>The agent dialogs demonstrate brand values in action — each anchored to a distinct job: Repair guidance (decision under uncertainty), material understanding (decoding sustainability in context) and conscious care (extending product life responsibly).</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Brand filters per turn</strong>: every dialogue turn carries a Responsible, Authentic, or Quality-Conscious tag, making behaviour auditable rather than just on-tone.</li>
-                                    <li><strong>Constrained dialogue patterns</strong>: quick replies, implicit confirmation, and anxiety pre-emption tighten the interaction boundary and reduce the surface for model drift.</li>
-                                    <li><strong>Two-layer architecture</strong>: the LLM handles intent only, while vetted repair guidance comes from a deterministic product database, with designed escalation to human care.</li>
-                                    <li><strong>Calibrated uncertainty</strong>: confidence is voiced inline ("about 90% sure"), and factual claims link to Footprint Chronicles rather than being asserted.</li>
+                                    <li><strong>Focused scope</strong> — targets high-stakes moments where emotional investment and decision complexity are highest.</li>
+                                    <li><strong>Multi-turn interaction</strong> — gathers context and adapts responses without overwhelming the user.</li>
+                                    <li><strong>Dialogue as design system</strong> — each turn is anchored to a brand filter, making behaviour consistent and auditable at scale.</li>
+                                    <li><strong>Research-driven behaviour</strong> — grounded in user insights and brand strategy, not intuition.</li>
                                 </ul>
                             </div>
                         </div>
@@ -761,9 +737,9 @@
                                 <h2>Beyond tone-of-voice</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>Pata reframes a brand chatbot as a behavioural system. Brand values are translated into structural rules that govern what the agent can say, how confidently, and when to hand off.</p>
-                                <p>That produces three things at once. Claims are grounded and uncertainty is voiced, so trust holds up under scrutiny. Repair advice comes from vetted data rather than a confident-sounding model, keeping a £300 jacket safe from hallucination. And for an activist brand where trust is the product, transparency in the interaction becomes the brand promise rendered as behaviour.</p>
-                                <p>The deliverable is a conversational system Patagonia could audit, extend, and defend, rather than a tone-of-voice guide bolted onto an LLM.</p>
+                                <p>Pata translates brand strategy into a working conversational system — from foundational principles to structured multi-turn interactions. The Value Proposition Canvas confirms a clear fit: users seek to make confident, values-aligned decisions and trust that the brand delivers on its promises.</p>
+                                <p>By focusing on critical decision paths, the agent addresses key points of hesitation — from interpreting sustainability claims to navigating repair — through dialogue that is transparent and context-aware. Each interaction reinforces trust, turning moments of uncertainty into informed action.</p>
+                                <p>The result is a system where conversation is not just support, but the mechanism through which brand integrity is experienced.</p>
                             </div>
                         </div>
                     </div>
@@ -775,10 +751,10 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 mb-6">
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
                                 <span class="eyebrow">Result</span>
-                                <h2>Dialog Samples</h2>
                             </div>
                         </div>
-                        
+                        <h2>Dialog Samples</h2>
+
                         <!-- Demo chat bot -->
                         <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
 

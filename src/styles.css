@@ -96,6 +96,11 @@ body {
     @apply
           bg-zinc-800 text-zinc-200 text-base rounded-2xl rounded-tl-sm px-4 py-3 inline-block mb-4;
   }
+
+  .speech-bubble-action {
+    @apply
+        bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1.5 rounded-full cursor-pointer transition-colors
+  }
 }
 
 #theme-toggle svg {

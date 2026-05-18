@@ -128,7 +128,7 @@ function updateThemeImages() {
 // --- Lightbox ---
 const lightboxHTML = `
   <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-neutral-800/80 backdrop-blur-sm p-4" >
-    <div class="relative max-w-5xl w-full" id="lightbox-inner">
+    <div class="relative max-w-5xl w-full bg-neutral-300 dark:bg-neutral-800" id="lightbox-inner">
       <button id="lightbox-close" class="absolute -top-10 right-0 text-white text-base hover:text-neutral-300 transition-colors">✕ Close</button>
       <img id="lightbox-img" src="" alt="" class="w-full h-auto max-h-[85vh] object-contain rounded" />
       <p id="lightbox-caption" class="text-white/60 text-base text-center mt-3"></p>
