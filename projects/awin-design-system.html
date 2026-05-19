@@ -184,8 +184,9 @@
 
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-2">Awin's growth from 2 to 10+ dev teams triggered a UI breaking point. Without a unified system, squads operated in silos, leading to exponential technical debt. Design shifted from "reusable" to "repeated," with teams constantly recreating components from scratch.</p>
-                                <p>The platform hosted five different date-pickers, each with unique behaviors and accessibility gaps. Maintenance became a "consistency tax", rebranding required manual fixes across hundreds of instances instead of a simple token swap.</p>
+                                <p>Awin's growth from 2 to 10+ dev teams triggered a UI breaking point. Without a unified system, squads operated in silos. Design patterns were "repeated" rather than "reused". Teams were constantly recreating components from scratch.</p>
+                                <p>The platform hosted five different date-pickers, each with accessibility gaps. Maintenance became a "consistency tax": rebranding required manual fixes across hundreds of instances instead of a simple token swap.</p>
+                                <p>On top of that, Awin runs as a white-label platform: the same components had to render under multiple white label brands.</p>
                             </div>
                         </div>
                     </div>
@@ -198,31 +199,74 @@
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
                                 <span
                                     class="eyebrow">
-                                    Aproach</span>
+                                    Approach</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
                                 <h2>From UI audit to scalable design foundations</h2>
                             </div>
 
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>1. Comprenhensive Interface Audit</h3>
+                                <h3>1. Comprehensive Interface Audit</h3>
                                 <p>I began with a comprehensive audit of key dashboards and reports, cross-referencing behavioral analytics (Amplitude and Hotjar) with heuristic evaluations and Lighthouse audits. This data-driven approach moved the conversation beyond visual critique, allowing us to pinpoint high-impact usability gaps and user friction where it mattered most in real-world usage.</p>
 
-                                <h3>2. Strategic Scoping and Phased Rollout</h3>
-                                <p>To define the scope, I mapped the platform via a component-to-page matrix to identify high-frequency elements and critical inconsistencies. This data informed a phased release strategy, where I used a prioritization framework to select an initial pilot with high component coverage but low technical risk. By excluding complex dashboards from the first build and instead using high-fidelity mockups to align stakeholders on the vision, I was able to validate the system in a controlled environment while maintaining a predictable, scalable rollout.</p>
+                                <h3>2. Strategic Scoping</h3>
+                                <p>To define scope, I mapped the platform via a component-to-page matrix and scored each page in a prioritization matrix across component coverage, build complexity, technical independence, and usage. This informed a phased rollout that prioritised proof-of-concept speed over visual impact.</p>
+                                <p>We chose the Link Builder as the first live pilot. It served the largest user segment (publishers) and was built almost entirely from form primitives (inputs, buttons, selects), the highest-coverage components. A simple page first let us prove the architecture before applying it to data-dense surfaces.
+                                    <a class="link" href="#"
+                                        data-toggle="rollout-tradeoff"
+                                        data-show-text="See the rollout trade-off"
+                                        data-hide-text="Hide the rollout trade-off">See the rollout trade-off<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                </p>
+                                <div id="rollout-tradeoff" class="collapsible mb-4">
+                                    <p>Starting with a low-risk pilot meant the most marketable pages, Dashboard and Reporting, wouldn't show systemised UI for months. To keep stakeholders aligned in the meantime, I built high-fidelity prototypes of both. These functioned as a future-state artifact, making the design system vision tangible and showing a direction rather than just a first step.</p>
+                                </div>
 
-                                <h3>3. Foundation Research</h3>
-                                <p>I conducted a deep-dive into competitor benchmarks and industry best practices to reengineer the component architecture for long-term scalability. I developed a system optimized for the unique constraints of data-heavy interfaces. This process involved stress-testing color palettes and layouts against real-world density requirements, ensuring that the new foundations provided the performance and visual clarity necessary for complex user workflows.</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Atomic Framework: A scalable UI pattern structure based on Atomic Design principles.</li>
-                                    <li>Rebuilt Color System: Full WCAG AA compliance with dedicated support for data visualization.</li>
-                                    <li>8pt Spacing System: Semantic roles featuring multiple density levels for complex layouts.</li>
-                                    <li>Open-Source Typography: Optimized for legibility and performance while eliminating licensing overhead.</li>
-                                </ul>
+                                <h3>3. Token Architecture and System Foundations</h3>
+                                <p>Components were standardised in Figma but not tokenised at source. I chose a three-layer token architecture: primitives hold raw values like colour hex codes and pixel measurements, semantic tokens express intent across the system, and brand tokens provide per-brand or per-component overrides on top of the semantic layer. Components render under multiple brand identities by swapping only the brand layer.
+                                    <a class="link" href="#"
+                                        data-toggle="token-taxonomy-detail"
+                                        data-show-text="See token layers"
+                                        data-hide-text="Hide token layers">See token layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                </p>
+                                <div id="token-taxonomy-detail" class="collapsible">
+                                    <p><code class="bg-neutral-300 dark:bg-neutral-800 text-base font-semibold text-neutral-400"><span class="text-red-500">brand</span> | <span class="text-teal-500">type</span> | <span class="text-purple-500">property</span> | <span class="text-purple-500">role</span> | <span class="text-yellow-500">prominence</span> | <span class="text-yellow-500">size</span> | <span class="text-yellow-500">state</span></code>
+                                    </p>
+                                    <ul class="list-decimal pl-8 md:pl-16 mb-4">
+                                        <li>
+                                            <code>Primitives : color, typography, spacing, radius</code></li>
+                                        <li>
+                                            <code>Semantic : [
+                                                <span class="text-teal-500">type</span> |
+                                                <span class="text-purple-500">variant</span> |
+                                                <span class="text-yellow-500">modifier</span> ]
+                                            </code>
+                                        </li>
+                                        <li>
+                                            <code>
+                                                 <span class="text-red-500">Brand</span> : awin, white-label-1, white-label-2
+                                            </code>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <p>On top: atomic component hierarchy, WCAG AA contrast with data-viz palettes, an 8pt spacing system with density variants, and Inter typography for legibility in dense tables.</p>
+
+                                <h3>4. Governance and Adoption</h3>
+                                <p>I introduced a hybrid model: central foundations, federated feature-team patterns, and a "3 uses" heuristic for new shared components. Legacy pages kept their bespoke components with a documented intent to replace them later.</p>
+
+                                <p>Adoption ran through ritual. New components shipped with an engineer-led showcase after a design system review. Designers also got a quick check from me on their mockups before showing them to stakeholders.
+                                    <a class="link" href="#"
+                                        data-toggle="quality-gates"
+                                        data-show-text="See the quality gates and review process"
+                                        data-hide-text="Hide the quality gates and review process">See the quality gates and review process<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                </p>
+                                <div id="quality-gates" class="collapsible mb-4">
+                                    <p>Reviews required token usage, accessibility basics (keyboard, screen reader), and Storybook stories for every variant, with two approvals before merge. Accessibility violations, hardcoded values, and missing tests blocked the merge; naming tweaks could be deferred. A layer of automated tests covered around 60% of recurring issues, including token usage, deprecated tokens, raw HTML, and import structure. Visual regression testing ran through Storybook.</p>
+                                </div>
                             </div>
                         </div>
-                        <!-- Aproach bentobox -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <!-- Approach bentobox -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
                             <!-- Left column -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <figure
@@ -275,7 +319,7 @@
                                     </figcaption>
                                 </figure>
                                 <figure
-                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center hidden">
                                     <img data-src-light="/images/awin-token-taxonomy-light.png"
                                         data-src-dark="/images/awin-token-taxonomy-dark.png" alt="Awin token taxonomy"
                                         class="theme-image w-full object-contain">
@@ -299,14 +343,16 @@
                                     Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>What changed</h2>
+                                <h2>A scalable design language</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>Accessible, Token-Based Architecture</h3>
-                                <p>The result was a scalable, token-based design system that elevated the platform to <strong>WCAG AA compliance</strong> by embedding accessibility into its core. By standardizing components and interaction patterns, the system established a common language between design and engineering, significantly reducing duplication across complex, data-heavy interfaces.</p>
-
-                                <h3>Documentation Driving Team Efficiency</h3>
-                                <p>The design system guidelines were structured using Atomic Design principles, organizing components into Foundations, Atoms, Molecules, and Organisms to create reusable, scalable building blocks. Beyond component anatomy, the guidelines also defined interaction behavior, responsive rules, accessibility, spacing, and content standards to simplify hand-off between design and engineering.</p>
+                                <p>A token-based design system for a multi-brand, data-heavy platform, with adoption rituals across 10+ squads. Accessibility, theming, and density live at the foundation layer.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li><strong>Three-layer token architecture.</strong> Rebrands become a configuration swap rather than a code change.</li>
+                                    <li><strong>Atomic component hierarchy.</strong> Reusable building blocks with documented behaviour and accessibility.</li>
+                                    <li><strong>Hybrid governance.</strong> Central foundations, federated contributions, gated by a "3 uses" rule.</li>
+                                    <li><strong>Adoption through ritual.</strong> Component showcases, peer reviews, and a defined review process.</li>
+                                </ul>
                                 <p>See documentation examples:
                                     <a class="link" target="_blank"
                                         href="/images/awin-documentation-typography.pdf">Typography</a> |
@@ -315,8 +361,6 @@
                                     <a class="link" target="_blank"
                                         href="/images/awin-documentation-input.pdf">Input</a>
                                 </p>
-                                <h3>Quality through Agile Governance</h3>
-                                <p>I introduced a hybrid governance model where a small central group maintained core foundations, while feature teams contributed localized patterns and extensions. To prevent bloat, new shared components followed a “3 uses” heuristic, requiring adoption across multiple features or teams before entering the core library. This balanced consistency, scalability, and team autonomy.</p>
                             </div>
                         </div>
                     </div>
@@ -335,7 +379,7 @@
                                 <h2>Beyond the Baseline</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>The system transformed the platform into a centralized design API. By abstracting brand logic into tokens, we enabled global-scale updates that can be deployed instantly, rather than component-by-component. Beyond lowering licensing overhead with open-source typography, we prioritized functional legibility to reduce user error in dense data environments. This common language has effectively eliminated the "design-to-code" gap, allowing engineering to focus on core product logic while the system handles the complexities of accessibility, responsiveness, and visual consistency.</p>
+                                <p>The system shifted Awin from a component-by-component maintenance model to a centralised design API, where brand logic lives in tokens rather than in code. Rebrands and white-label rollouts that used to require manual updates across hundreds of instances now happen through a single theme layer. Open-source typography removed licensing overhead, and prioritising functional legibility helped reduce user error in dense data environments. Design and engineering now share one vocabulary, which lowered the cost of every cross-functional handoff.</p>
                             </div>
                         </div>
                     </div>
@@ -354,27 +398,44 @@
                         
                             <div class="col-span-12 md:col-span-12">
                                 <figure class="w-full p-4 aspect-auto mb-8 bg-neutral-300 dark:bg-neutral-800">
-                                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                                        <img 
-                                            data-src-light="/images/awin-before-card.png"
-                                            alt="Card before"
-                                            class="theme-image w-auto object-contain"
-                                        >
+                                    <div class="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-6">
+                                        <div>
+                                            <img 
+                                                data-src-light="/images/awin-before-card.png"
+                                                alt="Card before"
+                                                class="theme-image w-auto object-contain"
+                                            >
+                                            <figcaption class="text-center">
+                                            Before changes
+                                            </figcaption>
+                                        </div>
                                         <img 
                                             data-src-light="/images/arrow-right.png"
                                             alt=""
                                             class="theme-image w-6 h-6 object-contain shrink-0 mx-auto md:mx-0 rotate-90 md:rotate-0"
                                         >
-                                        <img 
-                                            data-src-light="/images/awin-after-card.png"
-                                            alt="Card after"
-                                            class=" theme-image w-auto object-contain"
-                                        >
+                                        <div>
+                                            <img 
+                                                data-src-light="/images/awin-after-card.png"
+                                                alt="Card after"
+                                                class=" theme-image w-auto object-contain"
+                                            >
+                                            <figcaption class="text-center">
+                                            After changes
+                                            </figcaption>
+                                        </div>
+                                        <div class="md:basis-full lg:basis-auto">
+                                            <ul class="list-disc pl-8">
+                                                <li>Semantic spacing</li>
+                                                <li>Optimized Typography</li>
+                                                <li>WCAG AA accessible</li>
+                                                <li>Atomic architecture</li>
+                                                <li>Improved touch targets</li>
+                                            </ul>
+                                        </div>
                                     </div>
 
-                                    <figcaption class="text-center">
-                                        Before and after comparison
-                                    </figcaption>
+                                    
                                 </figure>
 
                                 <figure class="w-full p-4 aspect-auto mb-8 bg-neutral-300 dark:bg-neutral-800">
