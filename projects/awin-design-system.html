@@ -256,21 +256,22 @@
                                         data-hide-text="Hide token layers">See token layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
                                 </p>
                                 <div id="token-taxonomy-detail" class="collapsible">
-                                    <p><code class="bg-neutral-300 dark:bg-neutral-800 text-base font-semibold text-neutral-400"><span class="text-red-500">brand</span> | <span class="text-teal-500">type</span> | <span class="text-purple-500">property</span> | <span class="text-purple-500">role</span> | <span class="text-yellow-500">prominence</span> | <span class="text-yellow-500">size</span> | <span class="text-yellow-500">state</span></code>
-                                    </p>
                                     <ul class="list-decimal pl-8 md:pl-16 mb-4">
                                         <li>
-                                            <code>Primitives : color, typography, spacing, radius</code></li>
+                                            <code>
+                                                <span class="text-neutral-600 dark:text-neutral-400">Primitives</span> :
+                                                color, typography, spacing, radius
+                                            </code>
                                         <li>
-                                            <code>Semantic : [
-                                                <span class="text-teal-500">type</span> |
-                                                <span class="text-purple-500">variant</span> |
-                                                <span class="text-yellow-500">modifier</span> ]
+                                            <code>
+                                                <span class="text-neutral-600 dark:text-neutral-400">Semantic</span> : [
+                                                type | variant | modifier ]
                                             </code>
                                         </li>
                                         <li>
                                             <code>
-                                                 <span class="text-red-500">Brand</span> : awin, white-label-1, white-label-2
+                                                <span class="text-neutral-600 dark:text-neutral-400">Brand</span> :
+                                                awin, white-label-1, white-label-2
                                             </code>
                                         </li>
                                     </ul>
@@ -279,17 +280,21 @@
                                 <p>On top: atomic component hierarchy, WCAG AA contrast with data-viz palettes, an 8pt spacing system with density variants, and Inter typography for legibility in dense tables.</p>
 
                                 <h3>4. Governance and Adoption</h3>
-                                <p>I introduced a hybrid model: central foundations, federated feature-team patterns, and a "3 uses" heuristic for new shared components. Legacy pages kept their bespoke components with a documented intent to replace them later.</p>
-
-                                <p>Adoption ran through ritual. New components shipped with an engineer-led showcase after a design system review. Designers also got a quick check from me on their mockups before showing them to stakeholders.
-                                    <a class="link" href="#"
+                                <p class="">I designed a hybrid model with central foundations and federated feature-squad contributions, supported by a three-check system for shared-library decisions, as shown below, and a CI review process with hard and soft review gates.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li>Reach: used in three or more places, weighted by criticality of the user flow.</li>
+                                    <li>Fit: works across contexts without forking or theming workarounds.</li>
+                                    <li>Build-vs-extend: can an existing component absorb this through composition or a new prop</li>
+                                </ul>
+                                <p><a class="link" href="#"
                                         data-toggle="quality-gates"
-                                        data-show-text="See the quality gates and review process"
-                                        data-hide-text="Hide the quality gates and review process">See the quality gates and review process<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                                </p>
+                                        data-show-text="See review process"
+                                        data-hide-text="Hide review process">See review process<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a></p>
                                 <div id="quality-gates" class="collapsible mb-4">
-                                    <p>Reviews required token usage, accessibility basics (keyboard, screen reader), and Storybook stories for every variant, with two approvals before merge. Accessibility violations, hardcoded values, and missing tests blocked the merge; naming tweaks could be deferred. A layer of automated tests covered around 60% of recurring issues, including token usage, deprecated tokens, raw HTML, and import structure. Visual regression testing ran through Storybook.</p>
+                                    <p>Adoption ran through ritual. New components shipped with an engineer-led showcase after a design system review. Designers got a quick check on their mockups before stakeholder reviews. Two approvals required to merge: DS designer and engineer for token usage, visual diff and accessibility checks.</p>
+                                    <p>Additionaly automated tests covered around 60% of recurring issues: token usage, deprecated tokens, raw HTML, and import structure. These were hard blockers.</p>
                                 </div>
+
                             </div>
                         </div>
                         <!-- Approach bentobox -->
@@ -304,6 +309,16 @@
 
                                     <figcaption class="text-center">
                                         Semantic spacing system
+                                    </figcaption>
+                                </figure>
+                                <figure class="p-2 flex flex-col justify-center items-center bg-neutral-300 dark:bg-neutral-800">
+                                    <img
+                                        data-src-dark="/images/awin-contribution-model-dark.png"
+                                        data-src-light="/images/awin-contribution-model-light.png"
+                                        alt="Contribution model"
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full max-h-full object-contain min-h-0">
+                                    <figcaption class="text-center flex-none mb-2">
+                                        Contribution model
                                     </figcaption>
                                 </figure>
                             </div>
@@ -325,7 +340,7 @@
                                     </figure>
 
                                     <figure
-                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
                                         <img data-src-light="/images/awin-documentation-example2.png"
                                             alt="Awin documentation example"
                                             class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain">
@@ -336,7 +351,7 @@
                                     </figure>
                                 </div>
                                 <figure
-                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
 
                                     <img data-src-light="/images/awin-pilot-matrix.png"
                                         alt="Pilot page prioritization matrix"
@@ -346,7 +361,7 @@
                                     </figcaption>
                                 </figure>
                                 <figure
-                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center hidden">
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
                                     <img data-src-light="/images/awin-token-taxonomy-light.png"
                                         data-src-dark="/images/awin-token-taxonomy-dark.png" alt="Awin token taxonomy"
                                         class="theme-image w-full object-contain">
@@ -370,7 +385,7 @@
                                     Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>A scalable design language</h2>
+                                <h2>A unified design language</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p>A token-based design system for a multi-brand, data-heavy platform, with adoption rituals across 10+ squads. Accessibility, theming, and density live at the foundation layer.</p>
