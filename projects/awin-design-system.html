@@ -280,19 +280,19 @@
                                 <p>On top: atomic component hierarchy, WCAG AA contrast with data-viz palettes, an 8pt spacing system with density variants, and Inter typography for legibility in dense tables.</p>
 
                                 <h3>4. Governance and Adoption</h3>
-                                <p class="">I designed a hybrid model with central foundations and federated feature-squad contributions, supported by a three-check system for shared-library decisions, as shown below, and a CI review process with hard and soft review gates.</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Reach: used in three or more places, weighted by criticality of the user flow.</li>
-                                    <li>Fit: works across contexts without forking or theming workarounds.</li>
-                                    <li>Build-vs-extend: can an existing component absorb this through composition or a new prop</li>
-                                </ul>
+                                <p>I introduced a hybrid contribution model: a small stewardship team owned foundations and tokens; product squads contributed components back. New components started in an incubation period where the selection criteria was:
+                                    <ul>
+                                        <li><strong>Reach</strong>: used in more than 2 scenarios?</li>
+                                        <li><strong>Fit</strong>: brand-agnostic and fits across diverse contexts?</li>
+                                        <li><strong>Build vs extend</strong>: extendable with existing primitives?</li>
+                                    </ul>
+                                <p>Components moved through three maturity states <strong>Local, Candidate, Core</strong>. Unmet criteria didn't mean rejection but a documented local path.</p>
                                 <p><a class="link" href="#"
                                         data-toggle="quality-gates"
                                         data-show-text="See review process"
                                         data-hide-text="Hide review process">See review process<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a></p>
                                 <div id="quality-gates" class="collapsible mb-4">
-                                    <p>Adoption ran through ritual. New components shipped with an engineer-led showcase after a design system review. Designers got a quick check on their mockups before stakeholder reviews. Two approvals required to merge: DS designer and engineer for token usage, visual diff and accessibility checks.</p>
-                                    <p>Additionaly automated tests covered around 60% of recurring issues: token usage, deprecated tokens, raw HTML, and import structure. These were hard blockers.</p>
+                                    <p>Review was split into three sequential stages, each with one judgment: <strong>incubation</strong> validated the component in two real product contexts; <strong>stewardship review</strong> assessed API fit and UX intent; the <strong>quality gate</strong> ran a11y tests, token lint, and visual diff before merge. Splitting the review meant reviewers specialised, regressions stayed contained to one stage, and accessibility was never the thing that got deferred when a deadline got tight.</p>
                                 </div>
 
                             </div>
@@ -391,9 +391,9 @@
                                 <p>A token-based design system for a multi-brand, data-heavy platform, with adoption rituals across 10+ squads. Accessibility, theming, and density live at the foundation layer.</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
                                     <li><strong>Three-layer token architecture.</strong> Rebrands become a configuration swap rather than a code change.</li>
-                                    <li><strong>Atomic component hierarchy.</strong> Reusable building blocks with documented behaviour and accessibility.</li>
-                                    <li><strong>Hybrid governance.</strong> Central foundations, federated contributions, gated by a "3 uses" rule.</li>
-                                    <li><strong>Adoption through ritual.</strong> Component showcases, peer reviews, and a defined review process.</li>
+                                    <li><strong>Atomic component hierarchy.</strong>  Reusable building blocks with documented behaviour and accessibility.</li>
+                                    <li><strong>Hybrid governance.</strong> Stewardship of foundations, federated contributions, gated by a three-dimension rubric (Reach, Fit, Extend before add).</li>
+                                    <li><strong>Local → Candidate → Core maturity</strong> Components earn promotion through real-use validation.</li>
                                 </ul>
                                 <p>See documentation examples:
                                     <a class="link" target="_blank"
