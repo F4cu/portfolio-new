@@ -280,20 +280,13 @@
                                 <p>On top: atomic component hierarchy, WCAG AA contrast with data-viz palettes, an 8pt spacing system with density variants, and Inter typography for legibility in dense tables.</p>
 
                                 <h3>4. Governance and Adoption</h3>
-                                <p>I introduced a hybrid contribution model: a small stewardship team owned foundations and tokens; product squads contributed components back. New components started in an incubation period where the selection criteria was:
+                                <p>I introduced a hybrid contribution model: a small stewardship team owned foundations and tokens; product squads contributed components back. New components had to meet three criteria before they were built:
                                     <ul>
                                         <li><strong>Reach</strong>: used in more than 2 scenarios?</li>
                                         <li><strong>Fit</strong>: brand-agnostic and fits across diverse contexts?</li>
-                                        <li><strong>Build vs extend</strong>: extendable with existing primitives?</li>
+                                        <li><strong>Build vs extend</strong>: can the system already cover this?</li>
                                     </ul>
-                                <p>Components moved through three maturity states <strong>Local, Candidate, Core</strong>. Unmet criteria didn't mean rejection but a documented local path.</p>
-                                <p><a class="link" href="#"
-                                        data-toggle="quality-gates"
-                                        data-show-text="See review process"
-                                        data-hide-text="Hide review process">See review process<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a></p>
-                                <div id="quality-gates" class="collapsible mb-4">
-                                    <p>Review was split into three sequential stages, each with one judgment: <strong>incubation</strong> validated the component in two real product contexts; <strong>stewardship review</strong> assessed API fit and UX intent; the <strong>quality gate</strong> ran a11y tests, token lint, and visual diff before merge. Splitting the review meant reviewers specialised, regressions stayed contained to one stage, and accessibility was never the thing that got deferred when a deadline got tight.</p>
-                                </div>
+                                <p>New-built components then entered a review or "incubation" period before adding them to the core library. This included real-use evaluation in product contexts, API fit and UX intent assessment. Additionally a final quality gate (a11y tests, token lint, and visual diff) before merge. Unmet criteria didn't mean rejection but a documented local path.</p>
 
                             </div>
                         </div>
@@ -302,7 +295,7 @@
                             <!-- Left column -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <figure
-                                    class="p-4 min-h-[220px] flex flex-col h-full justify-center items-center bg-neutral-300 dark:bg-neutral-800">
+                                    class="p-4 min-h-[220px] flex flex-col justify-center items-center bg-neutral-300 dark:bg-neutral-800">
                                     <img data-src-light="/images/awin-spacing-system-light.png"
                                         data-src-dark="/images/awin-spacing-system-dark.png" alt="Awin spacing system"
                                         class="theme-image w-full object-contain">
@@ -316,7 +309,7 @@
                                         data-src-dark="/images/awin-contribution-model-dark.png"
                                         data-src-light="/images/awin-contribution-model-light.png"
                                         alt="Contribution model"
-                                        class="theme-image lightbox-trigger cursor-zoom-in w-full max-h-full object-contain min-h-0">
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain min-h-0">
                                     <figcaption class="text-center flex-none mb-2">
                                         Contribution model
                                     </figcaption>
@@ -324,15 +317,15 @@
                             </div>
 
                             <!-- Right column -->
-                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
+                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4 h-full">
 
                                 <!-- Col split -->
                                 <div class="grid grid-cols-2 gap-4">
                                     <figure
-                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                        class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
                                         <img data-src-light="/images/awin-research-screenshots.png"
                                             alt="Behavioural analytics"
-                                            class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain flex-1">
+                                            class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain flex-1">
 
                                         <figcaption class="text-center">
                                             Behavioural analytics
@@ -351,20 +344,20 @@
                                     </figure>
                                 </div>
                                 <figure
-                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
 
                                     <img data-src-light="/images/awin-pilot-matrix.png"
                                         alt="Pilot page prioritization matrix"
-                                        class="theme-image lightbox-trigger cursor-zoom-in w-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
                                     <figcaption class="text-center">
                                         Prioritization Matrix
                                     </figcaption>
                                 </figure>
                                 <figure
-                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col justify-center items-center">
+                                    class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                     <img data-src-light="/images/awin-token-taxonomy-light.png"
                                         data-src-dark="/images/awin-token-taxonomy-dark.png" alt="Awin token taxonomy"
-                                        class="theme-image w-full object-contain">
+                                        class="theme-image w-full h-full object-contain">
                                     <figcaption class="text-center">
                                         Token taxonomy
                                     </figcaption>
