@@ -10,6 +10,7 @@ export default defineConfig({
         awinLegacy: './projects/awin-legacy.html',
         datavizProject: './projects/data-visualization-guide.html',
         upskillProject: './projects/upskill-design-system.html',
+        upskillAgentic: './projects/upskill-agentic-design-system.html',
         upskillPreview: './projects/upskill-preview.html',
         patagoniaProject: './projects/patagonia-ai-agent.html',
       }
