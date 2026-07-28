@@ -216,229 +216,169 @@
                                 <span class="eyebrow">Challenge</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Trustworthy AI output at solo scale</h2>
+                                <h2>Governing a design system with AI, reliably, on a solo budget</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">LLMs generating UI without a machine-readable system fabricate token
-                                    names, drift from brand, and lose context between sessions. A design system only
-                                    constrains AI output if the AI can actually read it: prose documentation does not
-                                    stop a model from inventing a plausible-sounding token or reaching for a component
-                                    that was never built. Every layer here (tokens, components, layout, governance) is
-                                    written as data a machine can parse and a script can check, while staying readable
-                                    for people.</p>
-                                <p class="mb-4">The personal constraint is just as real. One person maintains the whole
-                                    system: the token pipeline, 27 components, documentation, and governance, on a
-                                    consumer AI plan with one shared usage window. Every agent workflow draws from the
-                                    same budget; there is no team to split the work across and no API invoices to
-                                    absorb a wasteful architecture.</p>
-                                <h4>Objectives</h4>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Make every part of the system readable by machines as well as people</li>
-                                    <li>Keep AI involvement governed: agents propose, checks and humans decide</li>
-                                    <li>Fit all automation inside a fixed, shared LLM usage budget</li>
-                                    <li>Support two brands, two themes, and three breakpoints from one token source</li>
-                                </ul>
+                                <p class="mb-4">AI can generate UI faster than anyone can review it, and it can do that
+                                    trustworthily only against a system it can actually read. Most AI-paired systems
+                                    reach for expensive patterns instead: agent swarms, live API calls, stacked MCP
+                                    connections.</p>
+                                <p class="mb-4">It also has to be reliable. An agent that generates a component should
+                                    land on a consistent, verifiable result rather than a different one each run.</p>
+                                <p>And it has to stay legible to one person. The maintainer sees the whole system, and
+                                    the system keeps a readable account of its own status.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- The Contract -->
-                <section id="contract">
+                <!-- Approach -->
+                <section id="approach">
                     <div class="max-w-[1400px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6">
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
-                                <span class="eyebrow">The Contract</span>
+                                <span class="eyebrow">Approach</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Components as data, not prose</h2>
+                                <h2>A pipeline the agent can read and a person can see whole</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">Every one of the 27 components ships a <strong>JSON metadata
-                                    file</strong> instead of a Markdown usage page: purpose, variants, states,
-                                    accessibility contract, composition rules, and anti-patterns, validated in CI
-                                    against a JSON Schema on every pull request. Docs rot; contracts do not, because
-                                    nothing forces a Markdown page to stay in sync with the code it describes, but a
-                                    schema failure blocks the merge.</p>
-                                <p class="mb-4">The validator goes further than shape-checking. It merges every token
-                                    source file into one tree and confirms every token path a component claims to use
-                                    actually resolves to a real value, so a component cannot claim a token that got
-                                    renamed: the check fails at the pull request that introduced the drift, not months
-                                    later. When a review finds a real gap, a missing ARIA attribute, a misuse pattern,
-                                    the fix routes back into the specific metadata field it belongs to, so the next
-                                    scaffold, layout, or reviewer inherits it as a checked fact, not a story someone
-                                    has to remember.</p>
-                                <p>The same principle repeats one level up in layout. A fixed semantic hierarchy,
-                                    Page, Header, Section, Container, Column, Component, Footer, maps onto sanctioned
-                                    HTML landmarks, so a generated layout has one structurally correct shape instead
-                                    of being re-derived from the brief each run. A <strong>validation script</strong>
-                                    enforces it deterministically: exactly one main landmark, every section named,
-                                    every extra nav uniquely labelled, a script's judgment, not a reviewer's
-                                    attention.</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
-                                <img data-src-light="/images/upskill-agentic-metadata.png"
-                                    data-src-dark="/images/upskill-agentic-metadata.png"
-                                    alt="Component metadata JSON beside the rendered component in Storybook"
-                                    class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
-                                <figcaption class="text-center">
-                                    Metadata beside the rendered component
-                                </figcaption>
-                            </figure>
-                            <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
-                                <img data-src-light="/images/upskill-agentic-ci.png"
-                                    data-src-dark="/images/upskill-agentic-ci.png"
-                                    alt="Pull request with token-diff bot comment and green CI gates"
-                                    class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
-                                <figcaption class="text-center">
-                                    CI gates on a pull request
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </section>
+                                <h3>What we discarded</h3>
+                                <p class="mb-4">Three early bets were dropped before the system took shape. Figma as the
+                                    token source was reversed once its Variables API proved Enterprise-only, so code
+                                    became the source and Figma a downstream mirror. A parallel agent swarm was cut once
+                                    it was clear that on a solo Claude Pro plan parallel workers drain a single usage
+                                    window many times faster. And live MCP connections were ruled out for the day-to-day
+                                    pipeline, kept only for one-off interactive work.</p>
+                                <p class="mb-4">What these share is a budget: one person, one usage window, no Enterprise
+                                    tier. Each rejection removed an expensive or non-deterministic dependency, and
+                                    everything that remained had to earn its place by being cheap and legible.</p>
 
-                <!-- The Loop -->
-                <section id="loop">
-                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6">
-                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
-                                <span class="eyebrow">The Loop</span>
-                            </div>
-                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>A verified path from scaffold to PR</h2>
-                            </div>
-                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">The verified component loop runs the same path every time: sense the
-                                    current pipeline state, scaffold from schema and Figma context, deterministic
-                                    gates check metadata, types, the build, and accessibility, a human approves a
-                                    visual checkpoint, a fresh, read-only adversarial subagent reviews the diff, and
-                                    only then does a pull request open. AI does the labor of drafting and iterating;
-                                    scripts and humans hold every gate that decides whether the result ships.</p>
-                                <p>The reviewer's independence is structural, not requested. It is a subagent that
-                                    starts cold, reads only the diff and a frozen snapshot, and is read-only by tool
-                                    grant, no edit access at all, so "reviewer reports, main session decides" cannot be
-                                    skipped under time pressure. This is one of <strong>nine developer-triggered
-                                    agentic moments</strong>; nothing in the system runs continuously.</p>
-                            </div>
-                        </div>
-                        <figure class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                            <img data-src-light="/images/upskill-agentic-moments.png"
-                                data-src-dark="/images/upskill-agentic-moments.png"
-                                alt="The nine agentic moments"
-                                class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
-                            <figcaption class="text-center">
-                                Nine agentic moments
-                            </figcaption>
-                        </figure>
-                    </div>
-                </section>
+                                <h3>Foundation</h3>
+                                <p class="mb-4">One fact shapes the whole system: an agent's output changes from run to
+                                    run, so everything it reads is pinned down in advance as machine-readable files a
+                                    script can validate, not code it has to interpret. A few structural choices make
+                                    that possible.
+                                    <a class="link" href="#"
+                                        data-toggle="foundation-choices"
+                                        data-show-text="See the structural choices"
+                                        data-hide-text="Hide the structural choices">See the structural choices<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                </p>
+                                <div id="foundation-choices" class="collapsible mb-4">
+                                    <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                        <li><strong>A metadata schema for components and layout.</strong> Each component
+                                            ships a schema-validated contract covering variants, states, tokens,
+                                            accessibility, and composition, and its token paths are checked against the
+                                            real built output. Scaffold and layout agents read and cite that contract
+                                            instead of inferring intent from code.</li>
+                                        <li><strong>A fixed component set.</strong> A small, closed list where a
+                                            three-question test gates every addition, so agents compose from known parts
+                                            rather than inventing new ones.</li>
+                                        <li><strong>Four-layer tokens.</strong> Every value resolves through
+                                            <code>primitives → brand → theme → device</code>, with later layers
+                                            overriding earlier ones. Components consume the built output, never the
+                                            source.</li>
+                                        <li><strong>A deterministic split.</strong> Most of the system is plumbing.
+                                            GitHub Actions, npm scripts, and direct REST calls move state between tokens,
+                                            components, Airtable, and CI, with no model in the loop. Only the few jobs a
+                                            script genuinely cannot do, such as generating a component or reviewing it,
+                                            are handled by one of nine specific Claude commands.</li>
+                                    </ul>
+                                </div>
 
-                <!-- It Learns -->
-                <section id="learns">
-                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6">
-                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
-                                <span class="eyebrow">It Learns</span>
-                            </div>
-                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Self-improving feedback</h2>
-                            </div>
-                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">Findings do not die with the pull request that found them. They route
-                                    to a durable home: an ARIA gap updates the component's metadata, a misuse pattern
-                                    becomes a new anti-pattern entry, a token convention question goes to the
-                                    token-authoring rules, a contrast miss goes to a curated, reviewed pairing list. A
-                                    problem found once is a checked fact every future scaffold, layout, and reviewer
-                                    inherits, never rediscovered from scratch.</p>
-                                <p class="mb-4"><strong>The run-ledger is the receipts drawer.</strong> It is
-                                    append-only, committed, and now old enough to read. The adversarial reviewer
-                                    earned its cost on every interactive and composite component it reviewed, and
-                                    found nothing beyond the gate on the layout primitives, a routing heuristic the
-                                    ledger surfaced on its own, not a hunch. No run needed a manual rescue. The system
-                                    is explicit about scope: the ledger covers only the full-review path, so the claim
-                                    is measured where it matters most and honestly unmeasured for the rest.</p>
-                                <p class="mb-4"><strong>Ledgers are designed to shrink to zero</strong>, not just
-                                    shrink. New entries are structurally forbidden on both tracked lists: a new
-                                    interactive component cannot be waived onto the accessibility-test backlog, a new
-                                    contrast failure cannot be waived at all, only routed into the curated pairing
-                                    list. The accessibility backlog has already reached the state it was built to
-                                    reach: an empty, checked-in list.</p>
-                                <p>The docs get the same treatment. CI detects when a doc has gone stale against the
-                                    source files it depends on; rewriting is developer-triggered and touches only
-                                    stale sections. Before the pull request, a fresh, read-only docs-scribe critic,
-                                    with no memory of the rewrite session, reviews the new prose against the glossary
-                                    for three audiences (product manager, designer, engineer), checking that every
-                                    technical term is grounded, not just present. It is the same adversarial shape as
-                                    component review, applied to documentation instead of code.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                                <h3>Stabilize the input</h3>
+                                <p class="mb-4">The pipeline runs in one direction and passes files, not calls: every
+                                    stage hands the next a committed file. A single sensing script, <code>npm run
+                                    sense</code>, aggregates component state, review status, and governance into
+                                    snapshots, and those files are all the agents ever read.</p>
+                                <p class="mb-4">Because a maintainer's status check and an agent's scaffold read the
+                                    identical file, every run starts from the same ground regardless of what a live API
+                                    would have returned that minute.</p>
+                                <p class="mb-4">Figma and Airtable are downstream mirrors of the code tokens, not sources
+                                    of them. A handful of maintenance loops refresh those mirrors from the codebase and
+                                    pull governance state back as one more snapshot, so the source stays single while the
+                                    surfaces designers and stakeholders use stay current.</p>
 
-                <!-- Foundations -->
-                <section id="foundations">
-                    <div class="max-w-[1400px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6">
-                            <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
-                                <span class="eyebrow">Foundations</span>
-                            </div>
-                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Foundations in brief</h2>
-                            </div>
-                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4"><strong>Four-layer token pipeline.</strong> Primitives, brand, theme,
-                                    and device, each layer only able to reference the one before it, with one Style
-                                    Dictionary build as the sole bridge into anything a component can consume;
-                                    components never import source JSON. That chokepoint is what makes 2 brands x 2
-                                    themes x 3 breakpoints resolve from a single source without per-component
-                                    special-casing.</p>
-                                <p class="mb-4"><strong>Context economics as an architecture constraint.</strong>
-                                    Agents read frozen, committed snapshots (Airtable governance, Figma variables,
-                                    token usage, component patterns), never live APIs. The always-loaded instruction
-                                    file is capped and CI-enforced at 200 lines. A parallel agent-swarm blueprint was
-                                    evaluated and rejected: on a shared usage window, parallel workers drain the same
-                                    budget faster without improving the outcome, so a sequential, at-most-two-agent
-                                    loop shipped instead.</p>
-                                <p><strong>Measured, not assumed.</strong> A cross-component pattern-context harness
-                                    looked like a pure improvement, more structural context fed into every generation
-                                    task. Measured against seven pre-registered tasks, it improved composition and
-                                    layout work but measurably worsened component scaffolds. It shipped only where it
-                                    measured well: into layout generation, never into scaffolding.</p>
+                                <h3>Loops that generate</h3>
+                                <p class="mb-4"><code>/add-component</code> runs in a fixed order: sense → scaffold →
+                                    gate → review → PR. A fresh scaffold is generated against the metadata schema. A
+                                    deterministic gate then runs typecheck, build, lint, and a11y checks, and all of it
+                                    must pass before a second, fresh-context agent reviews the result adversarially.</p>
+                                <p class="mb-4">Layout generation composes pages from the same fixed set, with every
+                                    structural choice citing a rule from the components' own metadata rather than
+                                    invented freehand. The fixed set, the schema, and the layout grammar are the
+                                    constraint: they narrow what the agent can produce before it produces anything. Both
+                                    loops stay sequential and capped at one subagent, and nothing agent-written reaches
+                                    <code>main</code> unreviewed.</p>
+
+                                <h3>Loops that self-correct</h3>
+                                <p class="mb-4">The system turns its own mistakes into structure.
+                                    <code>/extract-learnings</code> routes each review finding to a durable home,
+                                    whether that is a component's metadata, a token convention, or the curated
+                                    contrast-pair list, so the next agent reads the lesson directly instead of
+                                    rediscovering the bug.</p>
+                                <p class="mb-4">It also documents itself. A staleness check flags when a page has drifted
+                                    from the source it is tagged to, <code>/docs-sync</code> rewrites only the stale
+                                    sections, and a read-only subagent checks the rewrite for first-read clarity across
+                                    three audiences (PM, designer, engineer) before a PR opens.</p>
+
+                                <h3>Governance and observability</h3>
+                                <p class="mb-4">Airtable is the governance layer for the component workflow and token
+                                    inventory. Every component carries its status on two axes: maturity (beta or
+                                    production-ready), pushed automatically from the code, and implementation (is the
+                                    build finished), set by hand. The two live in separate columns on purpose, so a
+                                    human's <code>done</code> always wins and the automated push can never overwrite it.
+                                    Because both the code and the maintainer can write status, the separate columns act
+                                    as deliberate conflict resolution rather than one field two sources fight over.</p>
+                                <p>A maintainer working in the code can also run a small CLI that reads the same
+                                    committed snapshots the agents read: <code>npm run status</code> for a dashboard,
+                                    <code>status:board</code> for a per-component table, and <code>status:component
+                                    &lt;Name&gt;</code> for one component's checklist. There are no live API calls and no
+                                    model in the loop. The numbers come straight from files in the repo, so the
+                                    maintainer sees exactly what the last agent saw without leaving the editor.</p>
                             </div>
                         </div>
-                        <!-- Foundations bento grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <!-- Approach bento grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
+                            <!-- Left column -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                     <img data-src-light="/images/upskill-agentic-tokens-layers.png"
                                         data-src-dark="/images/upskill-agentic-tokens-layers.png"
-                                        alt="Four token layers with Style Dictionary build as the single bridge"
+                                        alt="Four token layers resolving through primitives, brand, theme, and device"
                                         class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
                                     <figcaption class="text-center">
-                                        Four token layers, one build bridge
+                                        Four token layers, one built output
                                     </figcaption>
                                 </figure>
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
-                                    <img data-src-light="/images/upskill-agentic-brand-switch.png"
-                                        data-src-dark="/images/upskill-agentic-brand-switch.png"
-                                        alt="Same showcase screen in UpSkill and Horizon brands"
+                                    <img data-src-light="/images/upskill-agentic-metadata.png"
+                                        data-src-dark="/images/upskill-agentic-metadata.png"
+                                        alt="A component metadata.json file beside its JSON Schema"
                                         class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
                                     <figcaption class="text-center">
-                                        Runtime brand and theme switching
+                                        Components as data: <code>metadata.json</code> beside its schema
                                     </figcaption>
                                 </figure>
                             </div>
-                            <div class="col-span-12 md:col-span-6">
+                            <!-- Right column -->
+                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
-                                    <img data-src-light="/images/upskill-agentic-harness.png"
-                                        data-src-dark="/images/upskill-agentic-harness.png"
-                                        alt="Pattern accuracy harness results by task type"
+                                    <img data-src-light="/images/upskill-agentic-moments.png"
+                                        data-src-dark="/images/upskill-agentic-moments.png"
+                                        alt="The add-component flow from sense to scaffold, gate, review, and PR"
                                         class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
                                     <figcaption class="text-center">
-                                        Eval harness results, shipped only where they help
+                                        The verified loop: sense → scaffold → gate → review → PR
+                                    </figcaption>
+                                </figure>
+                                <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                    <img data-src-light="/images/upskill-agentic-airtable.png"
+                                        data-src-dark="/images/upskill-agentic-airtable.png"
+                                        alt="Airtable governance table with human-set and code-pushed columns kept separate"
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
+                                    <figcaption class="text-center">
+                                        Governance ownership per column
                                     </figcaption>
                                 </figure>
                             </div>
@@ -446,49 +386,32 @@
                     </div>
                 </section>
 
-                <!-- Governance -->
-                <section id="governance">
+                <!-- Solution -->
+                <section id="solution">
                     <div class="max-w-[1400px] mx-auto px-4 md:px-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-16 gap-y-0 py-6">
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
-                                <span class="eyebrow">Governance</span>
+                                <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Governance and observability</h2>
+                                <h2>AI as infrastructure, not assistant</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Airtable, per-column ownership.</strong> Human judgment (deprecation
-                                        decisions, done/todo sign-off) is authored directly in Airtable and pulled
-                                        into code; derived state (pipeline stage, maturity) is pushed from code on
-                                        merge. The two never share a column.</li>
-                                    <li><strong>The "don't downgrade done" guard.</strong> A sync never overwrites a
-                                        human-set done or todo value, enforced as a check in the sync script, not a
-                                        policy someone has to remember.</li>
-                                    <li><strong>ADRs amended or superseded, never silently rewritten.</strong> A
-                                        wrong decision and the reasoning that corrected it both stay on the record.</li>
-                                    <li><strong>The CLI is the frozen state, rendered.</strong> npm run status,
-                                        status:board, and status:component are simple renderers over the same
-                                        committed files an agent reads mid-loop, no Airtable tab, no Figma tab, no
-                                        agent session needed to answer where everything stands.</li>
-                                </ul>
+                                <p class="mb-4">The result is a design system an agent can trust without guessing, and
+                                    one a single person can still see whole. Every token, component, and layout choice is
+                                    machine-readable and schema-checked, so agents read facts rather than guessing at
+                                    them from code, and each addition passes a deterministic gate and a human-reviewed PR
+                                    before it ships.</p>
+                                <p class="mb-4">What changed is the role AI plays. Rather than sitting on top as an
+                                    assistant, it runs as infrastructure inside the pipeline: bounded, sequential, and
+                                    limited to the jobs a script cannot do on its own. Everything checkable stays
+                                    deterministic, so output is reliable instead of varying from run to run.</p>
+                                <p>For the organization, that turns a design system into something one person can
+                                    operate with a team's rigor. The maintainer sees the whole system from the command
+                                    line, the system documents and corrects itself as it grows, and governance usually
+                                    reserved for larger teams arrives on a solo budget.</p>
                             </div>
                         </div>
-                        <figure class="p-4 bg-neutral-300 dark:bg-neutral-800">
-                            <img data-src-light="/images/upskill-agentic-airtable.png"
-                                data-src-dark="/images/upskill-agentic-airtable.png"
-                                alt="Airtable governance table with human vs code owned columns"
-                                class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
-                            <figcaption class="text-center">
-                                Governance ownership per column
-                            </figcaption>
-                        </figure>
-                        <p class="flex flex-wrap gap-4 mt-4">
-                            <a class="link" target="_blank"
-                                href="https://f4cu.github.io/upskill-design-system/">View live showcase</a>
-                            <a class="link" target="_blank"
-                                href="https://github.com/F4cu/upskill-design-system">View GitHub repo</a>
-                        </p>
                     </div>
                 </section>
 
@@ -500,67 +423,57 @@
                                 <span class="eyebrow">Impact</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>What it changes for each audience</h2>
+                                <h2>Impact</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">Compared to a standard design system with little automation:</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Developer, consumer of the components.</strong> Inherits a
-                                        trustworthy contract without reading the implementation: components only ever
-                                        consume built tokens, the component set is a real, finite ceiling, and
-                                        generated layouts follow one grammar instead of per-page improvisation. AI
-                                        output against this system is checked, not trusted.</li>
-                                    <li><strong>Designer.</strong> Trades the "tweak the variable in Figma" workflow
-                                        for a single, versioned, diffable source of truth that never drifts silently;
-                                        a value changed once propagates to every brand, theme, and breakpoint, and
-                                        Figma stays an honest design surface instead of a hidden second source of
-                                        truth.</li>
-                                    <li><strong>Product owner, maintainer.</strong> Governance without meetings:
-                                        deprecations, reversals, and quality gates are on the record and enforced by
-                                        CI, deterministic checks absorb the boring majority of review so judgment is
-                                        spent only where it is genuinely ambiguous, and the whole thing runs inside
-                                        one consumer AI budget.</li>
+                                    <li><strong>Lower cost.</strong> 22 scripts, 37 npm commands, and 7 GitHub Actions
+                                        run with zero LLM or MCP calls. Agents handle only the 9 Claude commands reserved
+                                        for jobs a script cannot do, so there is no per-run model spend or vendor lock-in
+                                        on the day-to-day pipeline. (Measured)</li>
+                                    <li><strong>Reliable visibility.</strong> Committed snapshots replace live API reads
+                                        at 20 points across 7 commands. For Airtable, a 977-byte snapshot stands in for a
+                                        60,695-byte response, a 62× reduction (measured 2026-07-23). A maintainer checks
+                                        status in one command and reads the same result every time. (Measured)</li>
+                                    <li><strong>Higher-quality output.</strong> Across <code>/add-component</code> runs
+                                        the deterministic gate passed 12 of 12, and adversarial review caught extra
+                                        findings in 7 of 12 before a human saw the PR, so reviewers spend their time on
+                                        judgment rather than catching regressions. (Measured)</li>
+                                    <li><strong>Accessibility by default.</strong> Lint on every commit, plus coverage
+                                        and behavioral tests before merge, means designers and developers inherit
+                                        accessible components rather than auditing them after the fact.</li>
                                 </ul>
-                                <h4>The numbers</h4>
-                                <p class="mb-4">Each measured against the repo's own CI gates, ledgers, or harness
-                                    results, not asserted:</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>27 production components, each shipping schema-validated metadata, stories,
-                                        and accessibility coverage</li>
-                                    <li>2 brands x 2 themes x 3 breakpoints resolved from one token source</li>
-                                    <li>12 of 12 full-loop runs passed the deterministic gate, and the adversarial
-                                        reviewer still found issues beyond the gate in 7 of 12 runs (18 findings
-                                        total)</li>
-                                    <li>Pattern-context harness: 13% fewer rule violations overall, shipped only into
-                                        the task types where it measured positive</li>
-                                    <li>Accessibility backlog empty, with contrast checked mathematically in CI over
-                                        the built CSS</li>
-                                    <li>20 ADRs, every reversal amended or superseded in the open</li>
-                                </ul>
-                                <p>None of this required a systems team: governance, quality, and multi-brand
-                                    consistency held because the system itself is machine-readable and checks its own
-                                    work.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Final Designs -->
+                <!-- Final Designs / Result -->
                 <section id="final-designs">
                     <div class="max-w-[1400px] mx-auto px-4 md:px-16">
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-6">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 gap-y-0 py-6">
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
                                 <span class="eyebrow">Result</span>
+                            </div>
+                            <div class="col-span-12 md:col-span-4 lg:col-span-6">
                                 <h2>Screens</h2>
                             </div>
+                            <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                                <p>The system runs today as a public, deployable artifact: a multi-brand component
+                                    library, a set of generated showcase pages, and a governance layer one person
+                                    operates from the command line. Everything below is produced or checked by the
+                                    pipeline described above, not hand-assembled for the case study.</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
                             <div class="col-span-12">
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 mb-8">
                                     <img data-src-light="/images/upskill-agentic-dashboard.png"
                                         data-src-dark="/images/upskill-agentic-dashboard.png"
-                                        alt="Pipeline health dashboard, full view"
+                                        alt="Pipeline health dashboard rendered from committed snapshots"
                                         class="theme-image w-full h-full object-contain">
                                     <figcaption class="text-center">
-                                        Pipeline health dashboard
+                                        Pipeline health dashboard (<code>npm run status</code>)
                                     </figcaption>
                                 </figure>
                             </div>
@@ -568,10 +481,10 @@
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800">
                                     <img data-src-light="/images/upskill-agentic-showcase-screens.png"
                                         data-src-dark="/images/upskill-agentic-showcase-screens.png"
-                                        alt="Generated showcase pages across breakpoints"
+                                        alt="One route at desktop, tablet, and mobile across two brands and two themes"
                                         class="theme-image w-full h-full object-contain">
                                     <figcaption class="text-center">
-                                        Generated showcase pages
+                                        Generated showcase across breakpoints
                                     </figcaption>
                                 </figure>
                             </div>
@@ -587,6 +500,12 @@
                                 </figure>
                             </div>
                         </div>
+                        <p class="flex flex-wrap gap-4 mt-8">
+                            <a class="link" target="_blank"
+                                href="https://f4cu.github.io/upskill-design-system/">View live showcase</a>
+                            <a class="link" target="_blank"
+                                href="https://github.com/F4cu/upskill-design-system">View GitHub repo</a>
+                        </p>
                     </div>
                 </section>
                 <section id="more-projects">
