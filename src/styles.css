@@ -118,6 +118,75 @@ body {
   margin-left: 0.2em;
 }
 
+.code-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-tab-link.active-tab {
+  @apply text-neutral-900 dark:text-neutral-100 font-bold no-underline;
+}
+
+/* --- Code lightbox syntax highlighting --- */
+.code-lightbox-pre .hljs,
+.code-preview .hljs {
+  background: transparent;
+  color: inherit;
+}
+
+.code-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-lightbox-pre .hljs-attr,
+.code-lightbox-pre .hljs-property,
+.code-preview .hljs-attr,
+.code-preview .hljs-property {
+  @apply text-sky-700 dark:text-sky-400;
+}
+
+.code-lightbox-pre .hljs-string,
+.code-preview .hljs-string {
+  @apply text-emerald-700 dark:text-emerald-400;
+}
+
+.code-lightbox-pre .hljs-number,
+.code-lightbox-pre .hljs-literal,
+.code-preview .hljs-number,
+.code-preview .hljs-literal {
+  @apply text-amber-700 dark:text-amber-400;
+}
+
+.code-lightbox-pre .hljs-keyword,
+.code-lightbox-pre .hljs-built_in,
+.code-preview .hljs-keyword,
+.code-preview .hljs-built_in {
+  @apply text-rose-700 dark:text-rose-400;
+}
+
+.code-lightbox-pre .hljs-title,
+.code-lightbox-pre .hljs-function,
+.code-preview .hljs-title,
+.code-preview .hljs-function {
+  @apply text-violet-700 dark:text-violet-400;
+}
+
+.code-lightbox-pre .hljs-comment,
+.code-preview .hljs-comment {
+  @apply text-neutral-500 dark:text-neutral-500 italic;
+}
+
+.code-lightbox-pre .hljs-punctuation,
+.code-preview .hljs-punctuation {
+  @apply text-neutral-600 dark:text-neutral-400;
+}
+
 [data-toggle].open .toggle-caret {
   transform: rotate(180deg);
 }

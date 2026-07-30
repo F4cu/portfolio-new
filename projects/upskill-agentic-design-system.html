@@ -343,6 +343,89 @@
                             </div>
                             <!-- Right column -->
                             <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
+                                <figure class="code-lightbox-figure p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center cursor-zoom-in"
+                                    data-code-lightbox tabindex="0" role="button" aria-label="Open code snippet">
+                                    <pre class="code-preview w-full text-xs font-mono leading-relaxed text-neutral-700 dark:text-neutral-300">
+                                        <code>
+                                             "patterns": [...],
+                                             "antiPatterns": [...],
+                                             "accessibility": [...],
+                                             "composition": [...],
+                                             "tokens" [...]
+                                        </code></pre>
+                                    <figcaption class="text-center">
+                                        Metadata schema, the semantic layer for LLMS
+                                    </figcaption>
+                                    <nav class="code-tabs-source" aria-label="Code snippet tabs" hidden>
+                                        <a href="#" class="code-tab-link link" data-tab="1">Patterns</a>
+                                        <a href="#" class="code-tab-link link" data-tab="2">Antipatterns</a>
+                                        <a href="#" class="code-tab-link link" data-tab="3">Accessibility</a>
+                                        <a href="#" class="code-tab-link link" data-tab="4">Composition</a>
+                                    </nav>
+                                    <template data-code-snippet="1">
+                                        <code>
+                                            "patterns": [
+                                                {
+                                                    "name": "course-curriculum",
+                                                    "description": "A list of course modules, each expandable to reveal a description.",
+                                                    "tree": "Accordion > [AccordionItem(title, subtitle), AccordionItem(title, subtitle), ...]"
+                                                },
+                                                {
+                                                    "name": "faq-list",
+                                                    "description": "A set of frequently asked questions where each answer is hidden by default.",
+                                                    "tree": "Accordion > [AccordionItem(title='Question?') > Text(answer), ...]"
+                                                }
+                                            ]
+                                        </code>
+                                        <p class="justify-center">Gives the agent accepted composition patterns and usage examples.</p>
+                                    </template>
+                                    <template data-code-snippet="2">
+                                        <code>
+                                            "antiPatterns": [
+                                                {
+                                                    "scenario": "Nesting Accordion inside another Accordion",
+                                                    "reason": "Deep nesting creates a confusing mental model and breaks the heading hierarchy.",
+                                                    "alternative": "Flatten the information architecture or use a sub-section heading and Text"
+                                                },
+                                                {
+                                                    "scenario": "Passing both the open prop (controlled) and defaultOpen prop simultaneously to AccordionItem",
+                                                    "reason": "The component cannot resolve two competing sources of truth. The controlled open prop silently wins over defaultOpen; a DEV-only console.warn is emitted, but the initial state discrepancy still occurs at runtime.",
+                                                    "alternative": "Use open + onOpenChange for fully controlled mode, or defaultOpen alone for uncontrolled mode. Never supply both."
+                                                }
+                                            ]
+                                        </code>
+                                        <p>Stops the agent from repeating documented mistakes.</p>
+                                    </template>
+                                    <template data-code-snippet="3">
+                                        <code>
+                                            "keyboardInteractions": [
+                                                {
+                                                    "key": "Enter",
+                                                    "action": "Toggles the focused accordion item open or closed"
+                                                },
+                                                {
+                                                    "key": "Space",
+                                                    "action": "Toggles the focused accordion item open or closed"
+                                                },
+                                                {
+                                                    "key": "Tab",
+                                                    "action": "Moves focus sequentially through any focusable content within an open panel, then to the next accordion trigger. Focusable descendants inside a collapsed panel are skipped — the panel's inert DOM property is set while closed, so Tab cannot land on them even though they remain in the DOM for aria-controls."
+                                                }
+                                            ]
+                                        </code>
+                                        <p class="text-center">Fixes ARIA and keyboard behavior the agent can't infer on its own.</p>
+                                    </template>
+                                    <template data-code-snippet="4">
+                                        <code>
+                                            "composition": {
+                                                "composedOf": ["Icon", "Text"],
+                                                "accepts": ["AccordionItem"],
+                                                "containedBy": ["Box", "Stack", "Card"]
+                                            }
+                                        </code>
+                                        <p class="text-center">Tells the agent what's valid to nest and wrap.</p>
+                                    </template>
+                                </figure>
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                     <img data-src-light="/images/upskill-add-component-diagram-light.png"
                                         data-src-dark="/images/upskill-add-component-diagram-dark.png"
