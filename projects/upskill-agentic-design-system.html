@@ -211,7 +211,7 @@
                                 <span class="eyebrow">Challenge</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Governing a design system with AI, reliably, on a solo budget</h2>
+                                <h2>Smart governance without expensive 24/7 orchestration</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p class="mb-4">AI can generate UI faster than anyone can review it, and it can do that
@@ -235,25 +235,20 @@
                                 <span class="eyebrow">Approach</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>A pipeline the agent can read and a person can see whole</h2>
+                                <h2>Turning non-deterministic input into reliable code</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <h3>What was discarded</h3>
-                                <p class="mb-4">Three early bets were dropped before the system took shape. Figma as the
-                                    token source was reversed once its Variables API proved Enterprise-only, so code
-                                    became the source and Figma a downstream mirror. A parallel agent swarm was cut once
-                                    it was clear that on a solo Claude Pro plan parallel workers drain a single usage
-                                    window many times faster. And live MCP connections were ruled out for the day-to-day
-                                    pipeline, kept only for one-off interactive work.</p>
-                                <p class="mb-4">What these share is a budget: one person, one usage window, no Enterprise
-                                    tier. Each rejection removed an expensive or non-deterministic dependency, and
-                                    everything that remained had to earn its place by being cheap and legible.</p>
+                                <p class="mb-4">Working within a solo Claude Pro budget, with no Enterprise tier,
+                                    ruled out anything expensive. Figma's Variables API turned out
+                                    to be Enterprise-only, so code became the source of truth and Figma a downstream
+                                    mirror. A parallel agent swarm drained a single usage window too fast, so it was
+                                    cut. Live MCP and API calls were minimized, kept only for
+                                    one-off LLM commands. What survived had to be token efficient and reliable.</p>
 
                                 <h3>A LLM ready foundation</h3>
-                                <p class="mb-4">One fact shapes the whole system: an agent's output changes from run to
-                                    run, so everything it reads is pinned down in advance as machine-readable files a
-                                    script can validate, not code it has to interpret. A few structural choices make
-                                    that possible.
+                                <p class="mb-4">An agent's output changes from run to
+                                    run without structure and layered semantics, so the the whole system needed to be shaped from the ground up. The system's metadata schema, self improving loops made the system legible to both humans and LLMs. The system's loops turn its own mistakes into structure, and its governance layer makes observability possible.
                                     <a class="link" href="#"
                                         data-toggle="foundation-choices"
                                         data-show-text="See the structural choices"
@@ -456,7 +451,7 @@
                                 <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>AI as infrastructure, not assistant</h2>
+                                <h2>AI as infrastructure, besides assistant</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <p class="mb-4"><strong>The result is a design system an agent can trust without
