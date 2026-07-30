@@ -238,7 +238,7 @@
                                 <h2>A pipeline the agent can read and a person can see whole</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>What we discarded</h3>
+                                <h3>What was discarded</h3>
                                 <p class="mb-4">Three early bets were dropped before the system took shape. Figma as the
                                     token source was reversed once its Variables API proved Enterprise-only, so code
                                     became the source and Figma a downstream mirror. A parallel agent swarm was cut once
@@ -249,7 +249,7 @@
                                     tier. Each rejection removed an expensive or non-deterministic dependency, and
                                     everything that remained had to earn its place by being cheap and legible.</p>
 
-                                <h3>Foundation</h3>
+                                <h3>A LLM ready foundation</h3>
                                 <p class="mb-4">One fact shapes the whole system: an agent's output changes from run to
                                     run, so everything it reads is pinned down in advance as machine-readable files a
                                     script can validate, not code it has to interpret. A few structural choices make
@@ -281,7 +281,7 @@
                                     </ul>
                                 </div>
 
-                                <h3>Stabilize the input</h3>
+                                <h3>Stabilizing the input</h3>
                                 <p class="mb-4">The pipeline runs in one direction and passes files, not calls. A single
                                     sensing script, <code>npm run sense</code>, aggregates component state, review
                                     status, and governance into snapshots, and those files are all the agents ever read.
