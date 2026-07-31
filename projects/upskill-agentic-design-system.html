@@ -467,7 +467,10 @@
                                     maintainer sees the whole system from the command line, the system documents and
                                     corrects itself as it grows, and governance usually reserved for larger teams arrives
                                     on a solo budget.</p>
-                                <p><a href="https://github.com/F4cu/upskill-design-system" class="link" target="_blank" rel="noopener noreferrer">See GitHub repo for details<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></p>
+                                <p>
+                                    <a href="https://github.com/F4cu/upskill-design-system" class="link" target="_blank" rel="noopener noreferrer">GitHub repo<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a> | 
+                                    <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link" target="_blank" rel="noopener noreferrer">App showcase<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -481,26 +484,12 @@
                                 <span class="eyebrow">Impact</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Impact</h2>
+                                <h2>In numbers</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Lower cost.</strong> 22 scripts, 37 npm commands, and 7 GitHub Actions
-                                        run with zero LLM or MCP calls. Agents handle only the 9 Claude commands reserved
-                                        for jobs a script cannot do, so there is no per-run model spend or vendor lock-in
-                                        on the day-to-day pipeline. (Measured)</li>
-                                    <li><strong>Reliable visibility.</strong> Committed snapshots replace live API reads
-                                        at 20 points across 7 commands. For Airtable, a 977-byte snapshot stands in for a
-                                        60,695-byte response, a 62× reduction (measured 2026-07-23). A maintainer checks
-                                        status in one command and reads the same result every time. (Measured)</li>
-                                    <li><strong>Higher-quality output.</strong> Across <code>/add-component</code> runs
-                                        the deterministic gate passed 12 of 12, and adversarial review caught extra
-                                        findings in 7 of 12 before a human saw the PR, so reviewers spend their time on
-                                        judgment rather than catching regressions. (Measured)</li>
-                                    <li><strong>Accessibility by default.</strong> Lint on every commit, plus coverage
-                                        and behavioral tests before merge, means designers and developers inherit
-                                        accessible components rather than auditing them after the fact.</li>
-                                </ul>
+                                <p><strong>Lower cost.</strong> 22 scripts and 7 CI workflows run the pipeline on zero LLM spend — REST calls only, plus one Figma MCP read reused twice, avoiding a fresh ~9,600-token response per reuse. A 24/7 agent-orchestrated setup would burn an est. 150K–1M tokens/week.</p>
+                                <p><strong>Reliability.</strong> Committed snapshots replace live API reads at 20 points across 7 commands. For governance data, the snapshot is 98.4% smaller than the raw pull it replaces (977 bytes vs. 60,695 bytes, measured).</p>
+                                <p><strong>Quality.</strong> Lint, coverage, and behavioral a11y tests run on every commit. Gate passed 12/12 runs; adversarial review caught real issues in 7/12. Findings feed back into metadata — accessible by default, learned once, not repeated.</p>
                             </div>
                         </div>
                     </div>
