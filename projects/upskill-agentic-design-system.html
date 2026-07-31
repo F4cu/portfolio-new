@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. Building a full coded component library that uses AI as infrastructure: machine-readable, stable for LLMs, and token-efficient.</p>
+                                <p class="fade-in text-xl">This is the second chapter of UpSkill. Building a fully coded component library that uses AI as infrastructure: machine-readable, stable for LLMs, and token-efficient.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -211,17 +211,18 @@
                                 <span class="eyebrow">Challenge</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Smart governance without expensive 24/7 orchestration</h2>
+                                <h2>Repeatable AI output without expensive orchestration</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">AI can generate UI faster than anyone can review it, and it can do that
-                                    trustworthily only against a system it can actually read. Most AI-paired systems
-                                    reach for expensive patterns instead: agent swarms, live API calls, stacked MCP
-                                    connections.</p>
-                                <p class="mb-4">It also has to be reliable. An agent that generates a component should
-                                    land on a consistent, verifiable result rather than a different one each run.</p>
-                                <p>And it has to stay legible to one person. The maintainer sees the whole system, and
-                                    the system keeps a readable account of its own status.</p>
+                                <p class="mb-4">AI generates UI quickly, but only against a system it can actually read.
+                                    The bottleneck is rarely the model. It is what you give the model. Point an agent at
+                                    a full codebase and it burns its limited working memory just mapping the code, then
+                                    invents properties or breaks rules it never saw.</p>
+                                <p>The usual fixes make it worse: many agents at once, always-on tool connections, live
+                                    reads that are slow, rate-limited, and different each run. For one person on a fixed
+                                    AI allowance, that is not just expensive, it is unworkable. So I flipped the question:
+                                    not how much AI to add, but how little the system needs to hand an agent to get
+                                    correct, repeatable results every time.</p>
                             </div>
                         </div>
                     </div>
@@ -235,83 +236,84 @@
                                 <span class="eyebrow">Approach</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Turning non-deterministic input into reliable code</h2>
+                                <h2>Turning unpredictable AI output into reliable code</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>What was discarded</h3>
-                                <p class="mb-4">Working within a solo Claude Pro budget, with no Enterprise tier,
-                                    ruled out anything expensive. Figma's Variables API turned out
-                                    to be Enterprise-only, so code became the source of truth and Figma a downstream
-                                    mirror. A parallel agent swarm drained a single usage window too fast, so it was
-                                    cut. Live MCP and API calls were minimized, kept only for
-                                    one-off LLM commands. What survived had to be token efficient and reliable.</p>
+                                <h3>What I ruled out</h3>
+                                <p class="mb-4">Two early plans failed on contact with the limits. Figma as the source of
+                                    truth fell because the feature I needed is enterprise-locked, so code became the
+                                    source and Figma a mirror. Generating components with many parallel agents fell
+                                    because they drain a shared monthly allowance several times faster and hit limits.
+                                    What replaced both is simpler: a small fixed component set, code as the source, one
+                                    agent at a time.</p>
 
-                                <h3>A LLM ready foundation</h3>
-                                <p class="mb-4">An agent's output changes from run to
-                                    run without structure and layered semantics, so the the whole system needed to be shaped from the ground up. The system's metadata schema, self improving loops made the system legible to both humans and LLMs. The system's loops turn its own mistakes into structure, and its governance layer makes observability possible.
+                                <h3>The foundation</h3>
+                                <p class="mb-4"><strong>Metadata schema.</strong> Each component ships a schema-validated
+                                    contract covering variants, states, tokens, accessibility, and composition, with
+                                    token paths checked against the built output. Agents read and cite that contract
+                                    instead of inferring intent from code.</p>
+                                <p class="mb-4"><strong>Fixed component set.</strong> A small, closed list where a
+                                    three-question test gates every addition, so agents compose from known parts rather
+                                    than inventing new ones.</p>
+                                <p class="mb-4"><strong>Four-layer tokens.</strong> Every value resolves through
+                                    <code>primitives → brand → theme → device</code>, later layers overriding earlier
+                                    ones. Tokens are DTCG JSON, built by Style Dictionary into CSS and JS; components
+                                    consume the built output, never the source.</p>
+                                <p class="mb-4"><strong>Deterministic split.</strong> Most of the system is plumbing:
+                                    GitHub Actions, npm scripts, and REST calls move state between tokens, components,
+                                    Airtable, and CI with no model involved. Only jobs a script cannot do, like
+                                    generating or reviewing a component, use one of nine Claude commands.</p>
+
+                                <h3>Giving AI the right context at the right time</h3>
+                                <p class="mb-4">Almost everything in the repo exists to hand an agent exactly the context
+                                    a task needs, and nothing more. Extra context costs money and crowds the model's
+                                    memory; missing context makes it guess. So knowledge is layered, each layer loading
+                                    only when needed.<br/>
                                     <a class="link" href="#"
-                                        data-toggle="foundation-choices"
-                                        data-show-text="See the structural choices"
-                                        data-hide-text="Hide the structural choices">See the structural choices<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                        data-toggle="context-layers"
+                                        data-show-text="See the context layers"
+                                        data-hide-text="Hide the context layers">See the context layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
                                 </p>
-                                <div id="foundation-choices" class="collapsible mb-4">
+                                <div id="context-layers" class="collapsible">
                                     <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                        <li><strong>A metadata schema for components and layout.</strong> Each component
-                                            ships a schema-validated contract covering variants, states, tokens,
-                                            accessibility, and composition, and its token paths are checked against the
-                                            real built output. Scaffold and layout agents read and cite that contract
-                                            instead of inferring intent from code.</li>
-                                        <li><strong>A fixed component set.</strong> A small, closed list where a
-                                            three-question test gates every addition, so agents compose from known parts
-                                            rather than inventing new ones.</li>
-                                        <li><strong>Four-layer tokens.</strong> Every value resolves through
-                                            <code>primitives → brand → theme → device</code>, with later layers
-                                            overriding earlier ones. Components consume the built output, never the
-                                            source.</li>
-                                        <li><strong>A deterministic split.</strong> Most of the system is plumbing.
-                                            GitHub Actions, npm scripts, and direct REST calls move state between tokens,
-                                            components, Airtable, and CI, with no model in the loop. Only the few jobs a
-                                            script genuinely cannot do, such as generating a component or reviewing it,
-                                            are handled by one of nine specific Claude commands.</li>
+                                        <li><strong><code>CLAUDE.md</code>.</strong> The always-loaded project guide:
+                                            only the rules that apply everywhere, plus a table pointing to the rest. A CI
+                                            check blocks it from growing too long.</li>
+                                        <li><strong>Focused rules.</strong> Load only when editing the matching part of
+                                            the code, so a token session never reads component rules.</li>
+                                        <li><strong>Commands and skills.</strong> A task's full procedure, loaded only
+                                            when it runs.</li>
+                                        <li><strong>Frozen snapshots.</strong> Saved files capturing the system's current
+                                            state (token usage, pipeline status, component status), written ahead of
+                                            time. Agents read these instead of querying Figma or Airtable live; one
+                                            command refreshes them.</li>
+                                        <li><strong>Handoff notes.</strong> Passed from one run to the next so a fresh
+                                            session resumes without re-reading everything, keeping context from earlier
+                                            runs from piling up.</li>
                                     </ul>
                                 </div>
+                                <p class="mb-4">Frozen snapshots also make the pipeline reliable: a saved file reads back
+                                    the same way every time, where a live request can shift with timing, hit a limit, or
+                                    return half-finished.</p>
 
-                                <h3>Stabilizing the input</h3>
-                                <p class="mb-4">The pipeline runs in one direction and passes files, not calls. A single
-                                    sensing script, <code>npm run sense</code>, aggregates component state, review
-                                    status, and governance into snapshots, and those files are all the agents ever read.
-                                    Because a maintainer's status check and an agent's scaffold read the identical file,
-                                    every run starts from the same ground a live API could never guarantee.</p>
-                                <p class="mb-4">Figma and Airtable are downstream mirrors of the code tokens, not sources
-                                    of them. Maintenance loops refresh those mirrors from the codebase, so the source
-                                    stays single while the surfaces designers and stakeholders use stay current.</p>
+                                <h3>The loops that build and self optimize</h3>
+                                <p class="mb-4"><code>add-component</code> loop runs a fixed sequence: sense the
+                                    current state from the snapshots, scaffold the component, run automated checks (lint,
+                                    accessibility, typecheck), pause for a visual review in Storybook (the component
+                                    workshop and live docs), hand it to a separate adversarial-review agent, then bundle
+                                    fixes into a pull request. A second loop builds full page layouts the same way,
+                                    citing the component contract for every choice.</p>
+                                <p class="mb-4"><strong>Aditional loops self optimize the system</strong>. A bug found in
+                                    review routes back into the component's schema metadata, so the next build already
+                                    knows the fix. A documentation loop catches stale docs, rewrites only the outdated
+                                    parts, and checks the result with a fresh agent before it ships.</p>
 
-                                <h3>The loops</h3>
-                                <p class="mb-4"><strong>Generation is bounded before it begins.</strong>
-                                    <code>/add-component</code> runs in a fixed order — sense → scaffold → gate → review →
-                                    PR — where a deterministic gate (typecheck, build, lint, a11y) must pass before a
-                                    fresh-context agent reviews the result adversarially. Layout generation composes from
-                                    the same fixed set, each structural choice citing a metadata rule. The schema, fixed
-                                    set, and grammar narrow what the agent can produce, and nothing agent-written reaches
-                                    <code>main</code> unreviewed.</p>
-                                <p class="mb-4"><strong>The system turns its own mistakes into structure.</strong>
-                                    <code>/extract-learnings</code> routes each review finding to a durable home — a
-                                    component's metadata, a token convention, or the curated contrast-pair list — so the
-                                    next agent reads the lesson directly instead of rediscovering the bug.</p>
-                                <p class="mb-4"><strong>It also documents itself.</strong> A staleness check flags drifted
-                                    pages and <code>/docs-sync</code> rewrites only the stale sections, each rewrite
-                                    checked by a read-only subagent for first-read clarity before a PR opens.</p>
-
-                                <h3>Governance and observability</h3>
-                                <p class="mb-4">Airtable is the governance layer for components and tokens. Every
-                                    component carries status on two axes — maturity (beta or production-ready), pushed
-                                    automatically from the code, and implementation (is the build finished), set by hand
-                                    — kept in separate columns so a human's <code>done</code> always wins and the
-                                    automated push can never overwrite it.</p>
-                                <p>A maintainer can read the same committed snapshots from a small CLI (<code>npm run
-                                    status</code>, <code>status:board</code>, <code>status:component &lt;Name&gt;</code>)
-                                    with no live API call and no model in the loop, seeing exactly what the last agent saw
-                                    without leaving the editor.</p>
+                                <h3>Governance and sign-off</h3>
+                                <p>Airtable is the governance layer: a live inventory of every token and component. For
+                                    each component it tracks two things, how finished the code is and whether I signed
+                                    off, with a safeguard so automation can never downgrade something I marked done. I
+                                    read it through command-line status views built on the same snapshots the agents
+                                    use.</p>
                             </div>
                         </div>
                         <!-- Approach bento grid -->
@@ -349,7 +351,7 @@
                                              "tokens" [...]
                                         </code></pre>
                                     <figcaption class="text-center">
-                                        Metadata schema, the semantic layer for LLMS
+                                        Metadata schema, the semantic layer for LLMs
                                     </figcaption>
                                     <nav class="code-tabs-source" aria-label="Code snippet tabs" hidden>
                                         <a href="#" class="code-tab-link link" data-tab="1">Patterns</a>
@@ -451,22 +453,22 @@
                                 <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>AI as infrastructure, besides assistant</h2>
+                                <h2>AI as infrastructure</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4"><strong>The result is a design system an agent can trust without
-                                    guessing, and one person can still see whole.</strong> Every token, component, and
-                                    layout choice is machine-readable and schema-checked, so agents read facts instead of
-                                    inferring them from code, and each addition clears a deterministic gate and a
-                                    human-reviewed PR before it ships.</p>
-                                <p class="mb-4"><strong>What changed is the role AI plays.</strong> Rather than sitting on
-                                    top as an assistant, it runs as infrastructure inside the pipeline — bounded,
-                                    sequential, limited to the jobs a script cannot do. Everything checkable stays
-                                    deterministic, so output is reliable instead of varying from run to run.</p>
-                                <p><strong>For the organization, it gives one person a team's rigor.</strong> The
-                                    maintainer sees the whole system from the command line, the system documents and
-                                    corrects itself as it grows, and governance usually reserved for larger teams arrives
-                                    on a solo budget.</p>
+                                <p class="mb-4">Most products bolt AI on top as a chat assistant. Here it runs
+                                    underneath, inside a predictable pipeline. The real product isn't the components; it
+                                    is a prepared set of context any agent can act on correctly and cheaply. That is what
+                                    lets one person hold team-scale rigor.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li>Scripts and checks do most of the work at no model cost; nine Claude commands
+                                        handle only what a script cannot.</li>
+                                    <li>Figma and Airtable mirror the code; snapshots are both the source agents read and
+                                        the handoff between runs.</li>
+                                    <li>Agents get a small, exact, software-readable slice of context, never the whole
+                                        codebase.</li>
+                                    <li>Self-documenting and drift-resistant, with my sign-off always preserved.</li>
+                                </ul>
                                 <p>
                                     <a href="https://github.com/F4cu/upskill-design-system" class="link" target="_blank" rel="noopener noreferrer">GitHub repo<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a> | 
                                     <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link" target="_blank" rel="noopener noreferrer">App showcase<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -487,9 +489,17 @@
                                 <h2>In numbers</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p><strong>Lower cost.</strong> 22 scripts and 7 CI workflows run the pipeline on zero LLM spend — REST calls only, plus one Figma MCP read reused twice, avoiding a fresh ~9,600-token response per reuse. A 24/7 agent-orchestrated setup would burn an est. 150K–1M tokens/week.</p>
-                                <p><strong>Reliability.</strong> Committed snapshots replace live API reads at 20 points across 7 commands. For governance data, the snapshot is 98.4% smaller than the raw pull it replaces (977 bytes vs. 60,695 bytes, measured).</p>
-                                <p><strong>Quality.</strong> Lint, coverage, and behavioral a11y tests run on every commit. Gate passed 12/12 runs; adversarial review caught real issues in 7/12. Findings feed back into metadata — accessible by default, learned once, not repeated.</p>
+                                <ul class="list-disc pl-8 md:pl-16">
+                                    <li>22 scripts and 7 GitHub Actions workflows run with zero AI usage, by design.</li>
+                                    <li>Frozen snapshots replace live lookups in 20 places across 7 tasks, returning the
+                                        same answer every time.</li>
+                                    <li>One snapshot, the Airtable governance file, is 62 times smaller than the live
+                                        pull it replaces (977 versus 60,695 bytes, measured).</li>
+                                    <li>Automated checks passed on all 12 recorded runs; the adversarial reviewer still
+                                        caught issues on 7 of 12 before I saw them.</li>
+                                    <li>Roughly 150,000 to 1,000,000 tokens a week avoided versus a fully AI-run
+                                        setup.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
