@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. Building a fully coded component library that uses AI as infrastructure: machine-readable, stable for LLMs, and token-efficient.</p>
+                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, stable for LLMs, and token-efficient.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -265,10 +265,8 @@
                                     generating or reviewing a component, use one of nine Claude commands.</p>
 
                                 <h3>Giving AI the right context at the right time</h3>
-                                <p class="mb-4">Almost everything in the repo exists to hand an agent exactly the context
-                                    a task needs, and nothing more. Extra context costs money and crowds the model's
-                                    memory; missing context makes it guess. So knowledge is layered, each layer loading
-                                    only when needed.<br/>
+                                <p class="mb-4">Every task gets exactly the context it needs. Too much context
+                                    costs money and crowds the model's memory; too little makes it guess. For this large repo it was needed to carefully engineer and automate the context the LLM gets. 
                                     <a class="link" href="#"
                                         data-toggle="context-layers"
                                         data-show-text="See the context layers"
@@ -276,26 +274,24 @@
                                 </p>
                                 <div id="context-layers" class="collapsible">
                                     <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                        <li><strong><code>CLAUDE.md</code>.</strong> The always-loaded project guide:
-                                            only the rules that apply everywhere, plus a table pointing to the rest. A CI
-                                            check blocks it from growing too long.</li>
-                                        <li><strong>Focused rules.</strong> Load only when editing the matching part of
-                                            the code, so a token session never reads component rules.</li>
-                                        <li><strong>Commands and skills.</strong> A task's full procedure, loaded only
-                                            when it runs.</li>
-                                        <li><strong>Frozen snapshots.</strong> Saved files capturing the system's current
-                                            state (token usage, pipeline status, component status), written ahead of
-                                            time. Agents read these instead of querying Figma or Airtable live; one
-                                            command refreshes them.</li>
-                                        <li><strong>Handoff notes.</strong> Passed from one run to the next so a fresh
-                                            session resumes without re-reading everything, keeping context from earlier
-                                            runs from piling up.</li>
+                                        <li><strong><code>CLAUDE.md</code>.</strong> The one file loaded into every
+                                            Claude session: only the rules that always apply, plus a commands reference table. An automated CI check keeps it under 200 lines so it never bloats.</li>
+                                        <li><strong>Rules, commands, and skills.</strong> The detailed coding rules, the
+                                            task procedures, and their step-by-step instructions load only when a task
+                                            actually needs them, so a session about writing tokens never loads the rules for
+                                            components.</li>
+                                        <li><strong>Context earned by measurement.</strong> An eval harness keeps
+                                            reference material in a prompt only if it measurably improves the output. That
+                                            is how the system learned that details on how components fit together help
+                                            when building a full page but hurt a single one, so only the layout task loads
+                                            them.</li>
+                                        <li><strong>Frozen snapshots.</strong> The system's current status (token usage,
+                                            pipeline and component progress) is saved to files ahead of time. Agents read
+                                            those instead of querying Figma or Airtable live.</li>
+                                        <li><strong>Handoff files.</strong> Written between Claude sessions so a fresh one
+                                            resumes without re-reading everything and avoiding context bloating.</li>
                                     </ul>
                                 </div>
-                                <p class="mb-4">Frozen snapshots also make the pipeline reliable: a saved file reads back
-                                    the same way every time, where a live request can shift with timing, hit a limit, or
-                                    return half-finished.</p>
-
                                 <h3>The loops that build and self optimize</h3>
                                 <p class="mb-4"><code>add-component</code> loop runs a fixed sequence: sense the
                                     current state from the snapshots, scaffold the component, run automated checks (lint,
@@ -303,11 +299,10 @@
                                     workshop and live docs), hand it to a separate adversarial-review agent, then bundle
                                     fixes into a pull request. A second loop builds full page layouts the same way,
                                     citing the component contract for every choice.</p>
-                                <p class="mb-4"><strong>Aditional loops self optimize the system</strong>. A bug found in
+                                <p class="mb-4"><strong>Additional loops self optimize the system</strong>. A bug found in
                                     review routes back into the component's schema metadata, so the next build already
-                                    knows the fix. A documentation loop catches stale docs, rewrites only the outdated
-                                    parts, and checks the result with a fresh agent before it ships.</p>
-
+                                    knows the fix. A documentation loop catches stale docs, rewrites only the outdated parts, and checks the result with a fresh agent before it ships.</p>
+                                    
                                 <h3>Governance and sign-off</h3>
                                 <p>Airtable is the governance layer: a live inventory of every token and component. For
                                     each component it tracks two things, how finished the code is and whether I signed
