@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, stable for LLMs, and token-efficient.</p>
+                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, low-drift, and token-efficient.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -236,56 +236,70 @@
                                 <p class="mb-4">Three early plans failed. Figma as the source of truth fell to an enterprise-locked feature, so code became the source and Figma a mirror. Parallel agents fell for draining a shared monthly allowance and hitting limits. Constant MCP calls to Figma and Airtable fell too, slow, rate-limited, and inconsistent. A deeper reengineering was needed.</p>
 
                                 <h3>The foundation</h3>
-                                <p class="mb-4"><strong>Metadata schema.</strong> Each component ships a schema-validated
-                                    contract covering variants, states, tokens, accessibility, and composition, with
-                                    token paths checked against the built output. Agents read and cite that contract
-                                    instead of inferring intent from code.</p>
+                                <p class="mb-4"><strong>Metadata schema.</strong> JSON metadata schemas: a
+                                    machine-readable semantic layer for component build and layout composition,
+                                    guiding agents on a predictable path matching design intent.</p>
                                 <p class="mb-4"><strong>Fixed component set.</strong> A small, closed list where a
-                                    three-question test gates every addition, so agents compose from known parts rather
-                                    than inventing new ones.</p>
+                                    three-question test gates every addition, so agents discover and compose from known
+                                    parts rather than inventing new ones.</p>
                                 <p class="mb-4"><strong>Four-layer tokens.</strong> Every value resolves through
                                     <code>primitives → brand → theme → device</code>, later layers overriding earlier
-                                    ones. Tokens are DTCG JSON, built by Style Dictionary into CSS and JS; components
+                                    ones. Tokens are DTCG JSON, the open design-token standard, compiled by Style Dictionary into CSS and JS; components
                                     consume the built output, never the source.</p>
-                                <p class="mb-4"><strong>Deterministic split.</strong> Most of the system is plumbing:
+                                <p class="mb-4"><strong>Plumbing first, AI on top.</strong> Most of the system is plumbing:
                                     GitHub Actions, npm scripts, and REST calls move state between tokens, components,
                                     Airtable, and CI with no model involved. Only jobs a script cannot do, like
                                     generating or reviewing a component, use one of nine Claude commands.</p>
 
                                 <h3>Giving AI the right context at the right time</h3>
-                                <p class="mb-4">Every task gets exactly the context it needs. Too much context
-                                    costs money and crowds the model's memory; too little makes it guess. For this large repo it was needed to carefully engineer and automate the context the LLM gets. 
+                                <p class="mb-4">Every task gets exactly the context it needs. Too much costs money
+                                    and crowds the model's memory; too little makes it guess. The fix was context
+                                    engineering: externalizing the system's semantics, what things mean, how work is
+                                    done, why it is this way, and what is true right now, into four layers an agent
+                                    reads on demand, instead of inferring them from code or watching the repo live.
                                     <a class="link" href="#"
                                         data-toggle="context-layers"
-                                        data-show-text="See the context layers"
-                                        data-hide-text="Hide the context layers">See the context layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                        data-show-text="See context layers"
+                                        data-hide-text="Hide context layers">See context layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
                                 </p>
                                 <div id="context-layers" class="collapsible">
                                     <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                        <li><strong><code>CLAUDE.md</code>.</strong> The one file loaded into every
-                                            Claude session: only the rules that always apply, plus a commands reference table. An automated CI check keeps it under 200 lines so it never bloats.</li>
-                                        <li><strong>Rules, commands, and skills.</strong> The detailed coding rules, the
-                                            task procedures, and their step-by-step instructions load only when a task
-                                            actually needs them, so a session about writing tokens never loads the rules for
-                                            components.</li>
-                                        <li><strong>Context earned by measurement.</strong> An eval harness keeps
-                                            reference material in a prompt only if it measurably improves the output. That
-                                            is how the system learned that details on how components fit together help
-                                            when building a full page but hurt a single one, so only the layout task loads
-                                            them.</li>
-                                        <li><strong>Frozen snapshots.</strong> The system's current status (token usage,
-                                            pipeline and component progress) is saved to files ahead of time. Agents read
-                                            those instead of querying Figma or Airtable live.</li>
-                                        <li><strong>Handoff files.</strong> Written between Claude sessions so a fresh one
-                                            resumes without re-reading everything and avoiding context bloating.</li>
+                                        <li><strong>Intent: what things mean.</strong> Component contracts, the four
+                                            token layers, docs and glossary. Each loads only when a task touches what
+                                            it describes, so a session about writing tokens never loads component
+                                            contracts.</li>
+                                        <li><strong>Procedure: how work is done.</strong> <code>CLAUDE.md</code> is
+                                            the one file in every session: only the rules that always apply, plus a
+                                            commands reference table, held under 200 lines by an automated CI check.
+                                            The detailed rules, the nine commands, and their step-by-step skills load
+                                            on demand. Because they ship with the repo rather than living in
+                                            someone's head, every developer and every agent runs the same task the
+                                            same way.</li>
+                                        <li><strong>History: why it is this way.</strong> Numbered decision records (ADRs)
+                                            hold the reasoning behind each structural choice, including the ones
+                                            later reversed, so a question like "why four token layers and not
+                                            three?" is answered by a file. Handoff files carry one session's state
+                                            into the next, so a fresh agent resumes without re-reading everything.</li>
+                                        <li><strong>State: what is true right now.</strong> Token usage, pipeline
+                                            and component progress, and sign-off status are written to snapshot
+                                            files ahead of time. Agents read those instead of querying Figma or
+                                            Airtable live. This is the only layer regenerated every run. The other
+                                            three change slowly, and by decision.</li>
                                     </ul>
+                                    <p>What loads is earned, not assumed. An eval harness scores candidate context
+                                        by whether the output correctly cites the component contract and stays
+                                        within the fixed set, keeping reference material in a prompt only if it
+                                        measurably raises that score. That is how the system learned that details on
+                                        how components fit together help when building a full page but hurt a
+                                        single one, so only the layout task loads them.</p>
                                 </div>
                                 <h3>The loops that build and self optimize</h3>
                                 <p class="mb-4"><code>add-component</code> loop runs a fixed sequence: sense the
                                     current state from the snapshots, scaffold the component, run automated checks (lint,
                                     accessibility, typecheck), pause for a visual review in Storybook (the component
-                                    workshop and live docs), hand it to a separate adversarial-review agent, then bundle
-                                    fixes into a pull request. A second loop builds full page layouts the same way,
+                                    workshop and live docs), hand it to a separate reviewer agent, adversarial by
+                                    design: no memory of how the component was built, so it has no reason to go easy
+                                    on it, then bundle fixes into a pull request. A second loop builds full page layouts the same way,
                                     citing the component contract for every choice.</p>
                                 <p class="mb-4"><strong>Additional loops self optimize the system</strong>. A bug found in
                                     review routes back into the component's schema metadata, so the next build already
@@ -320,9 +334,6 @@
                                         Components status CLI command
                                     </figcaption>
                                 </figure>
-                            </div>
-                            <!-- Right column -->
-                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
                                 <figure class="code-lightbox-figure p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center cursor-zoom-in"
                                     data-code-lightbox tabindex="0" role="button" aria-label="Open code snippet">
                                     <pre class="code-preview w-full text-xs font-mono leading-relaxed text-neutral-700 dark:text-neutral-300">
@@ -331,7 +342,7 @@
                                              "antiPatterns": [...],
                                              "accessibility": [...],
                                              "composition": [...],
-                                             "tokens" [...]
+                                             "tokens": [...]
                                         </code></pre>
                                     <figcaption class="text-center">
                                         Metadata schema, the semantic layer for LLMs
@@ -406,6 +417,18 @@
                                         <p class="text-center">Tells the agent what's valid to nest and wrap.</p>
                                     </template>
                                 </figure>
+                            </div>
+                            <!-- Right column -->
+                            <div class="col-span-12 md:col-span-6 flex flex-col gap-4">
+                                <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                    <img data-src-light="/images/upskill-memory-diagram-light.png"
+                                        data-src-dark="/images/upskill-memory-diagram-dark.png"
+                                        alt="Agent context layer architecture diagram"
+                                        class="theme-image lightbox-trigger cursor-zoom-in w-full h-full object-contain">
+                                    <figcaption class="text-center">
+                                        Agent context layer architecture
+                                    </figcaption>
+                                </figure>
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
                                     <img data-src-light="/images/upskill-add-component-diagram-light.png"
                                         data-src-dark="/images/upskill-add-component-diagram-dark.png"
@@ -439,19 +462,12 @@
                                 <h2>AI as infrastructure</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">Most products bolt AI on top as a chat assistant. Here it runs
-                                    underneath, inside a predictable pipeline. The real product isn't the components; it
-                                    is a prepared set of context any agent can act on correctly and cheaply. That is what
-                                    lets one person hold team-scale rigor.</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li>Scripts and checks do most of the work at no model cost; nine Claude commands
-                                        handle only what a script cannot.</li>
-                                    <li>Figma and Airtable mirror the code; snapshots are both the source agents read and
-                                        the handoff between runs.</li>
-                                    <li>Agents get a small, exact, software-readable slice of context, never the whole
-                                        codebase.</li>
-                                    <li>Self-documenting and drift-resistant, with my sign-off always preserved.</li>
-                                </ul>
+                                <p class="mb-4">Most products bolt AI on top as a chat assistant; here it runs
+                                    underneath. The infrastructure is the context itself: centralized, shared, and
+                                    discoverable knowledge, so agents work from the same facts instead of guessing.
+                                    CI keeps it from drifting, review findings feed back into the rules, and
+                                    sign-off keeps a human in the loop. That's what lets one person hold team-scale
+                                    rigor, and scale to more people or agents without redesigning the system.</p>
                                 <p class="pl-12">
                                     <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link mr-2" target="_blank" rel="noopener noreferrer">App<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                     <a href="https://f4cu.github.io/upskill-design-system/storybook" class="link mr-2" target="_blank" rel="noopener noreferrer">Storybook<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -475,15 +491,19 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li>22 scripts and 7 GitHub Actions workflows run with zero AI usage, by design.</li>
-                                    <li>Frozen snapshots replace live lookups in 20 places across 7 tasks, returning the
-                                        same answer every time.</li>
-                                    <li>One snapshot, the Airtable governance file, is 62 times smaller than the live
-                                        pull it replaces (977 versus 60,695 bytes, measured).</li>
-                                    <li>Automated checks passed on all 12 recorded runs; the adversarial reviewer still
-                                        caught issues on 7 of 12 before I saw them.</li>
-                                    <li>Roughly 150,000 to 1,000,000 tokens a week avoided versus a fully AI-run
-                                        setup.</li>
+                                    <li><strong>95% fewer API / MCP calls:</strong> 20 live
+                                        Airtable/Figma lookups collapsed into 1 scheduled file read, holding 3 fields
+                                        instead of the full record (977 bytes vs. 60,695).</li>
+                                    <li><strong>Up to 1M tokens/week avoided:</strong> that same shift to scheduled
+                                        scripts and on-demand commands cuts cost far below a 24/7 agent
+                                        orchestration setup.</li>
+                                    <li><strong>58% bug catch rate:</strong> the adversarial reviewer, with no
+                                        memory of how the code was written, flagged real issues ahead of manual
+                                        review on 7 of 12 components.</li>
+                                    <li><strong>AI for interpretation, not repetition:</strong> 9 of 40 workflows
+                                        use a Claude command, reserved for interpreting design intent and judgment
+                                        calls a script can't make. Scripts and CI handle the repetitive work,
+                                        keeping token usage and context low.</li>
                                 </ul>
                             </div>
                         </div>
