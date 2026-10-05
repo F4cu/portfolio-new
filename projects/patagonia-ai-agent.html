@@ -169,9 +169,8 @@
                                 <h1>Patagonia's AI Agent</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="text-xl">Designing a branded conversational interface — from brand strategy
-                                    and competitive research to bot personality, and agentic flow architecture for a
-                                    sustainability-first outdoor brand.</p>
+                                <p class="text-xl">Turning a generic conversational B2C assistant into a trusted voice of
+                                    the brand, with Patagonia's values built into every turn.</p>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-4 lg:col-span-6 flex flex-row gap-8">
                                 <div>
@@ -224,7 +223,7 @@
                                 <h2>From brand research to AI behavior</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>1. Brand and User Research</h3>
+                                <h3>1. The trust gap</h3>
                                 <p>Mapped Patagonia against competitors across the Golden Circle, Sinus Milieu, and Behavioural Archetypes — anchoring segmentation on lifestyle and mindset rather than age brackets or purchase history.</p>
 
                                 <p>A persona-driven journey for "Lukas — Mindful Nature Protector" exposed high-friction zones in the Consideration and Purchase phases: technical jargon users couldn't decode, unclear repair pathways, no way to ask questions in context. These weren't just pain points — they were the moments where progress broke down, and they directly defined where Pata needed to intervene.
@@ -254,7 +253,7 @@
                                     </table>
                                 </div>
 
-                                <h3>2. The Behavioral Blueprint</h3>
+                                <h3>2. Brand as behaviour</h3>
                                 <p>A goal matrix aligned business, brand, and user objectives, with users framed as jobs, not features. Patagonia's values then became three behavioural attributes (Responsible, Authentic, Quality-Conscious) that function like component rules in a design system: every dialogue turn is tagged with its dominant brand filter, making the bot structurally auditable, not just tonally consistent.
                                 <a class="link" href="#"
                                         data-toggle="pata-character"
@@ -267,8 +266,8 @@
 
                                 <p>Together, the brand filters form the foundation of Pata's <strong>context engineering</strong>: a stack of rules that shapes every prompt, retrieval, and dialogue turn the model is allowed to produce. The next three sections describe the layers built on top.</p>
 
-                                <h3>3. Dialogue Design Patterns</h3>
-                                <p>On top of that foundation, Pata uses conversational patterns that keep dialogue natural, responsive, and emotionally supportive, while tightening the boundary the model operates in.
+                                <h3>3. User support and guidance</h3>
+                                <p>On top of that foundation, Pata's dialogue patterns keep the user steering each step, with natural, responsive and emotionally supportive turns, while also tightening the boundary the model operates in.
                                     <a class="link" href="#"
                                         data-toggle="dialog-design-examples"
                                         data-show-text="See dialog examples"
@@ -276,7 +275,7 @@
                                 </p>
                                 <ul id="dialog-design-examples" class="collapsible mb-4">
                                     <li class="">
-                                        <p class="mb-2"><strong>Guided autonomy</strong> — structured quick replies over open text fields narrow the input space so model output stays anchored to deterministic data paths (preventative guardrails).</p>
+                                        <p class="mb-2"><strong>Guided choices</strong> — structured quick replies let users answer in one tap and decide what happens next, while narrowing the input space so model output stays anchored to deterministic data paths (preventative guardrails).</p>
                                         <div class="mb-4 flex flex-wrap gap-2">
                                             <span class="speech-bubble-action text-base">🪡 Torn seam</span>
                                             <span class="speech-bubble-action text-base">🤐 Broken zip</span>
@@ -311,7 +310,7 @@
                                     </li>
                                 </ul>
 
-                                <h3>4. Designing for AI Limitations</h3>
+                                <h3>4. Error recovery and escalation</h3>
                                 <p><strong>Separated conversational and data layers</strong> keep a confident-sounding LLM from giving wrong repair advice and ruining a £300 jacket. The LLM handles natural language understanding and intent recognition only. Once intent is captured ("user has a tear on a Nano Puff sleeve"), the system hands off to a deterministic knowledge base via API for Patagonia's vetted repair guidelines.</p>
 
                                 <p><strong>Designed escalation paths</strong> route out-of-bounds conversations before the model can degrade. If the conversation loops twice or negative sentiment is detected, Pata performs a graceful degradation to a human care team or the Worn Wear hub, rather than collapsing into an "I didn't understand that" loop.
@@ -338,7 +337,7 @@
                                     </div>
                                 </div>
 
-                                <h3>5. Calibrated Uncertainty</h3>
+                                <h3>5. Transparency in confidence levels</h3>
                                 <p><strong>Soft calibration</strong> delivers just-in-time transparency: confidence is voiced inline at the moment it matters ("Based on the photo, it looks like a Nano Puff sleeve, about 90% sure"), turning the user from a passive recipient into an active validator of the physical garment and replacing the banner-blind "AI can make mistakes" footer with a turn-by-turn signal the user can act on.</p>
 
                                 <p><strong>Inline attribution</strong> links claims to sources using RAG tied to Patagonia's public transparency records. When Pata explains a material like NetPlus®, the LLM retrieves the information rather than fabricating it. For example the interface surfaces verification chips linking to Footprint Chronicles and supply-chain reports. This keeps every claim verifiable, reinforcing trust with users.</p>
@@ -762,15 +761,15 @@
                                 <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Conversation as brand behaviour</h2>
+                                <h2>Four principles, one system</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>Each dialog is anchored to a job-to-be-done from the research: repair guidance (decision under uncertainty), material understanding (decoding sustainability in context), and conscious care (extending product life).</p>
+                                <p>Each dialog is anchored to a job-to-be-done from the research: repair guidance (decision under uncertainty), material understanding (decoding sustainability in context), and conscious care (extending product life). The goal matrix aligning business, brand and user objectives set the brief, and the three brand filters turned that alignment into rules the agent follows in every turn.</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Brand filters per turn</strong>: every dialogue turn carries a Responsible, Authentic, or Quality-Conscious tag, making behaviour auditable rather than just on-tone.</li>
-                                    <li><strong>Constrained dialogue patterns</strong>: quick replies, implicit confirmation, and anxiety pre-emption tighten the interaction boundary and reduce the surface for model drift.</li>
-                                    <li><strong>Two-layer architecture</strong>: the LLM handles intent only, while vetted repair guidance comes from a deterministic product database, with designed escalation to human care.</li>
-                                    <li><strong>Calibrated uncertainty</strong>: confidence is voiced inline ("about 90% sure"), and factual claims link to Footprint Chronicles rather than being asserted.</li>
+                                    <li><strong>Transparency</strong>: confidence is voiced inline ("about 90% sure"), and factual claims link to Footprint Chronicles rather than being asserted.</li>
+                                    <li><strong>User control</strong>: quick replies, implicit confirmation and clear choices at each decision tighten the interaction boundary and reduce the surface for model drift. Users confirm the AI's diagnosis with a photo.</li>
+                                    <li><strong>Error recovery</strong>: the LLM handles intent only, vetted repair guidance comes from a deterministic product database, and designed escalation hands off to human care.</li>
+                                    <li><strong>Trust through brand alignment</strong>: business, brand and user goals became three brand filters. Every dialogue turn carries a Responsible, Authentic, or Quality-Conscious tag, making behaviour auditable rather than just on-tone.</li>
                                 </ul>
                             </div>
                         </div>
