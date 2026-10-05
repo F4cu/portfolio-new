@@ -16,7 +16,7 @@ The repo has no tests or linter.
 
 ## Architecture
 
-- **Multi-page Vite build.** Each page is a standalone HTML file: `index.html` plus case studies in `projects/`. Every page has to be listed in `build.rollupOptions.input` in `vite.config.js`, or it won't be built or deployed. Files named `* copy.html` in `projects/` are scratch duplicates and aren't built.
+- **Multi-page Vite build.** Each page is a standalone HTML file: `index.html` plus case studies in `projects/`. Every page has to be listed in `build.rollupOptions.input` in `vite.config.js`, or it won't be built or deployed.
 - **No templating.** Each page repeats the whole shell inline: GA tag, theme script, header and nav, mobile menu, footer. A change to shared chrome has to be made in every HTML file.
 - **One shared script.** Every page loads `src/main.js` as a module, and it imports `src/styles.css`. It handles behaviour that pages switch on through markup:
   - GSAP ScrollSmoother needs the `#smooth-wrapper` > `#smooth-content` wrappers and a `#main-content` element.
