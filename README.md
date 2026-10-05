@@ -11,15 +11,28 @@ The portfolio highlights:
 - A short biography and background as a product designer  
 - Contact and external links  
 
-The site is implemented as a static, single-page portfolio built with semantic HTML and modern, responsive CSS.
+The site is a static, multi-page portfolio: a home page (`index.html`) and one HTML page per case study in `projects/`.
 
 ## Tech Stack
 
-- HTML5 (`index.html`)  
-- CSS3 (`src/styles.css`)  
-- (Optional) JavaScript for interactions, if added later  
+- HTML pages, built with [Vite](https://vite.dev/)  
+- Tailwind CSS 3 (`src/styles.css`)  
+- GSAP for scroll and page animations, p5.js for the home page sketch  
 
-The project runs as pure static files and does not require any build tools or frameworks.
+## Development
+
+```bash
+npm install
+npm run dev       # local dev server
+npm run build     # build to dist/
+npm run preview   # serve the built site
+```
+
+New pages must be added to `build.rollupOptions.input` in `vite.config.js` to be included in the build.
+
+## Deployment
+
+Every push to `main` runs the GitHub Actions workflow in `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages at facundorosales.com.
 
 ## License
 
