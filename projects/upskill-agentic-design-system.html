@@ -300,23 +300,15 @@
                                         single one, so only the layout task loads them.</p>
                                 </div>
                                 <h3>The loops that build and self optimize</h3>
-                                <p class="mb-4"><code>add-component</code> loop runs a fixed sequence: sense the
-                                    current state from the snapshots, scaffold the component, run automated checks (lint,
-                                    accessibility, typecheck), pause for a visual review in Storybook (the component
-                                    workshop and live docs), hand it to a separate reviewer agent, adversarial by
-                                    design: no memory of how the component was built, so it has no reason to go easy
-                                    on it, then bundle fixes into a pull request. A second loop builds full page layouts the same way,
-                                    citing the component contract for every choice.</p>
-                                <p class="mb-4"><strong>Additional loops self optimize the system</strong>. A bug found in
-                                    review routes back into the component's schema metadata, so the next build already
-                                    knows the fix. A documentation loop catches stale docs, rewrites only the outdated parts, and checks the result with a fresh agent before it ships.</p>
-                                    
-                                <h3>Governance and sign-off</h3>
-                                <p>Airtable is the governance layer: a live inventory of every token and component. For
-                                    each component it tracks two things, how finished the code is and whether I signed
-                                    off, with a safeguard so automation can never downgrade something I marked done. I
-                                    read it through command-line status views built on the same snapshots the agents
-                                    use.</p>
+                                <p class="mb-4">Before building, the agent picks one answer from a fixed list (reuse, compose,
+                                    extend, add parts, keep internal, build new, or escalate), each backed by a decision record.
+                                    Tested on past decisions with the answers hidden, it got 10 of 11 right.</p>
+                                <p class="mb-4">To build, the <code>add-component</code> loop proposes an API from the
+                                    closest existing component and waits for my approval. That proposal becomes the
+                                    <strong>spec</strong> both the code and the Figma mirror are built from. Automated checks,
+                                    my Storybook review and a separate reviewer agent follow.</p>
+                                <p><strong>Additional loops self optimize the system</strong>. Bugs found in review route
+                                    back into the component's contract, and a documentation loop rewrites stale docs.</p>
                             </div>
                         </div>
                         <!-- Approach bento grid -->
