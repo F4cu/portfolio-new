@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, low-drift, and token-efficient.</p>
+                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, Figma-synced, and token-efficient.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -214,7 +214,7 @@
                                 <h2>Production-ready components without 24/7 agent orchestration</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">AI generates UI fast, but the result only looks fine on the surface; by default it's expensive to run and unreliable. At scale it drifts: invented components, misused tokens.</p>
+                                <p class="mb-4">AI generates UI fast, but the result only looks fine on the surface; by default it's expensive to run and unreliable. At scale it drifts: invented components, misused tokens, stale Figma files.</p>
                                 <p class="mb-4">The real challenge is guiding the LLM to understand design intent and stay aware of the system's state, without 24/7 orchestration or costly live MCP calls.</p>
                             </div>
                         </div>
@@ -233,12 +233,18 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <h3>What I ruled out</h3>
-                                <p class="mb-4">Three early plans failed. Figma as the source of truth fell to an enterprise-locked feature, so code became the source and Figma a mirror. Parallel agents fell for draining a shared monthly allowance and hitting limits. Constant MCP calls to Figma and Airtable fell too, slow, rate-limited, and inconsistent. A deeper reengineering was needed.</p>
+                                <p class="mb-4"><strong>Figma as the source of truth.</strong> It can't hold every state,
+                                    accessibility rule or code-only property, and syncing it needed an Enterprise-only
+                                    API. So code became the source and Figma a checked mirror.</p>
+                                <p class="mb-4"><strong>A single large <code>AGENTS.md</code> file.</strong> It became tiered, loading rules
+                                    by task instead of all at once.</p>
+                                <p class="mb-4"><strong>One contract file per component.</strong> It became two, separating
+                                    concerns per task: using a component and building one.</p>
 
                                 <h3>The foundation</h3>
-                                <p class="mb-4"><strong>Metadata schema.</strong> JSON metadata schemas: a
-                                    machine-readable semantic layer for component build and layout composition,
-                                    guiding agents on a predictable path matching design intent.</p>
+                                <p class="mb-4"><strong>Component contracts.</strong> Two files per component guide the AI:
+                                    a metadata file on how to use the component, and a spec on how to build it, from
+                                    its structure and properties to its states and tokens, mirrored in Figma.</p>
                                 <p class="mb-4"><strong>Fixed component set.</strong> A small, closed list where a
                                     three-question test gates every addition, so agents discover and compose from known
                                     parts rather than inventing new ones.</p>
@@ -268,9 +274,9 @@
                                             token layers, docs and glossary. Each loads only when a task touches what
                                             it describes, so a session about writing tokens never loads component
                                             contracts.</li>
-                                        <li><strong>Procedure: how work is done.</strong> <code>CLAUDE.md</code> is
-                                            the one file in every session: only the rules that always apply, plus a
-                                            commands reference table, held under 200 lines by an automated CI check.
+                                        <li><strong>Procedure: how work is done.</strong> <code>AGENTS.md</code> is
+                                            the one file in every session: only the rules that always apply and
+                                            pointers to the rest, kept under 8KB by an automated CI check.
                                             The detailed rules, the nine commands, and their step-by-step skills load
                                             on demand. Because they ship with the repo rather than living in
                                             someone's head, every developer and every agent runs the same task the
@@ -491,19 +497,15 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>95% fewer API / MCP calls:</strong> 20 live
-                                        Airtable/Figma lookups collapsed into 1 scheduled file read, holding 3 fields
-                                        instead of the full record (977 bytes vs. 60,695).</li>
-                                    <li><strong>Up to 1M tokens/week avoided:</strong> that same shift to scheduled
-                                        scripts and on-demand commands cuts cost far below a 24/7 agent
-                                        orchestration setup.</li>
-                                    <li><strong>58% bug catch rate:</strong> the adversarial reviewer, with no
-                                        memory of how the code was written, flagged real issues ahead of manual
-                                        review on 7 of 12 components.</li>
-                                    <li><strong>AI for interpretation, not repetition:</strong> 9 of 40 workflows
-                                        use a Claude command, reserved for interpreting design intent and judgment
-                                        calls a script can't make. Scripts and CI handle the repetitive work,
-                                        keeping token usage and context low.</li>
+                                    <li><strong>95% fewer live API calls:</strong> the AI reads saved files instead of
+                                        calling Figma and Airtable every time, so it costs less to run.</li>
+                                    <li><strong>0 drift between Figma and code:</strong> every color and spacing
+                                        value is checked after each update. The first check caught outdated colors
+                                        in Figma.</li>
+                                    <li><strong>50% more components ready to ship:</strong> a build accuracy gain,
+                                        and a smoother handoff between design and engineering.</li>
+                                    <li><strong>58% bug catch rate:</strong> a second AI reviewer found real
+                                        issues in 7 of 12 components before I read the code.</li>
                                 </ul>
                             </div>
                         </div>
