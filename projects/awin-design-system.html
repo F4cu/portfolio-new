@@ -381,13 +381,15 @@
                                 <h2>A unified design language</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>A token-based design system for a multi-brand, data-heavy platform, with adoption rituals across 10+ squads. Accessibility, theming, and density live at the foundation layer.</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Three-layer token architecture.</strong> Rebrands become a configuration swap rather than a code change.</li>
-                                    <li><strong>Atomic component hierarchy.</strong>  Reusable building blocks with documented behaviour and accessibility.</li>
-                                    <li><strong>Hybrid governance.</strong> Stewardship of foundations, federated contributions, gated by a three-dimension rubric (Reach, Fit, Extend before add).</li>
-                                    <li><strong>Local → Candidate → Core maturity</strong> Components earn promotion through real-use validation.</li>
-                                </ul>
+                                <p class="mb-4"><strong>Teams build from the same parts.</strong> Squads compose from
+                                    one shared library and contribute new components back through a review path, so
+                                    no team rebuilds what another already has.</p>
+                                <p class="mb-4"><strong>A rebrand is a configuration change.</strong> Brand logic lives
+                                    in one token layer, so a new brand or white-label client changes values in that
+                                    layer instead of code across hundreds of screens.</p>
+                                <p class="mb-4"><strong>Quality is set at the foundation.</strong> Accessibility,
+                                    contrast and density are built into tokens and components, and every addition is
+                                    tested before merge, so dense data screens stay readable under every brand.</p>
                                 <p>See documentation examples:
                                     <a class="link" target="_blank"
                                         href="/images/awin-documentation-typography.pdf">Typography</a> |
@@ -411,10 +413,23 @@
                                     Impact</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Beyond the Baseline</h2>
+                                <h2>What changed</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>The system shifted Awin from a component-by-component maintenance model to a centralised design API, where brand logic lives in tokens rather than in code. Rebrands and white-label rollouts that used to require manual updates across hundreds of instances now happen through a single theme layer. Open-source typography removed licensing overhead, and prioritising functional legibility helped reduce user error in dense data environments. Design and engineering now share one vocabulary, which lowered the cost of every cross-functional handoff.</p>
+                                <ul class="list-disc pl-8 md:pl-16">
+                                    <li><strong>1 shared library across 10+ squads:</strong> replacing components each
+                                        team had built on its own.</li>
+                                    <li><strong>3 questions before anything is built:</strong> reach, fit, and whether
+                                        the system already covers it. Components that don't pass get a documented
+                                        local path.</li>
+                                    <li><strong>Figma to code parity:</strong> both use the same tokens and properties, so handoff
+                                        is a token name instead of a value to re-measure, and visual diff catches any
+                                        mismatch before merge.</li>
+                                    <li><strong>WCAG AA contrast across UI and data-viz palettes:</strong> held by
+                                        accessibility tests, token lint and visual diff before every merge.</li>
+                                    <li><strong>0 licensing cost for typography:</strong> Inter, an open-source
+                                        typeface, chosen for legibility in dense tables.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

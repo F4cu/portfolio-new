@@ -254,14 +254,14 @@
                                 </div>
 
                                 <h3>2. Brand as behaviour</h3>
-                                <p>A goal matrix aligned business, brand, and user objectives, with users framed as jobs, not features. Patagonia's values then became three behavioural attributes (Responsible, Authentic, Quality-Conscious) that function like component rules in a design system: every dialogue turn is tagged with its dominant brand filter, making the bot structurally auditable, not just tonally consistent.
+                                <p>A goal matrix aligned business, brand, and user objectives, with users framed as jobs, not features. Patagonia's values then became three behavioural attributes (Responsible, Authentic, Quality-Conscious) that function like component rules in a design system: every dialogue turn is shaped by its dominant brand filter, so the agent's behaviour can be checked against the brand's values as well as its tone.
                                 <a class="link" href="#"
                                         data-toggle="pata-character"
                                         data-show-text="Show Pata character"
                                         data-hide-text="Hide Pata character">Show Pata character<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
                                 </p>
                                 <div id="pata-character" class="collapsible">
-                                    <p>"Pata" — a bear character rooted in Patagonia's Pacific Northwest craft heritage — gives those rules a voice. The character sheet defines personality dimensions across a radar chart (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions, and voice guidelines. These constraints directly shape how the bot should be prompted: Pata asks before advising, never upsells, celebrates repair over replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
+                                    <p>"Pata" — a bear character rooted in Patagonia's Pacific Northwest craft heritage — gives those rules a voice. The character sheet defines personality dimensions across a radar chart (Empathy, Intellect, Stability, Enthusiasm, Precision), internal tensions, and voice guidelines. These constraints directly shape how the agent should be prompted: Pata asks before advising, never upsells, celebrates repair over replacement, and acknowledges uncertainty rather than fabricating confidence.</p>
                                 </div>
 
                                 <p>Together, the brand filters form the foundation of Pata's <strong>context engineering</strong>: a stack of rules that shapes every prompt, retrieval, and dialogue turn the model is allowed to produce. The next three sections describe the layers built on top.</p>
@@ -761,16 +761,19 @@
                                 <span class="eyebrow">Solution</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Four principles, one system</h2>
+                                <h2>Three principles, one system</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>Each dialog is anchored to a job-to-be-done from the research: repair guidance (decision under uncertainty), material understanding (decoding sustainability in context), and conscious care (extending product life). The goal matrix aligning business, brand and user objectives set the brief, and the three brand filters turned that alignment into rules the agent follows in every turn.</p>
-                                <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Transparency</strong>: confidence is voiced inline ("about 90% sure"), and factual claims link to Footprint Chronicles rather than being asserted.</li>
-                                    <li><strong>User control</strong>: quick replies, implicit confirmation and clear choices at each decision tighten the interaction boundary and reduce the surface for model drift. Users confirm the AI's diagnosis with a photo.</li>
-                                    <li><strong>Error recovery</strong>: the LLM handles intent only, vetted repair guidance comes from a deterministic product database, and designed escalation hands off to human care.</li>
-                                    <li><strong>Trust through brand alignment</strong>: business, brand and user goals became three brand filters. Every dialogue turn carries a Responsible, Authentic, or Quality-Conscious tag, making behaviour auditable rather than just on-tone.</li>
-                                </ul>
+                                <p class="mb-4"><strong>Every claim can be checked.</strong> Pata says how sure it is
+                                    and retrieves facts from Patagonia's own transparency records, so users can verify
+                                    an answer, the team can audit it, and new products only need a new source.</p>
+                                <p class="mb-4"><strong>An agent clients can trust.</strong> Every turn reflects
+                                    Patagonia's values, and repair guidance comes from the brand's own vetted guides,
+                                    so clients get answers they can act on.</p>
+                                <p class="mb-4"><strong>It knows when to hand off.</strong> Users confirm what Pata
+                                    understood with a tap or a photo, and when a repair is beyond its scope or the
+                                    conversation stalls, a human care team takes over, so a wrong guess doesn't ruin a
+                                    £300 jacket.</p>
                             </div>
                         </div>
                     </div>
@@ -784,12 +787,26 @@
                                 <span class="eyebrow">Impact</span>
                             </div>
                             <div class="col-span-12 md:col-span-4 lg:col-span-6">
-                                <h2>Beyond tone-of-voice</h2>
+                                <h2>Built into the design</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p>Pata reframes a brand chatbot as a behavioural system. Brand values are translated into structural rules that govern what the agent can say, how confidently, and when to hand off.</p>
-                                <p>That produces three things at once. Claims are grounded and uncertainty is voiced, so trust holds up under scrutiny. Repair advice comes from vetted data rather than a confident-sounding model, keeping a £300 jacket safe from hallucination. And for an activist brand where trust is the product, transparency in the interaction becomes the brand promise rendered as behaviour.</p>
-                                <p>The deliverable is a conversational system Patagonia could audit, extend, and defend, rather than a tone-of-voice guide bolted onto an LLM.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li><strong>Confidence shown on every diagnosis:</strong> Pata states how sure it
+                                        is ("about 90% sure") at the moment the user acts on it.</li>
+                                    <li><strong>Every factual claim linked to a source:</strong> material and
+                                        sustainability answers cite Footprint Chronicles and supply-chain reports.</li>
+                                    <li><strong>0 repair steps written by the model:</strong> the LLM captures
+                                        intent, and a deterministic knowledge base returns Patagonia's vetted
+                                        guidance.</li>
+                                    <li><strong>Every turn shaped by a brand filter:</strong> Responsible,
+                                        Authentic or Quality-Conscious, so each response can be checked against the
+                                        brand's values.</li>
+                                    <li><strong>Human handoff after 2 failed loops:</strong> or on negative
+                                        sentiment, the conversation goes to a human care team or the Worn Wear
+                                        hub.</li>
+                                </ul>
+                                <p>The goal matrix sets how it would be measured in production: repair requests
+                                    through the agent, checkout drop-off, and satisfaction after each dialog.</p>
                             </div>
                         </div>
                     </div>

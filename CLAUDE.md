@@ -33,6 +33,10 @@ The repo has no tests or linter.
 ## Case study pages
 
 - **Section order.** Case studies follow a fixed set of sections: `#project-intro` (h1, `text-xl` subtitle, role and goal), `#challenge`, `#approach` (numbered h3 subsections), `#solution`, `#impact`, then optional extras and `#more-projects`. They use a 12-column grid with the h2 in one column and the body in the other.
+- **Solution and Impact shape.** The two sections work as a pair: Solution turns the procedural detail in Approach into business outcomes, and Impact proves them.
+  - Solution: three or four short paragraphs with no lead-in paragraph. Each starts with a bold claim sentence and follows it with one sentence giving the mechanism and the result. The detail stays in Approach.
+  - Impact: a bullet list in the same order as the Solution claims. Each bullet starts with a bold number or fact label, ends with a colon, and gives one line of proof or baseline. Don't restate a Solution claim as its own proof.
+  - Concept projects with no launch data use countable rules the design enforces as proof. Never invent numbers.
 - **Home page cards.** The project cards in `index.html` repeat a short version of each case study's intro. When a case study's framing changes, check that the card still matches.
 - **Writing style:** pages are written for recruiters and should read as one voice:
   - plain declarative sentences, light first person, bold only on system nouns
@@ -41,4 +45,5 @@ The repo has no tests or linter.
   - no "not just X but Y" constructions or hype adjectives
   - avoid "delve", "seamless", "robust", "leverage", "empower", "streamline", "elevate", "comprehensive", "holistic"
   - headings are short noun phrases, not "phrase: phrase" constructions
+  - call AI products "agent", never "bot" or "chatbot"
 - **Handoff briefs.** `.claude/handoff/` holds Claude-only working briefs that stay out of the published site.

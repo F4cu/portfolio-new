@@ -460,15 +460,17 @@
                                 <h2>AI as infrastructure</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4">Most products bolt AI on top as a chat assistant; here it runs
-                                    underneath. The infrastructure is the context: versioned knowledge in the repo
-                                    that agents read instead of guessing.</p>
-                                <p class="mb-4">People work from the same source: a product owner in Airtable, an
-                                    engineer in the CLI, a designer in Storybook. Scripts generate every view from the
-                                    repo, so none is maintained by hand or drifts out of date.</p>
-                                <p class="mb-4">Automated checks keep Figma matched to code, and every component
-                                    passes a reviewer agent and my sign-off. That's how one person holds team-scale
-                                    rigor, and how the system scales to more people or agents.</p>
+                                <p class="mb-4"><strong>Components come out ready to ship.</strong> The agent builds
+                                    from contracts, not guesses, so engineers spend less time fixing generated
+                                    code.</p>
+                                <p class="mb-4"><strong>It costs little to run.</strong> Scripts do the routine work
+                                    and nothing runs around the clock, so cost follows actual work.</p>
+                                <p class="mb-4"><strong>Every contributor reads the same source.</strong> Every
+                                    touchpoint, from the Airtable board to Storybook, is generated from the repo, so no one updates one by hand or asks which
+                                    version is current.</p>
+                                <p class="mb-4"><strong>Decisions follow the system's current rules.</strong> Agents
+                                    work within recorded decisions and escalate the rest, so my time goes to design
+                                    calls. That's how one person holds team-scale rigor.</p>
                                 <p class="pl-12">
                                     <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link mr-2" target="_blank" rel="noopener noreferrer">App<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                     <a href="https://f4cu.github.io/upskill-design-system/storybook" class="link mr-2" target="_blank" rel="noopener noreferrer">Storybook<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -492,16 +494,17 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>Up to 1M tokens saved per week:</strong> scheduled scripts and
-                                        on-demand commands replace a 24/7 agent setup, and the AI reads saved files
-                                        instead of calling Figma and Airtable every time.</li>
+                                    <li><strong>50% more components ready to ship:</strong> compared with builds
+                                        without the component contract layer.</li>
+                                    <li><strong>58% bug catch rate:</strong> a second AI reviewer found real
+                                        issues in 7 of 12 components before I read the code.</li>
+                                    <li><strong>Up to 1M tokens saved per week:</strong> compared with a 24/7 agent
+                                        setup that queries Figma and Airtable live.</li>
                                     <li><strong>0 drift between Figma and code:</strong> every color and spacing
                                         value is checked after each update. The first check caught outdated colors
                                         in Figma.</li>
-                                    <li><strong>50% more components ready to ship:</strong> a build accuracy gain,
-                                        and a smoother handoff between design and engineering.</li>
-                                    <li><strong>58% bug catch rate:</strong> a second AI reviewer found real
-                                        issues in 7 of 12 components before I read the code.</li>
+                                    <li><strong>10 of 11 build decisions correct:</strong> tested on past decisions
+                                        with the answers hidden.</li>
                                 </ul>
                             </div>
                         </div>
