@@ -258,11 +258,9 @@
                                     generating or reviewing a component, use one of nine Claude commands.</p>
 
                                 <h3>Giving AI the right context at the right time</h3>
-                                <p class="mb-4">Every task gets exactly the context it needs. Too much costs money
-                                    and crowds the model's memory; too little makes it guess. The fix was context
-                                    engineering: externalizing the system's semantics, what things mean, how work is
-                                    done, why it is this way, and what is true right now, into four layers an agent
-                                    reads on demand, instead of inferring them from code or watching the repo live.
+                                <p class="mb-4">Each task loads only the context it needs: too much costs money and
+                                    distracts the model, too little makes it guess. The system's knowledge lives in
+                                    four layers an agent reads on demand.
                                     <a class="link" href="#"
                                         data-toggle="context-layers"
                                         data-show-text="See context layers"
@@ -270,45 +268,46 @@
                                 </p>
                                 <div id="context-layers" class="collapsible">
                                     <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                        <li><strong>Intent: what things mean.</strong> Component contracts, the four
-                                            token layers, docs and glossary. Each loads only when a task touches what
-                                            it describes, so a session about writing tokens never loads component
-                                            contracts.</li>
-                                        <li><strong>Procedure: how work is done.</strong> <code>AGENTS.md</code> is
-                                            the one file in every session: only the rules that always apply and
-                                            pointers to the rest, kept under 8KB by an automated CI check.
-                                            The detailed rules, the nine commands, and their step-by-step skills load
-                                            on demand. Because they ship with the repo rather than living in
-                                            someone's head, every developer and every agent runs the same task the
-                                            same way.</li>
-                                        <li><strong>History: why it is this way.</strong> Numbered decision records (ADRs)
-                                            hold the reasoning behind each structural choice, including the ones
-                                            later reversed, so a question like "why four token layers and not
-                                            three?" is answered by a file. Handoff files carry one session's state
-                                            into the next, so a fresh agent resumes without re-reading everything.</li>
-                                        <li><strong>State: what is true right now.</strong> Token usage, pipeline
-                                            and component progress, and sign-off status are written to snapshot
-                                            files ahead of time. Agents read those instead of querying Figma or
-                                            Airtable live. This is the only layer regenerated every run. The other
-                                            three change slowly, and by decision.</li>
+                                        <li><strong>Intent: what things mean.</strong> Component contracts, token
+                                            layers, docs and glossary, loaded only when a task touches them.</li>
+                                        <li><strong>Procedure: how work is done.</strong> A small <code>AGENTS.md</code>
+                                            loads in every session, kept under 8KB by CI. Detailed rules, commands
+                                            and skills load on demand, so every developer and agent works the same
+                                            way.</li>
+                                        <li><strong>History: why it is this way.</strong> Decision records (ADRs)
+                                            explain each structural choice, and handoff files let a fresh agent pick
+                                            up where the last one stopped.</li>
+                                        <li><strong>State: what is true right now.</strong> Snapshot files hold each
+                                            component's lifecycle stage, token use and sign-off, and
+                                            <code>STATUS_QUO.md</code> rolls them into one summary agents and people
+                                            both read, instead of querying Figma and Airtable live.</li>
                                     </ul>
-                                    <p>What loads is earned, not assumed. An eval harness scores candidate context
-                                        by whether the output correctly cites the component contract and stays
-                                        within the fixed set, keeping reference material in a prompt only if it
-                                        measurably raises that score. That is how the system learned that details on
-                                        how components fit together help when building a full page but hurt a
-                                        single one, so only the layout task loads them.</p>
                                 </div>
                                 <h3>The loops that build and self optimize</h3>
-                                <p class="mb-4">Before building, the agent picks one answer from a fixed list (reuse, compose,
-                                    extend, add parts, keep internal, build new, or escalate), each backed by a decision record.
-                                    Tested on past decisions with the answers hidden, it got 10 of 11 right.</p>
-                                <p class="mb-4">To build, the <code>add-component</code> loop proposes an API from the
-                                    closest existing component and waits for my approval. That proposal becomes the
-                                    <strong>spec</strong> both the code and the Figma mirror are built from. Automated checks,
-                                    my Storybook review and a separate reviewer agent follow.</p>
-                                <p><strong>Additional loops self optimize the system</strong>. Bugs found in review route
-                                    back into the component's contract, and a documentation loop rewrites stale docs.</p>
+                                <p class="mb-4">Before building, the agent picks one of seven answers, from reuse to
+                                    build new or escalate, each backed by a decision record.</p>
+                                <p class="mb-4">The <code>add-component</code> loop then proposes an API and waits for
+                                    my approval. That proposal becomes the <strong>spec</strong> that code and Figma are
+                                    built from, followed by automated checks, my Storybook review and, for interactive
+                                    components, a reviewer agent.</p>
+                                <p class="mb-4">Other loops keep the system current: bugs found in review feed back
+                                    into the contracts, and stale docs get rewritten.</p>
+
+                                <h3>How I tested it</h3>
+                                <p class="mb-4">Context, loops and rules stay only if a test shows they help. Each test
+                                    hid the answer key and recorded a prediction before the first run, so misses were
+                                    reported instead of tuned away.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li><strong>Context over loops.</strong> Rebuilding deleted components, a bare repo
+                                        shipped 6 of 9 clean; with the written context, 9 of 9. The full review loop
+                                        added no clean builds at 1.7× the cost, so the reviewer now runs only on
+                                        interactive components.</li>
+                                    <li><strong>Governance.</strong> On 11 past build decisions with the answers
+                                        hidden, the agent matched 10 and refused every out-of-scope request.</li>
+                                    <li><strong>Figma from code.</strong> Given the spec and metadata, the agent rebuilt
+                                        two Figma components at 96% structural match, against 40% from code alone and
+                                        98% for the hand-built file.</li>
+                                </ul>
                             </div>
                         </div>
                         <!-- Approach bento grid -->
@@ -460,22 +459,22 @@
                                 <h2>AI as infrastructure</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4"><strong>Components come out ready to ship.</strong> The agent builds
-                                    from contracts, not guesses, so engineers spend less time fixing generated
-                                    code.</p>
+                                <p class="mb-4"><strong>Build quality goes up, in code and in Figma.</strong>
+                                    Contracts define properties, states and behaviour, so code and Figma match beyond
+                                    tokens.</p>
                                 <p class="mb-4"><strong>It costs little to run.</strong> Scripts do the routine work
                                     and nothing runs around the clock, so cost follows actual work.</p>
                                 <p class="mb-4"><strong>Every contributor reads the same source.</strong> Every
                                     touchpoint, from the Airtable board to Storybook, is generated from the repo, so no one updates one by hand or asks which
                                     version is current.</p>
-                                <p class="mb-4"><strong>Decisions follow the system's current rules.</strong> Agents
-                                    work within recorded decisions and escalate the rest, so my time goes to design
-                                    calls. That's how one person holds team-scale rigor.</p>
+                                <p class="mb-4"><strong>Governance guides every change.</strong> Before a component
+                                    is added or modified, the agent checks it against the component specs and recorded decisions and
+                                    recommends a path, so new maintainers decide with the system's history in hand,
+                                    without having to learn it first.</p>
                                 <p class="pl-12">
                                     <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link mr-2" target="_blank" rel="noopener noreferrer">App<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                     <a href="https://f4cu.github.io/upskill-design-system/storybook" class="link mr-2" target="_blank" rel="noopener noreferrer">Storybook<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                     <a href="https://f4cu.github.io/upskill-design-system/docs" class="link mr-2" target="_blank" rel="noopener noreferrer">Docs<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                                    <a href="https://github.com/F4cu/upskill-design-system" class="link mr-2" target="_blank" rel="noopener noreferrer">GitHub<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                 </p>
                             </div>
                         </div>
@@ -494,17 +493,14 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>50% more components ready to ship:</strong> compared with builds
-                                        without the component contract layer.</li>
+                                    <li><strong>50% more components ready to ship:</strong> compared with the same
+                                        repo without its written context.</li>
                                     <li><strong>58% bug catch rate:</strong> a second AI reviewer found real
                                         issues in 7 of 12 components before I read the code.</li>
                                     <li><strong>Up to 1M tokens saved per week:</strong> compared with a 24/7 agent
                                         setup that queries Figma and Airtable live.</li>
-                                    <li><strong>0 drift between Figma and code:</strong> every color and spacing
-                                        value is checked after each update. The first check caught outdated colors
-                                        in Figma.</li>
-                                    <li><strong>10 of 11 build decisions correct:</strong> tested on past decisions
-                                        with the answers hidden.</li>
+                                    <li><strong>Figma structure match from 33% to 79%:</strong> measured across all
+                                        16 components linked to Figma, before and after the contract work.</li>
                                 </ul>
                             </div>
                         </div>
