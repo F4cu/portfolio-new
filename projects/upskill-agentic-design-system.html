@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded component library that generates production-ready components, with AI running as infrastructure: machine-readable, Figma-synced, and token-efficient.</p>
+                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded, multi-brand component library that generates production-ready components, with AI running as infrastructure: machine-readable, Figma-synced, and token-efficient.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -245,13 +245,11 @@
                                 <p class="mb-4"><strong>Component contracts.</strong> Two files per component guide the AI:
                                     a metadata file on how to use the component, and a spec on how to build it, from
                                     its structure and properties to its states and tokens, mirrored in Figma.</p>
-                                <p class="mb-4"><strong>Fixed component set.</strong> A small, closed list where a
-                                    three-question test gates every addition, so agents discover and compose from known
-                                    parts rather than inventing new ones.</p>
-                                <p class="mb-4"><strong>Four-layer tokens.</strong> Every value resolves through
-                                    <code>primitives → brand → theme → device</code>, later layers overriding earlier
-                                    ones. Tokens are DTCG JSON, the open design-token standard, compiled by Style Dictionary into CSS and JS; components
-                                    consume the built output, never the source.</p>
+                                <p class="mb-4"><strong>Machine-readable files.</strong> Each kind of knowledge has one
+                                    format and one template: data lives in JSON files that must match a required
+                                    structure, and every doc and skill opens with a short header saying what it covers.
+                                    Agents read the header before loading the rest, so they work from structure instead
+                                    of guessing.</p>
                                 <p class="mb-4"><strong>Plumbing first, AI on top.</strong> Most of the system is plumbing:
                                     GitHub Actions, npm scripts, and REST calls move state between tokens, components,
                                     Airtable, and CI with no model involved. Only jobs a script cannot do, like
