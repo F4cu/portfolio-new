@@ -244,19 +244,21 @@
                                 <h3>The framework</h3>
                                 <p class="mb-4">The system follows the four parts of a common agent architecture, and
                                     keeps the model out of every part a script can handle.</p>
-                                <p class="mb-4"><strong>Tools.</strong> More than 60 deterministic scripts,
-                                    commands and workflows sync the system and prepare the data agents read, without
-                                    spending a single token.</p>
-                                <p class="mb-4"><strong>Memory.</strong> The repo is the single source of truth. It records
-                                    what components mean, how work is done, why the system is this way and what is
-                                    true right now, and agents load only the part a task needs.</p>
-                                <p class="mb-4"><strong>Planning.</strong> Nine Claude commands handle design intent,
-                                    like proposing a component API or generating one, and run only when a maintainer
-                                    triggers them.</p>
-                                <p class="mb-4"><strong>Guards.</strong> Automated checks stop bad changes before
-                                    they merge, and an adversarial reviewer agent challenges interactive components. A status command shows maintainers each
-                                    component's build and review state, and issues found in audits become new rules
-                                    agents follow, so they aren't repeated.</p>
+                                <ul class="list-disc pl-8 md:pl-16 mb-4">
+                                    <li><strong>Tools.</strong> More than 60 deterministic scripts, commands and
+                                        workflows sync the system and prepare the data agents read, without spending a
+                                        single token.</li>
+                                    <li><strong>Memory.</strong> The repo is the single source of truth. It records what
+                                        components mean, how work is done, why the system is this way and what is true
+                                        right now, and agents load only the part a task needs.</li>
+                                    <li><strong>Planning.</strong> Nine Claude commands handle design intent, like
+                                        proposing a component API or generating one, and run only when a maintainer
+                                        triggers them.</li>
+                                    <li><strong>Guards.</strong> Automated checks stop bad changes before they merge,
+                                        and an adversarial reviewer agent challenges interactive components. A status
+                                        command shows maintainers each component's build and review state, and issues
+                                        found in audits become new rules agents follow, so they aren't repeated.</li>
+                                </ul>
 
                                 <h3>Giving AI the right context at the right time</h3>
                                 <p class="mb-4">Each task loads only the context it needs: too much costs money and
