@@ -177,7 +177,7 @@
                                 <h1>UpSkill Agentic Design System</h1>
                             </div>
                             <div class="fade-in col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="fade-in text-xl">This is the second chapter of UpSkill. A fully coded, multi-brand component library that generates production-ready components, with AI running as infrastructure: machine-readable, Figma-synced, and token-efficient.</p>
+                                <p class="fade-in text-xl">UpSkill is an AI-driven design system framework that automates how UI components are built, validated, and maintained at scale.</p>
                                 <p><a class="link" href="/projects/upskill-design-system.html">UpSkill Design
                                         Foundations</a></p>
                             </div>
@@ -232,37 +232,40 @@
                                 <h2>Turning unpredictable AI output into reliable code</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>What I ruled out</h3>
+                                <h3>Where I started, and why it changed</h3>
                                 <p class="mb-4"><strong>Figma as the source of truth.</strong> It can't hold every state,
                                     accessibility rule or code-only property, and syncing it needed an Enterprise-only
                                     API. So code became the source and Figma a checked mirror.</p>
                                 <p class="mb-4"><strong>A single large <code>AGENTS.md</code> file.</strong> It became tiered, loading rules
                                     by task instead of all at once.</p>
-                                <p class="mb-4"><strong>One contract file per component.</strong> It became two, separating
-                                    concerns per task: using a component and building one.</p>
+                                <p class="mb-4"><strong>One contract file per component.</strong> It became two: a metadata
+                                    file on how to use a component, and a spec on how to build it.</p>
 
-                                <h3>The foundation</h3>
-                                <p class="mb-4"><strong>Component contracts.</strong> Two files per component guide the AI:
-                                    a metadata file on how to use the component, and a spec on how to build it, from
-                                    its structure and properties to its states and tokens, mirrored in Figma.</p>
-                                <p class="mb-4"><strong>Machine-readable files.</strong> Each kind of knowledge has one
-                                    format and one template: data lives in JSON files that must match a required
-                                    structure, and every doc and skill opens with a short header saying what it covers.
-                                    Agents read the header before loading the rest, so they work from structure instead
-                                    of guessing.</p>
-                                <p class="mb-4"><strong>Plumbing first, AI on top.</strong> Most of the system is plumbing:
-                                    GitHub Actions, npm scripts, and REST calls move state between tokens, components,
-                                    Airtable, and CI with no model involved. Only jobs a script cannot do, like
-                                    generating or reviewing a component, use one of nine Claude commands.</p>
+                                <h3>The framework</h3>
+                                <p class="mb-4">The system follows the four parts of a common agent architecture, and
+                                    keeps the model out of every part a script can handle.</p>
+                                <p class="mb-4"><strong>Tools.</strong> More than 60 deterministic scripts,
+                                    commands and workflows sync the system and prepare the data agents read, without
+                                    spending a single token.</p>
+                                <p class="mb-4"><strong>Memory.</strong> The repo is the single source of truth. It records
+                                    what components mean, how work is done, why the system is this way and what is
+                                    true right now, and agents load only the part a task needs.</p>
+                                <p class="mb-4"><strong>Planning.</strong> Nine Claude commands handle design intent,
+                                    like proposing a component API or generating one, and run only when a maintainer
+                                    triggers them.</p>
+                                <p class="mb-4"><strong>Guards.</strong> Automated checks stop bad changes before
+                                    they merge, and an adversarial reviewer agent challenges interactive components. A status command shows maintainers each
+                                    component's build and review state, and issues found in audits become new rules
+                                    agents follow, so they aren't repeated.</p>
 
                                 <h3>Giving AI the right context at the right time</h3>
                                 <p class="mb-4">Each task loads only the context it needs: too much costs money and
-                                    distracts the model, too little makes it guess. The system's knowledge lives in
+                                    distracts the model, too little makes it guess. The system's memory lives in
                                     four layers an agent reads on demand.
                                     <a class="link" href="#"
                                         data-toggle="context-layers"
-                                        data-show-text="See context layers"
-                                        data-hide-text="Hide context layers">See context layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                        data-show-text="See memory layers"
+                                        data-hide-text="Hide memory layers">See memory layers<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
                                 </p>
                                 <div id="context-layers" class="collapsible">
                                     <ul class="list-disc pl-8 md:pl-16 mb-4">
@@ -276,35 +279,38 @@
                                             explain each structural choice, and handoff files let a fresh agent pick
                                             up where the last one stopped.</li>
                                         <li><strong>State: what is true right now.</strong> Snapshot files hold each
-                                            component's lifecycle stage, token use and sign-off, and
-                                            <code>STATUS_QUO.md</code> rolls them into one summary agents and people
-                                            both read, instead of querying Figma and Airtable live.</li>
+                                            component's lifecycle stage, token use and sign-off, rolled into one
+                                            <code>STATUS_QUO.md</code> summary. Agents, the CLI, Storybook and Airtable
+                                            all read from it, so nothing queries Figma live.</li>
                                     </ul>
                                 </div>
-                                <h3>The loops that build and self optimize</h3>
+                                <h3>Loops that build, review and learn</h3>
                                 <p class="mb-4">Before building, the agent picks one of seven answers, from reuse to
                                     build new or escalate, each backed by a decision record.</p>
                                 <p class="mb-4">The <code>add-component</code> loop then proposes an API and waits for
                                     my approval. That proposal becomes the <strong>spec</strong> that code and Figma are
                                     built from, followed by automated checks, my Storybook review and, for interactive
-                                    components, a reviewer agent.</p>
-                                <p class="mb-4">Other loops keep the system current: bugs found in review feed back
-                                    into the contracts, and stale docs get rewritten.</p>
+                                    components, an adversarial reviewer agent with a full behavioural accessibility
+                                    review.</p>
+                                <p class="mb-4">Other loops keep the system current: stale docs get rewritten and
+                                    review findings update the rules.</p>
 
-                                <h3>How I tested it</h3>
+                                <h3>Keeping only what tests prove</h3>
                                 <p class="mb-4">Context, loops and rules stay only if a test shows they help. Each test
                                     hid the answer key and recorded a prediction before the first run, so misses were
                                     reported instead of tuned away.</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Context over loops.</strong> Rebuilding deleted components, a bare repo
-                                        shipped 6 of 9 clean; with the written context, 9 of 9. The full review loop
-                                        added no clean builds at 1.7× the cost, so the reviewer now runs only on
-                                        interactive components.</li>
-                                    <li><strong>Governance.</strong> On 11 past build decisions with the answers
-                                        hidden, the agent matched 10 and refused every out-of-scope request.</li>
-                                    <li><strong>Figma from code.</strong> Given the spec and metadata, the agent rebuilt
-                                        two Figma components at 96% structural match, against 40% from code alone and
-                                        98% for the hand-built file.</li>
+                                    <li><strong>Context over loops.</strong> I deleted three shipped components and had
+                                        the agent rebuild each one three times. Without the written rules and decisions,
+                                        6 of 9 builds came out clean; with them, all 9 did. The full review loop didn't add a single clean build and cost 1.7× more,
+                                        so the adversarial reviewer and its full behavioural
+                                        accessibility review now run only on interactive components.</li>
+                                    <li><strong>Governance.</strong> I gave the agent 11 past build decisions with the
+                                        answers hidden. It matched 10 and turned down every request outside the
+                                        system's scope.</li>
+                                    <li><strong>Figma fidelity.</strong> With the component contract, the agent rebuilt
+                                        two Figma components with a 96% match in structure. From code alone it reached
+                                        40%, and my hand-built file scores 98%.</li>
                                 </ul>
                             </div>
                         </div>
@@ -491,14 +497,17 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>50% more components ready to ship:</strong> compared with the same
-                                        repo without its written context.</li>
-                                    <li><strong>58% bug catch rate:</strong> a second AI reviewer found real
-                                        issues in 7 of 12 components before I read the code.</li>
-                                    <li><strong>Up to 1M tokens saved per week:</strong> compared with a 24/7 agent
-                                        setup that queries Figma and Airtable live.</li>
-                                    <li><strong>Figma structure match from 33% to 79%:</strong> measured across all
-                                        16 components linked to Figma, before and after the contract work.</li>
+                                    <li><strong>50% more components ready to ship:</strong> 9 of 9 clean builds
+                                        against 6 of 9 for the same repo without its written rules.</li>
+                                    <li><strong>2.4× more accurate Figma components:</strong> measured across all
+                                        16 components linked to Figma, before and after contracts.</li>
+                                    <li><strong>Zero model spend on routine work:</strong> 22 scripts, 37 npm commands
+                                        and 7 GitHub Actions run with no AI calls.</li>
+                                    <li><strong>20 live API calls replaced by snapshots:</strong> across 7 commands,
+                                        each read is up to 62× smaller and returns the same result every time.</li>
+                                    <li><strong>Guided governance on 10 of 11 decisions:</strong> with the answers
+                                        hidden, the agent recommended the path recorded in the decision history, and
+                                        declined every out-of-scope request.</li>
                                 </ul>
                             </div>
                         </div>
