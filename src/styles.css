@@ -54,6 +54,11 @@ body {
     @apply list-outside mb-4;
   }
 
+  .list-disc > li + li,
+  .list-decimal > li + li {
+    @apply mt-3;
+  }
+
   strong {
     @apply font-normal text-neutral-900 dark:text-neutral-200;
   }
