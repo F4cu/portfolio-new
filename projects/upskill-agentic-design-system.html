@@ -337,8 +337,17 @@
                                         Components status CLI command
                                     </figcaption>
                                 </figure>
-                                <figure class="code-lightbox-figure p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center cursor-zoom-in"
-                                    data-code-lightbox tabindex="0" role="button" aria-label="Open code snippet">
+                                <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] flex flex-col h-full justify-center items-center">
+                                    <img src="/images/upskill-docs-specs-dark.png"
+                                        alt="Rendered from each component's spec and usage JSON contracts. One source of truth, no manual docs."
+                                        class="lightbox-trigger cursor-zoom-in w-full h-full object-contain">
+                                    <figcaption class="text-center">
+                                        Spec-driven documentation
+                                    </figcaption>
+                                </figure>
+                                <!-- Hidden: metadata schema code lightbox, replaced by the specs image above. Swap "hidden" back to "flex" to restore. -->
+                                <figure class="code-lightbox-figure p-4 bg-neutral-300 dark:bg-neutral-800 min-h-[180px] hidden flex-col h-full justify-center items-center cursor-zoom-in"
+                                    data-code-lightbox tabindex="-1" role="button" aria-label="Open code snippet" aria-hidden="true">
                                     <pre class="code-preview w-full text-xs font-mono leading-relaxed text-neutral-700 dark:text-neutral-300">
                                         <code>
                                              "patterns": [...],
@@ -465,18 +474,18 @@
                                 <h2>AI as infrastructure</h2>
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <p class="mb-4"><strong>Build quality goes up, in code and in Figma.</strong>
-                                    Contracts define properties, states and behaviour, so code and Figma match beyond
-                                    tokens.</p>
-                                <p class="mb-4"><strong>It costs little to run.</strong> Scripts do the routine work
-                                    and nothing runs around the clock, so cost follows actual work.</p>
+                                <p class="mb-4"><strong>Design and code stay in parity.</strong>
+                                    Contracts define properties, states and behaviour, so Figma matches production code
+                                    beyond tokens.</p>
+                                <p class="mb-4"><strong>It costs little to run.</strong> Nothing runs around the
+                                    clock, so cost follows actual work.</p>
                                 <p class="mb-4"><strong>Every contributor reads the same source.</strong> Every
                                     touchpoint, from the Airtable board to Storybook, is generated from the repo, so no one updates one by hand or asks which
                                     version is current.</p>
-                                <p class="mb-4"><strong>Governance guides every change.</strong> Before a component
-                                    is added or modified, the agent checks it against the component specs and recorded decisions and
-                                    recommends a path, so new maintainers decide with the system's history in hand,
-                                    without having to learn it first.</p>
+                                <p class="mb-4"><strong>AI assists where judgment is needed.</strong> Scripts
+                                    automate the routine checks, and the agent reviews each new or changed component
+                                    against its contract and past decisions, then recommends a path for a person to
+                                    approve.</p>
                                 <p class="pl-12">
                                     <a href="https://f4cu.github.io/upskill-design-system/showcase/settings" class="link mr-2" target="_blank" rel="noopener noreferrer">App<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                                     <a href="https://f4cu.github.io/upskill-design-system/storybook" class="link mr-2" target="_blank" rel="noopener noreferrer">Storybook<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-left:4px;vertical-align:baseline"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -499,18 +508,14 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>50% more components ready to ship:</strong> 9 of 9 clean builds
-                                        against 6 of 9 for the same repo without its written rules.</li>
-                                    <li><strong>2.4× more accurate Figma components:</strong> measured across all
-                                        16 components linked to Figma, before and after contracts.</li>
-                                    <li><strong>Zero model spend on routine work:</strong> 27 scripts, 44 npm commands
-                                        and 8 GitHub Actions run with no AI calls.</li>
-                                    <li><strong>20 live API calls replaced by snapshots:</strong> across 7 commands,
-                                        each read is up to 62× smaller and returns the same result every time.</li>
-                                    <li><strong>Guided governance on 10 of 11 decisions:</strong> with the answers
-                                        hidden, the agent recommended the path recorded in the decision history, and
-                                        declined every out-of-scope request.</li>
-                                </ul>
+                                    <li><strong>96% design to code parity, up from 40%:</strong> Figma builds from
+                                        the API schema and contracts, significantly simplifying handoff.</li>
+                                    <li><strong>Zero LLM token spend on routine work:</strong> 27 scripts, 44 npm commands
+                                        and 8 GitHub Actions, with API reads up to 62× smaller.</li>
+                                    <li><strong>97% of docs written from a single source of truth:</strong> cuts manual
+                                        writing and drift.</li>
+                                    <li><strong>10 of 11 LLM decisions matched mine:</strong> in a blind test, with
+                                        every out-of-scope request declined.</li>                                </ul>
                             </div>
                         </div>
                     </div>
