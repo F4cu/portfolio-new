@@ -297,22 +297,16 @@
                                 <p class="mb-4">Other loops keep the system current: stale docs get rewritten and
                                     review findings update the rules.</p>
 
-                                <h3>Keeping only what tests prove</h3>
-                                <p class="mb-4">Context, loops and rules stay only if a test shows they help. Each test
-                                    hid the answer key and recorded a prediction before the first run, so misses were
-                                    reported instead of tuned away.</p>
+                                <h3>Keeping only what evals prove</h3>
+                                <p class="mb-4">I built evals to test what the agent needs, and kept only what
+                                    improved its output.</p>
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
-                                    <li><strong>Context over loops.</strong> I deleted three shipped components and had
-                                        the agent rebuild each one three times. Without the written rules and decisions,
-                                        6 of 9 builds came out clean; with them, all 9 did. The full review loop didn't add a single clean build and cost 1.7× more,
-                                        so the adversarial reviewer and its full behavioural
-                                        accessibility review now run only on interactive components.</li>
-                                    <li><strong>Governance.</strong> I gave the agent 11 past build decisions with the
-                                        answers hidden. It matched 10 and turned down every request outside the
-                                        system's scope.</li>
-                                    <li><strong>Figma fidelity.</strong> With the component contract, the agent rebuilt
-                                        two Figma components with a 96% match in structure. From code alone it reached
-                                        40%, and my hand-built file scores 98%.</li>
+                                    <li><strong>Context over loops.</strong> Written rules made every rebuild come out
+                                        clean. An extra review loop added cost without fixing more, so it now runs only
+                                        on interactive components.</li>
+                                    <li><strong>Context in the right place.</strong> A shared pattern file cut errors by
+                                        69% on page layouts but raised them by 29% on component builds, so only the
+                                        layout command reads it.</li>
                                 </ul>
                             </div>
                         </div>
