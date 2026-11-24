@@ -34,6 +34,176 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="module" src="/src/main.js"></script>
+    <style>
+        /* Component blocks under Result > Screens, from the component architecture v2 draft */
+        .sbx { display: flex; flex-direction: column; gap: 1rem; }
+        .sbx [hidden] { display: none !important; }
+        .sbx-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+        .sbx-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: #737373; }
+        .sbx-seg { display: inline-flex; border: 1px solid #a3a3a3; border-radius: 9999px; padding: 2px; flex-wrap: wrap; }
+        .sbx-seg button { font-size: .875rem; padding: .35rem .85rem; border-radius: 9999px; color: #404040; background: transparent; min-height: 32px; }
+        .sbx-seg button[aria-pressed="true"], .sbx-seg button[aria-selected="true"] { background: #262626; color: #f5f5f5; }
+        .sbx-seg button:focus-visible, .sbx-btn:focus-visible, .sbx-check input:focus-visible, .sbx-field:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+        [data-theme="dark"] .sbx-seg { border-color: #525252; }
+        [data-theme="dark"] .sbx-seg button { color: #d4d4d4; }
+        [data-theme="dark"] .sbx-seg button[aria-pressed="true"], [data-theme="dark"] .sbx-seg button[aria-selected="true"] { background: #e5e5e5; color: #171717; }
+        .sbx-btn { font-size: .875rem; padding: .45rem 1rem; border-radius: 9999px; background: #262626; color: #f5f5f5; }
+        .sbx-btn:hover { background: #404040; }
+        [data-theme="dark"] .sbx-btn { background: #e5e5e5; color: #171717; }
+        [data-theme="dark"] .sbx-btn:hover { background: #fff; }
+        .sbx-panel { background: #f5f5f5; border-radius: .5rem; padding: 1rem; }
+        [data-theme="dark"] .sbx-panel { background: #171717; }
+        .sbx-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; margin: 0; color: #262626; }
+        [data-theme="dark"] .sbx-code { color: #e5e5e5; }
+        .sbx-code .c { color: #737373; }
+        .sbx-code .k { color: #9a3412; }
+        .sbx-code .s { color: #166534; }
+        [data-theme="dark"] .sbx-code .k { color: #fdba74; }
+        [data-theme="dark"] .sbx-code .s { color: #86efac; }
+        .sbx-note { font-size: .9rem; line-height: 1.5; margin: 0; }
+        .sbx-warn { font-size: .875rem; line-height: 1.45; padding: .6rem .8rem; border-radius: .4rem; background: #fee2e2; color: #7f1d1d; margin: 0; }
+        .sbx-ok { font-size: .875rem; line-height: 1.45; padding: .6rem .8rem; border-radius: .4rem; background: #dcfce7; color: #14532d; margin: 0; }
+        [data-theme="dark"] .sbx-warn { background: #450a0a; color: #fecaca; }
+        [data-theme="dark"] .sbx-ok { background: #052e16; color: #bbf7d0; }
+        .sbx-check { display: inline-flex; gap: .5rem; align-items: center; font-size: .9rem; cursor: pointer; }
+        .sbx-check input { width: 1rem; height: 1rem; accent-color: #262626; }
+        .sbx-field { font-size: .9rem; padding: .35rem .6rem; border: 1px solid #a3a3a3; border-radius: .375rem; background: transparent; min-width: 0; }
+        [data-theme="dark"] .sbx-field { border-color: #525252; color: #e5e5e5; }
+        .sbx-grid2 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 640px) { .sbx-grid2 { grid-template-columns: 1fr 1fr; } }
+        .sbx-tag { display: inline-block; font-size: .75rem; padding: .1rem .5rem; border-radius: 9999px; border: 1px solid currentColor; opacity: .8; }
+        .sbx-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+        .sbx-table th, .sbx-table td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid #d4d4d4; vertical-align: top; }
+        [data-theme="dark"] .sbx-table th, [data-theme="dark"] .sbx-table td { border-color: #404040; }
+        .sbx-table th { font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: #737373; }
+        .sbx-table td code, .sbx-inline { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; padding: .05rem .3rem; border-radius: .25rem; background: rgba(0,0,0,.06); }
+        [data-theme="dark"] .sbx-table td code, [data-theme="dark"] .sbx-inline { background: rgba(255,255,255,.08); }
+        .sbx-table td.mismatch code { background: rgba(220, 38, 38, .18); }
+        .sbx-table td.match code { background: rgba(22, 163, 74, .18); }
+        .sbx-gates { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+        .sbx-gates li { font-size: .9rem; display: grid; grid-template-columns: 1.5rem 1fr; gap: .25rem .5rem; align-items: start; margin: 0; }
+        .sbx-gates li + li { margin-top: 0; }
+        .sbx-gates .msg { grid-column: 2; font-family: ui-monospace, Menlo, monospace; font-size: .75rem; color: #b91c1c; word-break: break-word; }
+        [data-theme="dark"] .sbx-gates .msg { color: #fca5a5; }
+        .sbx-flow { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .85rem; }
+        .sbx-flow .node { padding: .35rem .7rem; border-radius: .375rem; border: 1px solid #a3a3a3; }
+        [data-theme="dark"] .sbx-flow .node { border-color: #525252; }
+        .sbx-flow .node.src { background: #262626; color: #f5f5f5; border-color: #262626; }
+        [data-theme="dark"] .sbx-flow .node.src { background: #e5e5e5; color: #171717; }
+        .fg-panel { font-family: Inter, "Roboto", sans-serif; font-size: .8rem; background: #fff; color: #1e1e1e; border: 1px solid #e5e5e5; border-radius: .5rem; padding: .75rem; display: flex; flex-direction: column; gap: .55rem; }
+        [data-theme="dark"] .fg-panel { background: #2c2c2c; color: #f0f0f0; border-color: #444; }
+        .fg-panel .fg-h { font-weight: 600; display: flex; align-items: center; gap: .4rem; }
+        .fg-panel .fg-h::before { content: "◆"; color: #9747ff; font-size: .75rem; }
+        .fg-row { display: grid; grid-template-columns: 6.5rem 1fr; gap: .5rem; align-items: center; }
+        .fg-row label { color: #6b6b6b; }
+        [data-theme="dark"] .fg-row label { color: #b3b3b3; }
+        .fg-row select, .fg-row input[type="text"] { width: 100%; font-size: .8rem; padding: .25rem .4rem; border: 1px solid #e5e5e5; border-radius: .25rem; background: transparent; color: inherit; }
+        [data-theme="dark"] .fg-row select, [data-theme="dark"] .fg-row input[type="text"] { border-color: #555; }
+        [data-theme="dark"] .fg-row select option { background: #2c2c2c; }
+        .fg-row select:disabled { opacity: .45; }
+        .sbx-diag { display: flex; flex-direction: column; gap: .5rem; }
+        .sbx-diag p { margin: 0; }
+        .sbx-diag .hd { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: .9rem; line-height: 1.4; }
+        .sbx-diag .code { font-family: ui-monospace, Menlo, monospace; font-size: .7rem; padding: .05rem .4rem; border-radius: 9999px; background: #b91c1c; color: #fff; font-weight: 700; }
+        .sbx-diag .key { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; margin: 0; }
+        .sbx-diag details summary { cursor: pointer; font-size: .8rem; }
+        .sbx-diag details pre { margin-top: .5rem; font-size: .72rem; opacity: .9; }
+        .fb-set { display: flex; flex-direction: column; gap: .35rem; }
+        .fb-set + .fb-set { border-top: 1px solid #e5e5e5; padding-top: .6rem; }
+        [data-theme="dark"] .fb-set + .fb-set { border-color: #444; }
+        .fb-set .fg-h small { font-weight: 400; color: #8a8a8a; margin-left: .25rem; }
+        .fb-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; align-items: baseline; padding: .1rem .35rem; border-left: 3px solid transparent; }
+        .fb-row .n { color: #6b6b6b; }
+        [data-theme="dark"] .fb-row .n { color: #b3b3b3; }
+        .fb-row .v { font-family: ui-monospace, Menlo, monospace; font-size: .72rem; word-break: break-word; }
+        .fb-row.bad { border-left-color: #dc2626; background: rgba(220, 38, 38, .08); }
+        .fb-col { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+        .fb-col .fb-head { display: flex; flex-direction: column; gap: .3rem; }
+        .fb-col .fb-head .t { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: #737373; }
+        .fb-col { container-type: inline-size; }
+        .fb-col .fb-row { grid-template-columns: minmax(5.5rem, 40%) 1fr; }
+        .fb-col .fb-row .v { word-break: normal; overflow-wrap: break-word; }
+        @container (max-width: 300px) { .fb-col .fb-row { grid-template-columns: 1fr; gap: 0; } }
+        .sbx-info { display: inline-flex; align-items: center; justify-content: center; width: 1.05rem; height: 1.05rem; border-radius: 9999px; border: 1px solid currentColor;
+            font: italic 700 .68rem/1 Georgia, serif; color: #525252; background: transparent; cursor: help; vertical-align: text-bottom; margin-left: .15rem; padding: 0; }
+        .sbx-info:hover, button.sbx-info[aria-describedby] { background: #262626; color: #fff; border-color: #262626; }
+        .sbx-info:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+        [data-theme="dark"] .sbx-info { color: #d4d4d4; }
+        [data-theme="dark"] .sbx-info:hover, [data-theme="dark"] button.sbx-info[aria-describedby] { background: #e5e5e5; color: #171717; border-color: #e5e5e5; }
+        .sbx-tip { position: fixed; z-index: 1000; max-width: min(320px, calc(100vw - 16px)); display: flex; flex-direction: column; gap: .35rem;
+            background: #171717; color: #f5f5f5; border-radius: .5rem; padding: .7rem .8rem; font: .8rem/1.45 "Roboto", sans-serif; box-shadow: 0 6px 20px rgba(0,0,0,.25); pointer-events: none; }
+        .sbx-tip[hidden] { display: none; }
+        .sbx-tip strong { font-weight: 600; color: inherit; }
+        .sbx-tip .src { font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #a3a3a3; }
+        .sbx-tip .sbx-inline { background: rgba(255,255,255,.14); }
+        [data-theme="dark"] .sbx-tip { background: #f5f5f5; color: #171717; }
+        [data-theme="dark"] .sbx-tip .src { color: #525252; }
+        [data-theme="dark"] .sbx-tip .sbx-inline { background: rgba(0,0,0,.08); }
+        .sbx-meter { height: 6px; border-radius: 9999px; background: rgba(0,0,0,.1); overflow: hidden; }
+        [data-theme="dark"] .sbx-meter { background: rgba(255,255,255,.12); }
+        .sbx-meter span { display: block; height: 100%; background: #16a34a; transition: width .3s; }
+        .sbx-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+        .sbx-list li { font-size: .85rem; line-height: 1.45; margin: 0; padding-left: 1.1rem; position: relative; }
+        .sbx-list li::before { content: "×"; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+        .sbx-list.ok li::before { content: "✓"; color: #16a34a; }
+        .fg-toggle { justify-self: start; position: relative; width: 28px; height: 16px; border-radius: 9999px; background: #d9d9d9; border: 0; padding: 0; cursor: pointer; transition: background .15s; }
+        .fg-toggle::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 9999px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+        .fg-toggle[aria-checked="true"] { background: #0d99ff; }
+        .fg-toggle[aria-checked="true"]::after { transform: translateX(12px); }
+        .fg-toggle:focus-visible { outline: 2px solid #0d99ff; outline-offset: 2px; }
+        [data-theme="dark"] .fg-toggle { background: #555; }
+        [data-theme="dark"] .fg-toggle[aria-checked="true"] { background: #0d99ff; }
+        .v2-trio { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 768px) { .v2-trio { grid-template-columns: repeat(2, 1fr); } .v2-trio .v2-wide { grid-column: 1 / -1; } }
+        .v2-box { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+        .v2-fill { flex: 1; }
+        .v2-head { display: flex; flex-direction: column; gap: .25rem; }
+        .v2-head .v2-title { font-size: 1.375rem; line-height: 1.25; margin: 0; }
+        .v2-head .v2-sub { margin: 0; }
+        .fg-panel .fg-h + .fg-row, .fg-panel .fg-missing + .fg-h, .fg-panel .fg-row + .fg-h, .fg-panel .fg-comps + .fg-h { margin-top: .25rem; }
+        #feature-accuracy .fb-row { position: relative; padding-right: 1.75rem; }
+        .v2-tip { position: absolute; right: .45rem; top: 50%; transform: translateY(-50%); display: inline-flex; }
+        .v2-tip-btn { --tip-glyph: #fff; display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: #dc2626; background: transparent; cursor: help; }
+        .v2-tip-btn svg { width: 100%; height: 100%; }
+        .v2-tip-btn:focus-visible { outline: 2px solid #2563eb; outline-offset: 1px; }
+        [data-theme="dark"] .v2-tip-btn { color: #f87171; --tip-glyph: #2c2c2c; }
+        .v2-tip-text { position: absolute; right: -4px; bottom: calc(100% + 6px); z-index: 10; width: max-content; max-width: 240px;
+            font-size: .75rem; line-height: 1.4; color: #f5f5f5; background: #171717; padding: .45rem .6rem; border-radius: .375rem; box-shadow: 0 4px 12px rgba(0,0,0,.25);
+            opacity: 0; visibility: hidden; transition: opacity .12s; pointer-events: none; }
+        [data-theme="dark"] .v2-tip-text { background: #f5f5f5; color: #171717; }
+        .v2-tip:hover .v2-tip-text, .v2-tip:focus-within .v2-tip-text { opacity: 1; visibility: visible; }
+        .v2-tip.is-dismissed .v2-tip-text { opacity: 0; visibility: hidden; }
+        .v2-blocks { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: stretch; }
+        @media (min-width: 1024px) { .v2-blocks { grid-template-columns: 1fr 1fr; } }
+        .v2-block > figure { container-type: inline-size; height: 100%; margin: 0; }
+        .v2-tabs { display: flex; gap: 1.25rem; border-bottom: 1px solid #a3a3a3; }
+        [data-theme="dark"] .v2-tabs { border-color: #525252; }
+        .v2-tabs button { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: #737373; background: transparent;
+            padding: .35rem 0 .5rem; margin-bottom: -1px; border-bottom: 2px solid transparent; cursor: pointer; }
+        .v2-tabs button:hover { color: #404040; }
+        [data-theme="dark"] .v2-tabs button:hover { color: #d4d4d4; }
+        .v2-tabs button[aria-pressed="true"] { color: #171717; border-bottom-color: currentColor; }
+        [data-theme="dark"] .v2-tabs button[aria-pressed="true"] { color: #f5f5f5; }
+        .v2-tabs button:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+        .v2-block .v2-trio, .v2-block .sbx-grid2 { grid-template-columns: 1fr; }
+        @container (min-width: 560px) {
+            .v2-block .v2-trio { grid-template-columns: 1fr 1fr; }
+        }
+        @container (min-width: 900px) {
+            .v2-block .sbx-grid2 { grid-template-columns: 1fr 1fr; }
+        }
+        .v2-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .v2-dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; vertical-align: middle; margin-left: .3rem; }
+        .v2-dot.figma { background: #9747ff; }
+        .v2-dot.code { background: #f59e0b; }
+        .v2-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .75rem; color: #737373; margin-top: -.25rem; }
+        .v2-legend .v2-dot { margin: 0 .4rem 0 0; }
+        .fg-row select { -webkit-appearance: none; appearance: none; padding-right: 1.6rem; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%236b6b6b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right .45rem center; background-size: 12px; }
+        [data-theme="dark"] .fg-row select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23b3b3b3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+        .fg-row select:disabled { cursor: not-allowed; opacity: .6; }
+    </style>
 </head>
 
 <body>
@@ -502,7 +672,7 @@
                             </div>
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
                                 <ul class="list-disc pl-8 md:pl-16">
-                                    <li><strong>96% design to code parity, up from 40%:</strong> Figma builds from
+                                    <li><strong>91% Figma build accuracy, up from 55%:</strong> Figma builds from
                                         the API schema and contracts, significantly simplifying handoff.</li>
                                     <li><strong>Zero LLM token spend on routine work:</strong> 27 scripts, 44 npm commands
                                         and 8 GitHub Actions, with API reads up to 62× smaller.</li>
@@ -522,6 +692,90 @@
                             <div class="col-span-12 border-t pt-2 border-neutral-400 dark:border-neutral-700">
                                 <span class="eyebrow">Result</span>
                                 <h2>Screens</h2>
+                            </div>
+                            <div class="col-span-12">
+                            <div class="v2-blocks">
+                            <article id="feature-parity" class="v2-block">
+                                <figure class="h-full p-4 md:p-6 bg-neutral-300 dark:bg-neutral-800 flex flex-col gap-5">
+                                    <header class="v2-head">
+                                        <h3 class="v2-title">Figma and code share one API</h3>
+                                        <p class="v2-sub">Each component spec follows one API schema and records where every property lives, so handoff is a lookup, not a translation.</p>
+                                    </header>
+                                    <div class="sbx v2-trio" id="sbx-parity">
+                                        <div class="v2-box">
+                                            <span class="sbx-label">Figma</span>
+                                            <div class="fg-panel" aria-label="Figma properties">
+                                                <div class="fg-h">TextField</div>
+                                                <div class="fg-row"><label for="p-label">Label</label><input type="text" id="p-label" data-fg="label" value="Email"></div>
+                                                <div class="fg-row"><label for="p-hide">Hide label</label><button type="button" role="switch" aria-checked="false" class="fg-toggle" id="p-hide" data-fg="hide"></button></div>
+                                                <div class="fg-row"><label for="p-error">Error</label><input type="text" id="p-error" data-fg="error" value="" placeholder="(empty)"></div>
+                                                <div class="fg-row"><label for="p-size">Size</label><select id="p-size" data-fg="size"><option selected>md</option><option>lg</option></select></div>
+                                                <div class="fg-row"><label for="p-disabled">Disabled</label><button type="button" role="switch" aria-checked="false" class="fg-toggle" id="p-disabled" data-fg="disabled"></button></div>
+                                                <div class="fg-row"><label for="p-state">State <span class="v2-dot figma" aria-hidden="true"></span><span class="v2-sr">(Figma only)</span></label><select id="p-state" data-fg="state"><option>Default</option><option>Hover</option><option>Focus</option></select></div>
+                                            </div>
+                                        </div>
+                                        <div class="v2-box">
+                                            <span class="sbx-label">Code</span>
+                                            <div class="sbx-panel v2-fill"><pre class="sbx-code" data-parity-code aria-live="polite"></pre></div>
+                                        </div>
+                                        <div class="v2-legend v2-wide" aria-hidden="true">
+                                            <span><span class="v2-dot figma"></span>Figma only</span>
+                                            <span><span class="v2-dot code"></span>Code only</span>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </article>
+
+                            <!-- Build accuracy -->
+                            <article id="feature-accuracy" class="v2-block">
+                                <figure class="h-full p-4 md:p-6 bg-neutral-300 dark:bg-neutral-800 flex flex-col gap-5">
+                                    <header class="v2-head">
+                                        <h3 class="v2-title">Spec lifts Figma build accuracy to 91%</h3>
+                                        <p class="v2-sub">An agent rebuilt Button in Figma from the code alone, then with the spec, and a script scored the structure of each build against the spec.</p>
+                                    </header>
+                                    <div class="sbx" id="sbx-accuracy">
+                                        <div class="v2-tabs" data-acc-mode aria-label="Figma build">
+                                            <button type="button" aria-pressed="true" data-mode="code">No spec</button>
+                                            <button type="button" aria-pressed="false" data-mode="spec">With spec</button>
+                                        </div>
+                                        <div class="fb-col" data-acc-panel="code">
+                                            <div class="fg-panel v2-fill">
+                                                <div class="fb-set">
+                                                    <div class="fg-h">Button <small>144 variants</small></div>
+                                                <div class="fb-row"><span class="n">Variant</span><span class="v">accent · neutral · transparent · danger</span></div>
+                                                <div class="fb-row"><span class="n">Size</span><span class="v">sm · md · lg</span></div>
+                                                <div class="fb-row bad"><span class="n">Shape <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Shape failed" aria-describedby="tip-acc-1"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-1" class="v2-tip-text">Icon-only buttons belong in their own set. Shape next to Label offers a mix the code type rejects.</span></span></span><span class="v">none · square · round</span></div>
+                                                <div class="fb-row bad"><span class="n">State <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why State failed" aria-describedby="tip-acc-2"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-2" class="v2-tip-text">The app sets disabled, not the user. It needs its own property, like the disabled prop.</span></span></span><span class="v">default · hover · active · disabled</span></div>
+                                                <div class="fb-row bad"><span class="n">Icon <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Icon failed" aria-describedby="tip-acc-3"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-3" class="v2-tip-text">Should be a Has icon switch plus an Icon swap, so the property named like the prop holds the icon.</span></span></span><span class="v">boolean</span></div>
+                                                <div class="fb-row"><span class="n">Icon name</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row"><span class="n">Icon name (sm)</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row bad"><span class="n">Trailing icon <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Trailing icon failed" aria-describedby="tip-acc-4"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-4" class="v2-tip-text">Same rule: a Has trailing icon switch plus a Trailing icon swap.</span></span></span><span class="v">boolean</span></div>
+                                                <div class="fb-row"><span class="n">Trailing icon name</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row"><span class="n">Trailing icon name (sm)</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row bad"><span class="n">Label <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Label failed" aria-describedby="tip-acc-5"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-5" class="v2-tip-text">Button has no label prop. Its text maps to a Text property.</span></span></span><span class="v">text</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fb-col" data-acc-panel="spec" hidden>
+                                            <div class="fg-panel v2-fill">
+                                                <div class="fb-set">
+                                                    <div class="fg-h">Button <small>60 variants</small></div>
+                                                <div class="fb-row"><span class="n">Text</span><span class="v">text</span></div>
+                                                <div class="fb-row"><span class="n">Has icon</span><span class="v">boolean</span></div>
+                                                <div class="fb-row"><span class="n">Icon</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row"><span class="n">Has trailing icon</span><span class="v">boolean</span></div>
+                                                <div class="fb-row"><span class="n">Trailing icon</span><span class="v">instance swap</span></div>
+                                                <div class="fb-row"><span class="n">Variant</span><span class="v">Accent · Neutral · Transparent · Danger</span></div>
+                                                <div class="fb-row"><span class="n">Size</span><span class="v">sm · md · lg</span></div>
+                                                <div class="fb-row"><span class="n">State</span><span class="v">Default · Hover · Active · Focus</span></div>
+                                                <div class="fb-row bad"><span class="n">Disabled <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Disabled failed" aria-describedby="tip-acc-6"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-6" class="v2-tip-text">Disabled locks State to Default, so it should be listed first.</span></span></span><span class="v">false · true</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </article>
+                            </div>
                             </div>
                             <div class="col-span-12">
                                 <figure class="p-4 bg-neutral-300 dark:bg-neutral-800 mb-8">
@@ -621,6 +875,67 @@
 
     </div>
     </div>
+    <script>
+    (function () {
+        const $ = (s, r = document) => r.querySelector(s);
+        const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        const PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
+
+        /* ---------- Tooltips: Escape hides them (WCAG 1.4.13) ---------- */
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            document.querySelectorAll('.v2-tip').forEach(t => t.classList.add('is-dismissed'));
+        });
+        document.querySelectorAll('.v2-tip').forEach(t => {
+            t.addEventListener('mouseleave', () => t.classList.remove('is-dismissed'));
+            t.addEventListener('focusout', () => t.classList.remove('is-dismissed'));
+        });
+
+        /* ---------- Build accuracy: Without / With the spec ---------- */
+        (function () {
+            const root = $('#sbx-accuracy'); if (!root) return;
+            const btns = Array.from(root.querySelectorAll('[data-acc-mode] button'));
+            btns.forEach(b => b.addEventListener('click', () => {
+                btns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+                root.querySelectorAll('[data-acc-panel]').forEach(p => { p.hidden = p.dataset.accPanel !== b.dataset.mode; });
+            }));
+        })();
+
+        /* ---------- 01 Figma to code parity (TextField) ---------- */
+        (function () {
+            const root = $('#sbx-parity'); if (!root) return;
+            const f = (k) => $(`[data-fg="${k}"]`, root);
+            const isOn = (k) => f(k).getAttribute('aria-checked') === 'true';
+            ['label', 'error'].forEach(k => f(k).addEventListener('input', paint));
+            ['size', 'state'].forEach(k => f(k).addEventListener('change', paint));
+            ['hide', 'disabled'].forEach(k => f(k).addEventListener('click', () => { f(k).setAttribute('aria-checked', String(!isOn(k))); paint(); }));
+            const CODE_ONLY = '<span class="v2-dot code" aria-hidden="true"></span><span class="v2-sr">(code only)</span>';
+            function paint() {
+                const disabled = isOn('disabled'), hide = isOn('hide');
+                const stateSel = f('state');
+                if (disabled) stateSel.value = 'Default';
+                stateSel.disabled = disabled;
+                const label = f('label').value || 'Email', error = f('error').value, size = f('size').value, state = stateSel.value;
+                // One code line per Figma row, in the same order (defaults from TextField.spec.json)
+                const lines = [
+                    `  label=<span class="s">"${esc(label)}"</span>`,
+                    hide ? '  <span class="k">hideLabel</span>' : '  <span class="c">// hideLabel not set</span>',
+                    error ? `  error=<span class="s">"${esc(error)}"</span>` : '  <span class="c">// error not set</span>',
+                    `  size=<span class="s">"${size}"</span>${size === 'md' ? '  <span class="c">// default</span>' : ''}`,
+                    disabled ? '  <span class="k">disabled</span>' : '  <span class="c">// disabled not set</span>',
+                    `  value={email} ${CODE_ONLY}`,
+                    `  onChange={update} ${CODE_ONLY}`
+                ];
+                let code = `&lt;TextField\n${lines.join('\n')}\n/&gt;`;
+                code += state === 'Default'
+                    ? `\n\n<span class="c">// State: CSS, not a prop</span>`
+                    : `\n\n<span class="c">// State=${state}: CSS, not a prop\n// :${state === 'Focus' ? 'focus' : 'hover'}</span>`;
+                $('[data-parity-code]', root).innerHTML = code;
+            }
+            paint();
+        })();
+    })();
+    </script>
 </body>
 
 </html>
