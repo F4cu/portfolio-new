@@ -702,7 +702,7 @@
                             <article id="feature-parity" class="v2-block">
                                 <figure class="h-full p-4 md:p-6 bg-neutral-300 dark:bg-neutral-800 flex flex-col gap-5">
                                     <header class="v2-head">
-                                        <p class="v2-sub">Contracts raise Figma to code parity, so every Figma property maps to a code prop.</p>
+                                        <p class="v2-sub">Component contracts align Figma and React, including data props and Figma-only states.</p>
                                     </header>
                                     <div class="sbx v2-trio" id="sbx-parity">
                                         <div class="v2-box">
@@ -718,12 +718,12 @@
                                             </div>
                                         </div>
                                         <div class="v2-box">
-                                            <span class="sbx-label">Code</span>
+                                            <span class="sbx-label">React</span>
                                             <div class="sbx-panel v2-fill"><pre class="sbx-code" data-parity-code aria-live="polite"></pre></div>
                                         </div>
                                         <div class="v2-legend v2-wide" aria-hidden="true">
                                             <span><span class="v2-dot figma"></span>Figma only</span>
-                                            <span><span class="v2-dot code"></span>Code only</span>
+                                            <span><span class="v2-dot code"></span>React only</span>
                                         </div>
                                     </div>
                                 </figure>
@@ -927,7 +927,7 @@
             ['label', 'error'].forEach(k => f(k).addEventListener('input', paint));
             ['size', 'state'].forEach(k => f(k).addEventListener('change', paint));
             ['hide', 'disabled'].forEach(k => f(k).addEventListener('click', () => { f(k).setAttribute('aria-checked', String(!isOn(k))); paint(); }));
-            const CODE_ONLY = '<span class="v2-dot code" aria-hidden="true"></span><span class="v2-sr">(code only)</span>';
+            const CODE_ONLY = '<span class="v2-dot code" aria-hidden="true"></span><span class="v2-sr">(React only)</span>';
             function paint() {
                 const disabled = isOn('disabled'), hide = isOn('hide');
                 const stateSel = f('state');
@@ -937,10 +937,11 @@
                 // One code line per Figma row, in the same order (defaults from TextField.spec.json)
                 const lines = [
                     `  label=<span class="s">"${esc(label)}"</span>`,
-                    hide ? '  <span class="k">hideLabel</span>' : '  <span class="c">// hideLabel not set</span>',
-                    error ? `  error=<span class="s">"${esc(error)}"</span>` : '  <span class="c">// error not set</span>',
+                    hide ? `  <span class="k">hideLabel</span>\n  <span class="c">// derived: accessible name "${esc(label)}"</span>` : '  <span class="c">// hideLabel: false (default)</span>',
+                    // Derived aria from TextField/index.tsx: error sets aria-invalid and points aria-describedby at the message
+                    error ? `  error=<span class="s">"${esc(error)}"</span>\n  <span class="c">// derived: aria-invalid="true"\n  // derived: aria-describedby → error message</span>` : '  <span class="c">// error not set</span>',
                     `  size=<span class="s">"${size}"</span>${size === 'md' ? '  <span class="c">// default</span>' : ''}`,
-                    disabled ? '  <span class="k">disabled</span>' : '  <span class="c">// disabled not set</span>',
+                    disabled ? '  <span class="k">disabled</span>' : '  <span class="c">// disabled: false (default)</span>',
                     `  value={email} ${CODE_ONLY}`,
                     `  onChange={update} ${CODE_ONLY}`
                 ];
