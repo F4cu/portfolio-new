@@ -108,22 +108,24 @@
         .sbx-diag .key { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; margin: 0; }
         .sbx-diag details summary { cursor: pointer; font-size: .8rem; }
         .sbx-diag details pre { margin-top: .5rem; font-size: .72rem; opacity: .9; }
-        .fb-set { display: flex; flex-direction: column; gap: .35rem; }
-        .fb-set + .fb-set { border-top: 1px solid #e5e5e5; padding-top: .6rem; }
-        [data-theme="dark"] .fb-set + .fb-set { border-color: #444; }
-        .fb-set .fg-h small { font-weight: 400; color: #8a8a8a; margin-left: .25rem; }
-        .fb-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; align-items: baseline; padding: .1rem .35rem; border-left: 3px solid transparent; }
-        .fb-row .n { color: #6b6b6b; }
-        [data-theme="dark"] .fb-row .n { color: #b3b3b3; }
-        .fb-row .v { font-family: ui-monospace, Menlo, monospace; font-size: .72rem; word-break: break-word; }
-        .fb-row.bad { border-left-color: #dc2626; background: rgba(220, 38, 38, .08); }
+        #feature-accuracy .fg-h small { font-weight: 400; color: #8a8a8a; margin-left: .25rem; }
+        #feature-accuracy .fg-row { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); margin: 0 -.35rem; padding: .15rem .35rem; border-left: 3px solid transparent; }
+        #feature-accuracy .fg-row[hidden] { display: none; }
+        #feature-accuracy .fg-mismatch { color: #dc2626; font-weight: 600; }
+        [data-theme="dark"] #feature-accuracy .fg-mismatch { color: #f87171; }
+        #feature-accuracy .fg-row.bad { border-left-color: #dc2626; background: rgba(220, 38, 38, .08); }
+        #feature-accuracy .fg-name { display: flex; align-items: center; gap: .35rem; min-width: 0; color: #6b6b6b; }
+        [data-theme="dark"] #feature-accuracy .fg-name { color: #b3b3b3; }
+        #feature-accuracy .fg-name .v2-tip { position: relative; right: auto; top: auto; transform: none; flex: none; }
+        #feature-accuracy .fg-name .v2-tip-text { right: auto; left: -4px; }
+        .fg-swap { display: flex; align-items: center; gap: .35rem; min-width: 0; font-size: .8rem; padding: .25rem .4rem; border: 1px solid #e5e5e5; border-radius: .25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .fg-swap svg { width: 10px; height: 10px; flex: none; color: #9747ff; }
+        [data-theme="dark"] .fg-swap { border-color: #555; }
+        @container (max-width: 300px) { #feature-accuracy .fg-row { grid-template-columns: 1fr; gap: .25rem; } }
         .fb-col { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
         .fb-col .fb-head { display: flex; flex-direction: column; gap: .3rem; }
         .fb-col .fb-head .t { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: #737373; }
         .fb-col { container-type: inline-size; }
-        .fb-col .fb-row { grid-template-columns: minmax(5.5rem, 40%) 1fr; }
-        .fb-col .fb-row .v { word-break: normal; overflow-wrap: break-word; }
-        @container (max-width: 300px) { .fb-col .fb-row { grid-template-columns: 1fr; gap: 0; } }
         .sbx-info { display: inline-flex; align-items: center; justify-content: center; width: 1.05rem; height: 1.05rem; border-radius: 9999px; border: 1px solid currentColor;
             font: italic 700 .68rem/1 Georgia, serif; color: #525252; background: transparent; cursor: help; vertical-align: text-bottom; margin-left: .15rem; padding: 0; }
         .sbx-info:hover, button.sbx-info[aria-describedby] { background: #262626; color: #fff; border-color: #262626; }
@@ -161,7 +163,6 @@
         .v2-head .v2-title { font-size: 1.375rem; line-height: 1.25; margin: 0; }
         .v2-head .v2-sub { margin: 0; }
         .fg-panel .fg-h + .fg-row, .fg-panel .fg-missing + .fg-h, .fg-panel .fg-row + .fg-h, .fg-panel .fg-comps + .fg-h { margin-top: .25rem; }
-        #feature-accuracy .fb-row { position: relative; padding-right: 1.75rem; }
         .v2-tip { position: absolute; right: .45rem; top: 50%; transform: translateY(-50%); display: inline-flex; }
         .v2-tip-btn { --tip-glyph: #fff; display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: #dc2626; background: transparent; cursor: help; }
         .v2-tip-btn svg { width: 100%; height: 100%; }
@@ -171,6 +172,7 @@
             font-size: .75rem; line-height: 1.4; color: #f5f5f5; background: #171717; padding: .45rem .6rem; border-radius: .375rem; box-shadow: 0 4px 12px rgba(0,0,0,.25);
             opacity: 0; visibility: hidden; transition: opacity .12s; pointer-events: none; }
         [data-theme="dark"] .v2-tip-text { background: #f5f5f5; color: #171717; }
+        .v2-tip-text strong { color: inherit; font-weight: 700; }
         .v2-tip:hover .v2-tip-text, .v2-tip:focus-within .v2-tip-text { opacity: 1; visibility: visible; }
         .v2-tip.is-dismissed .v2-tip-text { opacity: 0; visibility: hidden; }
         .v2-blocks { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: stretch; }
@@ -196,6 +198,8 @@
         .v2-dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; vertical-align: middle; margin-left: .3rem; }
         .v2-dot.figma { background: #9747ff; }
         .v2-dot.code { background: #f59e0b; }
+        .v2-dot.mismatch { background: #dc2626; }
+        [data-theme="dark"] .v2-dot.mismatch { background: #f87171; }
         .v2-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .75rem; color: #737373; margin-top: -.25rem; }
         .v2-legend .v2-dot { margin: 0 .4rem 0 0; }
         .fg-row select { -webkit-appearance: none; appearance: none; padding-right: 1.6rem; cursor: pointer;
@@ -698,8 +702,7 @@
                             <article id="feature-parity" class="v2-block">
                                 <figure class="h-full p-4 md:p-6 bg-neutral-300 dark:bg-neutral-800 flex flex-col gap-5">
                                     <header class="v2-head">
-                                        <h3 class="v2-title">Figma and code share one API</h3>
-                                        <p class="v2-sub">Each component spec follows one API schema and records where every property lives, so handoff is a lookup, not a translation.</p>
+                                        <p class="v2-sub">Contracts raise Figma to code parity, so every Figma property maps to a code prop.</p>
                                     </header>
                                     <div class="sbx v2-trio" id="sbx-parity">
                                         <div class="v2-box">
@@ -730,8 +733,7 @@
                             <article id="feature-accuracy" class="v2-block">
                                 <figure class="h-full p-4 md:p-6 bg-neutral-300 dark:bg-neutral-800 flex flex-col gap-5">
                                     <header class="v2-head">
-                                        <h3 class="v2-title">Spec lifts Figma build accuracy to 91%</h3>
-                                        <p class="v2-sub">An agent rebuilt Button in Figma from the code alone, then with the spec, and a script scored the structure of each build against the spec.</p>
+                                        <p class="v2-sub">Figma build accuracy rises when the agent builds Button from the spec instead of code alone.</p>
                                     </header>
                                     <div class="sbx" id="sbx-accuracy">
                                         <div class="v2-tabs" data-acc-mode aria-label="Figma build">
@@ -739,37 +741,34 @@
                                             <button type="button" aria-pressed="false" data-mode="spec">With spec</button>
                                         </div>
                                         <div class="fb-col" data-acc-panel="code">
-                                            <div class="fg-panel v2-fill">
-                                                <div class="fb-set">
-                                                    <div class="fg-h">Button <small>144 variants</small></div>
-                                                <div class="fb-row"><span class="n">Variant</span><span class="v">accent · neutral · transparent · danger</span></div>
-                                                <div class="fb-row"><span class="n">Size</span><span class="v">sm · md · lg</span></div>
-                                                <div class="fb-row bad"><span class="n">Shape <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Shape failed" aria-describedby="tip-acc-1"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-1" class="v2-tip-text">Icon-only buttons belong in their own set. Shape next to Label offers a mix the code type rejects.</span></span></span><span class="v">none · square · round</span></div>
-                                                <div class="fb-row bad"><span class="n">State <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why State failed" aria-describedby="tip-acc-2"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-2" class="v2-tip-text">The app sets disabled, not the user. It needs its own property, like the disabled prop.</span></span></span><span class="v">default · hover · active · disabled</span></div>
-                                                <div class="fb-row bad"><span class="n">Icon <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Icon failed" aria-describedby="tip-acc-3"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-3" class="v2-tip-text">Should be a Has icon switch plus an Icon swap, so the property named like the prop holds the icon.</span></span></span><span class="v">boolean</span></div>
-                                                <div class="fb-row"><span class="n">Icon name</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row"><span class="n">Icon name (sm)</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row bad"><span class="n">Trailing icon <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Trailing icon failed" aria-describedby="tip-acc-4"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-4" class="v2-tip-text">Same rule: a Has trailing icon switch plus a Trailing icon swap.</span></span></span><span class="v">boolean</span></div>
-                                                <div class="fb-row"><span class="n">Trailing icon name</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row"><span class="n">Trailing icon name (sm)</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row bad"><span class="n">Label <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Label failed" aria-describedby="tip-acc-5"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-5" class="v2-tip-text">Button has no label prop. Its text maps to a Text property.</span></span></span><span class="v">text</span></div>
-                                                </div>
+                                            <div class="fg-panel v2-fill" aria-label="Figma properties, no spec">
+                                                <div class="fg-h">Button <small>144 variants</small></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p1">Variant</label></span><select id="acc-p1"><option selected>accent</option><option>neutral</option><option>transparent</option><option>danger</option></select></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p2">Size</label></span><select id="acc-p2" data-size-select><option selected>sm</option><option>md</option><option>lg</option></select></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p3" class="fg-mismatch">Shape<span class="v2-sr"> (name not in the API schema)</span></label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Shape failed" aria-describedby="tip-acc-p3"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p3" class="v2-tip-text"><strong>Extra prop:</strong> icon-only buttons need their own set</span></span></span><select id="acc-p3"><option>none</option><option>square</option><option selected>round</option></select></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p4">State</label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why State failed" aria-describedby="tip-acc-p4"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p4" class="v2-tip-text"><strong>Wrong value:</strong> disabled needs its own prop, Disabled</span></span></span><select id="acc-p4"><option>default</option><option>hover</option><option>active</option><option selected>disabled</option></select></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p5" class="fg-mismatch">Icon<span class="v2-sr"> (name not in the API schema)</span></label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Icon failed" aria-describedby="tip-acc-p5"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p5" class="v2-tip-text"><strong>Wrong prop name:</strong> should be Has icon</span></span></span><button type="button" role="switch" aria-checked="true" class="fg-toggle" id="acc-p5" aria-controls="acc-row6 acc-row7"></button></div>
+                                                <div class="fg-row" id="acc-row6" data-size="md lg"><span class="fg-name"><span id="acc-p6-l" class="fg-mismatch">Icon name<span class="v2-sr"> (name not in the API schema)</span></span> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Icon name failed" aria-describedby="tip-acc-p6"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p6" class="v2-tip-text"><strong>Wrong prop name:</strong> should be Icon</span></span></span><span class="fg-swap" role="img" aria-label="Icon name: plus"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>plus</span></div>
+                                                <div class="fg-row bad" id="acc-row7" data-size="sm"><span class="fg-name"><span id="acc-p7-l" class="fg-mismatch">Icon name (sm)<span class="v2-sr"> (name not in the API schema)</span></span> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Icon name (sm) failed" aria-describedby="tip-acc-p7"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p7" class="v2-tip-text"><strong>Extra prop:</strong> one Icon prop covers every size</span></span></span><span class="fg-swap" role="img" aria-label="Icon name (sm): plus"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>plus</span></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p8" class="fg-mismatch">Trailing icon<span class="v2-sr"> (name not in the API schema)</span></label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Trailing icon failed" aria-describedby="tip-acc-p8"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p8" class="v2-tip-text"><strong>Wrong prop name:</strong> should be Has trailing icon</span></span></span><button type="button" role="switch" aria-checked="false" class="fg-toggle" id="acc-p8" aria-controls="acc-row9 acc-row10"></button></div>
+                                                <div class="fg-row" id="acc-row9" data-size="md lg"><span class="fg-name"><span id="acc-p9-l" class="fg-mismatch">Trailing icon name<span class="v2-sr"> (name not in the API schema)</span></span> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Trailing icon name failed" aria-describedby="tip-acc-p9"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p9" class="v2-tip-text"><strong>Wrong prop name:</strong> should be Trailing icon</span></span></span><span class="fg-swap" role="img" aria-label="Trailing icon name: chevron-down"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>chevron-down</span></div>
+                                                <div class="fg-row bad" id="acc-row10" data-size="sm"><span class="fg-name"><span id="acc-p10-l" class="fg-mismatch">Trailing icon name (sm)<span class="v2-sr"> (name not in the API schema)</span></span> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Trailing icon name (sm) failed" aria-describedby="tip-acc-p10"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p10" class="v2-tip-text"><strong>Extra prop:</strong> one Trailing icon prop covers every size</span></span></span><span class="fg-swap" role="img" aria-label="Trailing icon name (sm): chevron-down"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>chevron-down</span></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p11" class="fg-mismatch">Label<span class="v2-sr"> (name not in the API schema)</span></label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Label failed" aria-describedby="tip-acc-p11"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p11" class="v2-tip-text"><strong>Wrong prop name:</strong> should be Text</span></span></span><input type="text" id="acc-p11" value="Button"></div>
                                             </div>
+                                            <div class="v2-legend" aria-hidden="true"><span><span class="v2-dot mismatch"></span>Names not in the API schema</span></div>
                                         </div>
                                         <div class="fb-col" data-acc-panel="spec" hidden>
-                                            <div class="fg-panel v2-fill">
-                                                <div class="fb-set">
-                                                    <div class="fg-h">Button <small>60 variants</small></div>
-                                                <div class="fb-row"><span class="n">Text</span><span class="v">text</span></div>
-                                                <div class="fb-row"><span class="n">Has icon</span><span class="v">boolean</span></div>
-                                                <div class="fb-row"><span class="n">Icon</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row"><span class="n">Has trailing icon</span><span class="v">boolean</span></div>
-                                                <div class="fb-row"><span class="n">Trailing icon</span><span class="v">instance swap</span></div>
-                                                <div class="fb-row"><span class="n">Variant</span><span class="v">Accent · Neutral · Transparent · Danger</span></div>
-                                                <div class="fb-row"><span class="n">Size</span><span class="v">sm · md · lg</span></div>
-                                                <div class="fb-row"><span class="n">State</span><span class="v">Default · Hover · Active · Focus</span></div>
-                                                <div class="fb-row bad"><span class="n">Disabled <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Disabled failed" aria-describedby="tip-acc-6"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-6" class="v2-tip-text">Disabled locks State to Default, so it should be listed first.</span></span></span><span class="v">false · true</span></div>
-                                                </div>
+                                            <div class="fg-panel v2-fill" aria-label="Figma properties, with spec">
+                                                <div class="fg-h">Button <small>60 variants</small></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p12">Text</label></span><input type="text" id="acc-p12" value="Button"></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p13">Has icon</label></span><button type="button" role="switch" aria-checked="true" class="fg-toggle" id="acc-p13" aria-controls="acc-row14"></button></div>
+                                                <div class="fg-row" id="acc-row14"><span class="fg-name"><span id="acc-p14-l">Icon</span></span><span class="fg-swap" role="img" aria-label="Icon: plus"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>plus</span></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p15">Has trailing icon</label></span><button type="button" role="switch" aria-checked="false" class="fg-toggle" id="acc-p15" aria-controls="acc-row16"></button></div>
+                                                <div class="fg-row" id="acc-row16"><span class="fg-name"><span id="acc-p16-l">Trailing icon</span></span><span class="fg-swap" role="img" aria-label="Trailing icon: chevron-down"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5 10.5 6 6 10.5 1.5 6z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>chevron-down</span></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p17">Variant</label></span><select id="acc-p17"><option selected>Accent</option><option>Neutral</option><option>Transparent</option><option>Danger</option></select></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p18">Size</label></span><select id="acc-p18"><option>sm</option><option selected>md</option><option>lg</option></select></div>
+                                                <div class="fg-row"><span class="fg-name"><label for="acc-p19">State</label></span><select id="acc-p19"><option selected>Default</option><option>Hover</option><option>Active</option><option>Focus</option></select></div>
+                                                <div class="fg-row bad"><span class="fg-name"><label for="acc-p20">Disabled</label> <span class="v2-tip"><button type="button" class="v2-tip-btn" aria-label="Why Disabled failed" aria-describedby="tip-acc-p20"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M8 7.2v4M8 4.6v.1" stroke="var(--tip-glyph)" stroke-width="1.8" stroke-linecap="round"/></svg></button><span role="tooltip" id="tip-acc-p20" class="v2-tip-text"><strong>Wrong order:</strong> list Disabled before State, since it locks State to Default</span></span></span><button type="button" role="switch" aria-checked="false" class="fg-toggle" id="acc-p20"></button></div>
                                             </div>
                                         </div>
                                     </div>
@@ -899,6 +898,25 @@
                 btns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
                 root.querySelectorAll('[data-acc-panel]').forEach(p => { p.hidden = p.dataset.accPanel !== b.dataset.mode; });
             }));
+            /* Like Figma: a boolean that hides a layer also hides that layer's properties,
+               and a swap only shows in the variants whose layers it is applied to */
+            const sizeSel = root.querySelector('[data-size-select]');
+            const refresh = () => {
+                root.querySelectorAll('.fg-toggle[aria-controls]').forEach(t => {
+                    const on = t.getAttribute('aria-checked') === 'true';
+                    t.getAttribute('aria-controls').split(' ').forEach(id => {
+                        const r = document.getElementById(id); if (!r) return;
+                        const sizes = r.dataset.size;
+                        r.hidden = !on || (sizes && !sizes.split(' ').includes(sizeSel.value));
+                    });
+                });
+            };
+            root.querySelectorAll('.fg-toggle').forEach(t => t.addEventListener('click', () => {
+                t.setAttribute('aria-checked', String(t.getAttribute('aria-checked') !== 'true'));
+                refresh();
+            }));
+            sizeSel.addEventListener('change', refresh);
+            refresh();
         })();
 
         /* ---------- 01 Figma to code parity (TextField) ---------- */
