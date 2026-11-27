@@ -216,15 +216,17 @@
  * Shows on hover and focus. The page script adds is-dismissed on Escape (WCAG 1.4.13).
  */
 .sc-tip { position: absolute; right: .45rem; top: 50%; transform: translateY(-50%); display: inline-flex; }
-.sc-tip-btn { display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: var(--sc-danger); background: transparent; cursor: help; }
+.sc-tip-btn { display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: var(--sc-danger); background: transparent; cursor: default; }
 .sc-tip-btn svg { width: 100%; height: 100%; }
 .sc-tip-btn:focus-visible { outline: 2px solid var(--sc-focus); outline-offset: 1px; }
 .sc-tip-text { position: absolute; right: -4px; bottom: calc(100% + 6px); z-index: 10; width: max-content; max-width: 240px;
     font-size: .75rem; line-height: 1.4; color: var(--sc-tip-fg); background: var(--sc-tip-bg); padding: .45rem .6rem; border-radius: .375rem; box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    opacity: 0; visibility: hidden; transition: opacity .12s; pointer-events: none; }
+    opacity: 0; visibility: hidden; transform: translateY(4px); pointer-events: none;
+    transition: opacity .15s ease-out, transform .15s ease-out, visibility .15s; }
 .sc-tip-text strong { color: inherit; font-weight: 700; }
-.sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { opacity: 1; visibility: visible; }
-.sc-tip.is-dismissed .sc-tip-text { opacity: 0; visibility: hidden; }
+.sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { opacity: 1; visibility: visible; transform: translateY(0); }
+.sc-tip.is-dismissed .sc-tip-text { opacity: 0; visibility: hidden; transform: translateY(4px); }
+@media (prefers-reduced-motion: reduce) { .sc-tip-text, .sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { transform: none; } }
 
 /* ---------- Figma properties panel mock-up ---------- */
 .sc-figma-panel { font-family: Inter, "Roboto", sans-serif; font-size: .8rem; background: var(--sc-figma-bg); color: var(--sc-figma-fg); border: 1px solid var(--sc-figma-border); border-radius: .5rem; padding: .75rem; display: flex; flex-direction: column; gap: .55rem; }
