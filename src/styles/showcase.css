@@ -1,0 +1,271 @@
+/*
+ * Showcase components: interactive Figma and code demos inside case studies.
+ *
+ * Load it in a page's <head>:
+ *   <link rel="stylesheet" href="/src/styles/showcase.css">
+ *
+ * The build outputs it after main.css, so sc- classes beat a Tailwind utility
+ * that sets the same property on the same element. Avoid mixing the two on one
+ * element, or use Tailwind's ! prefix where a utility must win.
+ *
+ * Every class starts with sc-. Variants use --modifier (sc-callout--error),
+ * states use ARIA attributes or is- classes (is-dismissed).
+ * Colors are custom properties, so dark mode lives in one block.
+ */
+
+/* ---------- Theme ---------- */
+:root {
+    --sc-border: #a3a3a3;
+    --sc-divider: #d4d4d4;
+    --sc-text: #404040;
+    --sc-text-strong: #171717;
+    --sc-muted: #737373;
+    --sc-surface: #f5f5f5;
+    --sc-inverse-bg: #262626;
+    --sc-inverse-bg-hover: #404040;
+    --sc-inverse-fg: #f5f5f5;
+    --sc-focus: #2563eb;
+    --sc-track: rgba(0, 0, 0, .1);
+
+    --sc-code-fg: #262626;
+    --sc-code-keyword: #9a3412;
+    --sc-code-string: #166534;
+    --sc-code-inline-bg: rgba(0, 0, 0, .06);
+
+    --sc-danger: #dc2626;
+    --sc-danger-text: #b91c1c;
+    --sc-error-bg: #fee2e2;
+    --sc-error-fg: #7f1d1d;
+    --sc-success-bg: #dcfce7;
+    --sc-success-fg: #14532d;
+
+    --sc-tip-bg: #171717;
+    --sc-tip-fg: #f5f5f5;
+    --sc-tip-glyph: #fff;
+
+    /* Figma properties panel mock-up */
+    --sc-figma-bg: #fff;
+    --sc-figma-fg: #1e1e1e;
+    --sc-figma-border: #e5e5e5;
+    --sc-figma-input-border: #e5e5e5;
+    --sc-figma-muted: #6b6b6b;
+    --sc-figma-toggle-off: #d9d9d9;
+    --sc-figma-option-bg: transparent;
+    --sc-figma-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%236b6b6b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+    --sc-border: #525252;
+    --sc-divider: #404040;
+    --sc-text: #d4d4d4;
+    --sc-text-strong: #f5f5f5;
+    --sc-surface: #171717;
+    --sc-inverse-bg: #e5e5e5;
+    --sc-inverse-bg-hover: #fff;
+    --sc-inverse-fg: #171717;
+    --sc-track: rgba(255, 255, 255, .12);
+
+    --sc-code-fg: #e5e5e5;
+    --sc-code-keyword: #fdba74;
+    --sc-code-string: #86efac;
+    --sc-code-inline-bg: rgba(255, 255, 255, .08);
+
+    --sc-danger: #f87171;
+    --sc-danger-text: #fca5a5;
+    --sc-error-bg: #450a0a;
+    --sc-error-fg: #fecaca;
+    --sc-success-bg: #052e16;
+    --sc-success-fg: #bbf7d0;
+
+    --sc-tip-bg: #f5f5f5;
+    --sc-tip-fg: #171717;
+    --sc-tip-glyph: #2c2c2c;
+
+    --sc-figma-bg: #2c2c2c;
+    --sc-figma-fg: #f0f0f0;
+    --sc-figma-border: #444;
+    --sc-figma-input-border: #555;
+    --sc-figma-muted: #b3b3b3;
+    --sc-figma-toggle-off: #555;
+    --sc-figma-option-bg: #2c2c2c;
+    --sc-figma-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23b3b3b3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ---------- Layout ---------- */
+.sc { display: flex; flex-direction: column; gap: 1rem; }
+.sc [hidden] { display: none !important; }
+.sc-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.sc-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--sc-muted); }
+
+/* Two equal columns from 640px */
+.sc-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 640px) { .sc-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Two columns from 768px, children with sc-span-full take the whole row */
+.sc-cols { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .sc-cols { grid-template-columns: repeat(2, 1fr); } .sc-cols .sc-span-full { grid-column: 1 / -1; } }
+
+.sc-box { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.sc-fill { flex: 1; }
+.sc-col { display: flex; flex-direction: column; gap: .5rem; min-width: 0; container-type: inline-size; }
+.sc-head { display: flex; flex-direction: column; gap: .25rem; }
+.sc-head .sc-title { font-size: 1.375rem; line-height: 1.25; margin: 0; }
+.sc-head .sc-sub { margin: 0; }
+
+/* Side-by-side showcase blocks. Each block's figure is a size container,
+   so the grids inside respond to the block width, not the viewport. */
+.sc-blocks { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: stretch; }
+@media (min-width: 1024px) { .sc-blocks { grid-template-columns: 1fr 1fr; } }
+.sc-block > figure { container-type: inline-size; height: 100%; margin: 0; }
+.sc-block .sc-cols, .sc-block .sc-grid { grid-template-columns: 1fr; }
+@container (min-width: 560px) {
+    .sc-block .sc-cols { grid-template-columns: 1fr 1fr; }
+}
+@container (min-width: 900px) {
+    .sc-block .sc-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Controls ---------- */
+.sc-segmented { display: inline-flex; border: 1px solid var(--sc-border); border-radius: 9999px; padding: 2px; flex-wrap: wrap; }
+.sc-segmented button { font-size: .875rem; padding: .35rem .85rem; border-radius: 9999px; color: var(--sc-text); background: transparent; min-height: 32px; }
+.sc-segmented button[aria-pressed="true"], .sc-segmented button[aria-selected="true"] { background: var(--sc-inverse-bg); color: var(--sc-inverse-fg); }
+.sc-segmented button:focus-visible, .sc-btn:focus-visible, .sc-check input:focus-visible, .sc-field:focus-visible { outline: 2px solid var(--sc-focus); outline-offset: 2px; }
+
+.sc-btn { font-size: .875rem; padding: .45rem 1rem; border-radius: 9999px; background: var(--sc-inverse-bg); color: var(--sc-inverse-fg); }
+.sc-btn:hover { background: var(--sc-inverse-bg-hover); }
+
+.sc-check { display: inline-flex; gap: .5rem; align-items: center; font-size: .9rem; cursor: pointer; }
+.sc-check input { width: 1rem; height: 1rem; accent-color: #262626; }
+
+.sc-field { font-size: .9rem; padding: .35rem .6rem; border: 1px solid var(--sc-border); border-radius: .375rem; background: transparent; min-width: 0; }
+[data-theme="dark"] .sc-field { color: #e5e5e5; }
+
+.sc-tabs { display: flex; gap: 1.25rem; border-bottom: 1px solid var(--sc-border); }
+.sc-tabs button { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--sc-muted); background: transparent;
+    padding: .35rem 0 .5rem; margin-bottom: -1px; border-bottom: 2px solid transparent; cursor: pointer; }
+.sc-tabs button:hover { color: var(--sc-text); }
+.sc-tabs button[aria-pressed="true"] { color: var(--sc-text-strong); border-bottom-color: currentColor; }
+.sc-tabs button:focus-visible { outline: 2px solid var(--sc-focus); outline-offset: 2px; }
+
+/* ---------- Content ---------- */
+.sc-panel { background: var(--sc-surface); border-radius: .5rem; padding: 1rem; }
+
+/* Code block. Wrap tokens in .c (comment), .k (keyword) or .s (string). */
+.sc-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; margin: 0; color: var(--sc-code-fg); }
+.sc-code .c { color: #737373; }
+.sc-code .k { color: var(--sc-code-keyword); }
+.sc-code .s { color: var(--sc-code-string); }
+.sc-code-inline, .sc-table td code { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; padding: .05rem .3rem; border-radius: .25rem; background: var(--sc-code-inline-bg); }
+
+.sc-note { font-size: .9rem; line-height: 1.5; margin: 0; }
+.sc-callout { font-size: .875rem; line-height: 1.45; padding: .6rem .8rem; border-radius: .4rem; margin: 0; }
+.sc-callout--error { background: var(--sc-error-bg); color: var(--sc-error-fg); }
+.sc-callout--success { background: var(--sc-success-bg); color: var(--sc-success-fg); }
+
+.sc-tag { display: inline-block; font-size: .75rem; padding: .1rem .5rem; border-radius: 9999px; border: 1px solid currentColor; opacity: .8; }
+
+.sc-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.sc-table th, .sc-table td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--sc-divider); vertical-align: top; }
+.sc-table th { font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--sc-muted); }
+.sc-table td.is-mismatch code { background: rgba(220, 38, 38, .18); }
+.sc-table td.is-match code { background: rgba(22, 163, 74, .18); }
+
+/* Pass/fail checks: an icon column, then the label, then an optional sc-checklist-msg */
+.sc-checklist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+.sc-checklist li { font-size: .9rem; display: grid; grid-template-columns: 1.5rem 1fr; gap: .25rem .5rem; align-items: start; margin: 0; }
+.sc-checklist li + li { margin-top: 0; }
+.sc-checklist-msg { grid-column: 2; font-family: ui-monospace, Menlo, monospace; font-size: .75rem; color: var(--sc-danger-text); word-break: break-word; }
+
+/* Bulleted list with × marks, or ✓ marks with sc-list--ok */
+.sc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+.sc-list li { font-size: .85rem; line-height: 1.45; margin: 0; padding-left: 1.1rem; position: relative; }
+.sc-list li::before { content: "×"; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+.sc-list--ok li::before { content: "✓"; color: #16a34a; }
+
+/* Inline flow of nodes, the source node filled */
+.sc-flow { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .85rem; }
+.sc-flow-node { padding: .35rem .7rem; border-radius: .375rem; border: 1px solid var(--sc-border); }
+.sc-flow-node--source { background: var(--sc-inverse-bg); color: var(--sc-inverse-fg); border-color: var(--sc-inverse-bg); }
+
+/* Linter-style diagnostic: head with an error code, key, collapsible detail */
+.sc-diag { display: flex; flex-direction: column; gap: .5rem; }
+.sc-diag p { margin: 0; }
+.sc-diag-head { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: .9rem; line-height: 1.4; }
+.sc-diag-code { font-family: ui-monospace, Menlo, monospace; font-size: .7rem; padding: .05rem .4rem; border-radius: 9999px; background: #b91c1c; color: #fff; font-weight: 700; }
+.sc-diag-key { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; margin: 0; }
+.sc-diag details summary { cursor: pointer; font-size: .8rem; }
+.sc-diag details pre { margin-top: .5rem; font-size: .72rem; opacity: .9; }
+
+/* Progress bar: set the inner span's width */
+.sc-meter { height: 6px; border-radius: 9999px; background: var(--sc-track); overflow: hidden; }
+.sc-meter span { display: block; height: 100%; background: #16a34a; transition: width .3s; }
+
+/* Legend dots: Figma only, code only, mismatch */
+.sc-dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; vertical-align: middle; margin-left: .3rem; }
+.sc-dot--figma { background: #9747ff; }
+.sc-dot--code { background: #f59e0b; }
+.sc-dot--mismatch { background: var(--sc-danger); }
+.sc-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .75rem; color: var(--sc-muted); margin-top: -.25rem; }
+.sc-legend .sc-dot { margin: 0 .4rem 0 0; }
+
+/* ---------- Tooltip ----------
+ * <span class="sc-tip">
+ *   <button class="sc-tip-btn" aria-describedby="tip-id">…</button>
+ *   <span role="tooltip" id="tip-id" class="sc-tip-text">…</span>
+ * </span>
+ * Shows on hover and focus. The page script adds is-dismissed on Escape (WCAG 1.4.13).
+ */
+.sc-tip { position: absolute; right: .45rem; top: 50%; transform: translateY(-50%); display: inline-flex; }
+.sc-tip-btn { display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: var(--sc-danger); background: transparent; cursor: help; }
+.sc-tip-btn svg { width: 100%; height: 100%; }
+.sc-tip-btn:focus-visible { outline: 2px solid var(--sc-focus); outline-offset: 1px; }
+.sc-tip-text { position: absolute; right: -4px; bottom: calc(100% + 6px); z-index: 10; width: max-content; max-width: 240px;
+    font-size: .75rem; line-height: 1.4; color: var(--sc-tip-fg); background: var(--sc-tip-bg); padding: .45rem .6rem; border-radius: .375rem; box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    opacity: 0; visibility: hidden; transition: opacity .12s; pointer-events: none; }
+.sc-tip-text strong { color: inherit; font-weight: 700; }
+.sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { opacity: 1; visibility: visible; }
+.sc-tip.is-dismissed .sc-tip-text { opacity: 0; visibility: hidden; }
+
+/* ---------- Figma properties panel mock-up ---------- */
+.sc-figma-panel { font-family: Inter, "Roboto", sans-serif; font-size: .8rem; background: var(--sc-figma-bg); color: var(--sc-figma-fg); border: 1px solid var(--sc-figma-border); border-radius: .5rem; padding: .75rem; display: flex; flex-direction: column; gap: .55rem; }
+.sc-figma-title { font-weight: 600; display: flex; align-items: center; gap: .4rem; }
+.sc-figma-title::before { content: "◆"; color: #9747ff; font-size: .75rem; }
+.sc-figma-title small { font-weight: 400; color: #8a8a8a; margin-left: .25rem; }
+.sc-figma-panel .sc-figma-title + .sc-figma-row, .sc-figma-panel .sc-figma-row + .sc-figma-title { margin-top: .25rem; }
+
+/* One property: name, then control (input, select, sc-figma-toggle or sc-figma-swap) */
+.sc-figma-row { display: grid; grid-template-columns: 6.5rem 1fr; gap: .5rem; align-items: center; }
+.sc-figma-row[hidden] { display: none; }
+.sc-figma-row label { color: var(--sc-figma-muted); }
+.sc-figma-row select, .sc-figma-row input[type="text"] { width: 100%; font-size: .8rem; padding: .25rem .4rem; border: 1px solid var(--sc-figma-input-border); border-radius: .25rem; background: transparent; color: inherit; }
+.sc-figma-row select option { background: var(--sc-figma-option-bg); }
+.sc-figma-row select { -webkit-appearance: none; appearance: none; padding-right: 1.6rem; cursor: pointer;
+    background-image: var(--sc-figma-chevron); background-repeat: no-repeat; background-position: right .45rem center; background-size: 12px; }
+.sc-figma-row select:disabled { cursor: not-allowed; opacity: .6; }
+
+/* Property name with an optional sc-tip beside it */
+.sc-figma-name { display: flex; align-items: center; gap: .35rem; min-width: 0; color: var(--sc-figma-muted); }
+.sc-figma-name .sc-tip { position: relative; right: auto; top: auto; transform: none; flex: none; }
+.sc-figma-name .sc-tip-text { right: auto; left: -4px; }
+.sc-figma-row .sc-figma-mismatch { color: var(--sc-danger); font-weight: 600; }
+
+/* Error row: red left rule and tint */
+.sc-figma-row--error { border-left-color: #dc2626; background: rgba(220, 38, 38, .08); }
+
+/* Instance swap value */
+.sc-figma-swap { display: flex; align-items: center; gap: .35rem; min-width: 0; font-size: .8rem; padding: .25rem .4rem; border: 1px solid var(--sc-figma-input-border); border-radius: .25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sc-figma-swap svg { width: 10px; height: 10px; flex: none; color: #9747ff; }
+
+/* Boolean switch: <button role="switch" aria-checked="true|false"> */
+.sc-figma-toggle { justify-self: start; position: relative; width: 28px; height: 16px; border-radius: 9999px; background: var(--sc-figma-toggle-off); border: 0; padding: 0; cursor: pointer; transition: background .15s; }
+.sc-figma-toggle::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 9999px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+.sc-figma-toggle[aria-checked="true"] { background: #0d99ff; }
+.sc-figma-toggle[aria-checked="true"]::after { transform: translateX(12px); }
+.sc-figma-toggle:focus-visible { outline: 2px solid #0d99ff; outline-offset: 2px; }
+
+/* Compare variant: wider name column, room for the error rule, stacks under 300px.
+   Put it inside an sc-col so the container query has a container. */
+.sc-figma-panel--compare .sc-figma-row { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); margin: 0 -.35rem; padding: .15rem .35rem; border-left: 3px solid transparent; }
+.sc-figma-panel--compare .sc-figma-row--error { border-left-color: #dc2626; }
+.sc-figma-panel--compare .sc-figma-title + .sc-figma-row { margin-top: 0; }
+@container (max-width: 300px) { .sc-figma-panel--compare .sc-figma-row { grid-template-columns: 1fr; gap: .25rem; } }
