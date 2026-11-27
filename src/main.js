@@ -487,3 +487,18 @@ if (document.readyState === 'loading') {
 } else {
     initMobileMenu();
 }
+// Showcase tooltips (.sc-tip in src/styles/showcase.css) are centered on their button.
+// Before one shows, nudge it sideways so it stays at least 8px inside the viewport.
+// The nudge is a margin, not part of the transform, so the fade and slide animations are unaffected.
+function nudgeTooltip(e) {
+  const tip = e.target.closest?.('.sc-tip');
+  const text = tip?.querySelector('.sc-tip-text');
+  if (!text) return;
+  text.style.setProperty('--sc-tip-nudge', '0px');
+  const r = text.getBoundingClientRect();
+  const gap = 8, maxRight = document.documentElement.clientWidth - gap;
+  const nudge = r.left < gap ? gap - r.left : r.right > maxRight ? maxRight - r.right : 0;
+  text.style.setProperty('--sc-tip-nudge', `${Math.round(nudge)}px`);
+}
+document.addEventListener('mouseover', nudgeTooltip);
+document.addEventListener('focusin', nudgeTooltip);
