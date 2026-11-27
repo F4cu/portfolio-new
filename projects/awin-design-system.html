@@ -233,11 +233,12 @@
                             </div>
 
                             <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                                <h3>1. Comprehensive Interface Audit</h3>
-                                <p>I began with a comprehensive audit of key dashboards and reports, cross-referencing behavioral analytics (Amplitude and Hotjar) with heuristic evaluations and Lighthouse audits. This data-driven approach moved the conversation beyond visual critique, allowing us to pinpoint high-impact usability gaps and user friction where it mattered most in real-world usage.</p>
+                                <h3>1. UI Audit</h3>
+                                <p>I started with two separate passes on key dashboards and reports. The first mapped which components each page used, and how they differed, in a component-to-page matrix. It showed where the same component was rebuilt differently across pages, which made the case for a shared library.</p>
+                                <p>The second was a heuristic evaluation with Lighthouse audits. It surfaced the obvious usability problems early. I checked each finding against Amplitude and Hotjar data, so the scope followed the gaps users actually hit.</p>
 
                                 <h3>2. Strategic Scoping</h3>
-                                <p>To define scope, I mapped the platform via a component-to-page matrix and scored each page in a prioritization matrix across component coverage, build complexity, technical independence, and usage. This informed a phased rollout that prioritised proof-of-concept speed over visual impact.</p>
+                                <p>To define scope, I scored each audited page in a prioritization matrix across component coverage, build complexity, technical independence, and usage. This informed a phased rollout that prioritised proof-of-concept speed over visual impact.</p>
                                 <p>We chose the Link Builder as the first live pilot. It served the largest user segment (publishers) and was built almost entirely from form primitives (inputs, buttons, selects), the highest-coverage components. A simple page first let us prove the architecture before applying it to data-dense surfaces.
                                     <a class="link" href="#"
                                         data-toggle="rollout-tradeoff"
@@ -279,14 +280,14 @@
 
                                 <p>On top: atomic component hierarchy, WCAG AA contrast with data-viz palettes, an 8pt spacing system with density variants, and Inter typography for legibility in dense tables.</p>
 
-                                <h3>4. Governance and Adoption</h3>
-                                <p>I introduced a hybrid contribution model: a small stewardship team owned foundations and tokens; product squads contributed components back. New components had to meet three criteria before they were built:
-                                    <ul>
-                                        <li><strong>Reach</strong>: used in more than 2 scenarios?</li>
-                                        <li><strong>Fit</strong>: brand-agnostic and fits across diverse contexts?</li>
-                                        <li><strong>Build vs extend</strong>: can the system already cover this?</li>
-                                    </ul>
-                                <p>New-built components then entered a review or "incubation" period before adding them to the core library. This included real-use evaluation in product contexts, API fit and UX intent assessment. Additionally a final quality gate (a11y tests, token lint, and visual diff) before merge. Unmet criteria didn't mean rejection but a documented local path.</p>
+                                <h3>4. Contribution Model</h3>
+                                <p>I introduced a hybrid contribution model: a small stewardship team owned foundations and tokens, and product squads contributed components back. Each request was first sorted as a modification, an addition or a removal. Additions had to pass three questions, in order:</p>
+                                <ul>
+                                    <li><strong>New</strong>: is it really a new component, or a variant of an existing one?</li>
+                                    <li><strong>Reach</strong>: do three or more teams need it now?</li>
+                                    <li><strong>Same problem</strong>: do those teams solve the same user problem, across brands?</li>
+                                </ul>
+                                <p>Accepted proposals went through an incubation period before joining the core library. That meant real-use evaluation in product contexts and an API fit and UX intent review. A request that failed the questions stayed in the squad's own library, tracked so it could move into the core if more teams adopted it.</p>
 
                             </div>
                         </div>
@@ -419,9 +420,10 @@
                                 <ul class="list-disc pl-8 md:pl-16">
                                     <li><strong>1 shared library across 10+ squads:</strong> replacing components each
                                         team had built on its own.</li>
-                                    <li><strong>3 questions before anything is built:</strong> reach, fit, and whether
-                                        the system already covers it. Components that don't pass get a documented
-                                        local path.</li>
+                                    <li><strong>3 questions before anything is built:</strong> whether it's new or a
+                                        variant, whether three or more teams need it, and whether they share the same
+                                        user problem. Components that don't pass stay in the squad's library until more
+                                        teams adopt them.</li>
                                     <li><strong>Figma to code parity:</strong> both use the same tokens and properties, so handoff
                                         is a token name instead of a value to re-measure, and visual diff catches any
                                         mismatch before merge.</li>
