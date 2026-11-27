@@ -722,16 +722,6 @@
         const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         const PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
 
-        /* ---------- Tooltips: Escape hides them (WCAG 1.4.13) ---------- */
-        document.addEventListener('keydown', (e) => {
-            if (e.key !== 'Escape') return;
-            document.querySelectorAll('.sc-tip').forEach(t => t.classList.add('is-dismissed'));
-        });
-        document.querySelectorAll('.sc-tip').forEach(t => {
-            t.addEventListener('mouseleave', () => t.classList.remove('is-dismissed'));
-            t.addEventListener('focusout', () => t.classList.remove('is-dismissed'));
-        });
-
         /* ---------- Build accuracy: Without / With the spec ---------- */
         (function () {
             const root = $('#sbx-accuracy'); if (!root) return;

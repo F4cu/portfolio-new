@@ -487,7 +487,7 @@ if (document.readyState === 'loading') {
 } else {
     initMobileMenu();
 }
-// Showcase tooltips (.sc-tip in src/styles/showcase.css) are centered on their button.
+// --- Showcase tooltips (.sc-tip in src/styles/showcase.css) ---
 // Before one shows, nudge it sideways so it stays at least 8px inside the viewport.
 // The nudge is a margin, not part of the transform, so the fade and slide animations are unaffected.
 function nudgeTooltip(e) {
@@ -502,3 +502,15 @@ function nudgeTooltip(e) {
 }
 document.addEventListener('mouseover', nudgeTooltip);
 document.addEventListener('focusin', nudgeTooltip);
+
+// Escape hides any open tooltip without moving focus or the pointer (WCAG 1.4.13).
+// It can show again once the pointer or focus leaves that tooltip.
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.querySelectorAll('.sc-tip:hover, .sc-tip:focus-within').forEach(t => t.classList.add('is-dismissed'));
+});
+function resetTooltip(e) {
+  const tip = e.target.closest?.('.sc-tip');
+  if (tip && !tip.contains(e.relatedTarget)) tip.classList.remove('is-dismissed');
+}
+document.addEventListener('mouseout', resetTooltip);
+document.addEventListener('focusout', resetTooltip);

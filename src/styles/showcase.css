@@ -213,22 +213,30 @@
  *   <button class="sc-tip-btn" aria-describedby="tip-id">…</button>
  *   <span role="tooltip" id="tip-id" class="sc-tip-text">…</span>
  * </span>
- * Centered above the button. Shows on hover and focus. main.js sets --sc-tip-nudge to
- * shift it back on screen near an edge; the page script adds is-dismissed on Escape (WCAG 1.4.13).
+ * Opens above the button, with the text starting in line with the button's left edge
+ * and an arrow pointing at its center. Shows on hover and focus.
+ * main.js handles the rest on any page: it sets --sc-tip-nudge to shift the bubble back
+ * on screen near an edge (the arrow stays on the button), and adds is-dismissed on
+ * Escape (WCAG 1.4.13).
  */
 .sc-tip { position: absolute; right: .45rem; top: 50%; transform: translateY(-50%); display: inline-flex; }
 .sc-tip-btn { display: inline-flex; width: 14px; height: 14px; padding: 0; border-radius: 9999px; color: var(--sc-danger); background: transparent; cursor: default; }
 .sc-tip-btn svg { width: 100%; height: 100%; }
 .sc-tip-btn:focus-visible { outline: 2px solid var(--sc-focus); outline-offset: 1px; }
-.sc-tip-text { position: absolute; left: 50%; bottom: calc(100% + 6px); z-index: 10; width: max-content; max-width: min(240px, calc(100vw - 16px));
+/* left: minus the horizontal padding, so the text starts where the button starts */
+.sc-tip-text { position: absolute; left: -.6rem; bottom: calc(100% + 6px); z-index: 10; width: max-content; max-width: min(240px, calc(100vw - 16px));
     margin-left: var(--sc-tip-nudge, 0px);
     font-size: .75rem; line-height: 1.4; color: var(--sc-tip-fg); background: var(--sc-tip-bg); padding: .45rem .6rem; border-radius: .375rem; box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    opacity: 0; visibility: hidden; transform: translate(-50%, 4px); pointer-events: none;
+    opacity: 0; visibility: hidden; transform: translateY(4px); pointer-events: none;
     transition: opacity .15s ease-out, transform .15s ease-out, visibility .15s; }
+/* Arrow: a 10px wide, 5px tall triangle under the bubble, centered on the 14px button
+   (padding + 7px - 5px), moved back by the nudge so it stays on the button */
+.sc-tip-text::after { content: ""; position: absolute; top: 100%; left: calc(.6rem + 2px - var(--sc-tip-nudge, 0px));
+    border: 5px solid transparent; border-bottom: 0; border-top-color: var(--sc-tip-bg); }
 .sc-tip-text strong { color: inherit; font-weight: 700; }
-.sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.sc-tip.is-dismissed .sc-tip-text { opacity: 0; visibility: hidden; transform: translate(-50%, 4px); }
-@media (prefers-reduced-motion: reduce) { .sc-tip-text, .sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { transform: translate(-50%, 0); } }
+.sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { opacity: 1; visibility: visible; transform: translateY(0); }
+.sc-tip.is-dismissed .sc-tip-text { opacity: 0; visibility: hidden; transform: translateY(4px); }
+@media (prefers-reduced-motion: reduce) { .sc-tip-text, .sc-tip:hover .sc-tip-text, .sc-tip:focus-within .sc-tip-text { transform: none; } }
 
 /* ---------- Figma properties panel mock-up ---------- */
 .sc-figma-panel { font-family: Inter, "Roboto", sans-serif; font-size: .8rem; background: var(--sc-figma-bg); color: var(--sc-figma-fg); border: 1px solid var(--sc-figma-border); border-radius: .5rem; padding: .75rem; display: flex; flex-direction: column; gap: .55rem; }
