@@ -416,8 +416,15 @@
                                     file on how to use a component, and a spec on how to build it.</p>
 
                                 <h3>The framework</h3>
-                                <p class="mb-4">The system follows the four parts of a common agent architecture, and
-                                    keeps the model out of every part a script can handle.</p>
+                                <p class="mb-4">The system keeps the model out of every part a script can handle.
+                                    75+ scripts and workflows are the tools, the repo is the memory, Claude commands handle judgment, and a deterministic gate with
+                                    a reviewer agent acts as guards.
+                                    <a class="link" href="#"
+                                        data-toggle="framework-detail"
+                                        data-show-text="See the four parts"
+                                        data-hide-text="Hide the four parts">See the four parts<svg class="toggle-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                                </p>
+                                <div id="framework-detail" class="collapsible">
                                 <ul class="list-disc pl-8 md:pl-16 mb-4">
                                     <li><strong>Tools.</strong> More than 75 deterministic scripts, commands and
                                         workflows sync the system and prepare the data agents read, without spending a
@@ -425,14 +432,15 @@
                                     <li><strong>Memory.</strong> The repo is the single source of truth. It records what
                                         components mean, how work is done, why the system is this way and what is true
                                         right now, and agents load only the part a task needs.</li>
-                                    <li><strong>Planning.</strong> Nine Claude commands handle design intent, like
+                                    <li><strong>Judgment.</strong> Nine Claude commands handle the design intent a script can't encode, like
                                         proposing a component API or generating one, and run only when a maintainer
                                         triggers them.</li>
-                                    <li><strong>Guards.</strong> Automated checks stop bad changes before they merge,
+                                    <li><strong>Guards.</strong> A deterministic gate stops bad changes before they merge,
                                         and an adversarial reviewer agent challenges interactive components. A status
                                         command shows maintainers each component's build and review state, and issues
                                         found in audits become new rules agents follow, so they aren't repeated.</li>
                                 </ul>
+                                </div>
 
                                 <h3>Giving AI the right context at the right time</h3>
                                 <p class="mb-4">Each task loads only the context it needs: too much costs money and
@@ -461,15 +469,18 @@
                                     </ul>
                                 </div>
                                 <h3>Loops that build, review and learn</h3>
-                                <p class="mb-4">Before building, the agent picks one of seven answers, from reuse to
-                                    build new or escalate, each backed by a decision record.</p>
-                                <p class="mb-4">The <code>add-component</code> loop then proposes an API and waits for
-                                    my approval. That proposal becomes the <strong>spec</strong> that code and Figma are
-                                    built from, followed by automated checks, my Storybook review and, for interactive
-                                    components, an adversarial reviewer agent with a full behavioural accessibility
-                                    review.</p>
-                                <p class="mb-4">Other loops keep the system current: stale docs get rewritten and
-                                    review findings update the rules.</p>
+                                <p class="mb-4">Before building, <code>/add-component</code> proposes an API, with every
+                                    prop checked against the system's prop vocabulary, and waits for my approval before
+                                    writing any file. That proposal becomes the <strong>spec</strong>, validated against
+                                    its schema, that code and Figma are built from, followed by the deterministic gate
+                                    and my Storybook review.</p>
+                                <p class="mb-4">Review depth follows risk. <code>component:risk</code> reads the spec and
+                                    flags a component as interactive when it has an interactive role or a keyboard
+                                    contract beyond Tab. Interactive components owe behavioural accessibility tests and go
+                                    to <code>/review-component</code>, which spawns an adversarial reviewer agent. Display
+                                    components get a lighter code review.</p>
+                                <p class="mb-4">Other loops keep the system current: <code>/docs-sync</code> rewrites
+                                    stale docs and <code>/extract-learnings</code> turns review findings into rules.</p>
 
                                 <h3>Keeping only what tests prove</h3>
                                 <p class="mb-4">I built evals to test what the agent needs, and kept only what
@@ -481,6 +492,10 @@
                                     <li><strong>Context in the right place.</strong> A shared pattern file cut errors by
                                         69% on page layouts but raised them by 29% on component builds, so only the
                                         layout command reads it.</li>
+                                    <li><strong>Rules over new steps.</strong> In a blind test against 11 past calls,
+                                        the agent recommended the same reuse, extend or build answer as me 10 times
+                                        using the existing rules and metadata, so I didn't add a separate decision
+                                        step.</li>
                                 </ul>
                             </div>
                         </div>
@@ -682,7 +697,7 @@
                                         and 8 GitHub Actions, with API reads up to 62× smaller.</li>
                                     <li><strong>97% of docs written from a single source of truth:</strong> cuts manual
                                         writing and drift.</li>
-                                    <li><strong>10 of 11 LLM decisions matched mine:</strong> in a blind test, with
+                                    <li><strong>10 of 11 build-or-reuse decisions matched mine:</strong> in a blind test, with
                                         every out-of-scope request declined.</li>                                </ul>
                             </div>
                         </div>
